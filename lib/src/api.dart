@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 enum LangApi {
   /// Русский
   ru,
@@ -22,6 +24,10 @@ enum LangApi {
 }
 
 class Api {
+  static const _baseUrl = 'https://api.vk.com/method/';
+  static final _dio = Dio();
+
+  final String _token;
   final LangApi _language;
   final String _version;
 
@@ -32,8 +38,10 @@ class Api {
   /// Для того что-б указать необходимую версию укажите [version]
   /// ([Самая актуальная версия на данный момент](https://dev.vk.com/reference/versions))
   Api({
+    required String token,
     required LangApi language,
     required String version,
-  })  : _language = language,
+  })  : _token = token,
+        _language = language,
         _version = version;
 }
