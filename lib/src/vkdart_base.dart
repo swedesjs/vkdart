@@ -5,5 +5,10 @@ class VkDart {
 
   VkDart({required this.token});
 
-  API getApi() => API();
+  /// Создает экземпляр VK Api (Класса [Api])
+  Api getApi({
+    LangApi lang = LangApi.ru,
+    String version = '5.131',
+  }) =>
+      Api(language: lang, version: version);
 }
