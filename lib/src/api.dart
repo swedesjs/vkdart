@@ -44,4 +44,24 @@ class Api {
   })  : _token = token,
         _language = language,
         _version = version;
+
+  /// Позволяет создавать запросы к Апи Вк
+  Future<Map<String, dynamic>> request(
+    String methodName,
+    Map<String, Object> params,
+  ) async {
+    final postParams = {
+      'access_token': _token,
+      'lang': _language.index,
+      'v': _version,
+      ...params
+    };
+
+    final response = await _dio.post<Map<String, dynamic>>(
+      _baseUrl + methodName,
+      queryParameters: postParams,
+    );
+
+    return response.data!;
+  }
 }
