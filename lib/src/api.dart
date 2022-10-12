@@ -64,7 +64,7 @@ class Api {
 
     requestLang ??= _language.index;
 
-    final postParams = {
+    final requestParams = {
       'access_token': _token,
       'lang': requestLang,
       'v': _version,
@@ -73,7 +73,8 @@ class Api {
 
     final response = await _dio.post<Map<String, dynamic>>(
       _baseUrl + methodName,
-      queryParameters: postParams,
+      data: requestParams.entries.map((e) => '${e.key}=${e.value}').join('&'),
+      options: Options(contentType: 'application/x-www-form-urlencoded'),
     );
 
     final data = response.data!;
