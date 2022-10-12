@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:vkdart/src/exceptions/api_exception.dart';
 
 enum LangApi {
   /// Русский
@@ -75,6 +76,11 @@ class Api {
       queryParameters: postParams,
     );
 
-    return response.data!;
+    final data = response.data!;
+
+    final error = data['error'];
+    if (error != null) throw ApiException.fromJson(error);
+
+    return data;
   }
 }
