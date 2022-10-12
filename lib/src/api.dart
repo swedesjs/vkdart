@@ -50,9 +50,22 @@ class Api {
     String methodName,
     Map<String, Object> params,
   ) async {
+    final lang = params['lang'];
+    Object? requestLang;
+
+    if (lang != null) {
+      requestLang = lang is LangApi
+          ? lang.index
+          : (lang is int || lang is String ? lang : null);
+
+      params.remove('lang');
+    }
+
+    requestLang ??= _language.index;
+
     final postParams = {
       'access_token': _token,
-      'lang': _language.index,
+      'lang': requestLang,
       'v': _version,
       ...params
     };
