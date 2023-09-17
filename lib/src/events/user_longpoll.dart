@@ -18,7 +18,7 @@ class UserLongpoll implements Longpoll {
   UserLongpoll(this._api);
 
   @override
-  get isStart => _isStart;
+  bool get isStart => _isStart;
 
   @override
   Stream<List> onEvent() => _updatesController.stream;

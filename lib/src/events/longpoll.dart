@@ -7,5 +7,5 @@ abstract class Longpoll {
   /// Останавливает прослушку событий
   void stop();
 
-  get isStart;
+  bool get isStart;
 }
