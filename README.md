@@ -28,12 +28,33 @@ print(response);
 print(response2);
 ```
 
+## Usage Longpoll
+
+```dart
+final vkDart = VkDart(token: "");
+final userLongpoll = UserLongpoll(vkDart.getApi());
+
+userLongpoll
+  ..start()
+  ..onEvent().listen((event) {
+    print(event);
+  });
+
+final groupLongpoll = GroupLogpoll(0, vkDart.getApi());
+
+groupLongpoll
+    ..start()
+    ..onEvent().listen((event) {
+      print(event);
+    });
+```
+
 ## Todo
 
 Plans for the near future:
 
 - Generate Vkontakte API methods interfaces ✔
-- Add support for LongPoll API
+- Add support for LongPoll API ✔
 
 ## Additional information
 
