@@ -1,6 +1,6 @@
 name: vkdart
 description: Library for interacting with Vkontakte API
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/swedesjs/vkdart
 
 environment:
