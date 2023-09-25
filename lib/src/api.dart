@@ -43,6 +43,7 @@ import 'methods/video.dart';
 import 'methods/wall.dart';
 import 'methods/widgets.dart';
 
+/// Перечисление языков поддерживаемых VK API
 enum LangApi {
   /// Русский
   ru,
@@ -66,6 +67,7 @@ enum LangApi {
   it
 }
 
+/// Класс для взаимодействия с Vk API
 class Api {
   static const _baseUrl = 'https://api.vk.com/method/';
   static final _dio = Dio();
@@ -127,45 +129,124 @@ class Api {
     return data;
   }
 
+  /// Методы для работы с аккаунтом.
   Account get account => Account(this);
+
+  /// Рекламный API позволяет автоматизировать работу с рекламными возможностями ВКонтакте и эффективно реализовать специфичные для вашего бизнеса рекламные кампании.
   Ads get abs => Ads(this);
   Adsweb get absweb => Adsweb(this);
+
+  /// Методы для работы с приложениями.
   Apps get apps => Apps(this);
+
+  /// Список методов секции appWidgets
   AppWidgets get appWidgets => AppWidgets(this);
+
+  /// Методы для работы с авторизацией.
   Auth get auth => Auth(this);
+
+  /// Методы для работы с обсуждениями.
   Board get board => Board(this);
+
+  /// Методы этой секции предоставляют доступ к базе данных учебных заведений ВКонтакте. Доступ к данным является бесплатным и не требует авторизации, однако количество запросов с одного IP адреса может быть ограничено, при необходимости делать большое количество запросов рекомендуется выполнять запросы с клиентской стороны, используя JSONP.
   Database get database => Database(this);
+
+  /// Методы для работы с документами.
   Docs get docs => Docs(this);
+
+  /// Методы для работы с VK Donut.
   Donut get donut => Donut(this);
   DownloadedGames get downloadedGames => DownloadedGames(this);
+
+  /// Методы для работы с закладками.
   Fave get fave => Fave(this);
+
+  /// Методы для работы с друзьями.
   Friends get friends => Friends(this);
+
+  /// Методы для работы с подарками.
   Gifts get gifts => Gifts(this);
+
+  /// Методы для работы с сообществами.
   Groups get groups => Groups(this);
+
+  /// Формы сбора заявок
+  /// Подойдут для записи клиентов, предварительной регистрации, подписки на рассылки, запросов информации, подключения услуг, оформления заказов и многого другого.
+  /// Вы создаете формы с заявками, а пользователи оставляют свою контактную информацию. Вам остается завершить оформление заявки, связавшись с ними удобным способом.
   LeadForms get leadForms => LeadForms(this);
+
+  /// Методы для работы с отметками «Мне нравится».
   Likes get likes => Likes(this);
+
+  /// Методы market позволяют работать с товарами в сообществах.
   Market get market => Market(this);
+
+  /// Методы для работы с личными сообщениями.
+  /// Для моментального получения входящих сообщений используйте LongPoll сервер.
+  /// Обратите внимание: доступ к работе с методами секции с ключом пользователя ограничен.
+  /// Информация об ограничении Messages API находится в Roadmap.
+  /// Обратите внимание: методы для работы со звонками были перенесены в новую секцию calls. Старые методы звонков из секции messages были помечены устаревшими и могут быть удалены в будущих версиях API.
   Messages get messages => Messages(this);
+
+  /// Методы для работы с новостной лентой пользователя.
   Newsfeed get newsfeed => Newsfeed(this);
+
+  /// Методы для работы с заметками.
   Notes get notes => Notes(this);
   Notifications get notifications => Notifications(this);
+
+  /// Методы этой секции предоставляют дополнительную возможность управления состоянием заказов, которые были сделаны пользователями в приложениях.
   Orders get orders => Orders(this);
+
+  /// Методы для работы с вики-страницами.
   Pages get pages => Pages(this);
+
+  /// Методы для работы с фотографиями.
   Photos get photos => Photos(this);
+
+  /// Методы для работы с подкастами.
   Podcasts get podcasts => Podcasts(this);
+
+  /// Методы для работы с опросами.
   Polls get polls => Polls(this);
+
+  /// Карусель
+  /// Карусель — набор карточек, которые прикрепляются к записи. К каждой карточке можно добавить название и короткое описание, изображение, кнопку. Также можно установить две цены — старую и новую — например, чтобы показать скидку.
+  /// На текущий момент карусель поддерживается только в скрытых рекламных записях (см. wall.postAdsStealth).
   PrettyCards get prettyCards => PrettyCards(this);
+
+  /// Методы для работы с поиском.
   Search get search => Search(this);
+
+  /// В этой секции представлены административные методы, предназначенные для вызова от имени приложения с использованием стороннего сервера. Для использования этих методов необходимо применять сервисный ключ из настроек приложения.
   Secure get secure => Secure(this);
+
+  /// Методы для работы со статистикой.
   Stats get stats => Stats(this);
+
+  /// Методы для работы со статусом.
   Status get status => Status(this);
+
+  /// Методы для работы с переменными в приложении.
   Storage get storage => Storage(this);
+
+  ///
   Store get store => Store(this);
   Stories get stories => Stories(this);
   Streaming get streaming => Streaming(this);
+
+  /// Методы для работы с данными пользователей.
   Users get users => Users(this);
+
+  /// Служебные методы.
   Utils get utils => Utils(this);
+
+  /// Методы для работы с видеозаписями.
   Video get video => Video(this);
+
+  /// Методы для работы с записями на стене.
   Wall get wall => Wall(this);
+
+  /// Методы для работы с виджетами на внешних сайтах.
   Widgets get widgets => Widgets(this);
 }

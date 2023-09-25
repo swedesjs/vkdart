@@ -1,3 +1,4 @@
+/// Абстрактный класс LongPoll
 abstract class Longpoll {
   /// Возвращает события LongPoll API экзепляром класса [Stream]
   /// ```dart

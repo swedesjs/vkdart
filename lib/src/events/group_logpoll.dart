@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:vkdart/src/api.dart';
 import 'package:vkdart/src/events/longpoll.dart';
 
+/// Класс для работы с событиями сообщества VK
 class GroupLogpoll implements Longpoll {
   final _dio = Dio();
   final Api _api;
