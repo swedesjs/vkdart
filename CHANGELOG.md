@@ -8,4 +8,8 @@
 
 ## 1.0.2
 
-- Добавлена поддержка событий - Longpoll API
+- Added Longpoll API support
+
+## 1.0.3
+
+- Added Callback API support
