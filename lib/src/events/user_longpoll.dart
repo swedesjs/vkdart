@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:vkdart/src/events/longpoll.dart';
 import 'package:vkdart/vkdart.dart';
 
+/// Класс для работы с событиями пользователя VK
 class UserLongpoll implements Longpoll {
   final Api _api;
   final _dio = Dio();
@@ -15,7 +16,9 @@ class UserLongpoll implements Longpoll {
 
   final _updatesController = StreamController<List>();
 
-  UserLongpoll(this._api);
+  /// Конструктор класса UserLongpoll
+  /// В [api] экземпляр [API]
+  UserLongpoll(Api api) : _api = api;
 
   @override
   bool get isStart => _isStart;
