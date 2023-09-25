@@ -1,6 +1,6 @@
 name: vkdart
-description: Library for interacting with Vkontakte API
-version: 1.0.2
+description: A library for interacting with the VK API, has all the latest version methods, support for Longpoll API, Callback API and a number of other auxiliary functions for convenient interaction
+version: 1.0.3
 homepage: https://github.com/swedesjs/vkdart
 
 environment:
