@@ -1,4 +1,5 @@
-import '../api.dart';
+// ignore_for_file: file_names
+import 'package:vkdart/vkdart.dart';
 
 class AppWidgets {
   final Api _api;
@@ -6,7 +7,8 @@ class AppWidgets {
   AppWidgets(this._api);
 
   /// Returns a URL for uploading a photo to the community collection for community app widgets
-  Future<Map<String, dynamic>> getAppImageUploadServer(Map<String, Object> params) {
+  Future<Map<String, dynamic>> getAppImageUploadServer(
+      Map<String, Object> params) {
     return _api.request('appWidgets.getAppImageUploadServer', params);
   }
 
@@ -16,7 +18,8 @@ class AppWidgets {
   }
 
   /// Returns a URL for uploading a photo to the community collection for community app widgets
-  Future<Map<String, dynamic>> getGroupImageUploadServer(Map<String, Object> params) {
+  Future<Map<String, dynamic>> getGroupImageUploadServer(
+      Map<String, Object> params) {
     return _api.request('appWidgets.getGroupImageUploadServer', params);
   }
 
