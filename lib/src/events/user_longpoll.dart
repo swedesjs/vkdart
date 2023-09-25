@@ -13,7 +13,7 @@ class UserLongpoll implements Longpoll {
 
   bool _isStart = false;
 
-  final StreamController<List> _updatesController = StreamController();
+  final _updatesController = StreamController<List>();
 
   UserLongpoll(this._api);
 

@@ -13,8 +13,7 @@ class GroupLogpoll implements Longpoll {
   String? _key;
   bool _isStart = false;
 
-  final StreamController<Map<String, dynamic>> _updatesController =
-      StreamController();
+  final _updatesController = StreamController<Map<String, dynamic>>();
 
   GroupLogpoll(this._groupId, this._api);
 

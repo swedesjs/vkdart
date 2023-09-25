@@ -49,6 +49,19 @@ groupLongpoll
     });
 ```
 
+## Usage Callback API
+
+```dart
+final vkDart = VkDart(token: '');
+final callback = Callback(vkDart.getApi());
+
+callback.onEvent().listen((event) {
+  print(event);
+});
+
+callback.start(port: 80);
+```
+
 ## Todo
 
 Plans for the near future:

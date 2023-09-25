@@ -1,4 +1,6 @@
-import '../api.dart';
+// ignore_for_file: file_names
+
+import 'package:vkdart/vkdart.dart';
 
 class DownloadedGames {
   final Api _api;
