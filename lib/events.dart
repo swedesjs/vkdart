@@ -1,3 +1,4 @@
+/// Библиотека для использования технологии Longpoll API, Callback API.
 library vkdart.events;
 
 import 'dart:async';
