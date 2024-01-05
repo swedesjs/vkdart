@@ -1,5 +1,4 @@
-import 'package:vkdart/src/api.dart';
-import 'package:vkdart/src/types/methods.dart';
+part of vkdart.methods;
 
 /// Служебные методы.
 class Utils {
