@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:vkdart/src/exceptions/api_exception.dart';
 import 'package:vkdart/src/methods/account.dart';
 import 'package:vkdart/src/methods/ads.dart';
-import 'package:vkdart/src/methods/adsweb.dart';
 import 'package:vkdart/src/methods/app_widgets.dart';
 import 'package:vkdart/src/methods/apps.dart';
 import 'package:vkdart/src/methods/auth.dart';
@@ -137,9 +136,6 @@ class Api {
   // ignore: lines_longer_than_80_chars
   /// Рекламный API позволяет автоматизировать работу с рекламными возможностямиы ВКонтакте и эффективно реализовать специфичные для вашего бизнеса рекламные кампании.
   Ads get abs => Ads(this);
-
-  // ignore: public_member_api_docs
-  Adsweb get absweb => Adsweb(this);
 
   /// Методы для работы с приложениями.
   Apps get apps => Apps(this);
