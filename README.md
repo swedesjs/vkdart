@@ -16,37 +16,35 @@ You can use the library for:
 ## Usage
 
 ```dart
-var vk = VkDart(token: '');
-var api = vk.getApi();
+final vk = VkDart(token: '');
+final api = vk.getApi();
 
-var response = await api.users.get({'user_id': 1});
+await api.users.get({'user_id': 1});
 
-/// Second way
-var response2 = await api.request('users.get', {'user_id': 1});
-
-print(response);
-print(response2);
+await api.request('users.get', {'user_id': 1});
 ```
 
 ## Usage Longpoll
 
 ```dart
-final vkDart = VkDart(token: "");
-final userLongpoll = UserLongpoll(vkDart.getApi());
+import 'package:vkdart/vkdart.dart';
 
-userLongpoll
-  ..start()
-  ..onEvent().listen((event) {
-    print(event);
+Future<void> main() async {
+  final vkDart = VkDart(token: '');
+  final userLongpoll = UserLongpoll(vkDart.getApi());
+
+  await userLongpoll.start();
+  userLongpoll.onEvent().listen((event) {
+    // ...
   });
 
-final groupLongpoll = GroupLogpoll(0, vkDart.getApi());
+  final groupLongpoll = GroupLogpoll(0, vkDart.getApi());
 
-groupLongpoll
-    ..start()
-    ..onEvent().listen((event) {
-      print(event);
-    });
+  await groupLongpoll.start();
+  groupLongpoll.onEvent().listen((event) {
+    // ..
+  });
+}
 ```
 
 ## Usage Callback API
