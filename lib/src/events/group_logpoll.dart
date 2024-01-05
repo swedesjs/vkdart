@@ -6,17 +6,18 @@ import 'package:vkdart/src/events/longpoll.dart';
 
 /// Класс для работы с событиями сообщества VK
 class GroupLogpoll implements Longpoll {
+  /// Конструктор.
+  /// В параметр [_groupId] числовой идентинтификатор сообщества.
+  /// В параметр [_api] экземляр класса [Api]
+  GroupLogpoll(this._groupId, this._api);
+
   final _dio = Dio();
   final Api _api;
   final int _groupId;
-  String? _ts;
-  String? _server;
-  String? _key;
+  late String? _ts, _server, _key;
   bool _isStart = false;
 
   final _updatesController = StreamController<Map<String, dynamic>>();
-
-  GroupLogpoll(this._groupId, this._api);
 
   @override
   Stream<Map<String, dynamic>> onEvent() => _updatesController.stream;
@@ -27,29 +28,31 @@ class GroupLogpoll implements Longpoll {
 
     final getServer =
         await _api.groups.getLongPollServer({'group_id': _groupId});
-    final response = getServer['response'];
-    _server = response['server'];
-    _key = response['key'];
+    final response = getServer['response'] as Map;
 
-    _ts = response['ts'];
-    _start();
+    _server = response['server'] as String;
+    _key = response['key'] as String;
+
+    _ts = response['ts'] as String;
+
+    await _start();
   }
 
   Future<void> _start() async {
-    final updates = await _dio.get(_server!, queryParameters: {
-      'act': 'a_check',
-      'key': _key,
-      'ts': _ts!,
-      'wait': 25
-    });
+    final updates = await _dio.get<Map<String, dynamic>>(
+      _server!,
+      queryParameters: {'act': 'a_check', 'key': _key, 'ts': _ts, 'wait': 25},
+    );
 
-    _ts = updates.data['ts'];
+    _ts = updates.data!['ts'] as String;
 
-    for (final update in updates.data['updates']) {
-      _updatesController.add(update);
+    for (final update in updates.data!['updates'] as List) {
+      _updatesController.add((update as Map).cast<String, dynamic>());
     }
 
-    if (_isStart) _start();
+    if (_isStart) {
+      await _start();
+    }
   }
 
   @override

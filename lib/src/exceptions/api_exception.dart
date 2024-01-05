@@ -5,17 +5,6 @@ part 'api_exception.g.dart';
 /// Класс предназначенный для ошибок связанных с API VK
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class ApiException implements Exception {
-  /// Код ошибки
-  @JsonKey(name: 'error_code')
-  final int code;
-
-  /// Сообщение ошибки
-  @JsonKey(name: 'error_msg')
-  final String message;
-
-  /// Параметры запроса
-  final List<RequestParams> requestParams;
-
   /// Конструктор класса [ApiException]
   ApiException({
     required this.code,
@@ -27,6 +16,17 @@ class ApiException implements Exception {
   factory ApiException.fromJson(Map<String, dynamic> json) =>
       _$ApiExceptionFromJson(json);
 
+  /// Код ошибки
+  @JsonKey(name: 'error_code')
+  final int code;
+
+  /// Сообщение ошибки
+  @JsonKey(name: 'error_msg')
+  final String message;
+
+  /// Параметры запроса
+  final List<RequestParams> requestParams;
+
   /// Преобразует экземпляр в JSON
   Map<String, dynamic> toJson() => _$ApiExceptionToJson(this);
 
@@ -37,16 +37,19 @@ class ApiException implements Exception {
 /// Интерфейс request_params
 @JsonSerializable()
 class RequestParams {
+  /// Экземляр интерфейса request_params
+  RequestParams({required this.key, required this.value});
+
+  /// Преобразует JSON в экземпляр класса
+  factory RequestParams.fromJson(Map<String, dynamic> json) =>
+      _$RequestParamsFromJson(json);
+
   /// Key
   final String key;
 
   /// Value
   final Object value;
 
-  RequestParams({required this.key, required this.value});
-
-  factory RequestParams.fromJson(Map<String, dynamic> json) =>
-      _$RequestParamsFromJson(json);
-
+  /// Преобразует экземпляр в JSON
   Map<String, dynamic> toJson() => _$RequestParamsToJson(this);
 }

@@ -1,11 +1,12 @@
-import '../api.dart';
+import 'package:vkdart/src/api.dart';
 
+/// Методы для работы с подкастами.
 class Podcasts {
+  /// Конструктор.
+  Podcasts(this._api);
   final Api _api;
 
-  Podcasts(this._api);
-
-  Future<Map<String, dynamic>> searchPodcast(Map<String, Object> params) {
-    return _api.request('podcasts.searchPodcast', params);
-  }
+  /// Выполняет поиск подкастов по ключевым фразам.
+  Future<Map<String, dynamic>> searchPodcast(Map<String, Object> params) =>
+      _api.request('podcasts.searchPodcast', params);
 }
