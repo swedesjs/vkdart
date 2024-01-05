@@ -23,7 +23,8 @@ class Secure {
   MethodTypeReturn getAppBalance(MethodTypeParams params) =>
       _api.request('secure.getAppBalance', params);
 
-  /// Shows a list of SMS notifications sent by the application using [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
+  /// Shows a list of SMS notifications sent by the application using
+  /// [sendSMSNotification] method.
   MethodTypeReturn getSMSHistory(MethodTypeParams params) =>
       _api.request('secure.getSMSHistory', params);
 

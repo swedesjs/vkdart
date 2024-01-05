@@ -10,7 +10,8 @@ class Account {
   MethodTypeReturn ban(MethodTypeParams params) =>
       _api.request('account.ban', params);
 
-  /// Changes a user password after access is successfully restored with the [vk.com/dev/auth.restore|auth.restore] method.
+  /// Changes a user password after access is successfully restored with the
+  /// [Auth.restore] method.
   MethodTypeReturn changePassword(MethodTypeParams params) =>
       _api.request('account.changePassword', params);
 

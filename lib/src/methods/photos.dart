@@ -181,7 +181,8 @@ class Photos {
   MethodTypeReturn saveMarketPhoto(MethodTypeParams params) =>
       _api.request('photos.saveMarketPhoto', params);
 
-  /// Saves a photo after being successfully uploaded. URL obtained with [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
+  /// Saves a photo after being successfully uploaded. URL obtained with
+  /// [Photos.getMessagesUploadServer] method.
   MethodTypeReturn saveMessagesPhoto(MethodTypeParams params) =>
       _api.request('photos.saveMessagesPhoto', params);
 
@@ -189,7 +190,8 @@ class Photos {
   MethodTypeReturn saveOwnerCoverPhoto(MethodTypeParams params) =>
       _api.request('photos.saveOwnerCoverPhoto', params);
 
-  /// Saves a profile or community photo. Upload URL can be got with the [vk.com/dev/photos.getOwnerPhotoUploadServer|photos.getOwnerPhotoUploadServer] method.
+  /// Saves a profile or community photo. Upload URL can be got with the
+  /// [Photos.getOwnerPhotoUploadServer] method.
   MethodTypeReturn saveOwnerPhoto(MethodTypeParams params) =>
       _api.request('photos.saveOwnerPhoto', params);
 
