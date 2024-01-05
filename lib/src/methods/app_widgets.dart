@@ -1,5 +1,4 @@
-import 'package:vkdart/src/types/methods.dart';
-import 'package:vkdart/vkdart.dart';
+part of vkdart.methods;
 
 /// Методы для работы с виджетами.
 class AppWidgets {

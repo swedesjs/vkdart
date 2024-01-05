@@ -1,5 +1,4 @@
-import 'package:vkdart/src/api.dart';
-import 'package:vkdart/src/types/methods.dart';
+part of vkdart.methods;
 
 /// Карусель — набор карточек, которые прикрепляются к записи.
 // ignore: lines_longer_than_80_chars

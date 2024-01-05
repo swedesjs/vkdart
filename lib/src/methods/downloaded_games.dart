@@ -1,7 +1,4 @@
-// ignore_for_file: file_names
-
-import 'package:vkdart/src/types/methods.dart';
-import 'package:vkdart/vkdart.dart';
+part of vkdart.methods;
 
 /// Методы для работы с играми ВК.
 class DownloadedGames {
