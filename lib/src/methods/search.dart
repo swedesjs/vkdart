@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы с поиском.
 class Search {
@@ -7,6 +8,6 @@ class Search {
   final Api _api;
 
   /// Allows the programmer to do a quick search for any substring.
-  Future<Map<String, dynamic>> getHints(Map<String, Object> params) =>
+  MethodTypeReturn getHints(MethodTypeParams params) =>
       _api.request('search.getHints', params);
 }

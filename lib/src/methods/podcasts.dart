@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы с подкастами.
 class Podcasts {
@@ -7,6 +8,6 @@ class Podcasts {
   final Api _api;
 
   /// Выполняет поиск подкастов по ключевым фразам.
-  Future<Map<String, dynamic>> searchPodcast(Map<String, Object> params) =>
+  MethodTypeReturn searchPodcast(MethodTypeParams params) =>
       _api.request('podcasts.searchPodcast', params);
 }

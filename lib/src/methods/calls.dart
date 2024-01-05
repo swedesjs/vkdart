@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы со звонками.
 class Calls {
@@ -7,10 +8,10 @@ class Calls {
   final Api _api;
 
   /// Принудительно завершить звонок
-  Future<Map<String, dynamic>> forceFinish(Map<String, Object> params) =>
+  MethodTypeReturn forceFinish(MethodTypeParams params) =>
       _api.request('calls.forceFinish', params);
 
   /// Создать новый звонок от имени пользователя или сообщества
-  Future<Map<String, dynamic>> start(Map<String, Object> params) =>
+  MethodTypeReturn start(MethodTypeParams params) =>
       _api.request('calls.start', params);
 }

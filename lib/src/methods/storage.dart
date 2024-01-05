@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы с переменными в приложении.
 class Storage {
@@ -7,14 +8,14 @@ class Storage {
   final Api _api;
 
   /// Returns a value of variable with the name set by key parameter.
-  Future<Map<String, dynamic>> get(Map<String, Object> params) =>
+  MethodTypeReturn get(MethodTypeParams params) =>
       _api.request('storage.get', params);
 
   /// Returns the names of all variables.
-  Future<Map<String, dynamic>> getKeys(Map<String, Object> params) =>
+  MethodTypeReturn getKeys(MethodTypeParams params) =>
       _api.request('storage.getKeys', params);
 
   /// Saves a value of variable with the name set by 'key' parameter.
-  Future<Map<String, dynamic>> set(Map<String, Object> params) =>
+  MethodTypeReturn set(MethodTypeParams params) =>
       _api.request('storage.set', params);
 }
