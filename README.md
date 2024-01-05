@@ -66,3 +66,5 @@ Plans for the near future:
 ## Additional information
 
 If you find a bug or an error in the code, please contact the [issue tracker](https://github.com/swedesjs/vkdart/issues)
+
+For all questions - https://t.me/vk_dart
