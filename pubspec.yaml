@@ -1,6 +1,6 @@
 name: vkdart
 description: This is a library that has many possibilities for interacting with the VK API and has a number of auxiliary functions
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/swedesjs/vkdart
 
 environment:
