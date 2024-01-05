@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы с обсуждениями.
 class Board {
@@ -7,56 +8,56 @@ class Board {
   final Api _api;
 
   /// Creates a new topic on a community's discussion board.
-  Future<Map<String, dynamic>> addTopic(Map<String, Object> params) =>
+  MethodTypeReturn addTopic(MethodTypeParams params) =>
       _api.request('board.addTopic', params);
 
   // ignore: lines_longer_than_80_chars
   /// Closes a topic on a community's discussion board so that comments cannot be posted.
-  Future<Map<String, dynamic>> closeTopic(Map<String, Object> params) =>
+  MethodTypeReturn closeTopic(MethodTypeParams params) =>
       _api.request('board.closeTopic', params);
 
   /// Adds a comment on a topic on a community's discussion board.
-  Future<Map<String, dynamic>> createComment(Map<String, Object> params) =>
+  MethodTypeReturn createComment(MethodTypeParams params) =>
       _api.request('board.createComment', params);
 
   /// Deletes a comment on a topic on a community's discussion board.
-  Future<Map<String, dynamic>> deleteComment(Map<String, Object> params) =>
+  MethodTypeReturn deleteComment(MethodTypeParams params) =>
       _api.request('board.deleteComment', params);
 
   /// Deletes a topic from a community's discussion board.
-  Future<Map<String, dynamic>> deleteTopic(Map<String, Object> params) =>
+  MethodTypeReturn deleteTopic(MethodTypeParams params) =>
       _api.request('board.deleteTopic', params);
 
   /// Edits a comment on a topic on a community's discussion board.
-  Future<Map<String, dynamic>> editComment(Map<String, Object> params) =>
+  MethodTypeReturn editComment(MethodTypeParams params) =>
       _api.request('board.editComment', params);
 
   /// Edits the title of a topic on a community's discussion board.
-  Future<Map<String, dynamic>> editTopic(Map<String, Object> params) =>
+  MethodTypeReturn editTopic(MethodTypeParams params) =>
       _api.request('board.editTopic', params);
 
   // ignore: lines_longer_than_80_chars
   /// Pins a topic (fixes its place) to the top of a community's discussion board.
-  Future<Map<String, dynamic>> fixTopic(Map<String, Object> params) =>
+  MethodTypeReturn fixTopic(MethodTypeParams params) =>
       _api.request('board.fixTopic', params);
 
   /// Returns a list of comments on a topic on a community's discussion board.
-  Future<Map<String, dynamic>> getComments(Map<String, Object> params) =>
+  MethodTypeReturn getComments(MethodTypeParams params) =>
       _api.request('board.getComments', params);
 
   /// Returns a list of topics on a community's discussion board.
-  Future<Map<String, dynamic>> getTopics(Map<String, Object> params) =>
+  MethodTypeReturn getTopics(MethodTypeParams params) =>
       _api.request('board.getTopics', params);
 
   /// Re-opens a previously closed topic on a community's discussion board.
-  Future<Map<String, dynamic>> openTopic(Map<String, Object> params) =>
+  MethodTypeReturn openTopic(MethodTypeParams params) =>
       _api.request('board.openTopic', params);
 
   /// Restores a comment deleted from a topic on a community's discussion board.
-  Future<Map<String, dynamic>> restoreComment(Map<String, Object> params) =>
+  MethodTypeReturn restoreComment(MethodTypeParams params) =>
       _api.request('board.restoreComment', params);
 
   /// Unpins a pinned topic from the top of a community's discussion board.
-  Future<Map<String, dynamic>> unfixTopic(Map<String, Object> params) =>
+  MethodTypeReturn unfixTopic(MethodTypeParams params) =>
       _api.request('board.unfixTopic', params);
 }

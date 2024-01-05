@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы с аудиозаписями.
 class Asr {
@@ -8,14 +9,14 @@ class Asr {
 
   // ignore: lines_longer_than_80_chars
   /// Метод проверяет статус задачи на обработку аудиозаписи и возвращает текстовую расшифровку аудиозаписи.
-  Future<Map<String, dynamic>> checkStatus(Map<String, Object> params) =>
+  MethodTypeReturn checkStatus(MethodTypeParams params) =>
       _api.request('asr.checkStatus', params);
 
   /// Метод возвращает ссылку на адрес сервера для загрузки аудиозаписи.
-  Future<Map<String, dynamic>> getUploadUrl(Map<String, Object> params) =>
+  MethodTypeReturn getUploadUrl(MethodTypeParams params) =>
       _api.request('asr.getUploadUrl', params);
 
   /// Метод выполняет распознавание речи из загруженного файла аудиозаписи.
-  Future<Map<String, dynamic>> process(Map<String, Object> params) =>
+  MethodTypeReturn process(MethodTypeParams params) =>
       _api.request('asr.process', params);
 }

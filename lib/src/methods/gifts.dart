@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы с подарками.
 class Gifts {
@@ -7,6 +8,6 @@ class Gifts {
   final Api _api;
 
   /// Returns a list of user gifts.
-  Future<Map<String, dynamic>> get(Map<String, Object> params) =>
+  MethodTypeReturn get(MethodTypeParams params) =>
       _api.request('gifts.get', params);
 }

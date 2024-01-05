@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы с местами.
 class Places {
@@ -8,6 +9,6 @@ class Places {
 
   // ignore: lines_longer_than_80_chars
   /// Возвращает список отметок пользователей в местах согласно заданным параметрам.
-  Future<Map<String, dynamic>> getCheckins(Map<String, Object> params) =>
+  MethodTypeReturn getCheckins(MethodTypeParams params) =>
       _api.request('places.getCheckins', params);
 }

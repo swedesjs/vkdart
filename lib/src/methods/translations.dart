@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Методы для работы с переводом.
 class Translations {
@@ -8,6 +9,6 @@ class Translations {
   final Api _api;
 
   /// Переводит текст.
-  Future<Map<String, dynamic>> translate(Map<String, Object> params) =>
+  MethodTypeReturn translate(MethodTypeParams params) =>
       _api.request('translations.translate', params);
 }

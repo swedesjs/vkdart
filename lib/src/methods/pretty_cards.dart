@@ -1,4 +1,5 @@
 import 'package:vkdart/src/api.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Карусель — набор карточек, которые прикрепляются к записи.
 // ignore: lines_longer_than_80_chars
@@ -12,26 +13,26 @@ class PrettyCards {
 
   /// Метод создаёт карточку карусели.
   /// - Созданную карточку необходимо вручную добавить в карусель.
-  Future<Map<String, dynamic>> create(Map<String, Object> params) =>
+  MethodTypeReturn create(MethodTypeParams params) =>
       _api.request('prettyCards.create', params);
 
   /// Удаляет карточку.
-  Future<Map<String, dynamic>> delete(Map<String, Object> params) =>
+  MethodTypeReturn delete(MethodTypeParams params) =>
       _api.request('prettyCards.delete', params);
 
   /// Редактирует карточку карусели.
-  Future<Map<String, dynamic>> edit(Map<String, Object> params) =>
+  MethodTypeReturn edit(MethodTypeParams params) =>
       _api.request('prettyCards.edit', params);
 
   /// Возвращает неиспользованные карточки владельца.
-  Future<Map<String, dynamic>> get(Map<String, Object> params) =>
+  MethodTypeReturn get(MethodTypeParams params) =>
       _api.request('prettyCards.get', params);
 
   /// Возвращает информацию о карточке.
-  Future<Map<String, dynamic>> getById(Map<String, Object> params) =>
+  MethodTypeReturn getById(MethodTypeParams params) =>
       _api.request('prettyCards.getById', params);
 
   /// Возвращает URL для загрузки фотографии для карточки.
-  Future<Map<String, dynamic>> getUploadURL(Map<String, Object> params) =>
+  MethodTypeReturn getUploadURL(MethodTypeParams params) =>
       _api.request('prettyCards.getUploadURL', params);
 }
