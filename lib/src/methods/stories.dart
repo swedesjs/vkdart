@@ -26,6 +26,10 @@ class Stories {
   Future<Map<String, dynamic>> getById(Map<String, Object> params) =>
       _api.request('stories.getById', params);
 
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> getDetailedStats(Map<String, Object> params) =>
+      _api.request('stories.getDetailedStats', params);
+
   /// Returns URL for uploading a story with photo.
   Future<Map<String, dynamic>> getPhotoUploadServer(
     Map<String, Object> params,

@@ -42,6 +42,13 @@ class Account {
   Future<Map<String, dynamic>> getPushSettings(Map<String, Object> params) =>
       _api.request('account.getPushSettings', params);
 
+  /// Позволяет искать пользователей ВКонтакте, используя телефонные номера,
+  /// email-адреса, и идентификаторы пользователей в других сервисах.
+  // ignore: lines_longer_than_80_chars
+  /// Найденные пользователи могут быть также в дальнейшем получены методом friends.getSuggestions.
+  Future<Map<String, dynamic>> lookupContacts(Map<String, Object> params) =>
+      _api.request('account.lookupContacts', params);
+
   /// Subscribes an iOS/Android/Windows Phone-based device to receive push notifications
   Future<Map<String, dynamic>> registerDevice(Map<String, Object> params) =>
       _api.request('account.registerDevice', params);
@@ -53,6 +60,11 @@ class Account {
   /// Allows to edit the current account info.
   Future<Map<String, dynamic>> setInfo(Map<String, Object> params) =>
       _api.request('account.setInfo', params);
+
+  /// Устанавливает короткое название приложения (до 17 символов),
+  /// которое выводится пользователю в левом меню.
+  Future<Map<String, dynamic>> setNameInMenu(Map<String, Object> params) =>
+      _api.request('account.setNameInMenu', params);
 
   /// Marks a current user as offline.
   Future<Map<String, dynamic>> setOffline(Map<String, Object> params) =>

@@ -73,6 +73,10 @@ class Groups {
   Future<Map<String, dynamic>> editManager(Map<String, Object> params) =>
       _api.request('groups.editManager', params);
 
+  /// Позволяет редактировать информацию о месте группы.
+  Future<Map<String, dynamic>> editPlace(Map<String, Object> params) =>
+      _api.request('groups.editPlace', params);
+
   /// Включает статус «онлайн» в сообществе.
   Future<Map<String, dynamic>> enableOnline(Map<String, Object> params) =>
       _api.request('groups.enableOnline', params);
@@ -98,6 +102,13 @@ class Groups {
     Map<String, Object> params,
   ) =>
       _api.request('groups.getCallbackConfirmationCode', params);
+
+  // ignore: lines_longer_than_80_chars
+  /// Позволяет получить информацию о настройках сервера для получения уведомлений Callback API в сообществе.
+  Future<Map<String, dynamic>> getCallbackServerSettings(
+    Map<String, Object> params,
+  ) =>
+      _api.request('groups.getCallbackServerSettings', params);
 
   /// Получает информацию о серверах для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) в сообществе.
   Future<Map<String, dynamic>> getCallbackServers(Map<String, Object> params) =>
@@ -138,6 +149,10 @@ class Groups {
   /// Returns a list of community members.
   Future<Map<String, dynamic>> getMembers(Map<String, Object> params) =>
       _api.request('groups.getMembers', params);
+
+  /// Получает информацию о статусе «онлайн» в сообществе.
+  Future<Map<String, dynamic>> getOnlineStatus(Map<String, Object> params) =>
+      _api.request('groups.getOnlineStatus', params);
 
   /// Returns a list of requests to the community.
   Future<Map<String, dynamic>> getRequests(Map<String, Object> params) =>

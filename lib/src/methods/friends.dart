@@ -48,6 +48,13 @@ class Friends {
   Future<Map<String, dynamic>> getAppUsers(Map<String, Object> params) =>
       _api.request('friends.getAppUsers', params);
 
+  // ignore: lines_longer_than_80_chars
+  /// Позволяет получить список идентификаторов пользователей, доступных для вызова из приложения.
+  Future<Map<String, dynamic>> getAvailableForCall(
+    Map<String, Object> params,
+  ) =>
+      _api.request('friends.getAvailableForCall', params);
+
   /// Returns a list of the current user's friends whose phone numbers,
   /// validated or specified in a profile, are in a given list.
   Future<Map<String, dynamic>> getByPhones(Map<String, Object> params) =>

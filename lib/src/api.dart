@@ -4,8 +4,11 @@ import 'package:vkdart/src/methods/account.dart';
 import 'package:vkdart/src/methods/ads.dart';
 import 'package:vkdart/src/methods/app_widgets.dart';
 import 'package:vkdart/src/methods/apps.dart';
+import 'package:vkdart/src/methods/asr.dart';
 import 'package:vkdart/src/methods/auth.dart';
 import 'package:vkdart/src/methods/board.dart';
+import 'package:vkdart/src/methods/bugtracker.dart';
+import 'package:vkdart/src/methods/calls.dart';
 import 'package:vkdart/src/methods/database.dart';
 import 'package:vkdart/src/methods/docs.dart';
 import 'package:vkdart/src/methods/donut.dart';
@@ -24,6 +27,7 @@ import 'package:vkdart/src/methods/notifications.dart';
 import 'package:vkdart/src/methods/orders.dart';
 import 'package:vkdart/src/methods/pages.dart';
 import 'package:vkdart/src/methods/photos.dart';
+import 'package:vkdart/src/methods/places.dart';
 import 'package:vkdart/src/methods/podcasts.dart';
 import 'package:vkdart/src/methods/polls.dart';
 import 'package:vkdart/src/methods/pretty_cards.dart';
@@ -35,6 +39,7 @@ import 'package:vkdart/src/methods/storage.dart';
 import 'package:vkdart/src/methods/store.dart';
 import 'package:vkdart/src/methods/stories.dart';
 import 'package:vkdart/src/methods/streaming.dart';
+import 'package:vkdart/src/methods/translations.dart';
 import 'package:vkdart/src/methods/users.dart';
 import 'package:vkdart/src/methods/utils.dart';
 import 'package:vkdart/src/methods/video.dart';
@@ -140,6 +145,9 @@ class Api {
   /// Методы для работы с приложениями.
   Apps get apps => Apps(this);
 
+  /// Методы для работы с аудиозаписями.
+  Asr get asr => Asr(this);
+
   /// Список методов секции appWidgets
   AppWidgets get appWidgets => AppWidgets(this);
 
@@ -148,6 +156,12 @@ class Api {
 
   /// Методы для работы с обсуждениями.
   Board get board => Board(this);
+
+  /// Методы для работы с платформой тестирования VK Testers.
+  Bugtracker get bugtracker => Bugtracker(this);
+
+  /// Методы для работы со звонками.
+  Calls get calls => Calls(this);
 
   // ignore: lines_longer_than_80_chars
   /// Методы этой секции предоставляют доступ к базе данных учебных заведений ВКонтакте.
@@ -223,6 +237,9 @@ class Api {
   /// Методы для работы с фотографиями.
   Photos get photos => Photos(this);
 
+  /// Методы для работы с местами.
+  Places get places => Places(this);
+
   /// Методы для работы с подкастами.
   Podcasts get podcasts => Podcasts(this);
 
@@ -263,6 +280,9 @@ class Api {
 
   /// Методы для работы с Streaming API.
   Streaming get streaming => Streaming(this);
+
+  /// Методы для работы с переводом.
+  Translations get translations => Translations(this);
 
   /// Методы для работы с данными пользователей.
   Users get users => Users(this);

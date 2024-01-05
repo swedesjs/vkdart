@@ -66,9 +66,37 @@ class Video {
   Future<Map<String, dynamic>> getComments(Map<String, Object> params) =>
       _api.request('video.getComments', params);
 
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> getLongPollServer(Map<String, Object> params) =>
+      _api.request('video.getLongPollServer', params);
+
+  /// Поиск видеозаписи по тегу.
+  Future<Map<String, dynamic>> getNewTags(Map<String, Object> params) =>
+      _api.request('video.getNewTags', params);
+
+  /// Возвращает теги видеозаписи.
+  Future<Map<String, dynamic>> getTags(Map<String, Object> params) =>
+      _api.request('video.getTags', params);
+
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> liveGetCategories(Map<String, Object> params) =>
+      _api.request('video.liveGetCategories', params);
+
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> moveToAlbum(Map<String, Object> params) =>
+      _api.request('video.moveToAlbum', params);
+
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> putTag(Map<String, Object> params) =>
+      _api.request('video.putTag', params);
+
   /// Удалить видео из альбома.
   Future<Map<String, dynamic>> removeFromAlbum(Map<String, Object> params) =>
       _api.request('video.removeFromAlbum', params);
+
+  /// Удалить тег с видеозаписи.
+  Future<Map<String, dynamic>> removeTag(Map<String, Object> params) =>
+      _api.request('video.removeTag', params);
 
   /// Reorders the album in the list of user video albums.
   Future<Map<String, dynamic>> reorderAlbums(Map<String, Object> params) =>
@@ -101,4 +129,12 @@ class Video {
   /// Returns a list of videos under the set search criterion.
   Future<Map<String, dynamic>> search(Map<String, Object> params) =>
       _api.request('video.search', params);
+
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> startStreaming(Map<String, Object> params) =>
+      _api.request('video.startStreaming', params);
+
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> stopStreaming(Map<String, Object> params) =>
+      _api.request('video.stopStreaming', params);
 }

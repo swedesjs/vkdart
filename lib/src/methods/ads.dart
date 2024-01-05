@@ -59,6 +59,10 @@ class Ads {
   Future<Map<String, dynamic>> getAdsLayout(Map<String, Object> params) =>
       _api.request('ads.getAdsLayout', params);
 
+  /// Возвращает подробную информацию об охвате рекламных записей.
+  Future<Map<String, dynamic>> getAdsPostsReach(Map<String, Object> params) =>
+      _api.request('ads.getAdsPostsReach', params);
+
   /// Returns ad targeting parameters.
   Future<Map<String, dynamic>> getAdsTargeting(Map<String, Object> params) =>
       _api.request('ads.getAdsTargeting', params);
@@ -130,6 +134,10 @@ class Ads {
   Future<Map<String, dynamic>> getTargetGroups(Map<String, Object> params) =>
       _api.request('ads.getTargetGroups', params);
 
+  /// Возвращает список пикселей ретаргетинга.
+  Future<Map<String, dynamic>> getTargetPixels(Map<String, Object> params) =>
+      _api.request('ads.getTargetPixels', params);
+
   /// Returns the size of targeting audience, and also recommended values for
   ///  CPC and CPM.
   Future<Map<String, dynamic>> getTargetingStats(Map<String, Object> params) =>
@@ -154,6 +162,25 @@ class Ads {
   Future<Map<String, dynamic>> removeOfficeUsers(Map<String, Object> params) =>
       _api.request('ads.removeOfficeUsers', params);
 
+  // ignore: lines_longer_than_80_chars
+  /// Принимает запрос на исключение контактов рекламодателя из аудитории ретаргетинга.
+  Future<Map<String, dynamic>> removeTargetContacts(
+    Map<String, Object> params,
+  ) =>
+      _api.request('ads.removeTargetContacts', params);
+
+  /// Сохраняет результат поиска похожей аудитории.
+  Future<Map<String, dynamic>> saveLookalikeRequestResult(
+    Map<String, Object> params,
+  ) =>
+      _api.request('ads.saveLookalikeRequestResult', params);
+
+  /// Предоставляет доступ к аудитории ретаргетинга другому рекламному кабинету.
+  // ignore: lines_longer_than_80_chars
+  /// В результате выполнения метода возвращается идентификатор аудитории для указанного кабинета.
+  Future<Map<String, dynamic>> shareTargetGroup(Map<String, Object> params) =>
+      _api.request('ads.shareTargetGroup', params);
+
   /// Edits ads.
   Future<Map<String, dynamic>> updateAds(Map<String, Object> params) =>
       _api.request('ads.updateAds', params);
@@ -173,4 +200,8 @@ class Ads {
   /// Edits a retarget group.
   Future<Map<String, dynamic>> updateTargetGroup(Map<String, Object> params) =>
       _api.request('ads.updateTargetGroup', params);
+
+  /// Редактирует пиксель ретаргетинга.
+  Future<Map<String, dynamic>> updateTargetPixel(Map<String, Object> params) =>
+      _api.request('ads.updateTargetPixel', params);
 }
