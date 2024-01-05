@@ -27,37 +27,33 @@ await api.request('users.get', {'user_id': 1});
 ## Usage Longpoll
 
 ```dart
-import 'package:vkdart/vkdart.dart';
+final vkDart = VkDart(token: '');
 
-Future<void> main() async {
-  final vkDart = VkDart(token: '');
-  final userLongpoll = UserLongpoll(vkDart.getApi());
+// to receive community events, specify the groupId parameter
+final longpoll = Longpoll(vkDart.getApi());
 
-  await userLongpoll.start();
-  userLongpoll.onEvent().listen((event) {
-    // ...
-  });
+await longpoll.start();
 
-  final groupLongpoll = GroupLogpoll(0, vkDart.getApi());
-
-  await groupLongpoll.start();
-  groupLongpoll.onEvent().listen((event) {
-    // ..
-  });
-}
+longpoll.subscribe((event) {
+  // ....
+  // event - VK server response
+});
 ```
 
 ## Usage Callback API
 
 ```dart
 final vkDart = VkDart(token: '');
+
 final callback = Callback(vkDart.getApi());
 
-callback.onEvent().listen((event) {
-  print(event);
+// ignore: cascade_invocations
+callback.subscribe((event) {
+  // ....
+  // event - VK server response
 });
 
-callback.start(port: 80);
+await callback.start(port: 80);
 ```
 
 ## Todo

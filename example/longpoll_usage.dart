@@ -1,20 +1,18 @@
 // ignore_for_file: unnecessary_lambdas
 
+import 'package:vkdart/events.dart';
 import 'package:vkdart/vkdart.dart';
 
 Future<void> main() async {
   final vkDart = VkDart(token: '');
-  final userLongpoll = UserLongpoll(vkDart.getApi());
 
-  await userLongpoll.start();
-  userLongpoll.onEvent().listen((event) {
-    // ...
-  });
+  // to receive community events, specify the  groupId parameter
+  final longpoll = Longpoll(vkDart.getApi());
 
-  final groupLongpoll = GroupLogpoll(0, vkDart.getApi());
+  await longpoll.start();
 
-  await groupLongpoll.start();
-  groupLongpoll.onEvent().listen((event) {
-    // ..
+  longpoll.subscribe((event) {
+    // ....
+    // event - VK server response
   });
 }
