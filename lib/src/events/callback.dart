@@ -1,9 +1,4 @@
-import 'dart:async';
-import 'dart:io';
-
-import 'package:dia/dia.dart';
-import 'package:dia_body/dia_body.dart';
-import 'package:vkdart/vkdart.dart';
+part of vkdart.events;
 
 class _ContextWithBody extends Context with ParsedBody {
   _ContextWithBody(HttpRequest request) : super(request);
@@ -18,17 +13,9 @@ class Callback {
   final Api _api;
   bool _isStart = false;
 
+  Handler<ClassicMap>? _webhookHandler;
+
   final _app = App(_ContextWithBody.new);
-
-  final _updatesController = StreamController<Map<String, dynamic>>();
-
-  /// Возвращает события Callback API экзепляром класса [Stream]
-  /// ```dart
-  /// .onEvent().listen((event) {
-  ///   print(event)
-  /// })
-  /// ```
-  Stream<Map<String, dynamic>> onEvent() => _updatesController.stream;
 
   /// Запускает Callback API
   /// Для запуска необходимо указать [address], по умолчанию равен localhost.
@@ -51,37 +38,48 @@ class Callback {
       throw Exception('Callback API уже в работе');
     }
 
+    if (_webhookHandler == null) {
+      throw Exception('Подпишитесь на обновления! Запустите subscribe.');
+    }
+
     _isStart = true;
 
-    final resultPort = port ?? (securityContext != null ? 443 : 80);
+    final portResult = port ?? (securityContext != null ? 443 : 80);
 
     _app
       ..use(body())
       ..use((ctx, next) async {
-        final data = ctx.parsed;
+        final {'type': String type, 'group_id': int groupId} = ctx.parsed;
 
-        if (data['type'] == 'confirmation') {
-          final code = await _api.groups.getCallbackConfirmationCode({
-            'group_id': data['group_id'] as int,
+        if (type == 'confirmation') {
+          final {
+            'response': Map<String, dynamic> response,
+          } = await _api.groups.getCallbackConfirmationCode({
+            'group_id': groupId,
           });
 
-          ctx.body = (code['response'] as Map)['code'];
+          ctx.body = response['code'];
         } else {
           ctx
             ..body = 'ok'
             ..statusCode = 200;
         }
 
-        _updatesController.add(ctx.parsed);
+        _webhookHandler!(ctx.parsed);
       });
 
-    await _app.listen(address, resultPort, securityContext: securityContext);
+    await _app.listen(address, portResult, securityContext: securityContext);
   }
 
   /// Останавливает Callback Api
   void stop() {
     _app.close();
     _isStart = false;
+  }
+
+  /// Подписаться на webhook обновления.
+  void subscribe(Handler<ClassicMap> handler) {
+    _webhookHandler = handler;
   }
 
   /// Геттер сообщающий о том, запущен ли Callback API, или же нет
