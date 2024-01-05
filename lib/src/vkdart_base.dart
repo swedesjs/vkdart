@@ -1,9 +1,11 @@
-import 'api.dart';
+import 'package:vkdart/src/api.dart';
 
+/// Основной класс
 class VkDart {
-  final String _token;
-
+  /// Конструктор.
+  /// В параметр [token] ключ доступа
   VkDart({required String token}) : _token = token;
+  final String _token;
 
   /// Создает экземпляр VK Api (Класса [Api])
   Api getApi({

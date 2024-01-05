@@ -11,16 +11,16 @@ class _ContextWithBody extends Context with ParsedBody {
 
 /// Вспомогающий класс для ловли событий Callback API
 class Callback {
-  final Api _api;
-  bool _isStart = false;
-
-  final _app = App((req) => _ContextWithBody(req));
-
-  final _updatesController = StreamController<Map<String, dynamic>>();
-
   /// Конструктор класса Callback
   /// В параметр [api] указывать экземпляр полученный методом [VkDart.getApi]
   Callback(Api api) : _api = api;
+
+  final Api _api;
+  bool _isStart = false;
+
+  final _app = App(_ContextWithBody.new);
+
+  final _updatesController = StreamController<Map<String, dynamic>>();
 
   /// Возвращает события Callback API экзепляром класса [Stream]
   /// ```dart
@@ -33,15 +33,20 @@ class Callback {
   /// Запускает Callback API
   /// Для запуска необходимо указать [address], по умолчанию равен localhost.
   ///
+  // ignore: lines_longer_than_80_chars
   /// [port] по умолчанию при наличии SSL-сертификата равен 443, в ином случае 80.
   ///
-  /// В [securityContext] необходимо указать SSL сертификат при наличии, воспользуйтесь классом [SecurityContext], принадлежащий библиотеке Dia
+  /// В [securityContext] необходимо указать SSL сертификат при наличии,
+  /// воспользуйтесь классом [SecurityContext], принадлежащий библиотеке Dia
   ///
-  /// ВАЖНО: Библиотека сама вернет необходимый ключ серверу (если это требуется), ничего указывать не надо :)
-  Future<void> start(
-      {String address = "localhost",
-      int? port,
-      SecurityContext? securityContext}) async {
+  // ignore: lines_longer_than_80_chars
+  /// ВАЖНО: Библиотека сама вернет необходимый ключ серверу (если это требуется),
+  /// ничего указывать не надо :)
+  Future<void> start({
+    String address = 'localhost',
+    int? port,
+    SecurityContext? securityContext,
+  }) async {
     if (isStart) {
       throw Exception('Callback API уже в работе');
     }
@@ -50,24 +55,25 @@ class Callback {
 
     final resultPort = port ?? (securityContext != null ? 443 : 80);
 
-    _app.use(body());
+    _app
+      ..use(body())
+      ..use((ctx, next) async {
+        final data = ctx.parsed;
 
-    _app.use((ctx, next) async {
-      final data = ctx.parsed;
+        if (data['type'] == 'confirmation') {
+          final code = await _api.groups.getCallbackConfirmationCode({
+            'group_id': data['group_id'] as int,
+          });
 
-      if (data['type'] == 'confirmation') {
-        final code = await _api.groups.getCallbackConfirmationCode({
-          'group_id': data['group_id'],
-        });
+          ctx.body = (code['response'] as Map)['code'];
+        } else {
+          ctx
+            ..body = 'ok'
+            ..statusCode = 200;
+        }
 
-        ctx.body = code['response']['code'];
-      } else {
-        ctx.body = "ok";
-        ctx.statusCode = 200;
-      }
-
-      _updatesController.add(ctx.parsed);
-    });
+        _updatesController.add(ctx.parsed);
+      });
 
     await _app.listen(address, resultPort, securityContext: securityContext);
   }
