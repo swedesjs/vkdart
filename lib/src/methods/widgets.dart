@@ -6,11 +6,11 @@ class Widgets {
   Widgets(this._api);
   final Api _api;
 
-  /// Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
+  /// Gets a list of comments for the page added through the [Comments widget](vk.com/dev/Comments).
   MethodTypeReturn getComments(MethodTypeParams params) =>
       _api.request('widgets.getComments', params);
 
-  /// Gets a list of application/site pages where the [vk.com/dev/Comments|Comments widget] or [vk.com/dev/Like|Like widget] is installed.
+  /// Gets a list of application/site pages where the [Comments widget](vk.com/dev/Comments) or [Like widget](vk.com/dev/Like) is installed.
   MethodTypeReturn getPages(MethodTypeParams params) =>
       _api.request('widgets.getPages', params);
 }

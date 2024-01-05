@@ -108,7 +108,7 @@ class Groups {
   MethodTypeReturn getCallbackServers(MethodTypeParams params) =>
       _api.request('groups.getCallbackServers', params);
 
-  /// Returns [vk.com/dev/callback_api|Callback API] notifications settings.
+  /// Returns [Callback API](vk.com/dev/callback_api) notifications settings.
   MethodTypeReturn getCallbackSettings(MethodTypeParams params) =>
       _api.request('groups.getCallbackSettings', params);
 

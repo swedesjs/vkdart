@@ -11,7 +11,7 @@ class Auth {
   MethodTypeReturn checkPhone(MethodTypeParams params) =>
       _api.request('auth.checkPhone', params);
 
-  /// Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
+  /// Allows to restore account access using a code received via SMS. " This method is only available for apps with [Direct authorization](vk.com/dev/auth_direct) access. "
   MethodTypeReturn restore(MethodTypeParams params) =>
       _api.request('auth.restore', params);
 }

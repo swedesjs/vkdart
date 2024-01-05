@@ -43,7 +43,7 @@ class Docs {
   MethodTypeReturn getWallUploadServer(MethodTypeParams params) =>
       _api.request('docs.getWallUploadServer', params);
 
-  /// Saves a document after [vk.com/dev/upload_files_2|uploading it to a server].
+  /// Saves a document after [uploading it to a server](vk.com/dev/upload_files_2).
   MethodTypeReturn save(MethodTypeParams params) =>
       _api.request('docs.save', params);
 
