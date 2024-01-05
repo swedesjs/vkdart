@@ -42,6 +42,10 @@ class Notes {
   Future<Map<String, dynamic>> getComments(Map<String, Object> params) =>
       _api.request('notes.getComments', params);
 
+  /// Возвращает список заметок друзей пользователя.
+  Future<Map<String, dynamic>> getFriendsNotes(Map<String, Object> params) =>
+      _api.request('notes.getFriendsNotes', params);
+
   /// Restores a deleted comment on a note.
   Future<Map<String, dynamic>> restoreComment(Map<String, Object> params) =>
       _api.request('notes.restoreComment', params);

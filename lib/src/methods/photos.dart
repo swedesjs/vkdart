@@ -82,6 +82,12 @@ class Photos {
   Future<Map<String, dynamic>> getComments(Map<String, Object> params) =>
       _api.request('photos.getComments', params);
 
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> getMailUploadServer(
+    Map<String, Object> params,
+  ) =>
+      _api.request('photos.getMailUploadServer', params);
+
   /// Returns the server address for market album photo upload.
   Future<Map<String, dynamic>> getMarketAlbumUploadServer(
     Map<String, Object> params,
@@ -116,6 +122,10 @@ class Photos {
     Map<String, Object> params,
   ) =>
       _api.request('photos.getOwnerPhotoUploadServer', params);
+
+  /// Возвращает список фотографий со страницы пользователя или сообщества.
+  Future<Map<String, dynamic>> getProfile(Map<String, Object> params) =>
+      _api.request('photos.getProfile', params);
 
   /// Returns a list of tags on a photo.
   Future<Map<String, dynamic>> getTags(Map<String, Object> params) =>

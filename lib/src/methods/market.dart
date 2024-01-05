@@ -14,6 +14,15 @@ class Market {
   Future<Map<String, dynamic>> addAlbum(Map<String, Object> params) =>
       _api.request('market.addAlbum', params);
 
+  // ignore: lines_longer_than_80_chars
+  /// Добавляет новое свойство, которое может быть задано для товаров сообщества (например, «цвет», «размер» и т.д.).
+  Future<Map<String, dynamic>> addProperty(Map<String, Object> params) =>
+      _api.request('market.addProperty', params);
+
+  /// Добавляет вариант свойства. Всего у свойства может быть 50 вариантов.
+  Future<Map<String, dynamic>> addPropertyVariant(Map<String, Object> params) =>
+      _api.request('market.addPropertyVariant', params);
+
   /// Adds an item to one or multiple collections.
   Future<Map<String, dynamic>> addToAlbum(Map<String, Object> params) =>
       _api.request('market.addToAlbum', params);
@@ -34,6 +43,16 @@ class Market {
   Future<Map<String, dynamic>> deleteComment(Map<String, Object> params) =>
       _api.request('market.deleteComment', params);
 
+  /// Удаляет свойство товара.
+  Future<Map<String, dynamic>> deleteProperty(Map<String, Object> params) =>
+      _api.request('market.deleteProperty', params);
+
+  /// Удаляет вариант свойства.
+  Future<Map<String, dynamic>> deletePropertyVariant(
+    Map<String, Object> params,
+  ) =>
+      _api.request('market.deletePropertyVariant', params);
+
   /// Edits an item.
   Future<Map<String, dynamic>> edit(Map<String, Object> params) =>
       _api.request('market.edit', params);
@@ -49,6 +68,22 @@ class Market {
   /// Edit order
   Future<Map<String, dynamic>> editOrder(Map<String, Object> params) =>
       _api.request('market.editOrder', params);
+
+  /// Редактирует свойство товара.
+  Future<Map<String, dynamic>> editProperty(Map<String, Object> params) =>
+      _api.request('market.editProperty', params);
+
+  /// Редактирует вариант свойства.
+  Future<Map<String, dynamic>> editPropertyVariant(
+    Map<String, Object> params,
+  ) =>
+      _api.request('market.editPropertyVariant', params);
+
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> filterCategories(
+    Map<String, Object> params,
+  ) =>
+      _api.request('market.filterCategories', params);
 
   /// Returns items list for a community.
   Future<Map<String, dynamic>> get(Map<String, Object> params) =>
@@ -90,6 +125,20 @@ class Market {
   Future<Map<String, dynamic>> getOrders(Map<String, Object> params) =>
       _api.request('market.getOrders', params);
 
+  /// Метод для получения ссылки на сервер загрузки изображений
+  Future<Map<String, dynamic>> getProductPhotoUploadServer(
+    Map<String, Object> params,
+  ) =>
+      _api.request('market.getProductPhotoUploadServer', params);
+
+  /// Возвращает список свойств для указанного сообщества.
+  Future<Map<String, dynamic>> getProperties(Map<String, Object> params) =>
+      _api.request('market.getProperties', params);
+
+  /// Объединяет товары в группу товаров.
+  Future<Map<String, dynamic>> groupItems(Map<String, Object> params) =>
+      _api.request('market.groupItems', params);
+
   /// Removes an item from one or multiple collections.
   Future<Map<String, dynamic>> removeFromAlbum(Map<String, Object> params) =>
       _api.request('market.removeFromAlbum', params);
@@ -118,6 +167,10 @@ class Market {
   Future<Map<String, dynamic>> restoreComment(Map<String, Object> params) =>
       _api.request('market.restoreComment', params);
 
+  /// Метод для сохранения изображений
+  Future<Map<String, dynamic>> saveProductPhoto(Map<String, Object> params) =>
+      _api.request('market.saveProductPhoto', params);
+
   /// Searches market items in a community's catalog
   Future<Map<String, dynamic>> search(Map<String, Object> params) =>
       _api.request('market.search', params);
@@ -125,4 +178,12 @@ class Market {
   // ignore: public_member_api_docs
   Future<Map<String, dynamic>> searchItems(Map<String, Object> params) =>
       _api.request('market.searchItems', params);
+
+  // ignore: public_member_api_docs
+  Future<Map<String, dynamic>> searchItemsBasic(Map<String, Object> params) =>
+      _api.request('market.searchItemsBasic', params);
+
+  /// Разделяет группу товаров на несколько товаров.
+  Future<Map<String, dynamic>> ungroupItems(Map<String, Object> params) =>
+      _api.request('market.ungroupItems', params);
 }

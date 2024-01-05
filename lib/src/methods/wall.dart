@@ -6,6 +6,10 @@ class Wall {
   Wall(this._api);
   final Api _api;
 
+  /// Добавить лайк на запись.
+  Future<Map<String, dynamic>> addLike(Map<String, Object> params) =>
+      _api.request('wall.addLike', params);
+
   // ignore: public_member_api_docs
   Future<Map<String, dynamic>> checkCopyrightLink(Map<String, Object> params) =>
       _api.request('wall.checkCopyrightLink', params);
@@ -62,6 +66,11 @@ class Wall {
   /// Открыть комментарии к посту.
   Future<Map<String, dynamic>> openComments(Map<String, Object> params) =>
       _api.request('wall.openComments', params);
+
+  /// Принимает на вход ссылки и возвращает дополнительную информацию,
+  /// которая может быть использована для создания сниппетов при публикации ссылки на стене пользователя и других ресурсах.
+  Future<Map<String, dynamic>> parseAttachedLink(Map<String, Object> params) =>
+      _api.request('wall.parseAttachedLink', params);
 
   /// Pins the post on wall.
   Future<Map<String, dynamic>> pin(Map<String, Object> params) =>

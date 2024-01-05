@@ -55,4 +55,9 @@ class Secure {
   /// Sets a counter which is shown to the user in bold in the left menu.
   Future<Map<String, dynamic>> setCounter(Map<String, Object> params) =>
       _api.request('secure.setCounter', params);
+
+  // ignore: lines_longer_than_80_chars
+  /// Устанавливает игровой уровень пользователя в приложении, который смогут увидеть его друзья.
+  Future<Map<String, dynamic>> setUserLevel(Map<String, Object> params) =>
+      _api.request('secure.setUserLevel', params);
 }
