@@ -1,4 +1,4 @@
-part of vkdart.methods;
+part of '../../methods.dart';
 
 /// Методы для работы с виджетами на [внешних сайтах](https://dev.vk.com/ru/widgets/overview).
 class Widgets {

@@ -1,4 +1,4 @@
-part of vkdart.methods;
+part of '../../methods.dart';
 
 /// Методы для работы с формами сбора заявок.
 class LeadForms {

@@ -1,4 +1,4 @@
-part of vkdart.methods;
+part of '../../methods.dart';
 
 /// В этой секции представлены административные методы,
 // ignore: lines_longer_than_80_chars

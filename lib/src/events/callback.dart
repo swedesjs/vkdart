@@ -1,4 +1,4 @@
-part of vkdart.events;
+part of '../../events.dart';
 
 class _ContextWithBody extends Context with ParsedBody {
   _ContextWithBody(HttpRequest request) : super(request);

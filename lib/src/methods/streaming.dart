@@ -1,4 +1,4 @@
-part of vkdart.methods;
+part of '../../methods.dart';
 
 /// Методы для работы со Streaming API.
 class Streaming {

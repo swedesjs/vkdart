@@ -1,4 +1,4 @@
-part of vkdart.methods;
+part of '../../methods.dart';
 
 /// Методы market позволяют работать с товарами в сообществах.
 class Market {

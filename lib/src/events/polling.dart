@@ -1,4 +1,4 @@
-part of vkdart.events;
+part of '../../events.dart';
 
 /// Тип
 typedef Handler<T> = dynamic Function(T event);
