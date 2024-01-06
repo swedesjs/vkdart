@@ -101,15 +101,13 @@ class Attachment extends MainAttachment {
       throw Exception('Неккоректное вложение!');
     }
 
-    // ignore: pattern_type_mismatch_in_irrefutable_context
-    final [_, String type, String ownerId, String id, String accessKey] =
-        parseAttachmentRe.firstMatch(attachment)!;
+    final match = parseAttachmentRe.firstMatch(attachment)!;
 
     return Attachment(
-      attachTypeFromString(type),
-      id: int.parse(id),
-      owner_id: int.parse(ownerId),
-      access_key: accessKey,
+      attachTypeFromString(match[1]!),
+      id: int.parse(match[2]!),
+      owner_id: int.parse(match[3]!),
+      access_key: match[4],
     );
   }
 
