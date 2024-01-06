@@ -7,193 +7,190 @@ class Ads {
   final Api _api;
 
   /// Adds managers and/or supervisors to advertising account.
-  MethodTypeReturn addOfficeUsers(MethodTypeParams params) =>
-      _api.request('ads.addOfficeUsers', params);
+  Future<ApiResponse<T>> addOfficeUsers<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.addOfficeUsers', params);
 
   /// Allows to check the ad link.
-  MethodTypeReturn checkLink(MethodTypeParams params) =>
-      _api.request('ads.checkLink', params);
+  Future<ApiResponse<T>> checkLink<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.checkLink', params);
 
   /// Creates ads.
-  MethodTypeReturn createAds(MethodTypeParams params) =>
-      _api.request('ads.createAds', params);
+  Future<ApiResponse<T>> createAds<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.createAds', params);
 
   /// Creates advertising campaigns.
-  MethodTypeReturn createCampaigns(MethodTypeParams params) =>
-      _api.request('ads.createCampaigns', params);
+  Future<ApiResponse<T>> createCampaigns<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.createCampaigns', params);
 
   /// Creates clients of an advertising agency.
-  MethodTypeReturn createClients(MethodTypeParams params) =>
-      _api.request('ads.createClients', params);
+  Future<ApiResponse<T>> createClients<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.createClients', params);
 
   /// Creates a group to re-target ads for users who visited advertiser's site
   /// (viewed information about the product, registered, etc.).
-  MethodTypeReturn createTargetGroup(MethodTypeParams params) =>
-      _api.request('ads.createTargetGroup', params);
+  Future<ApiResponse<T>> createTargetGroup<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.createTargetGroup', params);
 
   /// Archives ads.
-  MethodTypeReturn deleteAds(MethodTypeParams params) =>
-      _api.request('ads.deleteAds', params);
+  Future<ApiResponse<T>> deleteAds<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.deleteAds', params);
 
   /// Archives advertising campaigns.
-  MethodTypeReturn deleteCampaigns(MethodTypeParams params) =>
-      _api.request('ads.deleteCampaigns', params);
+  Future<ApiResponse<T>> deleteCampaigns<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.deleteCampaigns', params);
 
   /// Archives clients of an advertising agency.
-  MethodTypeReturn deleteClients(MethodTypeParams params) =>
-      _api.request('ads.deleteClients', params);
+  Future<ApiResponse<T>> deleteClients<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.deleteClients', params);
 
   /// Deletes a retarget group.
-  MethodTypeReturn deleteTargetGroup(MethodTypeParams params) =>
-      _api.request('ads.deleteTargetGroup', params);
+  Future<ApiResponse<T>> deleteTargetGroup<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.deleteTargetGroup', params);
 
   /// Returns a list of advertising accounts.
-  MethodTypeReturn getAccounts(MethodTypeParams params) =>
-      _api.request('ads.getAccounts', params);
+  Future<ApiResponse<T>> getAccounts<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getAccounts', params);
 
   /// Returns number of ads.
-  MethodTypeReturn getAds(MethodTypeParams params) =>
-      _api.request('ads.getAds', params);
+  Future<ApiResponse<T>> getAds<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getAds', params);
 
   /// Returns descriptions of ad layouts.
-  MethodTypeReturn getAdsLayout(MethodTypeParams params) =>
-      _api.request('ads.getAdsLayout', params);
+  Future<ApiResponse<T>> getAdsLayout<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getAdsLayout', params);
 
   /// Возвращает подробную информацию об охвате рекламных записей.
-  MethodTypeReturn getAdsPostsReach(MethodTypeParams params) =>
-      _api.request('ads.getAdsPostsReach', params);
+  Future<ApiResponse<T>> getAdsPostsReach<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getAdsPostsReach', params);
 
   /// Returns ad targeting parameters.
-  MethodTypeReturn getAdsTargeting(MethodTypeParams params) =>
-      _api.request('ads.getAdsTargeting', params);
+  Future<ApiResponse<T>> getAdsTargeting<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getAdsTargeting', params);
 
   /// Returns current budget of the advertising account.
-  MethodTypeReturn getBudget(MethodTypeParams params) =>
-      _api.request('ads.getBudget', params);
+  Future<ApiResponse<T>> getBudget<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getBudget', params);
 
   /// Returns a list of campaigns in an advertising account.
-  MethodTypeReturn getCampaigns(MethodTypeParams params) =>
-      _api.request('ads.getCampaigns', params);
+  Future<ApiResponse<T>> getCampaigns<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getCampaigns', params);
 
   /// Returns a list of possible ad categories.
-  MethodTypeReturn getCategories(MethodTypeParams params) =>
-      _api.request('ads.getCategories', params);
+  Future<ApiResponse<T>> getCategories<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getCategories', params);
 
   /// Returns a list of advertising agency's clients.
-  MethodTypeReturn getClients(MethodTypeParams params) =>
-      _api.request('ads.getClients', params);
+  Future<ApiResponse<T>> getClients<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getClients', params);
 
   /// Returns demographics for ads or campaigns.
-  MethodTypeReturn getDemographics(MethodTypeParams params) =>
-      _api.request('ads.getDemographics', params);
+  Future<ApiResponse<T>> getDemographics<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getDemographics', params);
 
   /// Returns information about current state of a counter — number of remaining
   ///  runs of methods and time to the next counter nulling in seconds.
-  MethodTypeReturn getFloodStats(MethodTypeParams params) =>
-      _api.request('ads.getFloodStats', params);
+  Future<ApiResponse<T>> getFloodStats<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getFloodStats', params);
 
   /// Возвращает список запросов на поиск похожей аудитории.
-  MethodTypeReturn getLookalikeRequests(MethodTypeParams params) =>
-      _api.request('ads.getLookalikeRequests', params);
+  Future<ApiResponse<T>> getLookalikeRequests<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getLookalikeRequests', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Возвращает информацию о музыкантах, на слушателей которых доступно таргетирование.
-  MethodTypeReturn getMusicians(MethodTypeParams params) =>
-      _api.request('ads.getMusicians', params);
+  Future<ApiResponse<T>> getMusicians<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getMusicians', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Возвращает информацию о музыкантах на слушателей, для которых доступно таргетирование.
-  MethodTypeReturn getMusiciansByIds(MethodTypeParams params) =>
-      _api.request('ads.getMusiciansByIds', params);
+  Future<ApiResponse<T>> getMusiciansByIds<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getMusiciansByIds', params);
 
   /// Returns a list of managers and supervisors of advertising account.
-  MethodTypeReturn getOfficeUsers(MethodTypeParams params) =>
-      _api.request('ads.getOfficeUsers', params);
+  Future<ApiResponse<T>> getOfficeUsers<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getOfficeUsers', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Returns detailed statistics of promoted posts reach from campaigns and ads.
-  MethodTypeReturn getPostsReach(MethodTypeParams params) =>
-      _api.request('ads.getPostsReach', params);
+  Future<ApiResponse<T>> getPostsReach<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getPostsReach', params);
 
   /// Returns a reason of ad rejection for pre-moderation.
-  MethodTypeReturn getRejectionReason(MethodTypeParams params) =>
-      _api.request('ads.getRejectionReason', params);
+  Future<ApiResponse<T>> getRejectionReason<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getRejectionReason', params);
 
   /// Returns statistics of performance indicators for ads, campaigns, clients
   ///  or the whole account.
-  MethodTypeReturn getStatistics(MethodTypeParams params) =>
-      _api.request('ads.getStatistics', params);
+  Future<ApiResponse<T>> getStatistics<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getStatistics', params);
 
   /// Returns a set of auto-suggestions for various targeting parameters.
-  MethodTypeReturn getSuggestions(MethodTypeParams params) =>
-      _api.request('ads.getSuggestions', params);
+  Future<ApiResponse<T>> getSuggestions<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getSuggestions', params);
 
   /// Returns a list of target groups.
-  MethodTypeReturn getTargetGroups(MethodTypeParams params) =>
-      _api.request('ads.getTargetGroups', params);
+  Future<ApiResponse<T>> getTargetGroups<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getTargetGroups', params);
 
   /// Возвращает список пикселей ретаргетинга.
-  MethodTypeReturn getTargetPixels(MethodTypeParams params) =>
-      _api.request('ads.getTargetPixels', params);
+  Future<ApiResponse<T>> getTargetPixels<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getTargetPixels', params);
 
   /// Returns the size of targeting audience, and also recommended values for
   ///  CPC and CPM.
-  MethodTypeReturn getTargetingStats(MethodTypeParams params) =>
-      _api.request('ads.getTargetingStats', params);
+  Future<ApiResponse<T>> getTargetingStats<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getTargetingStats', params);
 
   /// Returns URL to upload an ad photo to.
-  MethodTypeReturn getUploadURL(MethodTypeParams params) =>
-      _api.request('ads.getUploadURL', params);
+  Future<ApiResponse<T>> getUploadURL<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getUploadURL', params);
 
   /// Returns URL to upload an ad video to.
-  MethodTypeReturn getVideoUploadURL(MethodTypeParams params) =>
-      _api.request('ads.getVideoUploadURL', params);
+  Future<ApiResponse<T>> getVideoUploadURL<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.getVideoUploadURL', params);
 
   /// Imports a list of advertiser's contacts to count VK registered users again
   /// st the target group.
-  MethodTypeReturn importTargetContacts(MethodTypeParams params) =>
-      _api.request('ads.importTargetContacts', params);
+  Future<ApiResponse<T>> importTargetContacts<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.importTargetContacts', params);
 
   /// Removes managers and/or supervisors from advertising account.
-  MethodTypeReturn removeOfficeUsers(MethodTypeParams params) =>
-      _api.request('ads.removeOfficeUsers', params);
+  Future<ApiResponse<T>> removeOfficeUsers<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.removeOfficeUsers', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Принимает запрос на исключение контактов рекламодателя из аудитории ретаргетинга.
-  MethodTypeReturn removeTargetContacts(MethodTypeParams params) =>
-      _api.request('ads.removeTargetContacts', params);
+  Future<ApiResponse<T>> removeTargetContacts<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.removeTargetContacts', params);
 
   /// Сохраняет результат поиска похожей аудитории.
-  MethodTypeReturn saveLookalikeRequestResult(MethodTypeParams params) =>
-      _api.request('ads.saveLookalikeRequestResult', params);
+  Future<ApiResponse<T>> saveLookalikeRequestResult<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('ads.saveLookalikeRequestResult', params);
 
   /// Предоставляет доступ к аудитории ретаргетинга другому рекламному кабинету.
-  // ignore: lines_longer_than_80_chars
+
   /// В результате выполнения метода возвращается идентификатор аудитории для указанного кабинета.
-  MethodTypeReturn shareTargetGroup(MethodTypeParams params) =>
-      _api.request('ads.shareTargetGroup', params);
+  Future<ApiResponse<T>> shareTargetGroup<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.shareTargetGroup', params);
 
   /// Edits ads.
-  MethodTypeReturn updateAds(MethodTypeParams params) =>
-      _api.request('ads.updateAds', params);
+  Future<ApiResponse<T>> updateAds<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.updateAds', params);
 
   /// Edits advertising campaigns.
-  MethodTypeReturn updateCampaigns(MethodTypeParams params) =>
-      _api.request('ads.updateCampaigns', params);
+  Future<ApiResponse<T>> updateCampaigns<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.updateCampaigns', params);
 
   /// Edits clients of an advertising agency.
-  MethodTypeReturn updateClients(MethodTypeParams params) =>
-      _api.request('ads.updateClients', params);
+  Future<ApiResponse<T>> updateClients<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.updateClients', params);
 
   /// Adds managers and/or supervisors to advertising account.
-  MethodTypeReturn updateOfficeUsers(MethodTypeParams params) =>
-      _api.request('ads.updateOfficeUsers', params);
+  Future<ApiResponse<T>> updateOfficeUsers<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.updateOfficeUsers', params);
 
   /// Edits a retarget group.
-  MethodTypeReturn updateTargetGroup(MethodTypeParams params) =>
-      _api.request('ads.updateTargetGroup', params);
+  Future<ApiResponse<T>> updateTargetGroup<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.updateTargetGroup', params);
 
   /// Редактирует пиксель ретаргетинга.
-  MethodTypeReturn updateTargetPixel(MethodTypeParams params) =>
-      _api.request('ads.updateTargetPixel', params);
+  Future<ApiResponse<T>> updateTargetPixel<T>(MethodTypeParams params) =>
+      _api.request<T>('ads.updateTargetPixel', params);
 }

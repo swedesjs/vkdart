@@ -8,6 +8,6 @@ class Translations {
   final Api _api;
 
   /// Переводит текст.
-  MethodTypeReturn translate(MethodTypeParams params) =>
-      _api.request('translations.translate', params);
+  Future<ApiResponse<T>> translate<T>(MethodTypeParams params) =>
+      _api.request<T>('translations.translate', params);
 }

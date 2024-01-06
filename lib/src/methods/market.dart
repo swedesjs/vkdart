@@ -7,175 +7,175 @@ class Market {
   final Api _api;
 
   /// Ads a new item to the market.
-  MethodTypeReturn add(MethodTypeParams params) =>
-      _api.request('market.add', params);
+  Future<ApiResponse<T>> add<T>(MethodTypeParams params) =>
+      _api.request<T>('market.add', params);
 
   /// Creates new collection of items
-  MethodTypeReturn addAlbum(MethodTypeParams params) =>
-      _api.request('market.addAlbum', params);
+  Future<ApiResponse<T>> addAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('market.addAlbum', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Добавляет новое свойство, которое может быть задано для товаров сообщества (например, «цвет», «размер» и т.д.).
-  MethodTypeReturn addProperty(MethodTypeParams params) =>
-      _api.request('market.addProperty', params);
+  Future<ApiResponse<T>> addProperty<T>(MethodTypeParams params) =>
+      _api.request<T>('market.addProperty', params);
 
   /// Добавляет вариант свойства. Всего у свойства может быть 50 вариантов.
-  MethodTypeReturn addPropertyVariant(MethodTypeParams params) =>
-      _api.request('market.addPropertyVariant', params);
+  Future<ApiResponse<T>> addPropertyVariant<T>(MethodTypeParams params) =>
+      _api.request<T>('market.addPropertyVariant', params);
 
   /// Adds an item to one or multiple collections.
-  MethodTypeReturn addToAlbum(MethodTypeParams params) =>
-      _api.request('market.addToAlbum', params);
+  Future<ApiResponse<T>> addToAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('market.addToAlbum', params);
 
   /// Creates a new comment for an item.
-  MethodTypeReturn createComment(MethodTypeParams params) =>
-      _api.request('market.createComment', params);
+  Future<ApiResponse<T>> createComment<T>(MethodTypeParams params) =>
+      _api.request<T>('market.createComment', params);
 
   /// Deletes an item.
-  MethodTypeReturn delete(MethodTypeParams params) =>
-      _api.request('market.delete', params);
+  Future<ApiResponse<T>> delete<T>(MethodTypeParams params) =>
+      _api.request<T>('market.delete', params);
 
   /// Deletes a collection of items.
-  MethodTypeReturn deleteAlbum(MethodTypeParams params) =>
-      _api.request('market.deleteAlbum', params);
+  Future<ApiResponse<T>> deleteAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('market.deleteAlbum', params);
 
   /// Deletes an item's comment
-  MethodTypeReturn deleteComment(MethodTypeParams params) =>
-      _api.request('market.deleteComment', params);
+  Future<ApiResponse<T>> deleteComment<T>(MethodTypeParams params) =>
+      _api.request<T>('market.deleteComment', params);
 
   /// Удаляет свойство товара.
-  MethodTypeReturn deleteProperty(MethodTypeParams params) =>
-      _api.request('market.deleteProperty', params);
+  Future<ApiResponse<T>> deleteProperty<T>(MethodTypeParams params) =>
+      _api.request<T>('market.deleteProperty', params);
 
   /// Удаляет вариант свойства.
-  MethodTypeReturn deletePropertyVariant(MethodTypeParams params) =>
-      _api.request('market.deletePropertyVariant', params);
+  Future<ApiResponse<T>> deletePropertyVariant<T>(MethodTypeParams params) =>
+      _api.request<T>('market.deletePropertyVariant', params);
 
   /// Edits an item.
-  MethodTypeReturn edit(MethodTypeParams params) =>
-      _api.request('market.edit', params);
+  Future<ApiResponse<T>> edit<T>(MethodTypeParams params) =>
+      _api.request<T>('market.edit', params);
 
   /// Edits a collection of items
-  MethodTypeReturn editAlbum(MethodTypeParams params) =>
-      _api.request('market.editAlbum', params);
+  Future<ApiResponse<T>> editAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('market.editAlbum', params);
 
   /// Chages item comment's text
-  MethodTypeReturn editComment(MethodTypeParams params) =>
-      _api.request('market.editComment', params);
+  Future<ApiResponse<T>> editComment<T>(MethodTypeParams params) =>
+      _api.request<T>('market.editComment', params);
 
   /// Edit order
-  MethodTypeReturn editOrder(MethodTypeParams params) =>
-      _api.request('market.editOrder', params);
+  Future<ApiResponse<T>> editOrder<T>(MethodTypeParams params) =>
+      _api.request<T>('market.editOrder', params);
 
   /// Редактирует свойство товара.
-  MethodTypeReturn editProperty(MethodTypeParams params) =>
-      _api.request('market.editProperty', params);
+  Future<ApiResponse<T>> editProperty<T>(MethodTypeParams params) =>
+      _api.request<T>('market.editProperty', params);
 
   /// Редактирует вариант свойства.
-  MethodTypeReturn editPropertyVariant(MethodTypeParams params) =>
-      _api.request('market.editPropertyVariant', params);
+  Future<ApiResponse<T>> editPropertyVariant<T>(MethodTypeParams params) =>
+      _api.request<T>('market.editPropertyVariant', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn filterCategories(MethodTypeParams params) =>
-      _api.request('market.filterCategories', params);
+  Future<ApiResponse<T>> filterCategories<T>(MethodTypeParams params) =>
+      _api.request<T>('market.filterCategories', params);
 
   /// Returns items list for a community.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('market.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('market.get', params);
 
   /// Returns items album's data
-  MethodTypeReturn getAlbumById(MethodTypeParams params) =>
-      _api.request('market.getAlbumById', params);
+  Future<ApiResponse<T>> getAlbumById<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getAlbumById', params);
 
   /// Returns community's market collections list.
-  MethodTypeReturn getAlbums(MethodTypeParams params) =>
-      _api.request('market.getAlbums', params);
+  Future<ApiResponse<T>> getAlbums<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getAlbums', params);
 
   /// Returns information about market items by their ids.
-  MethodTypeReturn getById(MethodTypeParams params) =>
-      _api.request('market.getById', params);
+  Future<ApiResponse<T>> getById<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getById', params);
 
   /// Returns a list of market categories.
-  MethodTypeReturn getCategories(MethodTypeParams params) =>
-      _api.request('market.getCategories', params);
+  Future<ApiResponse<T>> getCategories<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getCategories', params);
 
   /// Returns comments list for an item.
-  MethodTypeReturn getComments(MethodTypeParams params) =>
-      _api.request('market.getComments', params);
+  Future<ApiResponse<T>> getComments<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getComments', params);
 
   /// Get market orders
-  MethodTypeReturn getGroupOrders(MethodTypeParams params) =>
-      _api.request('market.getGroupOrders', params);
+  Future<ApiResponse<T>> getGroupOrders<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getGroupOrders', params);
 
   /// Get order
-  MethodTypeReturn getOrderById(MethodTypeParams params) =>
-      _api.request('market.getOrderById', params);
+  Future<ApiResponse<T>> getOrderById<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getOrderById', params);
 
   /// Get market items in the order
-  MethodTypeReturn getOrderItems(MethodTypeParams params) =>
-      _api.request('market.getOrderItems', params);
+  Future<ApiResponse<T>> getOrderItems<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getOrderItems', params);
 
   /// Возвращает заказы.
-  MethodTypeReturn getOrders(MethodTypeParams params) =>
-      _api.request('market.getOrders', params);
+  Future<ApiResponse<T>> getOrders<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getOrders', params);
 
   /// Метод для получения ссылки на сервер загрузки изображений
-  MethodTypeReturn getProductPhotoUploadServer(MethodTypeParams params) =>
-      _api.request('market.getProductPhotoUploadServer', params);
+  Future<ApiResponse<T>> getProductPhotoUploadServer<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('market.getProductPhotoUploadServer', params);
 
   /// Возвращает список свойств для указанного сообщества.
-  MethodTypeReturn getProperties(MethodTypeParams params) =>
-      _api.request('market.getProperties', params);
+  Future<ApiResponse<T>> getProperties<T>(MethodTypeParams params) =>
+      _api.request<T>('market.getProperties', params);
 
   /// Объединяет товары в группу товаров.
-  MethodTypeReturn groupItems(MethodTypeParams params) =>
-      _api.request('market.groupItems', params);
+  Future<ApiResponse<T>> groupItems<T>(MethodTypeParams params) =>
+      _api.request<T>('market.groupItems', params);
 
   /// Removes an item from one or multiple collections.
-  MethodTypeReturn removeFromAlbum(MethodTypeParams params) =>
-      _api.request('market.removeFromAlbum', params);
+  Future<ApiResponse<T>> removeFromAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('market.removeFromAlbum', params);
 
   /// Reorders the collections list.
-  MethodTypeReturn reorderAlbums(MethodTypeParams params) =>
-      _api.request('market.reorderAlbums', params);
+  Future<ApiResponse<T>> reorderAlbums<T>(MethodTypeParams params) =>
+      _api.request<T>('market.reorderAlbums', params);
 
   /// Changes item place in a collection.
-  MethodTypeReturn reorderItems(MethodTypeParams params) =>
-      _api.request('market.reorderItems', params);
+  Future<ApiResponse<T>> reorderItems<T>(MethodTypeParams params) =>
+      _api.request<T>('market.reorderItems', params);
 
   /// Sends a complaint to the item.
-  MethodTypeReturn report(MethodTypeParams params) =>
-      _api.request('market.report', params);
+  Future<ApiResponse<T>> report<T>(MethodTypeParams params) =>
+      _api.request<T>('market.report', params);
 
   /// Sends a complaint to the item's comment.
-  MethodTypeReturn reportComment(MethodTypeParams params) =>
-      _api.request('market.reportComment', params);
+  Future<ApiResponse<T>> reportComment<T>(MethodTypeParams params) =>
+      _api.request<T>('market.reportComment', params);
 
   /// Restores recently deleted item
-  MethodTypeReturn restore(MethodTypeParams params) =>
-      _api.request('market.restore', params);
+  Future<ApiResponse<T>> restore<T>(MethodTypeParams params) =>
+      _api.request<T>('market.restore', params);
 
   /// Restores a recently deleted comment
-  MethodTypeReturn restoreComment(MethodTypeParams params) =>
-      _api.request('market.restoreComment', params);
+  Future<ApiResponse<T>> restoreComment<T>(MethodTypeParams params) =>
+      _api.request<T>('market.restoreComment', params);
 
   /// Метод для сохранения изображений
-  MethodTypeReturn saveProductPhoto(MethodTypeParams params) =>
-      _api.request('market.saveProductPhoto', params);
+  Future<ApiResponse<T>> saveProductPhoto<T>(MethodTypeParams params) =>
+      _api.request<T>('market.saveProductPhoto', params);
 
   /// Searches market items in a community's catalog
-  MethodTypeReturn search(MethodTypeParams params) =>
-      _api.request('market.search', params);
+  Future<ApiResponse<T>> search<T>(MethodTypeParams params) =>
+      _api.request<T>('market.search', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn searchItems(MethodTypeParams params) =>
-      _api.request('market.searchItems', params);
+  Future<ApiResponse<T>> searchItems<T>(MethodTypeParams params) =>
+      _api.request<T>('market.searchItems', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn searchItemsBasic(MethodTypeParams params) =>
-      _api.request('market.searchItemsBasic', params);
+  Future<ApiResponse<T>> searchItemsBasic<T>(MethodTypeParams params) =>
+      _api.request<T>('market.searchItemsBasic', params);
 
   /// Разделяет группу товаров на несколько товаров.
-  MethodTypeReturn ungroupItems(MethodTypeParams params) =>
-      _api.request('market.ungroupItems', params);
+  Future<ApiResponse<T>> ungroupItems<T>(MethodTypeParams params) =>
+      _api.request<T>('market.ungroupItems', params);
 }

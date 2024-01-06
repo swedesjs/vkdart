@@ -7,10 +7,10 @@ class Widgets {
   final Api _api;
 
   /// Gets a list of comments for the page added through the [Comments widget](vk.com/dev/Comments).
-  MethodTypeReturn getComments(MethodTypeParams params) =>
-      _api.request('widgets.getComments', params);
+  Future<ApiResponse<T>> getComments<T>(MethodTypeParams params) =>
+      _api.request<T>('widgets.getComments', params);
 
   /// Gets a list of application/site pages where the [Comments widget](vk.com/dev/Comments) or [Like widget](vk.com/dev/Like) is installed.
-  MethodTypeReturn getPages(MethodTypeParams params) =>
-      _api.request('widgets.getPages', params);
+  Future<ApiResponse<T>> getPages<T>(MethodTypeParams params) =>
+      _api.request<T>('widgets.getPages', params);
 }

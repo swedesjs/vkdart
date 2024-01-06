@@ -7,14 +7,14 @@ class Stats {
   final Api _api;
 
   /// Returns statistics of a community or an application.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('stats.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('stats.get', params);
 
   /// Returns stats for a wall post.
-  MethodTypeReturn getPostReach(MethodTypeParams params) =>
-      _api.request('stats.getPostReach', params);
+  Future<ApiResponse<T>> getPostReach<T>(MethodTypeParams params) =>
+      _api.request<T>('stats.getPostReach', params);
 
   /// Добавляет данные о текущем сеансе в статистику посещаемости приложения.
-  MethodTypeReturn trackVisitor(MethodTypeParams params) =>
-      _api.request('stats.trackVisitor', params);
+  Future<ApiResponse<T>> trackVisitor<T>(MethodTypeParams params) =>
+      _api.request<T>('stats.trackVisitor', params);
 }

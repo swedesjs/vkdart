@@ -7,83 +7,79 @@ class Friends {
   final Api _api;
 
   /// Approves or creates a friend request.
-  MethodTypeReturn add(MethodTypeParams params) =>
-      _api.request('friends.add', params);
+  Future<ApiResponse<T>> add<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.add', params);
 
   /// Creates a new friend list for the current user.
-  MethodTypeReturn addList(MethodTypeParams params) =>
-      _api.request('friends.addList', params);
+  Future<ApiResponse<T>> addList<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.addList', params);
 
   /// Checks the current user's friendship status with other specified users.
-  MethodTypeReturn areFriends(MethodTypeParams params) =>
-      _api.request('friends.areFriends', params);
+  Future<ApiResponse<T>> areFriends<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.areFriends', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Declines a friend request or deletes a user from the current user's friend list.
-  MethodTypeReturn delete(MethodTypeParams params) =>
-      _api.request('friends.delete', params);
+  Future<ApiResponse<T>> delete<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.delete', params);
 
   /// Marks all incoming friend requests as viewed.
-  MethodTypeReturn deleteAllRequests(MethodTypeParams params) =>
-      _api.request('friends.deleteAllRequests', params);
+  Future<ApiResponse<T>> deleteAllRequests<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.deleteAllRequests', params);
 
   /// Deletes a friend list of the current user.
-  MethodTypeReturn deleteList(MethodTypeParams params) =>
-      _api.request('friends.deleteList', params);
+  Future<ApiResponse<T>> deleteList<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.deleteList', params);
 
   /// Edits the friend lists of the selected user.
-  MethodTypeReturn edit(MethodTypeParams params) =>
-      _api.request('friends.edit', params);
+  Future<ApiResponse<T>> edit<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.edit', params);
 
   /// Edits a friend list of the current user.
-  MethodTypeReturn editList(MethodTypeParams params) =>
-      _api.request('friends.editList', params);
+  Future<ApiResponse<T>> editList<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.editList', params);
 
   /// Returns a list of user IDs or detailed information about a user's friends.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('friends.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.get', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Returns a list of IDs of the current user's friends who installed the application.
-  MethodTypeReturn getAppUsers(MethodTypeParams params) =>
-      _api.request('friends.getAppUsers', params);
+  Future<ApiResponse<T>> getAppUsers<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getAppUsers', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Позволяет получить список идентификаторов пользователей, доступных для вызова из приложения.
-  MethodTypeReturn getAvailableForCall(MethodTypeParams params) =>
-      _api.request('friends.getAvailableForCall', params);
+  Future<ApiResponse<T>> getAvailableForCall<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getAvailableForCall', params);
 
   /// Returns a list of the current user's friends whose phone numbers,
   /// validated or specified in a profile, are in a given list.
-  MethodTypeReturn getByPhones(MethodTypeParams params) =>
-      _api.request('friends.getByPhones', params);
+  Future<ApiResponse<T>> getByPhones<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getByPhones', params);
 
   /// Returns a list of the user's friend lists.
-  MethodTypeReturn getLists(MethodTypeParams params) =>
-      _api.request('friends.getLists', params);
+  Future<ApiResponse<T>> getLists<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getLists', params);
 
   /// Returns a list of user IDs of the mutual friends of two users.
-  MethodTypeReturn getMutual(MethodTypeParams params) =>
-      _api.request('friends.getMutual', params);
+  Future<ApiResponse<T>> getMutual<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getMutual', params);
 
   /// Returns a list of user IDs of a user's friends who are online.
-  MethodTypeReturn getOnline(MethodTypeParams params) =>
-      _api.request('friends.getOnline', params);
+  Future<ApiResponse<T>> getOnline<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getOnline', params);
 
   /// Returns a list of user IDs of the current user's recently added friends.
-  MethodTypeReturn getRecent(MethodTypeParams params) =>
-      _api.request('friends.getRecent', params);
+  Future<ApiResponse<T>> getRecent<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getRecent', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Returns information about the current user's incoming and outgoing friend requests.
-  MethodTypeReturn getRequests(MethodTypeParams params) =>
-      _api.request('friends.getRequests', params);
+  Future<ApiResponse<T>> getRequests<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getRequests', params);
 
   /// Returns a list of profiles of users whom the current user may know.
-  MethodTypeReturn getSuggestions(MethodTypeParams params) =>
-      _api.request('friends.getSuggestions', params);
+  Future<ApiResponse<T>> getSuggestions<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.getSuggestions', params);
 
   /// Returns a list of friends matching the search criteria.
-  MethodTypeReturn search(MethodTypeParams params) =>
-      _api.request('friends.search', params);
+  Future<ApiResponse<T>> search<T>(MethodTypeParams params) =>
+      _api.request<T>('friends.search', params);
 }

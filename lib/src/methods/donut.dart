@@ -6,21 +6,20 @@ class Donut {
   Donut(this._api);
   final Api _api;
 
-  // ignore: lines_longer_than_80_chars
   /// Возвращает список донов, которые подписаны на определенные сообщества, из числа друзей пользователя.
-  MethodTypeReturn getFriends(MethodTypeParams params) =>
-      _api.request('donut.getFriends', params);
+  Future<ApiResponse<T>> getFriends<T>(MethodTypeParams params) =>
+      _api.request<T>('donut.getFriends', params);
 
   /// Возвращает информацию о подписке VK Donut.
-  MethodTypeReturn getSubscription(MethodTypeParams params) =>
-      _api.request('donut.getSubscription', params);
+  Future<ApiResponse<T>> getSubscription<T>(MethodTypeParams params) =>
+      _api.request<T>('donut.getSubscription', params);
 
   /// Returns a list of user's VK Donut subscriptions.
-  MethodTypeReturn getSubscriptions(MethodTypeParams params) =>
-      _api.request('donut.getSubscriptions', params);
+  Future<ApiResponse<T>> getSubscriptions<T>(MethodTypeParams params) =>
+      _api.request<T>('donut.getSubscriptions', params);
 
   /// Возвращает информацию о том, подписан ли пользователь на платный контент
   /// (является доном).
-  MethodTypeReturn isDon(MethodTypeParams params) =>
-      _api.request('donut.isDon', params);
+  Future<ApiResponse<T>> isDon<T>(MethodTypeParams params) =>
+      _api.request<T>('donut.isDon', params);
 }

@@ -6,226 +6,226 @@ class Groups {
   Groups(this._api);
   final Api _api;
 
-  // ignore: lines_longer_than_80_chars
   /// Позволяет добавить адрес в сообщество. Список адресов может быть получен методом [getAddresses].
   ///
-  // ignore: lines_longer_than_80_chars
+
   /// - Для того, чтобы воспользоваться этим методом, вы должны быть администратором сообщества.
-  MethodTypeReturn addAddress(MethodTypeParams params) =>
-      _api.request('groups.addAddress', params);
+  Future<ApiResponse<T>> addAddress<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.addAddress', params);
 
   /// Добавляет сервер для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) в сообщество.
-  MethodTypeReturn addCallbackServer(MethodTypeParams params) =>
-      _api.request('groups.addCallbackServer', params);
+  Future<ApiResponse<T>> addCallbackServer<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.addCallbackServer', params);
 
   /// Allows to add a link to the community.
-  MethodTypeReturn addLink(MethodTypeParams params) =>
-      _api.request('groups.addLink', params);
+  Future<ApiResponse<T>> addLink<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.addLink', params);
 
   /// Allows to approve join request to the community.
-  MethodTypeReturn approveRequest(MethodTypeParams params) =>
-      _api.request('groups.approveRequest', params);
+  Future<ApiResponse<T>> approveRequest<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.approveRequest', params);
 
   /// Добавляет пользователя или группу в черный список сообщества.
-  MethodTypeReturn ban(MethodTypeParams params) =>
-      _api.request('groups.ban', params);
+  Future<ApiResponse<T>> ban<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.ban', params);
 
   /// Creates a new community.
-  MethodTypeReturn create(MethodTypeParams params) =>
-      _api.request('groups.create', params);
+  Future<ApiResponse<T>> create<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.create', params);
 
   /// Удаляет адрес сообщества.
-  MethodTypeReturn deleteAddress(MethodTypeParams params) =>
-      _api.request('groups.deleteAddress', params);
+  Future<ApiResponse<T>> deleteAddress<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.deleteAddress', params);
 
   /// Удаляет сервер для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) из сообщества.
-  MethodTypeReturn deleteCallbackServer(MethodTypeParams params) =>
-      _api.request('groups.deleteCallbackServer', params);
+  Future<ApiResponse<T>> deleteCallbackServer<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.deleteCallbackServer', params);
 
   /// Allows to delete a link from the community.
-  MethodTypeReturn deleteLink(MethodTypeParams params) =>
-      _api.request('groups.deleteLink', params);
+  Future<ApiResponse<T>> deleteLink<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.deleteLink', params);
 
   /// Выключает статус «онлайн» в сообществе.
-  MethodTypeReturn disableOnline(MethodTypeParams params) =>
-      _api.request('groups.disableOnline', params);
+  Future<ApiResponse<T>> disableOnline<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.disableOnline', params);
 
   /// Edits a community.
-  MethodTypeReturn edit(MethodTypeParams params) =>
-      _api.request('groups.edit', params);
+  Future<ApiResponse<T>> edit<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.edit', params);
 
   /// Метод редактирует адрес в сообществе. Чтобы получить список адресов,
   /// вызовите метод [getAddresses].
-  MethodTypeReturn editAddress(MethodTypeParams params) =>
-      _api.request('groups.editAddress', params);
+  Future<ApiResponse<T>> editAddress<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.editAddress', params);
 
   /// Редактирует данные сервера для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) в сообществе.
-  MethodTypeReturn editCallbackServer(MethodTypeParams params) =>
-      _api.request('groups.editCallbackServer', params);
+  Future<ApiResponse<T>> editCallbackServer<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.editCallbackServer', params);
 
   /// Allows to edit a link in the community.
-  MethodTypeReturn editLink(MethodTypeParams params) =>
-      _api.request('groups.editLink', params);
+  Future<ApiResponse<T>> editLink<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.editLink', params);
 
   /// Allows to add, remove or edit the community manager.
-  MethodTypeReturn editManager(MethodTypeParams params) =>
-      _api.request('groups.editManager', params);
+  Future<ApiResponse<T>> editManager<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.editManager', params);
 
   /// Позволяет редактировать информацию о месте группы.
-  MethodTypeReturn editPlace(MethodTypeParams params) =>
-      _api.request('groups.editPlace', params);
+  Future<ApiResponse<T>> editPlace<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.editPlace', params);
 
   /// Включает статус «онлайн» в сообществе.
-  MethodTypeReturn enableOnline(MethodTypeParams params) =>
-      _api.request('groups.enableOnline', params);
+  Future<ApiResponse<T>> enableOnline<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.enableOnline', params);
 
   /// Returns a list of the communities to which a user belongs.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('groups.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.get', params);
 
   /// Returns a list of community addresses.
-  MethodTypeReturn getAddresses(MethodTypeParams params) =>
-      _api.request('groups.getAddresses', params);
+  Future<ApiResponse<T>> getAddresses<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getAddresses', params);
 
   /// Returns a list of users on a community blacklist.
-  MethodTypeReturn getBanned(MethodTypeParams params) =>
-      _api.request('groups.getBanned', params);
+  Future<ApiResponse<T>> getBanned<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getBanned', params);
 
   /// Returns information about communities by their IDs.
-  MethodTypeReturn getById(MethodTypeParams params) =>
-      _api.request('groups.getById', params);
+  Future<ApiResponse<T>> getById<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getById', params);
 
   /// Returns Callback API confirmation code for the community.
-  MethodTypeReturn getCallbackConfirmationCode(MethodTypeParams params) =>
-      _api.request('groups.getCallbackConfirmationCode', params);
+  Future<ApiResponse<T>> getCallbackConfirmationCode<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('groups.getCallbackConfirmationCode', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Позволяет получить информацию о настройках сервера для получения уведомлений Callback API в сообществе.
-  MethodTypeReturn getCallbackServerSettings(MethodTypeParams params) =>
-      _api.request('groups.getCallbackServerSettings', params);
+  Future<ApiResponse<T>> getCallbackServerSettings<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('groups.getCallbackServerSettings', params);
 
   /// Получает информацию о серверах для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) в сообществе.
-  MethodTypeReturn getCallbackServers(MethodTypeParams params) =>
-      _api.request('groups.getCallbackServers', params);
+  Future<ApiResponse<T>> getCallbackServers<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getCallbackServers', params);
 
   /// Returns [Callback API](vk.com/dev/callback_api) notifications settings.
-  MethodTypeReturn getCallbackSettings(MethodTypeParams params) =>
-      _api.request('groups.getCallbackSettings', params);
+  Future<ApiResponse<T>> getCallbackSettings<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getCallbackSettings', params);
 
   /// Returns communities list for a catalog category.
-  MethodTypeReturn getCatalog(MethodTypeParams params) =>
-      _api.request('groups.getCatalog', params);
+  Future<ApiResponse<T>> getCatalog<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getCatalog', params);
 
   /// Returns categories list for communities catalog
-  MethodTypeReturn getCatalogInfo(MethodTypeParams params) =>
-      _api.request('groups.getCatalogInfo', params);
+  Future<ApiResponse<T>> getCatalogInfo<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getCatalogInfo', params);
 
   /// Returns invited users list of a community
-  MethodTypeReturn getInvitedUsers(MethodTypeParams params) =>
-      _api.request('groups.getInvitedUsers', params);
+  Future<ApiResponse<T>> getInvitedUsers<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getInvitedUsers', params);
 
   /// Returns a list of invitations to join communities and events.
-  MethodTypeReturn getInvites(MethodTypeParams params) =>
-      _api.request('groups.getInvites', params);
+  Future<ApiResponse<T>> getInvites<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getInvites', params);
 
   /// Returns the data needed to query a Long Poll server for events
-  MethodTypeReturn getLongPollServer(MethodTypeParams params) =>
-      _api.request('groups.getLongPollServer', params);
+  Future<ApiResponse<T>> getLongPollServer<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getLongPollServer', params);
 
   /// Returns Long Poll notification settings
-  MethodTypeReturn getLongPollSettings(MethodTypeParams params) =>
-      _api.request('groups.getLongPollSettings', params);
+  Future<ApiResponse<T>> getLongPollSettings<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getLongPollSettings', params);
 
   /// Returns a list of community members.
-  MethodTypeReturn getMembers(MethodTypeParams params) =>
-      _api.request('groups.getMembers', params);
+  Future<ApiResponse<T>> getMembers<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getMembers', params);
 
   /// Получает информацию о статусе «онлайн» в сообществе.
-  MethodTypeReturn getOnlineStatus(MethodTypeParams params) =>
-      _api.request('groups.getOnlineStatus', params);
+  Future<ApiResponse<T>> getOnlineStatus<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getOnlineStatus', params);
 
   /// Returns a list of requests to the community.
-  MethodTypeReturn getRequests(MethodTypeParams params) =>
-      _api.request('groups.getRequests', params);
+  Future<ApiResponse<T>> getRequests<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getRequests', params);
 
   /// Returns community settings.
-  MethodTypeReturn getSettings(MethodTypeParams params) =>
-      _api.request('groups.getSettings', params);
+  Future<ApiResponse<T>> getSettings<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getSettings', params);
 
   /// List of group's tags
-  MethodTypeReturn getTagList(MethodTypeParams params) =>
-      _api.request('groups.getTagList', params);
+  Future<ApiResponse<T>> getTagList<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getTagList', params);
 
   /// Возвращает настройки прав для ключа доступа сообщества.
-  MethodTypeReturn getTokenPermissions(MethodTypeParams params) =>
-      _api.request('groups.getTokenPermissions', params);
+  Future<ApiResponse<T>> getTokenPermissions<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.getTokenPermissions', params);
 
   /// Allows to invite friends to the community.
-  MethodTypeReturn invite(MethodTypeParams params) =>
-      _api.request('groups.invite', params);
+  Future<ApiResponse<T>> invite<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.invite', params);
 
   /// Returns information specifying whether a user is a member of a community.
-  MethodTypeReturn isMember(MethodTypeParams params) =>
-      _api.request('groups.isMember', params);
+  Future<ApiResponse<T>> isMember<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.isMember', params);
 
   /// With this method you can join the group or public page,
   /// and also confirm your participation in an event.
-  MethodTypeReturn join(MethodTypeParams params) =>
-      _api.request('groups.join', params);
+  Future<ApiResponse<T>> join<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.join', params);
 
   /// With this method you can leave a group, public page, or event.
-  MethodTypeReturn leave(MethodTypeParams params) =>
-      _api.request('groups.leave', params);
+  Future<ApiResponse<T>> leave<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.leave', params);
 
   /// Removes a user from the community.
-  MethodTypeReturn removeUser(MethodTypeParams params) =>
-      _api.request('groups.removeUser', params);
+  Future<ApiResponse<T>> removeUser<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.removeUser', params);
 
   /// Allows to reorder links in the community.
-  MethodTypeReturn reorderLink(MethodTypeParams params) =>
-      _api.request('groups.reorderLink', params);
+  Future<ApiResponse<T>> reorderLink<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.reorderLink', params);
 
   /// Returns a list of communities matching the search criteria.
-  MethodTypeReturn search(MethodTypeParams params) =>
-      _api.request('groups.search', params);
+  Future<ApiResponse<T>> search<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.search', params);
 
   /// Allow to set notifications settings for group.
-  MethodTypeReturn setCallbackSettings(MethodTypeParams params) =>
-      _api.request('groups.setCallbackSettings', params);
+  Future<ApiResponse<T>> setCallbackSettings<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.setCallbackSettings', params);
 
   /// Sets Long Poll notification settings
-  MethodTypeReturn setLongPollSettings(MethodTypeParams params) =>
-      _api.request('groups.setLongPollSettings', params);
+  Future<ApiResponse<T>> setLongPollSettings<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.setLongPollSettings', params);
 
   /// Устанавливает настройки сообщества
-  MethodTypeReturn setSettings(MethodTypeParams params) =>
-      _api.request('groups.setSettings', params);
+  Future<ApiResponse<T>> setSettings<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.setSettings', params);
 
   /// In order to save note about group participant
-  MethodTypeReturn setUserNote(MethodTypeParams params) =>
-      _api.request('groups.setUserNote', params);
+  Future<ApiResponse<T>> setUserNote<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.setUserNote', params);
 
   /// Add new group's tag
-  MethodTypeReturn tagAdd(MethodTypeParams params) =>
-      _api.request('groups.tagAdd', params);
+  Future<ApiResponse<T>> tagAdd<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.tagAdd', params);
 
   /// Bind or unbind group's tag to user
-  MethodTypeReturn tagBind(MethodTypeParams params) =>
-      _api.request('groups.tagBind', params);
+  Future<ApiResponse<T>> tagBind<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.tagBind', params);
 
   /// Delete group's tag
-  MethodTypeReturn tagDelete(MethodTypeParams params) =>
-      _api.request('groups.tagDelete', params);
+  Future<ApiResponse<T>> tagDelete<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.tagDelete', params);
 
   /// Update group's tag
-  MethodTypeReturn tagUpdate(MethodTypeParams params) =>
-      _api.request('groups.tagUpdate', params);
+  Future<ApiResponse<T>> tagUpdate<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.tagUpdate', params);
 
   /// Переключает функционал раздела «Товаров» в выбранной группе.
-  MethodTypeReturn toggleMarket(MethodTypeParams params) =>
-      _api.request('groups.toggleMarket', params);
+  Future<ApiResponse<T>> toggleMarket<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.toggleMarket', params);
 
   /// Убирает пользователя или группу из черного списка сообщества.
-  MethodTypeReturn unban(MethodTypeParams params) =>
-      _api.request('groups.unban', params);
+  Future<ApiResponse<T>> unban<T>(MethodTypeParams params) =>
+      _api.request<T>('groups.unban', params);
 }

@@ -6,16 +6,15 @@ class Asr {
   Asr(this._api);
   final Api _api;
 
-  // ignore: lines_longer_than_80_chars
   /// Метод проверяет статус задачи на обработку аудиозаписи и возвращает текстовую расшифровку аудиозаписи.
-  MethodTypeReturn checkStatus(MethodTypeParams params) =>
-      _api.request('asr.checkStatus', params);
+  Future<ApiResponse<T>> checkStatus<T>(MethodTypeParams params) =>
+      _api.request<T>('asr.checkStatus', params);
 
   /// Метод возвращает ссылку на адрес сервера для загрузки аудиозаписи.
-  MethodTypeReturn getUploadUrl(MethodTypeParams params) =>
-      _api.request('asr.getUploadUrl', params);
+  Future<ApiResponse<T>> getUploadUrl<T>(MethodTypeParams params) =>
+      _api.request<T>('asr.getUploadUrl', params);
 
   /// Метод выполняет распознавание речи из загруженного файла аудиозаписи.
-  MethodTypeReturn process(MethodTypeParams params) =>
-      _api.request('asr.process', params);
+  Future<ApiResponse<T>> process<T>(MethodTypeParams params) =>
+      _api.request<T>('asr.process', params);
 }

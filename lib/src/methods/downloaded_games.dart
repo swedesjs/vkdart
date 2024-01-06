@@ -7,6 +7,6 @@ class DownloadedGames {
   final Api _api;
 
   /// Метод получает информацию, купил ли пользователь игру или нет.
-  MethodTypeReturn getPaidStatus(MethodTypeParams params) =>
-      _api.request('downloadedGames.getPaidStatus', params);
+  Future<ApiResponse<T>> getPaidStatus<T>(MethodTypeParams params) =>
+      _api.request<T>('downloadedGames.getPaidStatus', params);
 }

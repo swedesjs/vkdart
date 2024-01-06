@@ -7,14 +7,14 @@ class Storage {
   final Api _api;
 
   /// Returns a value of variable with the name set by key parameter.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('storage.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('storage.get', params);
 
   /// Returns the names of all variables.
-  MethodTypeReturn getKeys(MethodTypeParams params) =>
-      _api.request('storage.getKeys', params);
+  Future<ApiResponse<T>> getKeys<T>(MethodTypeParams params) =>
+      _api.request<T>('storage.getKeys', params);
 
   /// Saves a value of variable with the name set by 'key' parameter.
-  MethodTypeReturn set(MethodTypeParams params) =>
-      _api.request('storage.set', params);
+  Future<ApiResponse<T>> set<T>(MethodTypeParams params) =>
+      _api.request<T>('storage.set', params);
 }

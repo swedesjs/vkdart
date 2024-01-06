@@ -8,15 +8,15 @@ class Notifications {
 
   /// Returns a list of notifications about other users' feedback
   /// to the current user's wall posts.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('notifications.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('notifications.get', params);
 
   /// Resets the counter of new notifications about other users' feedback to the
   /// current user's wall posts.
-  MethodTypeReturn markAsViewed(MethodTypeParams params) =>
-      _api.request('notifications.markAsViewed', params);
+  Future<ApiResponse<T>> markAsViewed<T>(MethodTypeParams params) =>
+      _api.request<T>('notifications.markAsViewed', params);
 
   /// Метод отправляет уведомление пользователю мини-приложения.
-  MethodTypeReturn sendMessage(MethodTypeParams params) =>
-      _api.request('notifications.sendMessage', params);
+  Future<ApiResponse<T>> sendMessage<T>(MethodTypeParams params) =>
+      _api.request<T>('notifications.sendMessage', params);
 }

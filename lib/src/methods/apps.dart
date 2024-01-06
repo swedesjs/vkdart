@@ -6,91 +6,85 @@ class Apps {
   Apps(this._api);
   final Api _api;
 
-  // ignore: lines_longer_than_80_chars
   /// Метод добавляет новый сниппет в коллекцию сниппетов мини-приложения или игры.
-  MethodTypeReturn addSnippet(MethodTypeParams params) =>
-      _api.request('apps.addSnippet', params);
+  Future<ApiResponse<T>> addSnippet<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.addSnippet', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Метод добавляет указанных пользователей в группу тестировщиков мини-приложения.
-  MethodTypeReturn addUsersToTestingGroup(MethodTypeParams params) =>
-      _api.request('apps.addUsersToTestingGroup', params);
+  Future<ApiResponse<T>> addUsersToTestingGroup<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.addUsersToTestingGroup', params);
 
   /// Deletes all request notifications from the current app.
-  MethodTypeReturn deleteAppRequests(MethodTypeParams params) =>
-      _api.request('apps.deleteAppRequests', params);
+  Future<ApiResponse<T>> deleteAppRequests<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.deleteAppRequests', params);
 
   /// Метод удаляет сниппет мини-приложения или игры.
-  MethodTypeReturn deleteSnippet(MethodTypeParams params) =>
-      _api.request('apps.deleteSnippet', params);
+  Future<ApiResponse<T>> deleteSnippet<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.deleteSnippet', params);
 
   /// Returns applications data.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('apps.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.get', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Returns a list of applications (apps) available to users in the App Catalog.
-  MethodTypeReturn getCatalog(MethodTypeParams params) =>
-      _api.request('apps.getCatalog', params);
+  Future<ApiResponse<T>> getCatalog<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.getCatalog', params);
 
   /// Creates friends list for requests and invites in current app.
-  MethodTypeReturn getFriendsList(MethodTypeParams params) =>
-      _api.request('apps.getFriendsList', params);
+  Future<ApiResponse<T>> getFriendsList<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.getFriendsList', params);
 
   /// Returns players rating in the game.
-  MethodTypeReturn getLeaderboard(MethodTypeParams params) =>
-      _api.request('apps.getLeaderboard', params);
+  Future<ApiResponse<T>> getLeaderboard<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.getLeaderboard', params);
 
   /// Returns policies and terms given to a mini app.
-  MethodTypeReturn getMiniAppPolicies(MethodTypeParams params) =>
-      _api.request('apps.getMiniAppPolicies', params);
+  Future<ApiResponse<T>> getMiniAppPolicies<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.getMiniAppPolicies', params);
 
   /// Returns scopes for auth
-  MethodTypeReturn getScopes(MethodTypeParams params) =>
-      _api.request('apps.getScopes', params);
+  Future<ApiResponse<T>> getScopes<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.getScopes', params);
 
   /// Returns user score in app
-  MethodTypeReturn getScore(MethodTypeParams params) =>
-      _api.request('apps.getScore', params);
+  Future<ApiResponse<T>> getScore<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.getScore', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Метод возвращает информацию о сниппетах мини-приложения или игры, созданных с помощью [addSnippet].
-  MethodTypeReturn getSnippets(MethodTypeParams params) =>
-      _api.request('apps.getSnippets', params);
+  Future<ApiResponse<T>> getSnippets<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.getSnippets', params);
 
   /// Метод возвращает группы тестировщиков мини-приложения.
-  MethodTypeReturn getTestingGroups(MethodTypeParams params) =>
-      _api.request('apps.getTestingGroups', params);
+  Future<ApiResponse<T>> getTestingGroups<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.getTestingGroups', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Метод проверяет, разрешил ли пользователь присылать ему уведомления в мини-приложении.
-  MethodTypeReturn isNotificationsAllowed(MethodTypeParams params) =>
-      _api.request('apps.isNotificationsAllowed', params);
+  Future<ApiResponse<T>> isNotificationsAllowed<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.isNotificationsAllowed', params);
 
   /// Проверить есть ли у пользователя подарок в игре.
-  MethodTypeReturn promoHasActiveGift(MethodTypeParams params) =>
-      _api.request('apps.promoHasActiveGift', params);
+  Future<ApiResponse<T>> promoHasActiveGift<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.promoHasActiveGift', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Метод отмечает подарок, полученный пользователем в промоакции, как использованный.
-  MethodTypeReturn promoUseGift(MethodTypeParams params) =>
-      _api.request('apps.promoUseGift', params);
+  Future<ApiResponse<T>> promoUseGift<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.promoUseGift', params);
 
   /// Метод удаляет указанную группу тестировщиков мини-приложения.
-  MethodTypeReturn removeTestingGroup(MethodTypeParams params) =>
-      _api.request('apps.removeTestingGroup', params);
+  Future<ApiResponse<T>> removeTestingGroup<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.removeTestingGroup', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Метод удаляет указанных пользователей из групп тестировщиков мини-приложения.
-  MethodTypeReturn removeUsersFromTestingGroups(MethodTypeParams params) =>
-      _api.request('apps.removeUsersFromTestingGroups', params);
+  Future<ApiResponse<T>> removeUsersFromTestingGroups<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('apps.removeUsersFromTestingGroups', params);
 
   /// Sends a request to another user in an app that uses VK authorization.
-  MethodTypeReturn sendRequest(MethodTypeParams params) =>
-      _api.request('apps.sendRequest', params);
+  Future<ApiResponse<T>> sendRequest<T>(MethodTypeParams params) =>
+      _api.request<T>('apps.sendRequest', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Метод создает новую или обновляет существующую группу тестировщиков мини-приложения.
-  MethodTypeReturn updateMetaForTestingGroup(MethodTypeParams params) =>
-      _api.request('apps.updateMetaForTestingGroup', params);
+  Future<ApiResponse<T>> updateMetaForTestingGroup<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('apps.updateMetaForTestingGroup', params);
 }
