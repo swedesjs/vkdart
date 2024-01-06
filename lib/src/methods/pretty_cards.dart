@@ -1,4 +1,4 @@
-part of vkdart.methods;
+part of '../../methods.dart';
 
 /// Карусель — набор карточек, которые прикрепляются к записи.
 // ignore: lines_longer_than_80_chars

@@ -1,4 +1,4 @@
-part of vkdart.methods;
+part of '../../methods.dart';
 
 // ignore: lines_longer_than_80_chars
 /// Методы этой секции предоставляют доступ к базе данных учебных заведений ВКонтакте.
