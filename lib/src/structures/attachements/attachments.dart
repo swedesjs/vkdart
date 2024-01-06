@@ -105,8 +105,8 @@ class Attachment extends MainAttachment {
 
     return Attachment(
       attachTypeFromString(match[1]!),
-      id: int.parse(match[2]!),
-      owner_id: int.parse(match[3]!),
+      owner_id: int.parse(match[2]!),
+      id: int.parse(match[3]!),
       access_key: match[4],
     );
   }
