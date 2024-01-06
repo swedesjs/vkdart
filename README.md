@@ -1,70 +1,92 @@
-# vkdart
+# VkDart
 
-[![Pub](https://img.shields.io/pub/v/vkdart)](https://pub.dev/packages/vkdart)
+[![Pub Version](https://img.shields.io/pub/v/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
+[![Pub Popularity](https://img.shields.io/pub/popularity/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
+[![Pub Points](https://img.shields.io/pub/points/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 
-Library for interacting with Vkontakte API.
+> Package helps to make working with the [VK API](https://dev.vk.com/) easier.
 
-Preferably used with a group token.
+## Get Started
 
-## Features
+First, let's [install package](https://pub.dev/packages/vkdart/install).
 
-You can use the library for:
-
-- Create bots inside Vkontakte
-- Simple interaction with VK
-
-## Usage
+The simplest use:
 
 ```dart
-final vk = VkDart(token: '');
-final api = vk.getApi();
+import 'package:vkdart/vkdart.dart';
 
-await api.users.get({'user_id': 1});
+void main() async {
+  final accessToken = ''; // Group Token, User Token.
+  final vk = VkDart(token: accessToken);
+  final api = vk.getApi();
 
-await api.request('users.get', {'user_id': 1});
+  final user = await api.users.get({'user_id': 'durov'});
+
+  final name = user.data[0]['first_name'];
+  // surname
+  final surname = user.data[0]['last_name'];
+
+  print('User details: Name = $name, Surname = $surname');
+}
+
 ```
 
-## Usage Longpoll
+## Using API
 
+### Start
+
+To use VK Api methods, you need to create an instance of the `Api` class, there are two ways:
 ```dart
-final vkDart = VkDart(token: '');
-
-// to receive community events, specify the groupId parameter
-final longpoll = Longpoll(vkDart.getApi());
-
-await longpoll.start();
-
-longpoll.subscribe((event) {
-  // ....
-  // event - VK server response
-});
+vk.getApi();
+// and
+Api(token: /* */, language: /* LangApi */, version: /* */);
 ```
+The function `getApi()` creates an instance with default parameters.
 
-## Usage Callback API
+default `lang` is **LangApi.ru**, `version` is **5.131**.
 
+### Calling methods
+
+For requests to API methods, you can use two methods, the `request()` (**it is advisable use if there no method in interfaces**)
 ```dart
-final vkDart = VkDart(token: '');
-
-final callback = Callback(vkDart.getApi());
-
-// ignore: cascade_invocations
-callback.subscribe((event) {
-  // ....
-  // event - VK server response
-});
-
-await callback.start(port: 80);
+api.request('name_method', /* Map<String, Object> parameters */);
 ```
 
-## Todo
+Example:
+```dart
+api.request('users.get', {'user_id': 'durov'}); // instance Future<ApiResponse<dynamic>>
+```
 
-Plans for the near future:
+or already existing request interfaces.
 
-- Generate Vkontakte API methods interfaces ✔
-- Add support for LongPoll API ✔
+```text
+api.<selection>.<name>(/* parameters */);
+```
 
-## Additional information
+Example:
+```dart
+api.users.get({'user_id': 'durov'}); // instance Future<ApiResponse<dynamic>>
+```
 
-If you find a bug or an error in the code, please contact the [issue tracker](https://github.com/swedesjs/vkdart/issues)
+### Request response
 
-For all questions - https://t.me/vk_dart
+When calling methods, response is wrapped in an instance of the `ApiResponse` class, which has a **response** and **requestOptions** field.
+```dart
+final user = await api.users.get({'user_id': 'durov'});
+
+print('Data: ${user.data}'); // type user.data = dynamic
+print('Request Options: ${user.requestOptions}'); // access token remove!
+```
+
+Example above, output data type is dynamic, order to specify the response type, specify it in the generic function.
+```dart
+api.users.get<List<dynamic>>(/* params */);
+// or
+api.request<List<dynamic>>('name method', /* ... */);
+```
+
+## Bugs and feature requests
+
+Please send a bug report to [issue tracker](https://github.com/swedesjs/vkdart/issues)
+
+Chat discussion of the package - https://t.me/vk_dart
