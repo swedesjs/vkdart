@@ -125,7 +125,7 @@ class Attachment extends MainAttachment {
   String toString() {
     final accessKey = access_key != null ? '_$access_key' : '';
 
-    return "${attachType.name}${owner_id}_${id}$accessKey";
+    return '${attachType.name}${owner_id}_$id$accessKey';
   }
 }
 
