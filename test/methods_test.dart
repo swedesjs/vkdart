@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 import 'package:vkdart/vkdart.dart';
 
 void main() {
-  final env = DotEnv()..load();
+  final env = DotEnv(includePlatformEnvironment: true)..load();
   final vk = VkDart(token: env['TOKEN']!);
   final api = vk.getApi();
 
