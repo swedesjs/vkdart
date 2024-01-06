@@ -1,6 +1,6 @@
+import 'package:shouldly/shouldly.dart';
 import 'package:test/test.dart';
 import 'package:vkdart/src/structures/attachements/attachments.dart';
-import 'package:shouldly/shouldly.dart';
 
 void main() {
   group('Attachments', () {
@@ -55,7 +55,7 @@ void main() {
       test('should give an error', () {
         Should.throwException(() => attachTypeFromString('doc123'));
         Should.throwException(() => attachTypeFromString('1234'));
-        Should.throwException(() => attachTypeFromString('\$^53375'));
+        Should.throwException(() => attachTypeFromString(r'$^53375'));
       });
     });
 
