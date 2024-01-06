@@ -7,114 +7,110 @@ class Wall {
   final Api _api;
 
   /// Добавить лайк на запись.
-  MethodTypeReturn addLike(MethodTypeParams params) =>
-      _api.request('wall.addLike', params);
+  Future<ApiResponse<T>> addLike<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.addLike', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn checkCopyrightLink(MethodTypeParams params) =>
-      _api.request('wall.checkCopyrightLink', params);
+  Future<ApiResponse<T>> checkCopyrightLink<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.checkCopyrightLink', params);
 
   /// Закрыть комментарии к посту.
-  MethodTypeReturn closeComments(MethodTypeParams params) =>
-      _api.request('wall.closeComments', params);
+  Future<ApiResponse<T>> closeComments<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.closeComments', params);
 
   /// Adds a comment to a post on a user wall or community wall.
-  MethodTypeReturn createComment(MethodTypeParams params) =>
-      _api.request('wall.createComment', params);
+  Future<ApiResponse<T>> createComment<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.createComment', params);
 
   /// Deletes a post from a user wall or community wall.
-  MethodTypeReturn delete(MethodTypeParams params) =>
-      _api.request('wall.delete', params);
+  Future<ApiResponse<T>> delete<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.delete', params);
 
   /// Deletes a comment on a post on a user wall or community wall.
-  MethodTypeReturn deleteComment(MethodTypeParams params) =>
-      _api.request('wall.deleteComment', params);
+  Future<ApiResponse<T>> deleteComment<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.deleteComment', params);
 
   /// Edits a post on a user wall or community wall.
-  MethodTypeReturn edit(MethodTypeParams params) =>
-      _api.request('wall.edit', params);
+  Future<ApiResponse<T>> edit<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.edit', params);
 
   /// Allows to edit hidden post.
-  MethodTypeReturn editAdsStealth(MethodTypeParams params) =>
-      _api.request('wall.editAdsStealth', params);
+  Future<ApiResponse<T>> editAdsStealth<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.editAdsStealth', params);
 
   /// Edits a comment on a user wall or community wall.
-  MethodTypeReturn editComment(MethodTypeParams params) =>
-      _api.request('wall.editComment', params);
+  Future<ApiResponse<T>> editComment<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.editComment', params);
 
   /// Returns a list of posts on a user wall or community wall.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('wall.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.get', params);
 
   /// Returns a list of posts from user or community walls by their IDs.
-  MethodTypeReturn getById(MethodTypeParams params) =>
-      _api.request('wall.getById', params);
+  Future<ApiResponse<T>> getById<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.getById', params);
 
   /// Returns a comment on a post on a user wall or community wall.
-  MethodTypeReturn getComment(MethodTypeParams params) =>
-      _api.request('wall.getComment', params);
+  Future<ApiResponse<T>> getComment<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.getComment', params);
 
   /// Returns a list of comments on a post on a user wall or community wall.
-  MethodTypeReturn getComments(MethodTypeParams params) =>
-      _api.request('wall.getComments', params);
+  Future<ApiResponse<T>> getComments<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.getComments', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Returns information about reposts of a post on user wall or community wall.
-  MethodTypeReturn getReposts(MethodTypeParams params) =>
-      _api.request('wall.getReposts', params);
+  Future<ApiResponse<T>> getReposts<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.getReposts', params);
 
   /// Открыть комментарии к посту.
-  MethodTypeReturn openComments(MethodTypeParams params) =>
-      _api.request('wall.openComments', params);
+  Future<ApiResponse<T>> openComments<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.openComments', params);
 
   /// Принимает на вход ссылки и возвращает дополнительную информацию,
-  // ignore: lines_longer_than_80_chars
+
   /// которая может быть использована для создания сниппетов при публикации ссылки на стене пользователя и других ресурсах.
-  MethodTypeReturn parseAttachedLink(MethodTypeParams params) =>
-      _api.request('wall.parseAttachedLink', params);
+  Future<ApiResponse<T>> parseAttachedLink<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.parseAttachedLink', params);
 
   /// Pins the post on wall.
-  MethodTypeReturn pin(MethodTypeParams params) =>
-      _api.request('wall.pin', params);
+  Future<ApiResponse<T>> pin<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.pin', params);
 
   /// Adds a new post on a user wall or community wall. Can also be used to
   /// publish suggested or scheduled posts.
-  MethodTypeReturn post(MethodTypeParams params) =>
-      _api.request('wall.post', params);
+  Future<ApiResponse<T>> post<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.post', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Allows to create hidden post which will not be shown on the community's wall
   /// and can be used for creating an ad with type "Community post".
-  MethodTypeReturn postAdsStealth(MethodTypeParams params) =>
-      _api.request('wall.postAdsStealth', params);
+  Future<ApiResponse<T>> postAdsStealth<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.postAdsStealth', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Reports (submits a complaint about) a comment on a post on a user wall or community wall.
-  MethodTypeReturn reportComment(MethodTypeParams params) =>
-      _api.request('wall.reportComment', params);
+  Future<ApiResponse<T>> reportComment<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.reportComment', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Reports (submits a complaint about) a post on a user wall or community wall.
-  MethodTypeReturn reportPost(MethodTypeParams params) =>
-      _api.request('wall.reportPost', params);
+  Future<ApiResponse<T>> reportPost<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.reportPost', params);
 
   /// Reposts (copies) an object to a user wall or community wall.
-  MethodTypeReturn repost(MethodTypeParams params) =>
-      _api.request('wall.repost', params);
+  Future<ApiResponse<T>> repost<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.repost', params);
 
   /// Restores a post deleted from a user wall or community wall.
-  MethodTypeReturn restore(MethodTypeParams params) =>
-      _api.request('wall.restore', params);
+  Future<ApiResponse<T>> restore<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.restore', params);
 
   /// Restores a comment deleted from a user wall or community wall.
-  MethodTypeReturn restoreComment(MethodTypeParams params) =>
-      _api.request('wall.restoreComment', params);
+  Future<ApiResponse<T>> restoreComment<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.restoreComment', params);
 
   /// Allows to search posts on user or community walls.
-  MethodTypeReturn search(MethodTypeParams params) =>
-      _api.request('wall.search', params);
+  Future<ApiResponse<T>> search<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.search', params);
 
   /// Unpins the post on wall.
-  MethodTypeReturn unpin(MethodTypeParams params) =>
-      _api.request('wall.unpin', params);
+  Future<ApiResponse<T>> unpin<T>(MethodTypeParams params) =>
+      _api.request<T>('wall.unpin', params);
 }

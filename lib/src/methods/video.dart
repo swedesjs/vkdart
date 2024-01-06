@@ -7,134 +7,134 @@ class Video {
   final Api _api;
 
   /// Adds a video to a user or community page.
-  MethodTypeReturn add(MethodTypeParams params) =>
-      _api.request('video.add', params);
+  Future<ApiResponse<T>> add<T>(MethodTypeParams params) =>
+      _api.request<T>('video.add', params);
 
   /// Creates an empty album for videos.
-  MethodTypeReturn addAlbum(MethodTypeParams params) =>
-      _api.request('video.addAlbum', params);
+  Future<ApiResponse<T>> addAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('video.addAlbum', params);
 
   /// Добавить видео в альбом.
-  MethodTypeReturn addToAlbum(MethodTypeParams params) =>
-      _api.request('video.addToAlbum', params);
+  Future<ApiResponse<T>> addToAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('video.addToAlbum', params);
 
   /// Adds a new comment on a video.
-  MethodTypeReturn createComment(MethodTypeParams params) =>
-      _api.request('video.createComment', params);
+  Future<ApiResponse<T>> createComment<T>(MethodTypeParams params) =>
+      _api.request<T>('video.createComment', params);
 
   /// Deletes a video from a user or community page.
-  MethodTypeReturn delete(MethodTypeParams params) =>
-      _api.request('video.delete', params);
+  Future<ApiResponse<T>> delete<T>(MethodTypeParams params) =>
+      _api.request<T>('video.delete', params);
 
   /// Deletes a video album.
-  MethodTypeReturn deleteAlbum(MethodTypeParams params) =>
-      _api.request('video.deleteAlbum', params);
+  Future<ApiResponse<T>> deleteAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('video.deleteAlbum', params);
 
   /// Deletes a comment on a video.
-  MethodTypeReturn deleteComment(MethodTypeParams params) =>
-      _api.request('video.deleteComment', params);
+  Future<ApiResponse<T>> deleteComment<T>(MethodTypeParams params) =>
+      _api.request<T>('video.deleteComment', params);
 
   /// Edits information about a video on a user or community page.
-  MethodTypeReturn edit(MethodTypeParams params) =>
-      _api.request('video.edit', params);
+  Future<ApiResponse<T>> edit<T>(MethodTypeParams params) =>
+      _api.request<T>('video.edit', params);
 
   /// Edits the title of a video album.
-  MethodTypeReturn editAlbum(MethodTypeParams params) =>
-      _api.request('video.editAlbum', params);
+  Future<ApiResponse<T>> editAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('video.editAlbum', params);
 
   /// Edits the text of a comment on a video.
-  MethodTypeReturn editComment(MethodTypeParams params) =>
-      _api.request('video.editComment', params);
+  Future<ApiResponse<T>> editComment<T>(MethodTypeParams params) =>
+      _api.request<T>('video.editComment', params);
 
   /// Returns detailed information about videos.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('video.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('video.get', params);
 
   /// Returns video album info
-  MethodTypeReturn getAlbumById(MethodTypeParams params) =>
-      _api.request('video.getAlbumById', params);
+  Future<ApiResponse<T>> getAlbumById<T>(MethodTypeParams params) =>
+      _api.request<T>('video.getAlbumById', params);
 
   /// Returns a list of video albums owned by a user or community.
-  MethodTypeReturn getAlbums(MethodTypeParams params) =>
-      _api.request('video.getAlbums', params);
+  Future<ApiResponse<T>> getAlbums<T>(MethodTypeParams params) =>
+      _api.request<T>('video.getAlbums', params);
 
   /// Получить список альбов.
-  MethodTypeReturn getAlbumsByVideo(MethodTypeParams params) =>
-      _api.request('video.getAlbumsByVideo', params);
+  Future<ApiResponse<T>> getAlbumsByVideo<T>(MethodTypeParams params) =>
+      _api.request<T>('video.getAlbumsByVideo', params);
 
   /// Returns a list of comments on a video.
-  MethodTypeReturn getComments(MethodTypeParams params) =>
-      _api.request('video.getComments', params);
+  Future<ApiResponse<T>> getComments<T>(MethodTypeParams params) =>
+      _api.request<T>('video.getComments', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn getLongPollServer(MethodTypeParams params) =>
-      _api.request('video.getLongPollServer', params);
+  Future<ApiResponse<T>> getLongPollServer<T>(MethodTypeParams params) =>
+      _api.request<T>('video.getLongPollServer', params);
 
   /// Поиск видеозаписи по тегу.
-  MethodTypeReturn getNewTags(MethodTypeParams params) =>
-      _api.request('video.getNewTags', params);
+  Future<ApiResponse<T>> getNewTags<T>(MethodTypeParams params) =>
+      _api.request<T>('video.getNewTags', params);
 
   /// Возвращает теги видеозаписи.
-  MethodTypeReturn getTags(MethodTypeParams params) =>
-      _api.request('video.getTags', params);
+  Future<ApiResponse<T>> getTags<T>(MethodTypeParams params) =>
+      _api.request<T>('video.getTags', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn liveGetCategories(MethodTypeParams params) =>
-      _api.request('video.liveGetCategories', params);
+  Future<ApiResponse<T>> liveGetCategories<T>(MethodTypeParams params) =>
+      _api.request<T>('video.liveGetCategories', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn moveToAlbum(MethodTypeParams params) =>
-      _api.request('video.moveToAlbum', params);
+  Future<ApiResponse<T>> moveToAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('video.moveToAlbum', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn putTag(MethodTypeParams params) =>
-      _api.request('video.putTag', params);
+  Future<ApiResponse<T>> putTag<T>(MethodTypeParams params) =>
+      _api.request<T>('video.putTag', params);
 
   /// Удалить видео из альбома.
-  MethodTypeReturn removeFromAlbum(MethodTypeParams params) =>
-      _api.request('video.removeFromAlbum', params);
+  Future<ApiResponse<T>> removeFromAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('video.removeFromAlbum', params);
 
   /// Удалить тег с видеозаписи.
-  MethodTypeReturn removeTag(MethodTypeParams params) =>
-      _api.request('video.removeTag', params);
+  Future<ApiResponse<T>> removeTag<T>(MethodTypeParams params) =>
+      _api.request<T>('video.removeTag', params);
 
   /// Reorders the album in the list of user video albums.
-  MethodTypeReturn reorderAlbums(MethodTypeParams params) =>
-      _api.request('video.reorderAlbums', params);
+  Future<ApiResponse<T>> reorderAlbums<T>(MethodTypeParams params) =>
+      _api.request<T>('video.reorderAlbums', params);
 
   /// Reorders the video in the video album.
-  MethodTypeReturn reorderVideos(MethodTypeParams params) =>
-      _api.request('video.reorderVideos', params);
+  Future<ApiResponse<T>> reorderVideos<T>(MethodTypeParams params) =>
+      _api.request<T>('video.reorderVideos', params);
 
   /// Reports (submits a complaint about) a video.
-  MethodTypeReturn report(MethodTypeParams params) =>
-      _api.request('video.report', params);
+  Future<ApiResponse<T>> report<T>(MethodTypeParams params) =>
+      _api.request<T>('video.report', params);
 
   /// Reports (submits a complaint about) a comment on a video.
-  MethodTypeReturn reportComment(MethodTypeParams params) =>
-      _api.request('video.reportComment', params);
+  Future<ApiResponse<T>> reportComment<T>(MethodTypeParams params) =>
+      _api.request<T>('video.reportComment', params);
 
   /// Restores a previously deleted video.
-  MethodTypeReturn restore(MethodTypeParams params) =>
-      _api.request('video.restore', params);
+  Future<ApiResponse<T>> restore<T>(MethodTypeParams params) =>
+      _api.request<T>('video.restore', params);
 
   /// Restores a previously deleted comment on a video.
-  MethodTypeReturn restoreComment(MethodTypeParams params) =>
-      _api.request('video.restoreComment', params);
+  Future<ApiResponse<T>> restoreComment<T>(MethodTypeParams params) =>
+      _api.request<T>('video.restoreComment', params);
 
   /// Returns a server address (required for upload) and video data.
-  MethodTypeReturn save(MethodTypeParams params) =>
-      _api.request('video.save', params);
+  Future<ApiResponse<T>> save<T>(MethodTypeParams params) =>
+      _api.request<T>('video.save', params);
 
   /// Returns a list of videos under the set search criterion.
-  MethodTypeReturn search(MethodTypeParams params) =>
-      _api.request('video.search', params);
+  Future<ApiResponse<T>> search<T>(MethodTypeParams params) =>
+      _api.request<T>('video.search', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn startStreaming(MethodTypeParams params) =>
-      _api.request('video.startStreaming', params);
+  Future<ApiResponse<T>> startStreaming<T>(MethodTypeParams params) =>
+      _api.request<T>('video.startStreaming', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn stopStreaming(MethodTypeParams params) =>
-      _api.request('video.stopStreaming', params);
+  Future<ApiResponse<T>> stopStreaming<T>(MethodTypeParams params) =>
+      _api.request<T>('video.stopStreaming', params);
 }

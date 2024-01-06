@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:vkdart/methods.dart';
 import 'package:vkdart/src/exceptions/api_exception.dart';
+import 'package:vkdart/src/types/methods.dart';
 
 /// Перечисление языков поддерживаемых VK API
 enum LangApi {
@@ -51,44 +52,44 @@ class Api {
   final String _version;
 
   /// Позволяет создавать запросы к Апи Вк
-  Future<Map<String, dynamic>> request(
+  /// В [T] указываем возвращаемый тип результата выполнения запроса.
+  Future<ApiResponse<T>> request<T>(
     String methodName,
     Map<String, Object> params,
   ) async {
-    final lang = params['lang'];
-    Object? requestLang;
+    final langConclusion = switch (params['lang']) {
+      final LangApi x => x.index,
+      int || String => params['lang']!,
+      _ => _language.index
+    };
 
-    if (lang != null) {
-      requestLang = lang is LangApi
-          ? lang.index
-          : (lang is int || lang is String ? lang : null);
+    params.remove('lang');
 
-      params.remove('lang');
-    }
-
-    requestLang ??= _language.index;
-
-    final requestParams = {
+    final requestOptions = {
       'access_token': _token,
-      'lang': requestLang,
+      'lang': langConclusion,
       'v': _version,
       ...params,
     };
 
-    final response = await _dio.post<Map<String, dynamic>>(
+    // ignore: unnecessary_null_checks
+    final Response(:data!) = await _dio.post<ClassicMap>(
       _baseUrl + methodName,
-      data: requestParams.entries.map((e) => '${e.key}=${e.value}').join('&'),
+      data: requestOptions.entries.map((e) => '${e.key}=${e.value}').join('&'),
       options: Options(contentType: 'application/x-www-form-urlencoded'),
     );
 
-    final data = response.data!;
+    final error = (data['error'] as Map?)?.cast<String, dynamic>();
+    final response = data['response'] as Object?;
 
-    final error = data['error'];
     if (error != null) {
-      throw ApiException.fromJson((error as Map).cast<String, dynamic>());
+      throw ApiException.fromJson(error);
     }
 
-    return data;
+    return ApiResponse<T>(
+      data: response as T,
+      requestOptions: requestOptions..remove('access_token'),
+    );
   }
 
   /// Методы для работы с аккаунтом.
@@ -254,4 +255,17 @@ class Api {
 
   /// Методы для работы с виджетами на внешних сайтах.
   Widgets get widgets => Widgets(this);
+}
+
+/// Класс [ApiResponse] содержит полезную нагрузку.
+/// Предосталяет информацию к опциям запроса к метода, а так же результат запроса.
+class ApiResponse<T> {
+  /// Конструктор.
+  ApiResponse({required this.data, required this.requestOptions});
+
+  /// Результат выполнения запроса
+  final T data;
+
+  /// Опции запроса.
+  final Map<String, dynamic> requestOptions;
 }

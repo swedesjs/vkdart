@@ -7,46 +7,46 @@ class Notes {
   final Api _api;
 
   /// Creates a new note for the current user.
-  MethodTypeReturn add(MethodTypeParams params) =>
-      _api.request('notes.add', params);
+  Future<ApiResponse<T>> add<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.add', params);
 
   /// Adds a new comment on a note.
-  MethodTypeReturn createComment(MethodTypeParams params) =>
-      _api.request('notes.createComment', params);
+  Future<ApiResponse<T>> createComment<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.createComment', params);
 
   /// Deletes a note of the current user.
-  MethodTypeReturn delete(MethodTypeParams params) =>
-      _api.request('notes.delete', params);
+  Future<ApiResponse<T>> delete<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.delete', params);
 
   /// Deletes a comment on a note.
-  MethodTypeReturn deleteComment(MethodTypeParams params) =>
-      _api.request('notes.deleteComment', params);
+  Future<ApiResponse<T>> deleteComment<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.deleteComment', params);
 
   /// Edits a note of the current user.
-  MethodTypeReturn edit(MethodTypeParams params) =>
-      _api.request('notes.edit', params);
+  Future<ApiResponse<T>> edit<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.edit', params);
 
   /// Edits a comment on a note.
-  MethodTypeReturn editComment(MethodTypeParams params) =>
-      _api.request('notes.editComment', params);
+  Future<ApiResponse<T>> editComment<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.editComment', params);
 
   /// Returns a list of notes created by a user.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('notes.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.get', params);
 
   /// Returns a note by its ID.
-  MethodTypeReturn getById(MethodTypeParams params) =>
-      _api.request('notes.getById', params);
+  Future<ApiResponse<T>> getById<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.getById', params);
 
   /// Returns a list of comments on a note.
-  MethodTypeReturn getComments(MethodTypeParams params) =>
-      _api.request('notes.getComments', params);
+  Future<ApiResponse<T>> getComments<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.getComments', params);
 
   /// Возвращает список заметок друзей пользователя.
-  MethodTypeReturn getFriendsNotes(MethodTypeParams params) =>
-      _api.request('notes.getFriendsNotes', params);
+  Future<ApiResponse<T>> getFriendsNotes<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.getFriendsNotes', params);
 
   /// Restores a deleted comment on a note.
-  MethodTypeReturn restoreComment(MethodTypeParams params) =>
-      _api.request('notes.restoreComment', params);
+  Future<ApiResponse<T>> restoreComment<T>(MethodTypeParams params) =>
+      _api.request<T>('notes.restoreComment', params);
 }

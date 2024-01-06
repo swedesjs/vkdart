@@ -7,6 +7,6 @@ class Search {
   final Api _api;
 
   /// Allows the programmer to do a quick search for any substring.
-  MethodTypeReturn getHints(MethodTypeParams params) =>
-      _api.request('search.getHints', params);
+  Future<ApiResponse<T>> getHints<T>(MethodTypeParams params) =>
+      _api.request<T>('search.getHints', params);
 }

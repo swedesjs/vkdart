@@ -7,199 +7,201 @@ class Photos {
   final Api _api;
 
   /// Confirms a tag on a photo.
-  MethodTypeReturn confirmTag(MethodTypeParams params) =>
-      _api.request('photos.confirmTag', params);
+  Future<ApiResponse<T>> confirmTag<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.confirmTag', params);
 
   /// Allows to copy a photo to the "Saved photos" album
-  MethodTypeReturn copy(MethodTypeParams params) =>
-      _api.request('photos.copy', params);
+  Future<ApiResponse<T>> copy<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.copy', params);
 
   /// Creates an empty photo album.
-  MethodTypeReturn createAlbum(MethodTypeParams params) =>
-      _api.request('photos.createAlbum', params);
+  Future<ApiResponse<T>> createAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.createAlbum', params);
 
   /// Adds a new comment on the photo.
-  MethodTypeReturn createComment(MethodTypeParams params) =>
-      _api.request('photos.createComment', params);
+  Future<ApiResponse<T>> createComment<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.createComment', params);
 
   /// Deletes a photo.
-  MethodTypeReturn delete(MethodTypeParams params) =>
-      _api.request('photos.delete', params);
+  Future<ApiResponse<T>> delete<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.delete', params);
 
   /// Deletes a photo album belonging to the current user.
-  MethodTypeReturn deleteAlbum(MethodTypeParams params) =>
-      _api.request('photos.deleteAlbum', params);
+  Future<ApiResponse<T>> deleteAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.deleteAlbum', params);
 
   /// Deletes a comment on the photo.
-  MethodTypeReturn deleteComment(MethodTypeParams params) =>
-      _api.request('photos.deleteComment', params);
+  Future<ApiResponse<T>> deleteComment<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.deleteComment', params);
 
   /// Edits the caption of a photo.
-  MethodTypeReturn edit(MethodTypeParams params) =>
-      _api.request('photos.edit', params);
+  Future<ApiResponse<T>> edit<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.edit', params);
 
   /// Edits information about a photo album.
-  MethodTypeReturn editAlbum(MethodTypeParams params) =>
-      _api.request('photos.editAlbum', params);
+  Future<ApiResponse<T>> editAlbum<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.editAlbum', params);
 
   /// Edits a comment on a photo.
-  MethodTypeReturn editComment(MethodTypeParams params) =>
-      _api.request('photos.editComment', params);
+  Future<ApiResponse<T>> editComment<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.editComment', params);
 
   /// Returns a list of a user's or community's photos.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('photos.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.get', params);
 
   /// Returns a list of a user's or community's photo albums.
-  MethodTypeReturn getAlbums(MethodTypeParams params) =>
-      _api.request('photos.getAlbums', params);
+  Future<ApiResponse<T>> getAlbums<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getAlbums', params);
 
   /// Returns the number of photo albums belonging to a user or community.
-  MethodTypeReturn getAlbumsCount(MethodTypeParams params) =>
-      _api.request('photos.getAlbumsCount', params);
+  Future<ApiResponse<T>> getAlbumsCount<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getAlbumsCount', params);
 
   /// Returns a list of photos belonging to a user or community,
   /// in reverse chronological order.
-  MethodTypeReturn getAll(MethodTypeParams params) =>
-      _api.request('photos.getAll', params);
+  Future<ApiResponse<T>> getAll<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getAll', params);
 
   /// Returns a list of comments on a specific photo album or all albums of the
   /// user sorted in reverse chronological order.
-  MethodTypeReturn getAllComments(MethodTypeParams params) =>
-      _api.request('photos.getAllComments', params);
+  Future<ApiResponse<T>> getAllComments<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getAllComments', params);
 
   /// Returns information about photos by their IDs.
-  MethodTypeReturn getById(MethodTypeParams params) =>
-      _api.request('photos.getById', params);
+  Future<ApiResponse<T>> getById<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getById', params);
 
   /// Returns an upload link for chat cover pictures.
-  MethodTypeReturn getChatUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getChatUploadServer', params);
+  Future<ApiResponse<T>> getChatUploadServer<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getChatUploadServer', params);
 
   /// Returns a list of comments on a photo.
-  MethodTypeReturn getComments(MethodTypeParams params) =>
-      _api.request('photos.getComments', params);
+  Future<ApiResponse<T>> getComments<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getComments', params);
 
   // ignore: public_member_api_docs
-  MethodTypeReturn getMailUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getMailUploadServer', params);
+  Future<ApiResponse<T>> getMailUploadServer<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getMailUploadServer', params);
 
   /// Returns the server address for market album photo upload.
-  MethodTypeReturn getMarketAlbumUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getMarketAlbumUploadServer', params);
+  Future<ApiResponse<T>> getMarketAlbumUploadServer<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('photos.getMarketAlbumUploadServer', params);
 
   /// Returns the server address for market photo upload.
-  MethodTypeReturn getMarketUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getMarketUploadServer', params);
+  Future<ApiResponse<T>> getMarketUploadServer<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getMarketUploadServer', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Returns the server address for photo upload in a private message for a user.
-  MethodTypeReturn getMessagesUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getMessagesUploadServer', params);
+  Future<ApiResponse<T>> getMessagesUploadServer<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getMessagesUploadServer', params);
 
   /// Returns a list of photos with tags that have not been viewed.
-  MethodTypeReturn getNewTags(MethodTypeParams params) =>
-      _api.request('photos.getNewTags', params);
+  Future<ApiResponse<T>> getNewTags<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getNewTags', params);
 
   /// Returns the server address for owner cover upload.
-  MethodTypeReturn getOwnerCoverPhotoUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getOwnerCoverPhotoUploadServer', params);
+  Future<ApiResponse<T>> getOwnerCoverPhotoUploadServer<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('photos.getOwnerCoverPhotoUploadServer', params);
 
   /// Returns an upload server address for a profile or community photo.
-  MethodTypeReturn getOwnerPhotoUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getOwnerPhotoUploadServer', params);
+  Future<ApiResponse<T>> getOwnerPhotoUploadServer<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('photos.getOwnerPhotoUploadServer', params);
 
   /// Возвращает список фотографий со страницы пользователя или сообщества.
-  MethodTypeReturn getProfile(MethodTypeParams params) =>
-      _api.request('photos.getProfile', params);
+  Future<ApiResponse<T>> getProfile<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getProfile', params);
 
   /// Returns a list of tags on a photo.
-  MethodTypeReturn getTags(MethodTypeParams params) =>
-      _api.request('photos.getTags', params);
+  Future<ApiResponse<T>> getTags<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getTags', params);
 
   /// Returns the server address for photo upload.
-  MethodTypeReturn getUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getUploadServer', params);
+  Future<ApiResponse<T>> getUploadServer<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getUploadServer', params);
 
   /// Returns a list of photos in which a user is tagged.
-  MethodTypeReturn getUserPhotos(MethodTypeParams params) =>
-      _api.request('photos.getUserPhotos', params);
+  Future<ApiResponse<T>> getUserPhotos<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getUserPhotos', params);
 
   /// Returns the server address for photo upload onto a user's wall.
-  MethodTypeReturn getWallUploadServer(MethodTypeParams params) =>
-      _api.request('photos.getWallUploadServer', params);
+  Future<ApiResponse<T>> getWallUploadServer<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.getWallUploadServer', params);
 
   /// Makes a photo into an album cover.
-  MethodTypeReturn makeCover(MethodTypeParams params) =>
-      _api.request('photos.makeCover', params);
+  Future<ApiResponse<T>> makeCover<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.makeCover', params);
 
   /// Moves a photo from one album to another.
-  MethodTypeReturn move(MethodTypeParams params) =>
-      _api.request('photos.move', params);
+  Future<ApiResponse<T>> move<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.move', params);
 
   /// Adds a tag on the photo.
-  MethodTypeReturn putTag(MethodTypeParams params) =>
-      _api.request('photos.putTag', params);
+  Future<ApiResponse<T>> putTag<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.putTag', params);
 
   /// Removes a tag from a photo.
-  MethodTypeReturn removeTag(MethodTypeParams params) =>
-      _api.request('photos.removeTag', params);
+  Future<ApiResponse<T>> removeTag<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.removeTag', params);
 
   /// Reorders the album in the list of user albums.
-  MethodTypeReturn reorderAlbums(MethodTypeParams params) =>
-      _api.request('photos.reorderAlbums', params);
+  Future<ApiResponse<T>> reorderAlbums<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.reorderAlbums', params);
 
   /// Reorders the photo in the list of photos of the user album.
-  MethodTypeReturn reorderPhotos(MethodTypeParams params) =>
-      _api.request('photos.reorderPhotos', params);
+  Future<ApiResponse<T>> reorderPhotos<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.reorderPhotos', params);
 
   /// Reports (submits a complaint about) a photo.
-  MethodTypeReturn report(MethodTypeParams params) =>
-      _api.request('photos.report', params);
+  Future<ApiResponse<T>> report<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.report', params);
 
   /// Reports (submits a complaint about) a comment on a photo.
-  MethodTypeReturn reportComment(MethodTypeParams params) =>
-      _api.request('photos.reportComment', params);
+  Future<ApiResponse<T>> reportComment<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.reportComment', params);
 
   /// Restores a deleted photo.
-  MethodTypeReturn restore(MethodTypeParams params) =>
-      _api.request('photos.restore', params);
+  Future<ApiResponse<T>> restore<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.restore', params);
 
   /// Restores a deleted comment on a photo.
-  MethodTypeReturn restoreComment(MethodTypeParams params) =>
-      _api.request('photos.restoreComment', params);
+  Future<ApiResponse<T>> restoreComment<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.restoreComment', params);
 
   /// Saves photos after successful uploading.
-  MethodTypeReturn save(MethodTypeParams params) =>
-      _api.request('photos.save', params);
+  Future<ApiResponse<T>> save<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.save', params);
 
   /// Saves market album photos after successful uploading.
-  MethodTypeReturn saveMarketAlbumPhoto(MethodTypeParams params) =>
-      _api.request('photos.saveMarketAlbumPhoto', params);
+  Future<ApiResponse<T>> saveMarketAlbumPhoto<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.saveMarketAlbumPhoto', params);
 
   /// Saves market photos after successful uploading.
-  MethodTypeReturn saveMarketPhoto(MethodTypeParams params) =>
-      _api.request('photos.saveMarketPhoto', params);
+  Future<ApiResponse<T>> saveMarketPhoto<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.saveMarketPhoto', params);
 
   /// Saves a photo after being successfully uploaded. URL obtained with
   /// [Photos.getMessagesUploadServer] method.
-  MethodTypeReturn saveMessagesPhoto(MethodTypeParams params) =>
-      _api.request('photos.saveMessagesPhoto', params);
+  Future<ApiResponse<T>> saveMessagesPhoto<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.saveMessagesPhoto', params);
 
   /// Saves cover photo after successful uploading.
-  MethodTypeReturn saveOwnerCoverPhoto(MethodTypeParams params) =>
-      _api.request('photos.saveOwnerCoverPhoto', params);
+  Future<ApiResponse<T>> saveOwnerCoverPhoto<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.saveOwnerCoverPhoto', params);
 
   /// Saves a profile or community photo. Upload URL can be got with the
   /// [Photos.getOwnerPhotoUploadServer] method.
-  MethodTypeReturn saveOwnerPhoto(MethodTypeParams params) =>
-      _api.request('photos.saveOwnerPhoto', params);
+  Future<ApiResponse<T>> saveOwnerPhoto<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.saveOwnerPhoto', params);
 
   /// Saves a photo to a user's or community's wall after being uploaded.
-  MethodTypeReturn saveWallPhoto(MethodTypeParams params) =>
-      _api.request('photos.saveWallPhoto', params);
+  Future<ApiResponse<T>> saveWallPhoto<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.saveWallPhoto', params);
 
   /// Returns a list of photos.
-  MethodTypeReturn search(MethodTypeParams params) =>
-      _api.request('photos.search', params);
+  Future<ApiResponse<T>> search<T>(MethodTypeParams params) =>
+      _api.request<T>('photos.search', params);
 }

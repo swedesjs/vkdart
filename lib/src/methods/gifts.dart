@@ -7,6 +7,6 @@ class Gifts {
   final Api _api;
 
   /// Returns a list of user gifts.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('gifts.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('gifts.get', params);
 }

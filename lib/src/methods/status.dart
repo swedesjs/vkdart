@@ -7,10 +7,10 @@ class Status {
   final Api _api;
 
   /// Returns data required to show the status of a user or community.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('status.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('status.get', params);
 
   /// Sets a new status for the current user.
-  MethodTypeReturn set(MethodTypeParams params) =>
-      _api.request('status.set', params);
+  Future<ApiResponse<T>> set<T>(MethodTypeParams params) =>
+      _api.request<T>('status.set', params);
 }

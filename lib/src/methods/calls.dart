@@ -7,10 +7,10 @@ class Calls {
   final Api _api;
 
   /// Принудительно завершить звонок
-  MethodTypeReturn forceFinish(MethodTypeParams params) =>
-      _api.request('calls.forceFinish', params);
+  Future<ApiResponse<T>> forceFinish<T>(MethodTypeParams params) =>
+      _api.request<T>('calls.forceFinish', params);
 
   /// Создать новый звонок от имени пользователя или сообщества
-  MethodTypeReturn start(MethodTypeParams params) =>
-      _api.request('calls.start', params);
+  Future<ApiResponse<T>> start<T>(MethodTypeParams params) =>
+      _api.request<T>('calls.start', params);
 }

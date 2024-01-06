@@ -7,19 +7,18 @@ class Likes {
   final Api _api;
 
   /// Adds the specified object to the 'Likes' list of the current user.
-  MethodTypeReturn add(MethodTypeParams params) =>
-      _api.request('likes.add', params);
+  Future<ApiResponse<T>> add<T>(MethodTypeParams params) =>
+      _api.request<T>('likes.add', params);
 
   /// Deletes the specified object from the 'Likes' list of the current user.
-  MethodTypeReturn delete(MethodTypeParams params) =>
-      _api.request('likes.delete', params);
+  Future<ApiResponse<T>> delete<T>(MethodTypeParams params) =>
+      _api.request<T>('likes.delete', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Returns a list of IDs of users who added the specified object to their 'Likes' list.
-  MethodTypeReturn getList(MethodTypeParams params) =>
-      _api.request('likes.getList', params);
+  Future<ApiResponse<T>> getList<T>(MethodTypeParams params) =>
+      _api.request<T>('likes.getList', params);
 
   /// Checks for the object in the 'Likes' list of the specified user.
-  MethodTypeReturn isLiked(MethodTypeParams params) =>
-      _api.request('likes.isLiked', params);
+  Future<ApiResponse<T>> isLiked<T>(MethodTypeParams params) =>
+      _api.request<T>('likes.isLiked', params);
 }

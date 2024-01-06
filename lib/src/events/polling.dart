@@ -43,15 +43,16 @@ class Longpoll {
 
     final isGroup = _groupId != null;
 
-    final {'response': ClassicMap response} = isGroup
-        ? await _api.groups.getLongPollServer({'group_id': _groupId!})
-        : await _api.messages.getLongPollServer({'lp_version': 10});
+    final ApiResponse(:data) = isGroup
+        ? await _api.groups
+            .getLongPollServer<ClassicMap>({'group_id': _groupId!})
+        : await _api.messages.getLongPollServer<ClassicMap>({'lp_version': 10});
 
     final {
       'server': String server,
       'key': String key,
       'ts': ts,
-    } = response;
+    } = data;
 
     assert(ts is int || ts is String, 'ts должен быть равен типу String, int');
 

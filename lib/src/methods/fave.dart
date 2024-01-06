@@ -7,94 +7,94 @@ class Fave {
   final Api _api;
 
   /// Добавляет статью в закладки.
-  MethodTypeReturn addArticle(MethodTypeParams params) =>
-      _api.request('fave.addArticle', params);
+  Future<ApiResponse<T>> addArticle<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.addArticle', params);
 
   /// Добавляет ссылку в закладки.
-  MethodTypeReturn addLink(MethodTypeParams params) =>
-      _api.request('fave.addLink', params);
+  Future<ApiResponse<T>> addLink<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.addLink', params);
 
   /// Добавляет сообщество или пользователя в закладки.
-  MethodTypeReturn addPage(MethodTypeParams params) =>
-      _api.request('fave.addPage', params);
+  Future<ApiResponse<T>> addPage<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.addPage', params);
 
   /// Добавляет запись со стены пользователя или сообщества в закладки.
-  MethodTypeReturn addPost(MethodTypeParams params) =>
-      _api.request('fave.addPost', params);
+  Future<ApiResponse<T>> addPost<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.addPost', params);
 
   /// Добавляет товар в закладки.
-  MethodTypeReturn addProduct(MethodTypeParams params) =>
-      _api.request('fave.addProduct', params);
+  Future<ApiResponse<T>> addProduct<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.addProduct', params);
 
   /// Создаёт метку закладок.
-  MethodTypeReturn addTag(MethodTypeParams params) =>
-      _api.request('fave.addTag', params);
+  Future<ApiResponse<T>> addTag<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.addTag', params);
 
   /// Добавляет видеозапись в закладки.
-  MethodTypeReturn addVideo(MethodTypeParams params) =>
-      _api.request('fave.addVideo', params);
+  Future<ApiResponse<T>> addVideo<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.addVideo', params);
 
   /// Редактирует метку.
-  MethodTypeReturn editTag(MethodTypeParams params) =>
-      _api.request('fave.editTag', params);
+  Future<ApiResponse<T>> editTag<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.editTag', params);
 
   /// Возвращает объекты, добавленные в закладки пользователя.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('fave.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.get', params);
 
   /// Возвращает страницы пользователей и сообществ, добавленных в закладки.
-  MethodTypeReturn getPages(MethodTypeParams params) =>
-      _api.request('fave.getPages', params);
+  Future<ApiResponse<T>> getPages<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.getPages', params);
 
   /// Возвращает список меток в закладках.
-  MethodTypeReturn getTags(MethodTypeParams params) =>
-      _api.request('fave.getTags', params);
+  Future<ApiResponse<T>> getTags<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.getTags', params);
 
   /// Отмечает закладки как просмотренные.
-  MethodTypeReturn markSeen(MethodTypeParams params) =>
-      _api.request('fave.markSeen', params);
+  Future<ApiResponse<T>> markSeen<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.markSeen', params);
 
   /// Удаляет статью из закладок.
-  MethodTypeReturn removeArticle(MethodTypeParams params) =>
-      _api.request('fave.removeArticle', params);
+  Future<ApiResponse<T>> removeArticle<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.removeArticle', params);
 
   /// Removes link from the user's faves.
-  MethodTypeReturn removeLink(MethodTypeParams params) =>
-      _api.request('fave.removeLink', params);
+  Future<ApiResponse<T>> removeLink<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.removeLink', params);
 
   /// Удаляет из закладок сообщество или страницу пользователя.
-  MethodTypeReturn removePage(MethodTypeParams params) =>
-      _api.request('fave.removePage', params);
+  Future<ApiResponse<T>> removePage<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.removePage', params);
 
   /// Удаляет из закладок запись на стене пользователя или сообщества.
-  MethodTypeReturn removePost(MethodTypeParams params) =>
-      _api.request('fave.removePost', params);
+  Future<ApiResponse<T>> removePost<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.removePost', params);
 
   /// Удаляет товар из закладок.
-  MethodTypeReturn removeProduct(MethodTypeParams params) =>
-      _api.request('fave.removeProduct', params);
+  Future<ApiResponse<T>> removeProduct<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.removeProduct', params);
 
   /// Удаляет метку закладок.
-  MethodTypeReturn removeTag(MethodTypeParams params) =>
-      _api.request('fave.removeTag', params);
+  Future<ApiResponse<T>> removeTag<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.removeTag', params);
 
   /// Удаляет видеозапись из списка закладок.
-  MethodTypeReturn removeVideo(MethodTypeParams params) =>
-      _api.request('fave.removeVideo', params);
+  Future<ApiResponse<T>> removeVideo<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.removeVideo', params);
 
   /// Меняет порядок меток закладок в списке.
-  MethodTypeReturn reorderTags(MethodTypeParams params) =>
-      _api.request('fave.reorderTags', params);
+  Future<ApiResponse<T>> reorderTags<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.reorderTags', params);
 
   /// Устанавливает метку странице пользователя или сообщества.
-  MethodTypeReturn setPageTags(MethodTypeParams params) =>
-      _api.request('fave.setPageTags', params);
+  Future<ApiResponse<T>> setPageTags<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.setPageTags', params);
 
   /// Устанавливает метку выбранному объекту в списке закладок.
-  MethodTypeReturn setTags(MethodTypeParams params) =>
-      _api.request('fave.setTags', params);
+  Future<ApiResponse<T>> setTags<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.setTags', params);
 
   /// Устанавливает страницу пользователя или сообщества в топ закладок.
-  MethodTypeReturn trackPageInteraction(MethodTypeParams params) =>
-      _api.request('fave.trackPageInteraction', params);
+  Future<ApiResponse<T>> trackPageInteraction<T>(MethodTypeParams params) =>
+      _api.request<T>('fave.trackPageInteraction', params);
 }

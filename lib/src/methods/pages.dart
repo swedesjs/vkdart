@@ -6,36 +6,35 @@ class Pages {
   Pages(this._api);
   final Api _api;
 
-  // ignore: lines_longer_than_80_chars
   /// Allows to clear the cache of particular 'external' pages which may be attached to VK posts.
-  MethodTypeReturn clearCache(MethodTypeParams params) =>
-      _api.request('pages.clearCache', params);
+  Future<ApiResponse<T>> clearCache<T>(MethodTypeParams params) =>
+      _api.request<T>('pages.clearCache', params);
 
   /// Returns information about a wiki page.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('pages.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('pages.get', params);
 
   /// Returns a list of all previous versions of a wiki page.
-  MethodTypeReturn getHistory(MethodTypeParams params) =>
-      _api.request('pages.getHistory', params);
+  Future<ApiResponse<T>> getHistory<T>(MethodTypeParams params) =>
+      _api.request<T>('pages.getHistory', params);
 
   /// Returns a list of wiki pages in a group.
-  MethodTypeReturn getTitles(MethodTypeParams params) =>
-      _api.request('pages.getTitles', params);
+  Future<ApiResponse<T>> getTitles<T>(MethodTypeParams params) =>
+      _api.request<T>('pages.getTitles', params);
 
   /// Returns the text of one of the previous versions of a wiki page.
-  MethodTypeReturn getVersion(MethodTypeParams params) =>
-      _api.request('pages.getVersion', params);
+  Future<ApiResponse<T>> getVersion<T>(MethodTypeParams params) =>
+      _api.request<T>('pages.getVersion', params);
 
   /// Returns HTML representation of the wiki markup.
-  MethodTypeReturn parseWiki(MethodTypeParams params) =>
-      _api.request('pages.parseWiki', params);
+  Future<ApiResponse<T>> parseWiki<T>(MethodTypeParams params) =>
+      _api.request<T>('pages.parseWiki', params);
 
   /// Saves the text of a wiki page.
-  MethodTypeReturn save(MethodTypeParams params) =>
-      _api.request('pages.save', params);
+  Future<ApiResponse<T>> save<T>(MethodTypeParams params) =>
+      _api.request<T>('pages.save', params);
 
   /// Saves modified read and edit access settings for a wiki page.
-  MethodTypeReturn saveAccess(MethodTypeParams params) =>
-      _api.request('pages.saveAccess', params);
+  Future<ApiResponse<T>> saveAccess<T>(MethodTypeParams params) =>
+      _api.request<T>('pages.saveAccess', params);
 }

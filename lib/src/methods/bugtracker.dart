@@ -8,59 +8,59 @@ class Bugtracker {
   final Api _api;
 
   /// Добавляет сотрудников в группы доступа компании.
-  MethodTypeReturn addCompanyGroupsMembers(MethodTypeParams params) =>
-      _api.request('bugtracker.addCompanyGroupsMembers', params);
+  Future<ApiResponse<T>> addCompanyGroupsMembers<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.addCompanyGroupsMembers', params);
 
   /// Добавляет сотрудников в компанию.
-  MethodTypeReturn addCompanyMembers(MethodTypeParams params) =>
-      _api.request('bugtracker.addCompanyMembers', params);
+  Future<ApiResponse<T>> addCompanyMembers<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.addCompanyMembers', params);
 
   /// Изменяет статус отчёта.
-  MethodTypeReturn changeBugreportStatus(MethodTypeParams params) =>
-      _api.request('bugtracker.changeBugreportStatus', params);
+  Future<ApiResponse<T>> changeBugreportStatus<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.changeBugreportStatus', params);
 
   /// Оставляет комментарий к отчёту.
-  MethodTypeReturn createComment(MethodTypeParams params) =>
-      _api.request('bugtracker.createComment', params);
+  Future<ApiResponse<T>> createComment<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.createComment', params);
 
   /// Получить информацию об отчёте.
-  MethodTypeReturn getBugreportById(MethodTypeParams params) =>
-      _api.request('bugtracker.getBugreportById', params);
+  Future<ApiResponse<T>> getBugreportById<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.getBugreportById', params);
 
   /// Возвращает список сотрудников из группы доступа компании.
-  MethodTypeReturn getCompanyGroupMembers(MethodTypeParams params) =>
-      _api.request('bugtracker.getCompanyGroupMembers', params);
+  Future<ApiResponse<T>> getCompanyGroupMembers<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.getCompanyGroupMembers', params);
 
   /// Возвращает список сотрудников компании.
-  MethodTypeReturn getCompanyMembers(MethodTypeParams params) =>
-      _api.request('bugtracker.getCompanyMembers', params);
+  Future<ApiResponse<T>> getCompanyMembers<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.getCompanyMembers', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Получает одноразовую ссылку для скачивания сборки, прикреплённой к указанной версии приложения в продукте.
-  MethodTypeReturn getDownloadVersionUrl(MethodTypeParams params) =>
-      _api.request('bugtracker.getDownloadVersionUrl', params);
+  Future<ApiResponse<T>> getDownloadVersionUrl<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.getDownloadVersionUrl', params);
 
   /// Получает ссылку для загрузки сборки приложения в продукт.
-  MethodTypeReturn getProductBuildUploadServer(MethodTypeParams params) =>
-      _api.request('bugtracker.getProductBuildUploadServer', params);
+  Future<ApiResponse<T>> getProductBuildUploadServer<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('bugtracker.getProductBuildUploadServer', params);
 
   /// Исключает сотрудника из группы доступа компании.
-  MethodTypeReturn removeCompanyGroupMember(MethodTypeParams params) =>
-      _api.request('bugtracker.removeCompanyGroupMember', params);
+  Future<ApiResponse<T>> removeCompanyGroupMember<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.removeCompanyGroupMember', params);
 
   /// Удаляет сотрудника из компании и из всех групп доступа в этой компании.
-  MethodTypeReturn removeCompanyMember(MethodTypeParams params) =>
-      _api.request('bugtracker.removeCompanyMember', params);
+  Future<ApiResponse<T>> removeCompanyMember<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.removeCompanyMember', params);
 
   /// Метод создаёт версию или сохраняет изменения версии продукта.
-  MethodTypeReturn saveProductVersion(MethodTypeParams params) =>
-      _api.request('bugtracker.saveProductVersion', params);
+  Future<ApiResponse<T>> saveProductVersion<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.saveProductVersion', params);
 
   /// Изменяет уровень доступа сотрудника в компании.
-  MethodTypeReturn setCompanyMemberRole(MethodTypeParams params) =>
-      _api.request('bugtracker.setCompanyMemberRole', params);
+  Future<ApiResponse<T>> setCompanyMemberRole<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.setCompanyMemberRole', params);
 
   /// Отключает или включает приём отчётов в продукте.
-  MethodTypeReturn setProductIsOver(MethodTypeParams params) =>
-      _api.request('bugtracker.setProductIsOver', params);
+  Future<ApiResponse<T>> setProductIsOver<T>(MethodTypeParams params) =>
+      _api.request<T>('bugtracker.setProductIsOver', params);
 }

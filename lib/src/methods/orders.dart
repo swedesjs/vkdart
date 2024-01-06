@@ -9,34 +9,34 @@ class Orders {
   final Api _api;
 
   /// Отменяет подписку.
-  MethodTypeReturn cancelSubscription(MethodTypeParams params) =>
-      _api.request('orders.cancelSubscription', params);
+  Future<ApiResponse<T>> cancelSubscription<T>(MethodTypeParams params) =>
+      _api.request<T>('orders.cancelSubscription', params);
 
   /// Changes order status.
-  MethodTypeReturn changeState(MethodTypeParams params) =>
-      _api.request('orders.changeState', params);
+  Future<ApiResponse<T>> changeState<T>(MethodTypeParams params) =>
+      _api.request<T>('orders.changeState', params);
 
   /// Returns a list of orders.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('orders.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('orders.get', params);
 
   /// Возвращает стоимость голосов в валюте пользователя.
-  MethodTypeReturn getAmount(MethodTypeParams params) =>
-      _api.request('orders.getAmount', params);
+  Future<ApiResponse<T>> getAmount<T>(MethodTypeParams params) =>
+      _api.request<T>('orders.getAmount', params);
 
   /// Returns information about orders by their IDs.
-  MethodTypeReturn getById(MethodTypeParams params) =>
-      _api.request('orders.getById', params);
+  Future<ApiResponse<T>> getById<T>(MethodTypeParams params) =>
+      _api.request<T>('orders.getById', params);
 
   /// Получает информацию о подписке по её идентификатору.
-  MethodTypeReturn getUserSubscriptionById(MethodTypeParams params) =>
-      _api.request('orders.getUserSubscriptionById', params);
+  Future<ApiResponse<T>> getUserSubscriptionById<T>(MethodTypeParams params) =>
+      _api.request<T>('orders.getUserSubscriptionById', params);
 
   /// Получает список активных подписок пользователя.
-  MethodTypeReturn getUserSubscriptions(MethodTypeParams params) =>
-      _api.request('orders.getUserSubscriptions', params);
+  Future<ApiResponse<T>> getUserSubscriptions<T>(MethodTypeParams params) =>
+      _api.request<T>('orders.getUserSubscriptions', params);
 
   /// Обновляет цену подписки для пользователя.
-  MethodTypeReturn updateSubscription(MethodTypeParams params) =>
-      _api.request('orders.updateSubscription', params);
+  Future<ApiResponse<T>> updateSubscription<T>(MethodTypeParams params) =>
+      _api.request<T>('orders.updateSubscription', params);
 }

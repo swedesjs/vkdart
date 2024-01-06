@@ -7,24 +7,23 @@ class Users {
   final Api _api;
 
   /// Returns detailed information on users.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('users.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('users.get', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Returns a list of IDs of followers of the user in question, sorted by date added,
   /// most recent first.
-  MethodTypeReturn getFollowers(MethodTypeParams params) =>
-      _api.request('users.getFollowers', params);
+  Future<ApiResponse<T>> getFollowers<T>(MethodTypeParams params) =>
+      _api.request<T>('users.getFollowers', params);
 
   /// Returns a list of IDs of users and communities followed by the user.
-  MethodTypeReturn getSubscriptions(MethodTypeParams params) =>
-      _api.request('users.getSubscriptions', params);
+  Future<ApiResponse<T>> getSubscriptions<T>(MethodTypeParams params) =>
+      _api.request<T>('users.getSubscriptions', params);
 
   /// Reports (submits a complain about) a user.
-  MethodTypeReturn report(MethodTypeParams params) =>
-      _api.request('users.report', params);
+  Future<ApiResponse<T>> report<T>(MethodTypeParams params) =>
+      _api.request<T>('users.report', params);
 
   /// Returns a list of users matching the search criteria.
-  MethodTypeReturn search(MethodTypeParams params) =>
-      _api.request('users.search', params);
+  Future<ApiResponse<T>> search<T>(MethodTypeParams params) =>
+      _api.request<T>('users.search', params);
 }

@@ -7,23 +7,22 @@ class Streaming {
   final Api _api;
 
   /// Allows to receive data for the connection to Streaming API.
-  MethodTypeReturn getServerUrl(MethodTypeParams params) =>
-      _api.request('streaming.getServerUrl', params);
+  Future<ApiResponse<T>> getServerUrl<T>(MethodTypeParams params) =>
+      _api.request<T>('streaming.getServerUrl', params);
 
   /// Позволяет получить значение порога для Streaming API.
-  MethodTypeReturn getSettings(MethodTypeParams params) =>
-      _api.request('streaming.getSettings', params);
+  Future<ApiResponse<T>> getSettings<T>(MethodTypeParams params) =>
+      _api.request<T>('streaming.getSettings', params);
 
-  // ignore: lines_longer_than_80_chars
   /// Позволяет получить статистику для подготовленных и доставленных событий Streaming API.
-  MethodTypeReturn getStats(MethodTypeParams params) =>
-      _api.request('streaming.getStats', params);
+  Future<ApiResponse<T>> getStats<T>(MethodTypeParams params) =>
+      _api.request<T>('streaming.getStats', params);
 
   /// Позволяет получить основу слова.
-  MethodTypeReturn getStem(MethodTypeParams params) =>
-      _api.request('streaming.getStem', params);
+  Future<ApiResponse<T>> getStem<T>(MethodTypeParams params) =>
+      _api.request<T>('streaming.getStem', params);
 
   /// Позволяет задать значение порога для Streaming API.
-  MethodTypeReturn setSettings(MethodTypeParams params) =>
-      _api.request('streaming.setSettings', params);
+  Future<ApiResponse<T>> setSettings<T>(MethodTypeParams params) =>
+      _api.request<T>('streaming.setSettings', params);
 }

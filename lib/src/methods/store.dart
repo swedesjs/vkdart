@@ -7,22 +7,23 @@ class Store {
   final Api _api;
 
   /// Adds given sticker IDs to the list of user's favorite stickers
-  MethodTypeReturn addStickersToFavorite(MethodTypeParams params) =>
-      _api.request('store.addStickersToFavorite', params);
+  Future<ApiResponse<T>> addStickersToFavorite<T>(MethodTypeParams params) =>
+      _api.request<T>('store.addStickersToFavorite', params);
 
   /// Возвращает список избранных стикеров.
-  MethodTypeReturn getFavoriteStickers(MethodTypeParams params) =>
-      _api.request('store.getFavoriteStickers', params);
+  Future<ApiResponse<T>> getFavoriteStickers<T>(MethodTypeParams params) =>
+      _api.request<T>('store.getFavoriteStickers', params);
 
   /// Возвращает список продуктов.
-  MethodTypeReturn getProducts(MethodTypeParams params) =>
-      _api.request('store.getProducts', params);
+  Future<ApiResponse<T>> getProducts<T>(MethodTypeParams params) =>
+      _api.request<T>('store.getProducts', params);
 
   /// Возвращает список ключевых слов для стикеров.
-  MethodTypeReturn getStickersKeywords(MethodTypeParams params) =>
-      _api.request('store.getStickersKeywords', params);
+  Future<ApiResponse<T>> getStickersKeywords<T>(MethodTypeParams params) =>
+      _api.request<T>('store.getStickersKeywords', params);
 
   /// Removes given sticker IDs from the list of user's favorite stickers
-  MethodTypeReturn removeStickersFromFavorite(MethodTypeParams params) =>
-      _api.request('store.removeStickersFromFavorite', params);
+  Future<ApiResponse<T>> removeStickersFromFavorite<T>(
+          MethodTypeParams params) =>
+      _api.request<T>('store.removeStickersFromFavorite', params);
 }

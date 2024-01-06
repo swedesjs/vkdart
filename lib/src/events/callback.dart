@@ -52,13 +52,12 @@ class Callback {
         final {'type': String type, 'group_id': int groupId} = ctx.parsed;
 
         if (type == 'confirmation') {
-          final {
-            'response': Map<String, dynamic> response,
-          } = await _api.groups.getCallbackConfirmationCode({
+          final ApiResponse(:data) =
+              await _api.groups.getCallbackConfirmationCode<ClassicMap>({
             'group_id': groupId,
           });
 
-          ctx.body = response['code'];
+          ctx.body = data['code'];
         } else {
           ctx
             ..body = 'ok'

@@ -7,30 +7,30 @@ class LeadForms {
   final Api _api;
 
   /// Создаёт форму сбора заявок.
-  MethodTypeReturn create(MethodTypeParams params) =>
-      _api.request('leadForms.create', params);
+  Future<ApiResponse<T>> create<T>(MethodTypeParams params) =>
+      _api.request<T>('leadForms.create', params);
 
   /// Удаляет форму сбора заявок.
-  MethodTypeReturn delete(MethodTypeParams params) =>
-      _api.request('leadForms.delete', params);
+  Future<ApiResponse<T>> delete<T>(MethodTypeParams params) =>
+      _api.request<T>('leadForms.delete', params);
 
   /// Возвращает информацию о форме сбора заявок.
-  MethodTypeReturn get(MethodTypeParams params) =>
-      _api.request('leadForms.get', params);
+  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+      _api.request<T>('leadForms.get', params);
 
   /// Возвращает заявки формы.
-  MethodTypeReturn getLeads(MethodTypeParams params) =>
-      _api.request('leadForms.getLeads', params);
+  Future<ApiResponse<T>> getLeads<T>(MethodTypeParams params) =>
+      _api.request<T>('leadForms.getLeads', params);
 
   /// Возвращает URL для загрузки обложки для формы.
-  MethodTypeReturn getUploadURL(MethodTypeParams params) =>
-      _api.request('leadForms.getUploadURL', params);
+  Future<ApiResponse<T>> getUploadURL<T>(MethodTypeParams params) =>
+      _api.request<T>('leadForms.getUploadURL', params);
 
   /// Возвращает список форм сообщества.
-  MethodTypeReturn list(MethodTypeParams params) =>
-      _api.request('leadForms.list', params);
+  Future<ApiResponse<T>> list<T>(MethodTypeParams params) =>
+      _api.request<T>('leadForms.list', params);
 
   /// Обновляет форму сбора заявок.
-  MethodTypeReturn update(MethodTypeParams params) =>
-      _api.request('leadForms.update', params);
+  Future<ApiResponse<T>> update<T>(MethodTypeParams params) =>
+      _api.request<T>('leadForms.update', params);
 }

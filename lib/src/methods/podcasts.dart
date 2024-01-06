@@ -7,6 +7,6 @@ class Podcasts {
   final Api _api;
 
   /// Выполняет поиск подкастов по ключевым фразам.
-  MethodTypeReturn searchPodcast(MethodTypeParams params) =>
-      _api.request('podcasts.searchPodcast', params);
+  Future<ApiResponse<T>> searchPodcast<T>(MethodTypeParams params) =>
+      _api.request<T>('podcasts.searchPodcast', params);
 }
