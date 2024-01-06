@@ -65,7 +65,6 @@ linter:
     - library_annotations
     - library_names
     - library_prefixes
-    - lines_longer_than_80_chars
     - matching_super_parameters
     - missing_whitespace_between_adjacent_strings
     - no_leading_underscores_for_library_prefixes
@@ -127,6 +126,7 @@ linter:
 analyzer:
   exclude:
     - "**.g.dart"
+    - "lib/src/methods"
 
   language:
     strict-casts: true
