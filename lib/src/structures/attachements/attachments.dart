@@ -53,6 +53,22 @@ enum AttachmentType {
   gift
 }
 
+/// Разбирает тип вложения из строки.
+AttachmentType attachTypeFromString(String type) => switch (type) {
+      'photo' => AttachmentType.photo,
+      'video' => AttachmentType.video,
+      'audio' => AttachmentType.audio,
+      'doc' => AttachmentType.doc,
+      'link' => AttachmentType.link,
+      'market' => AttachmentType.market,
+      'market_album' => AttachmentType.market_album,
+      'wall' => AttachmentType.wall,
+      'wall_reply' => AttachmentType.wall_reply,
+      'sticker' => AttachmentType.sticker,
+      'gift' => AttachmentType.gift,
+      _ => throw Exception('Тип вложения не найден!')
+    };
+
 /// Структура объединяющая все вложения.
 @JsonSerializable()
 class MainAttachment {
@@ -79,12 +95,40 @@ class Attachment extends MainAttachment {
   factory Attachment.fromJson(Map<String, dynamic> json) =>
       _$AttachmentFromJson(json);
 
+  /// Разбирает вложение из строки.
+  factory Attachment.fromString(String attachment) {
+    if (!parseAttachmentRe.hasMatch(attachment)) {
+      throw Exception('Неккоректное вложение!');
+    }
+
+    // ignore: pattern_type_mismatch_in_irrefutable_context
+    final [_, String type, String ownerId, String id, String accessKey] =
+        parseAttachmentRe.firstMatch(attachment)!;
+
+    return Attachment(
+      attachTypeFromString(type),
+      id: int.parse(id),
+      owner_id: int.parse(ownerId),
+      access_key: accessKey,
+    );
+  }
+
   @override
   Map<String, dynamic> toJson() => _$AttachmentToJson(this);
+
+  static final parseAttachmentRe =
+      RegExp(r'([a-z_]+)(-?\d+)_(\d+)_?(\w+)?', multiLine: true);
 
   final int id;
   final int owner_id;
   final String? access_key;
+
+  @override
+  String toString() {
+    final accessKey = access_key != null ? '_$access_key' : '';
+
+    return "${attachType.name}${owner_id}_${id}$accessKey";
+  }
 }
 
 // Второстепенная структура.
