@@ -126,7 +126,7 @@ linter:
 analyzer:
   exclude:
     - "**.g.dart"
-    - "lib/src/methods"
+    - "lib/src/methods/**.dart"
 
   language:
     strict-casts: true
