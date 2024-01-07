@@ -61,7 +61,8 @@ Api(token: /* */, language: /* LangApi */, version: /* */);
 ```
 The function `getApi()` creates an instance with default parameters.
 
-default `lang` is **LangApi.ru**, `version` is **5.131**.
+default `lang` is [**LangApi**]((https://github.com/swedesjs/vkdart/blob/master/lib/src/api.dart#L7)
+)**.ru**, `version` is **5.131**.
 
 ### Calling methods
 
