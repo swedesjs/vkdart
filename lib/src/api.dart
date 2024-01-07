@@ -57,8 +57,8 @@ class Api {
     Map<String, Object> params,
   ) async {
     final langConclusion = switch (params['lang']) {
-      final LangApi x => x.index,
-      int || String => params['lang']!,
+      LangApi() => (params['lang']! as LangApi).index,
+      int() || String() => params['lang']!,
       _ => _language.index
     };
 
