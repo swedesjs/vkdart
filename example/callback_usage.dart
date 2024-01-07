@@ -1,18 +1,17 @@
-// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_lambdas, cascade_invocations, avoid_print, discarded_futures
 
 import 'package:vkdart/events.dart';
 import 'package:vkdart/vkdart.dart';
 
-Future<void> main() async {
-  final vkDart = VkDart(token: '');
+void main() {
+  final vk = VkDart(token: '');
+  final callback = Callback(vk.getApi());
 
-  final callback = Callback(vkDart.getApi());
-
-  // ignore: cascade_invocations
   callback.subscribe((event) {
-    // ....
-    // event - VK server response
+    if (event['type'] == 'message_new') {
+      print('new message!');
+    }
   });
 
-  await callback.start(port: 80);
+  callback.start().then((_) => print('CallbackAPI run!'));
 }

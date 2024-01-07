@@ -1,18 +1,21 @@
-// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_lambdas, avoid_print, avoid_dynamic_calls, discarded_futures, cascade_invocations, prefer_const_declarations
 
 import 'package:vkdart/events.dart';
 import 'package:vkdart/vkdart.dart';
 
-Future<void> main() async {
-  final vkDart = VkDart(token: '');
+void main() {
+  final groupId = 1;
 
-  // to receive community events, specify the  groupId parameter
-  final longpoll = Longpoll(vkDart.getApi());
-
-  await longpoll.start();
+  final vk = VkDart(token: '');
+  final longpoll = Longpoll(vk.getApi(), groupId: groupId);
 
   longpoll.subscribe((event) {
-    // ....
-    // event - VK server response
+    /* event is Map<String, dynamic> and List<dynamic> */
+
+    if (event['type'] == 'message_new') {
+      print('new message!');
+    }
   });
+
+  longpoll.start().then((_) => print('Polling start!'));
 }
