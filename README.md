@@ -178,5 +178,3 @@ In the future I plan to implement the `VK API` for convenient use:
 ## Bugs and feature requests
 
 Please send a bug report to [issue tracker](https://github.com/swedesjs/vkdart/issues)
-
-Chat discussion of the package - https://t.me/vk_dart
