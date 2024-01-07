@@ -20,3 +20,10 @@
 - The structure for receiving updates Longpoll API, Callback API has been changed
 - Added missing methods
 - Method interfaces, Longpoll API, Callback API classes have been moved to separate libraries.
+
+## 1.1.0
+
+- Documentation completely rewritten
+- Added error handler when reading LongPoll events
+- Structures for attachments written
+- Tests have been written.
