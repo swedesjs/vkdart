@@ -5,5 +5,6 @@ library vkdart;
 
 export 'src/api.dart';
 export 'src/exceptions/api_exception.dart';
+export 'src/structures/attachements/attachments.dart';
 export 'src/types/methods.dart';
 export 'src/vkdart_base.dart';
