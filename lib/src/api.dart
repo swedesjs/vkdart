@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:vkdart/methods.dart';
-import 'package:vkdart/src/exceptions/api_exception.dart';
-import 'package:vkdart/src/types/methods.dart';
+import 'package:vkdart/vkdart.dart';
 
 /// Перечисление языков поддерживаемых VK API
 enum LangApi {
