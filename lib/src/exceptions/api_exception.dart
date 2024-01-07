@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'api_exception.g.dart';
 
 /// Класс предназначенный для ошибок связанных с API VK
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable(fieldRename: FieldRename.snake)
 class ApiException implements Exception {
   /// Конструктор класса [ApiException]
   ApiException({
