@@ -27,3 +27,7 @@
 - Added error handler when reading LongPoll events
 - Structures for attachments written
 - Tests have been written.
+
+# 1.1.1
+- Fixed incorrect operation of the `api.request()` function.
+- Amendments have been made to the documentation.
