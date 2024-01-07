@@ -9,6 +9,7 @@
 > Chat discussion of the package - https://t.me/vk_dart
 
 ### Navigation: 
+- [Features](#features)
 - [Get started](#get-started)
   - [Install](#install)
   - [The simplest use](#the-simplest-use)
@@ -22,6 +23,11 @@
 - [Future Plans](#future-plans)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 
+## Features
+1. **Supports all methods.** Has interfaces of all public VK methods.
+2. **Reliable.** Functionality of the package is wrapped in Unit tests 
+3. **Event support** It is possible to catch VK events, support for user and group events
+4. **Developing.** Functionality is becoming more!
 
 ## Get Started
 
@@ -108,26 +114,21 @@ api.request<List<dynamic>>('name method', /* ... */);
 ### Using Longpoll API
 #### Elementary example of use:
 ```dart
-import 'package:vkdart/events.dart';
-import 'package:vkdart/vkdart.dart';
+final longpoll = Longpoll(api, groupId: 1234);
 
-void main() {
-  final groupId = 1;
+longpoll.subscribe((event) {
+  /* event is Map<String, dynamic> and List<dynamic> */
 
-  final vk = VkDart(token: '');
-  final longpoll = Longpoll(vk.getApi(), groupId: groupId);
+  if (event['type'] == 'message_new') {
+    print('new message!');
+  }
+});
 
-  longpoll.subscribe((event) {
-    /* event is Map<String, dynamic> and List<dynamic> */
-
-    if (event['type'] == 'message_new') {
-      print('new message!');
-    }
-  });
-
-   longpoll.start().then((_) => print('Polling start!'));
-}
+longpoll.start();
 ```
+
+More detailed [example](example/longpoll_usage.dart)
+
 > `Longpoll` supports **UserLongpoll**, **GroupLongpoll**, the example above shows the second type of event receiving.
 
 To receive user events, do not specify the `groupId` parameter.
@@ -142,22 +143,17 @@ Longpoll(api, /* not groupId! */);
 ### Using Callback API
 #### Elementary example of use:
 ```dart
-import 'package:vkdart/events.dart';
-import 'package:vkdart/vkdart.dart';
+final callback = Callback(vk.getApi());
 
-void main() {
-  final vk = VkDart(token: '');
-  final callback = Callback(vk.getApi());
+callback.subscribe((event) {
+  if (event['type'] == 'message_new') {
+    print('new message!');
+  }
+});
 
-  callback.subscribe((event) {
-    if (event['type'] == 'message_new') {
-      print('new message!');
-    }
-  });
-
-  callback.start().then((_) => print('CallbackAPI run!'));
-}
+callback.start();
 ```
+More detailed [example](example/callback_usage.dart.dart)
 
 > By default, the server runs on **localhost**, on port **80**, if the certificate **443** is specified.
 
