@@ -1,5 +1,5 @@
 name: vkdart
-description: This is a library that has many possibilities for interacting with the VK API and has a number of auxiliary functions
+description: The package helps simplify working with the VK API. Completely wraps VK methods, has event support and much more.
 version: 1.0.4
 homepage: https://github.com/swedesjs/vkdart
 
