@@ -1,7 +1,6 @@
 /// Содержит интерфейсы методов ВК.
 library vkdart.methods;
 
-import 'package:vkdart/src/types/methods.dart';
 import 'package:vkdart/vkdart.dart';
 
 part 'src/methods/account.dart';

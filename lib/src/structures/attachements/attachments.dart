@@ -2,7 +2,7 @@
 // ignore_for_file: constant_identifier_names, public_member_api_docs, non_constant_identifier_names
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:vkdart/src/types/methods.dart';
+import 'package:vkdart/vkdart.dart';
 
 part 'attachments.g.dart';
 part 'photo.dart';
