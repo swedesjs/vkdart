@@ -5,6 +5,13 @@ typedef Handler<T> = dynamic Function(T event);
 
 final _dio = Dio();
 
+// ignore: avoid_annotating_with_dynamic
+int _parsingEventNumber(dynamic ts) {
+  assert(ts is int || ts is String, 'ts должен быть равен типу String, int');
+
+  return ts is int ? ts : int.parse(ts as String);
+}
+
 /// Класс для работы с событиями Longpoll API.
 class Longpoll {
   /// Конструктор.
@@ -30,7 +37,7 @@ class Longpoll {
   Handler<dynamic>? _pollingHandler;
 
   bool _isStart = false;
-  late int _ts;
+  int _ts = 0;
 
   /// Запускает прослушку. Все полученные данные будут приходить в функцию,
   /// отправленной функции [subscribe]
@@ -54,9 +61,9 @@ class Longpoll {
       'ts': ts,
     } = data;
 
-    assert(ts is int || ts is String, 'ts должен быть равен типу String, int');
-
-    _ts = ts is int ? ts : int.parse(ts as String);
+    if (ts == 0) {
+      _ts = _parsingEventNumber(ts);
+    }
 
     final pollingUrl = isGroup ? server : 'https://$server';
 
@@ -84,24 +91,46 @@ class Longpoll {
       },
     );
 
-    final {'ts': ts, 'updates': List<dynamic> updates} = data!;
+    final failed = data!['failed'] as int?;
+    final ts = data['ts'];
 
-    assert(ts is int || ts is String, 'ts должен быть равен типу String, int');
+    if (failed != null) {
+      switch (failed) {
+        case 1:
+          _ts = _parsingEventNumber(ts);
+          await fetchUpdates(server, key);
+        N2:
+        case 2:
+          await stop();
+          await start();
+        case 3:
+          _ts = 0;
+          continue N2;
+        case 4:
+          throw Exception(
+            'An invalid version number was passed in the version parameter.',
+          );
+      }
+    } else {
+      final {'updates': List<dynamic> updates} = data;
 
-    _ts = ts is int ? ts : int.parse(ts as String);
+      _ts = _parsingEventNumber(ts);
 
-    for (var event in updates) {
-      _pollingHandler!(event);
-    }
+      for (var event in updates) {
+        _pollingHandler!(event);
+      }
 
-    if (isStart) {
-      await fetchUpdates(server, key);
+      if (isStart) {
+        await fetchUpdates(server, key);
+      }
     }
   }
 
   /// Останавливает процесс получения обновлений.
-  void stop() {
+  Future<void> stop() {
     _isStart = false;
+
+    return Future.value();
   }
 
   /// Начать прослужку Longpoll API
