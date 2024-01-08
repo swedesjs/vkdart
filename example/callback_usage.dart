@@ -7,11 +7,16 @@ void main() {
   final vk = VkDart(token: '');
   final callback = Callback(vk.getApi());
 
-  callback.subscribe((event) {
-    if (event['type'] == 'message_new') {
-      print('new message!');
-    }
-  });
+  callback.subscribe(
+    (event) {
+      if (event['type'] == 'message_new') {
+        print('new message!');
+      }
+    },
+    errorHandler: (error) {
+      print('new error: $error');
+    },
+  );
 
   callback.start().then((_) => print('CallbackAPI run!'));
 }

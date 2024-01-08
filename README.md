@@ -148,7 +148,7 @@ callback.subscribe((event) {
   if (event['type'] == 'message_new') {
     print('new message!');
   }
-});
+}, errorHandler: (error) => print(error));
 
 callback.start();
 ```
