@@ -88,7 +88,7 @@ MainAttachment getAttachmentFromJson(Map<String, dynamic> attachment) {
 
   final fromJson = switch (type) {
     'photo' => PhotoAttachment.fromJson,
-    'audio' => AudioAttachments.fromJson,
+    'audio' => AudioAttachment.fromJson,
     'doc' => DocAttachment.fromJson,
     'gift' => GiftAttachment.fromJson,
     'link' => LinkAttachment.fromJson,
