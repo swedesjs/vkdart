@@ -28,6 +28,11 @@
 - Structures for attachments written
 - Tests have been written.
 
-# 1.1.1
+## 1.1.1
 - Fixed incorrect operation of the `api.request()` function.
 - Amendments have been made to the documentation.
+
+## 1.1.2
+- Added `getAttachmentFromJson()` function.
+- Correction in the interface name `AudioAttachment`.
+- Added error handler to using `CallbackAPI`
