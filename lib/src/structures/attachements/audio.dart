@@ -4,8 +4,8 @@ part of 'attachments.dart';
 
 /// Структура аудио.
 @JsonSerializable()
-class AudioAttachments extends Attachment {
-  AudioAttachments({
+class AudioAttachment extends Attachment {
+  AudioAttachment({
     required super.id,
     required super.owner_id,
     super.access_key,
@@ -21,8 +21,8 @@ class AudioAttachments extends Attachment {
     this.is_hq,
   }) : super(AttachmentType.audio);
 
-  factory AudioAttachments.fromJson(Map<String, dynamic> json) =>
-      _$AudioAttachmentsFromJson(json);
+  factory AudioAttachment.fromJson(Map<String, dynamic> json) =>
+      _$AudioAttachmentFromJson(json);
 
   final String? artist;
   final String? title;
@@ -40,5 +40,5 @@ class AudioAttachments extends Attachment {
   final int? is_hq;
 
   @override
-  Map<String, dynamic> toJson() => _$AudioAttachmentsToJson(this);
+  Map<String, dynamic> toJson() => _$AudioAttachmentToJson(this);
 }

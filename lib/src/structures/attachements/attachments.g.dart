@@ -96,8 +96,8 @@ Map<String, dynamic> _$PhotoSizesToJson(PhotoSizes instance) =>
       'height': instance.height,
     };
 
-AudioAttachments _$AudioAttachmentsFromJson(Map<String, dynamic> json) =>
-    AudioAttachments(
+AudioAttachment _$AudioAttachmentFromJson(Map<String, dynamic> json) =>
+    AudioAttachment(
       id: json['id'] as int,
       owner_id: json['owner_id'] as int,
       access_key: json['access_key'] as String?,
@@ -113,7 +113,7 @@ AudioAttachments _$AudioAttachmentsFromJson(Map<String, dynamic> json) =>
       is_hq: json['is_hq'] as int?,
     );
 
-Map<String, dynamic> _$AudioAttachmentsToJson(AudioAttachments instance) =>
+Map<String, dynamic> _$AudioAttachmentToJson(AudioAttachment instance) =>
     <String, dynamic>{
       'id': instance.id,
       'owner_id': instance.owner_id,
