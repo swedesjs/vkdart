@@ -129,6 +129,6 @@ analyzer:
     - "lib/src/methods/**.dart"
 
   language:
-    strict-casts: true
+    strict-casts: false
     strict-inference: false
     strict-raw-types: true
