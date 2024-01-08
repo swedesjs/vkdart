@@ -14,13 +14,13 @@ class Callback {
   bool _isStart = false;
 
   Handler<ClassicMap>? _webhookHandler;
+  dynamic Function(Object error)? _errorHandler;
 
   final _app = App(_ContextWithBody.new);
 
   /// Запускает Callback API
   /// Для запуска необходимо указать [address], по умолчанию равен localhost.
   ///
-
   /// [port] по умолчанию при наличии SSL-сертификата равен 443, в ином случае 80.
   ///
   /// В [securityContext] необходимо указать SSL сертификат при наличии,
@@ -37,7 +37,7 @@ class Callback {
       throw Exception('Callback API уже в работе');
     }
 
-    if (_webhookHandler == null) {
+    if (_webhookHandler == null || _errorHandler == null) {
       throw Exception('Подпишитесь на обновления! Запустите subscribe.');
     }
 
@@ -63,7 +63,13 @@ class Callback {
             ..statusCode = 200;
         }
 
-        _webhookHandler!(ctx.parsed);
+        try {
+          _webhookHandler!(ctx.parsed);
+          // ignore: avoid_catches_without_on_clauses
+        } catch (e) {
+          _app.close();
+          _errorHandler!(e);
+        }
       });
 
     await _app.listen(address, portResult, securityContext: securityContext);
@@ -76,8 +82,12 @@ class Callback {
   }
 
   /// Подписаться на webhook обновления.
-  void subscribe(Handler<ClassicMap> handler) {
+  void subscribe(
+    Handler<ClassicMap> handler, {
+    required dynamic Function(Object error) errorHandler,
+  }) {
     _webhookHandler = handler;
+    _errorHandler = errorHandler;
   }
 
   /// Геттер сообщающий о том, запущен ли Callback API, или же нет
