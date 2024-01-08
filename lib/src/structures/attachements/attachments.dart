@@ -69,6 +69,41 @@ AttachmentType attachTypeFromString(String type) => switch (type) {
       _ => throw Exception('Тип вложения не найден!')
     };
 
+/// Gets an Attachment object from a JSON map.
+///
+/// This function takes a JSON map as input and returns the corresponding Attachment object.
+/// The type of Attachment returned is determined by the 'type' field in the JSON map.
+///
+/// Example usage:
+///
+/// ```dart
+/// Map<String, dynamic> jsonMap = {
+///   'type': 'photo',
+///   'photo': {'id': 1, 'owner_id': 1}
+/// };
+/// MainAttachment attachment = getAttachmentFromJson(jsonMap); // returns PhotoAttachment
+/// ```
+MainAttachment getAttachmentFromJson(Map<String, dynamic> attachment) {
+  final type = attachment['type'] as String;
+
+  final fromJson = switch (type) {
+    'photo' => PhotoAttachment.fromJson,
+    'audio' => AudioAttachments.fromJson,
+    'doc' => DocAttachment.fromJson,
+    'gift' => GiftAttachment.fromJson,
+    'link' => LinkAttachment.fromJson,
+    'market_album' => MarketAlbumAttachment.fromJson,
+    'market' => MarketAttachment.fromJson,
+    'sticker' => StickerAttachment.fromJson,
+    'video' => VideoAttachment.fromJson,
+    'wall_reply' => WallReplyAttachment.fromJson,
+    'wall' => WallAttachment.fromJson,
+    _ => throw Exception('incorrect type')
+  };
+
+  return fromJson.call(attachment[type]);
+}
+
 /// Структура объединяющая все вложения.
 @JsonSerializable()
 class MainAttachment {
