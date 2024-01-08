@@ -4,7 +4,7 @@ import 'package:vkdart/src/structures/attachements/attachments.dart';
 
 void main() {
   group('Attachments', () {
-    final audioScheme = AudioAttachments(id: 987, owner_id: 1234);
+    final audioScheme = AudioAttachment(id: 987, owner_id: 1234);
     final docScheme = DocAttachment(id: 543, owner_id: 1234, access_key: 'asd');
     final giftScheme = GiftAttachment();
     final linkScheme = LinkAttachment();
@@ -59,6 +59,34 @@ void main() {
       });
     });
 
+    group('checking function `getAttachmentFromJson`', () {
+      test('must return correct attachment type', () {
+        final photoAttachment = getAttachmentFromJson({
+          'type': 'photo',
+          'photo': {'owner_id': 1, 'id': 1},
+        });
+
+        photoAttachment.should.beOfType<PhotoAttachment>();
+
+        final audioAttachment = getAttachmentFromJson({
+          'type': 'audio',
+          'audio': {'owner_id': 1, 'id': 1},
+        });
+
+        audioAttachment.should.beOfType<AudioAttachment>();
+      });
+
+      test('should throw when unknown attachment type', () {
+        Should.throwException(
+          () => getAttachmentFromJson(
+            {
+              'type': 'unknown',
+              'unknown': {'owner_id': 1, 'id': 1}
+            },
+          ),
+        );
+      });
+    });
     group('checking function `fromString`', () {
       test('must be a positive result', () {
         final attach1 = Attachment.fromString('audio1234_5678');
