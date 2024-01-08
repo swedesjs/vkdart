@@ -81,7 +81,7 @@ void main() {
           () => getAttachmentFromJson(
             {
               'type': 'unknown',
-              'unknown': {'owner_id': 1, 'id': 1}
+              'unknown': {'owner_id': 1, 'id': 1},
             },
           ),
         );
