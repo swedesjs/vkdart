@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:vkdart/src/structures/attachements/attachments.dart';
+
 part 'message_context.dart';
 
 /// [Context] is a class that represents the context of an event.
@@ -173,5 +175,20 @@ enum EventType {
   donut_money_withdraw,
 
   /// Withdrawal error from VK Donut.
-  donut_money_withdraw_error,
+  donut_money_withdraw_error;
 }
+
+/// Returns the [EventType] that matches the provided string [type].
+///
+/// This function is used to map a string representation of an event type
+/// to an actual [EventType] enum. It searches through all available EventTypes
+/// and returns the first one where the name of the EventType matches the
+/// provided string.
+///
+/// Example:
+/// ```dart
+/// var eventType = getEventTypeFromString('poll_vote_new');
+/// print(eventType); // Outputs: EventType.poll_vote_new
+/// ```
+EventType getEventTypeFromString(String type) =>
+    EventType.values.firstWhere((element) => element.name == type);
