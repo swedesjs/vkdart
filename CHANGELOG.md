@@ -36,3 +36,9 @@
 - Added `getAttachmentFromJson()` function.
 - Correction in the interface name `AudioAttachment`.
 - Added error handler to using `CallbackAPI`
+
+## 1.2.0
+- Removed attachment interfaces to make the package lighter.
+- Removed support for Longpoll API, now only Callback API.
+- The structure of the Callback API interface has been changed.
+- Added lists of `update types`.
