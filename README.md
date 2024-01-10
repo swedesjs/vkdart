@@ -111,7 +111,10 @@ api.request<List<dynamic>>('name method', /* ... */);
 ### Elementary example of use:
 ```dart
 final vk = VkDart(token: '');
-final callback = Callback(vk.getApi());
+final callback = Callback(
+   secretKey: 'mySecretKey', // optional
+  confirmationHandler: (_) => 'confirmation string';
+);
 
 callback.updates.listen((event) {
   if (event.type == UpdateType.message_new) {
