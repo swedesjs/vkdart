@@ -5,7 +5,19 @@ import 'package:vkdart/vkdart.dart';
 
 void main() async {
   final vk = VkDart(token: '');
-  final callback = Callback(vk.getApi());
+  final api = vk.getApi();
+
+  final callback = Callback(
+    secretKey: 'mySecretKey', // optional
+    confirmationHandler: (groupId) async {
+      final response =
+          await api.groups.getCallbackConfirmationCode<Map<String, dynamic>>({
+        'group_id': groupId,
+      });
+
+      return response.data['code'];
+    },
+  );
 
   callback.updates.listen((event) {
     if (event.type == UpdateType.message_new) {
