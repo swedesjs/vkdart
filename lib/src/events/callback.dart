@@ -4,41 +4,49 @@ class _ContextWithBody extends Context with ParsedBody {
   _ContextWithBody(HttpRequest request) : super(request);
 }
 
-/// Вспомогающий класс для ловли событий Callback API
+/// The [Callback] class is used to handle asynchronous events in VkDart.
+///
+/// It provides methods to start and stop the processing of incoming requests.
+/// An instance of [Callback] is obtained through the [VkDart.getApi] method.
+///
+/// Example usage:
+///
+/// ```dart
+/// var api = VkDart(...).getApi();
+/// var callback = Callback(api);
+/// callback.start();  // start processing incoming requests
+/// ...
+/// callback.stop();  // stop processing incoming requests
+/// ```
 class Callback {
-  /// Конструктор класса Callback
-  /// В параметр [api] указывать экземпляр полученный методом [VkDart.getApi]
+  /// Creates an instance of [Callback] with the specified [api].
   Callback(Api api) : _api = api;
 
   final Api _api;
   bool _isStart = false;
 
-  Handler<ClassicMap>? _webhookHandler;
-  dynamic Function(Object error)? _errorHandler;
-
   final _app = App(_ContextWithBody.new);
 
-  /// Запускает Callback API
-  /// Для запуска необходимо указать [address], по умолчанию равен localhost.
+  final _updatesController = StreamController<Update>();
+
+  /// Stream of [Update] events.
   ///
-  /// [port] по умолчанию при наличии SSL-сертификата равен 443, в ином случае 80.
+  /// This Stream provides a sequence of updates representing the events
+  /// occurring in the VkDart application. Subscribers can listen to this stream
+  /// to receive and handle these update events as they occur.
+  Stream<Update> get updates => _updatesController.stream;
+
+  /// Starts the Callback API.
+  /// After calling this function, the Callback API will process incoming requests.
+  /// If the Callback API is already running, an exception will be thrown.
   ///
-  /// В [securityContext] необходимо указать SSL сертификат при наличии,
-  /// воспользуйтесь классом [SecurityContext], принадлежащий библиотеке Dia
-  ///
-  /// ВАЖНО: Библиотека сама вернет необходимый ключ серверу (если это требуется),
-  /// ничего указывать не надо :)
   Future<void> start({
     String address = 'localhost',
     int? port,
     SecurityContext? securityContext,
   }) async {
     if (isStart) {
-      throw Exception('Callback API уже в работе');
-    }
-
-    if (_webhookHandler == null || _errorHandler == null) {
-      throw Exception('Подпишитесь на обновления! Запустите subscribe.');
+      throw CallbackException('Callback API is running');
     }
 
     _isStart = true;
@@ -57,39 +65,28 @@ class Callback {
           });
 
           ctx.body = data['code'];
+          return;
         } else {
           ctx
             ..body = 'ok'
             ..statusCode = 200;
         }
 
-        try {
-          _webhookHandler!(ctx.parsed);
-          // ignore: avoid_catches_without_on_clauses
-        } catch (e) {
-          _app.close();
-          _errorHandler!(e);
-        }
+        _updatesController.add(Update(ctx.parsed));
       });
 
     await _app.listen(address, portResult, securityContext: securityContext);
   }
 
-  /// Останавливает Callback Api
+  /// Stops the Callback API if it's running.
+  /// After calling this function, the Callback API will no longer process incoming requests.
   void stop() {
     _app.close();
     _isStart = false;
   }
 
-  /// Подписаться на webhook обновления.
-  void subscribe(
-    Handler<ClassicMap> handler, {
-    required dynamic Function(Object error) errorHandler,
-  }) {
-    _webhookHandler = handler;
-    _errorHandler = errorHandler;
-  }
-
-  /// Геттер сообщающий о том, запущен ли Callback API, или же нет
+  /// Returns the state of the Callback API.
+  /// If the Callback API has started, it will return true.
+  /// Otherwise, it will return false.
   bool get isStart => _isStart;
 }

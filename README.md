@@ -17,9 +17,7 @@
   - [Creating an API Instance](#creating-an-api-instance)
   - [Calling Methods](#calling-methods)
   - [Request Response](#request-response)
-- [Receiving Events](#receiving-events)
-  - [Using LongpollApi](#using-longpoll-api)
-  - [Using CallbackApi](#using-callback-api)
+- [Using Callback Api](#using-callback-api)
 - [Future Plans](#future-plans)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 
@@ -109,50 +107,22 @@ api.users.get<List<dynamic>>(/* params */);
 api.request<List<dynamic>>('name method', /* ... */);
 ```
 
-## Receiving Events
-### Using Longpoll API
-#### Elementary example of use:
+## Using Callback API
+### Elementary example of use:
 ```dart
-final longpoll = Longpoll(api, groupId: 1234);
+final vk = VkDart(token: '');
+final callback = Callback(vk.getApi());
 
-longpoll.subscribe((event) {
-  /* event is Map<String, dynamic> and List<dynamic> */
-
-  if (event['type'] == 'message_new') {
+callback.updates.listen((event) {
+  if (event.type == UpdateType.message_new) {
     print('new message!');
+    print('message text: ${event.object['message']['text']}');
   }
 });
 
-longpoll.start();
+await callback.start().then((_) => print('Callback API run!'));
 ```
-
-More detailed [example](example/longpoll_usage.dart)
-
-> `Longpoll` supports **UserLongpoll**, **GroupLongpoll**, the example above shows the second type of event receiving.
-
-To receive user events, do not specify the `groupId` parameter.
-
-```dart
-Longpoll(api, /* not groupId! */);
-```
-**Note**: In this case, the `event` type will be `List`,
-
-**Note**: If you use a group token but do not specify the `groupId` parameter, the `event` type will be `List`
-
-### Using Callback API
-#### Elementary example of use:
-```dart
-final callback = Callback(vk.getApi());
-
-callback.subscribe((event) {
-  if (event['type'] == 'message_new') {
-    print('new message!');
-  }
-}, errorHandler: (error) => print(error));
-
-callback.start();
-```
-More detailed [example](example/callback_usage.dart.dart)
+More detailed [example](https://github.com/swedesjs/vkdart/blob/master/example/callback_usage.dart)
 
 > By default, the server runs on **localhost**, on port **80**, if the certificate **443** is specified.
 
