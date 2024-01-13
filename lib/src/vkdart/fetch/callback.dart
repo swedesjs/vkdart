@@ -17,12 +17,11 @@ class Callback extends AbstractUpdateFetcher {
     required Future<String> Function(int groupId) confirmationHandler,
     String? secretKey,
     this.address = 'localhost',
-    this.port,
+    int? port,
     this.securityContext,
   })  : _confirmationHandler = confirmationHandler,
-        _secretKey = secretKey {
-    port ??= (securityContext != null ? 443 : 80);
-  }
+        _secretKey = secretKey,
+        port = port ?? (securityContext == null ? 80 : 443);
 
   final _server = App(_ContextWithBody.new);
 
@@ -41,11 +40,7 @@ class Callback extends AbstractUpdateFetcher {
   final SecurityContext? securityContext;
 
   @override
-  Future<void> start({
-    String address = 'localhost',
-    int? port,
-    SecurityContext? securityContext,
-  }) async {
+  Future<void> start() async {
     if (isStart) {
       throw CallbackException('Callback API is running');
     }
