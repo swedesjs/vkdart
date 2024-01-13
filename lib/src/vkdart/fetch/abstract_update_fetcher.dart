@@ -1,4 +1,4 @@
-part of '../../../events.dart';
+part of '../../../vkdart.dart';
 
 /// Base class for update fetcher.
 abstract class AbstractUpdateFetcher {

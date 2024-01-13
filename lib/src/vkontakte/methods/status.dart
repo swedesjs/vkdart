@@ -1,4 +1,4 @@
-part of '../../methods.dart';
+part of '../api.dart';
 
 /// Методы для работы со статусом.
 class Status {
@@ -7,10 +7,10 @@ class Status {
   final Api _api;
 
   /// Returns data required to show the status of a user or community.
-  Future<ApiResponse<T>> get<T>(MethodTypeParams params) =>
+  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
       _api.request<T>('status.get', params);
 
   /// Sets a new status for the current user.
-  Future<ApiResponse<T>> set<T>(MethodTypeParams params) =>
+  Future<ApiResponse<T>> set<T>(Map<String, Object> params) =>
       _api.request<T>('status.set', params);
 }
