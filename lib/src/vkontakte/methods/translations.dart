@@ -1,4 +1,4 @@
-part of '../../methods.dart';
+part of '../api.dart';
 
 /// Методы для работы с переводом.
 class Translations {
@@ -8,6 +8,6 @@ class Translations {
   final Api _api;
 
   /// Переводит текст.
-  Future<ApiResponse<T>> translate<T>(MethodTypeParams params) =>
+  Future<ApiResponse<T>> translate<T>(Map<String, Object> params) =>
       _api.request<T>('translations.translate', params);
 }

@@ -1,5 +1,4 @@
-import 'package:vkdart/events.dart';
-import 'package:vkdart/src/api.dart';
+part of '../../../vkdart.dart';
 
 /// The main class of the library.
 /// It contains methods for working with the VK API.

@@ -1,4 +1,4 @@
-part of '../../methods.dart';
+part of '../api.dart';
 
 /// Методы для работы с виджетами на [внешних сайтах](https://dev.vk.com/ru/widgets/overview).
 class Widgets {
@@ -7,10 +7,10 @@ class Widgets {
   final Api _api;
 
   /// Gets a list of comments for the page added through the [Comments widget](vk.com/dev/Comments).
-  Future<ApiResponse<T>> getComments<T>(MethodTypeParams params) =>
+  Future<ApiResponse<T>> getComments<T>(Map<String, Object> params) =>
       _api.request<T>('widgets.getComments', params);
 
   /// Gets a list of application/site pages where the [Comments widget](vk.com/dev/Comments) or [Like widget](vk.com/dev/Like) is installed.
-  Future<ApiResponse<T>> getPages<T>(MethodTypeParams params) =>
+  Future<ApiResponse<T>> getPages<T>(Map<String, Object> params) =>
       _api.request<T>('widgets.getPages', params);
 }

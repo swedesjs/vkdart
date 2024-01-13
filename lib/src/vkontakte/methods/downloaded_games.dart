@@ -1,4 +1,4 @@
-part of '../../methods.dart';
+part of '../api.dart';
 
 /// Методы для работы с играми ВК.
 class DownloadedGames {
@@ -7,6 +7,6 @@ class DownloadedGames {
   final Api _api;
 
   /// Метод получает информацию, купил ли пользователь игру или нет.
-  Future<ApiResponse<T>> getPaidStatus<T>(MethodTypeParams params) =>
+  Future<ApiResponse<T>> getPaidStatus<T>(Map<String, Object> params) =>
       _api.request<T>('downloadedGames.getPaidStatus', params);
 }

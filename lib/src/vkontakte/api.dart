@@ -1,6 +1,53 @@
 import 'package:dio/dio.dart';
-import 'package:vkdart/methods.dart';
-import 'package:vkdart/vkdart.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'methods/account.dart';
+part 'methods/ads.dart';
+part 'methods/app_widgets.dart';
+part 'methods/apps.dart';
+part 'methods/asr.dart';
+part 'methods/auth.dart';
+part 'methods/board.dart';
+part 'methods/bugtracker.dart';
+part 'methods/calls.dart';
+part 'methods/database.dart';
+part 'methods/docs.dart';
+part 'methods/donut.dart';
+part 'methods/downloaded_games.dart';
+part 'methods/fave.dart';
+part 'methods/friends.dart';
+part 'methods/gifts.dart';
+part 'methods/groups.dart';
+part 'methods/lead_forms.dart';
+part 'methods/likes.dart';
+part 'methods/market.dart';
+part 'methods/messages.dart';
+part 'methods/newsfeed.dart';
+part 'methods/notes.dart';
+part 'methods/notifications.dart';
+part 'methods/orders.dart';
+part 'methods/pages.dart';
+part 'methods/photos.dart';
+part 'methods/places.dart';
+part 'methods/podcasts.dart';
+part 'methods/polls.dart';
+part 'methods/pretty_cards.dart';
+part 'methods/search.dart';
+part 'methods/widgets.dart';
+part 'methods/wall.dart';
+part 'methods/video.dart';
+part 'methods/users.dart';
+part 'methods/streaming.dart';
+part 'methods/storage.dart';
+part 'methods/secure.dart';
+part 'methods/stats.dart';
+part 'methods/utils.dart';
+part 'methods/store.dart';
+part 'methods/stories.dart';
+part 'methods/translations.dart';
+part 'methods/status.dart';
+
+part 'api.g.dart';
 
 /// Перечисление языков поддерживаемых VK API
 enum LangApi {
@@ -72,7 +119,7 @@ class Api {
     };
 
     // ignore: unnecessary_null_checks
-    final Response(:data!) = await _dio.post<ClassicMap>(
+    final Response(:data!) = await _dio.post<Map<String, dynamic>>(
       _baseUrl + methodName,
       data: requestOptions.entries.map((e) => '${e.key}=${e.value}').join('&'),
       options: Options(contentType: 'application/x-www-form-urlencoded'),
@@ -256,4 +303,56 @@ class ApiResponse<T> {
 
   /// Опции запроса.
   final Map<String, dynamic> requestOptions;
+}
+
+/// Класс предназначенный для ошибок связанных с API VK
+@JsonSerializable(fieldRename: FieldRename.snake)
+class ApiException implements Exception {
+  /// Конструктор класса [ApiException]
+  ApiException({
+    required this.code,
+    required this.message,
+    required this.requestParams,
+  });
+
+  /// Преобразует JSON в экземпляр класса
+  factory ApiException.fromJson(Map<String, dynamic> json) =>
+      _$ApiExceptionFromJson(json);
+
+  /// Код ошибки
+  @JsonKey(name: 'error_code')
+  final int code;
+
+  /// Сообщение ошибки
+  @JsonKey(name: 'error_msg')
+  final String message;
+
+  /// Параметры запроса
+  final List<RequestParams> requestParams;
+
+  /// Преобразует экземпляр в JSON
+  Map<String, dynamic> toJson() => _$ApiExceptionToJson(this);
+
+  @override
+  String toString() => 'ApiException[$code]: $message';
+}
+
+/// Интерфейс request_params
+@JsonSerializable()
+class RequestParams {
+  /// Экземляр интерфейса request_params
+  RequestParams({required this.key, required this.value});
+
+  /// Преобразует JSON в экземпляр класса
+  factory RequestParams.fromJson(Map<String, dynamic> json) =>
+      _$RequestParamsFromJson(json);
+
+  /// Key
+  final String key;
+
+  /// Value
+  final Object value;
+
+  /// Преобразует экземпляр в JSON
+  Map<String, dynamic> toJson() => _$RequestParamsToJson(this);
 }

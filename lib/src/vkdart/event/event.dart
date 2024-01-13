@@ -1,4 +1,4 @@
-part of '../../../events.dart';
+part of '../../../vkdart.dart';
 
 /// This class provides methods to subscribe to events.
 /// for example to listen to new messages.
