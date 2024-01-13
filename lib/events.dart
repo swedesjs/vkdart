@@ -6,8 +6,8 @@ import 'dart:io';
 
 import 'package:dia/dia.dart';
 import 'package:dia_body/dia_body.dart';
-import 'package:vkdart/vkdart.dart';
 
-part 'src/events/callback.dart';
-part 'src/events/update.dart';
-part 'src/exceptions/callback_exception.dart';
+part 'src/vkdart/event/event.dart';
+part 'src/vkdart/fetch/abstract_update_fetcher.dart';
+part 'src/vkdart/fetch/callback.dart';
+part 'src/vkdart/model/update.dart';
