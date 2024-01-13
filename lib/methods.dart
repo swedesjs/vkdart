@@ -1,50 +1,9 @@
-/// Содержит интерфейсы методов ВК.
-library vkdart.methods;
+/// This library contains all VK API methods
+/// and their auxiliary functions
+///  Example:
+/// ```dart
+/// import 'package:vkdart/vkdart.dart';
+/// ```
+library vkdart.api;
 
-import 'package:vkdart/vkdart.dart';
-
-part 'src/methods/account.dart';
-part 'src/methods/ads.dart';
-part 'src/methods/app_widgets.dart';
-part 'src/methods/apps.dart';
-part 'src/methods/asr.dart';
-part 'src/methods/auth.dart';
-part 'src/methods/board.dart';
-part 'src/methods/bugtracker.dart';
-part 'src/methods/calls.dart';
-part 'src/methods/database.dart';
-part 'src/methods/docs.dart';
-part 'src/methods/donut.dart';
-part 'src/methods/downloaded_games.dart';
-part 'src/methods/fave.dart';
-part 'src/methods/friends.dart';
-part 'src/methods/gifts.dart';
-part 'src/methods/groups.dart';
-part 'src/methods/lead_forms.dart';
-part 'src/methods/likes.dart';
-part 'src/methods/market.dart';
-part 'src/methods/messages.dart';
-part 'src/methods/newsfeed.dart';
-part 'src/methods/notes.dart';
-part 'src/methods/notifications.dart';
-part 'src/methods/orders.dart';
-part 'src/methods/pages.dart';
-part 'src/methods/photos.dart';
-part 'src/methods/places.dart';
-part 'src/methods/podcasts.dart';
-part 'src/methods/polls.dart';
-part 'src/methods/pretty_cards.dart';
-part 'src/methods/search.dart';
-part 'src/methods/widgets.dart';
-part 'src/methods/wall.dart';
-part 'src/methods/video.dart';
-part 'src/methods/users.dart';
-part 'src/methods/streaming.dart';
-part 'src/methods/storage.dart';
-part 'src/methods/secure.dart';
-part 'src/methods/stats.dart';
-part 'src/methods/utils.dart';
-part 'src/methods/store.dart';
-part 'src/methods/stories.dart';
-part 'src/methods/translations.dart';
-part 'src/methods/status.dart';
+export 'src/vkontakte/api.dart';
