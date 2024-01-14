@@ -10,6 +10,7 @@ jobs:
   test:
     env:
       TOKEN: ${{ secrets.TOKEN }}
+      GROUP_ID: ${{ secrets. GROUP_ID }}
 
     runs-on: ubuntu-latest
     steps:
