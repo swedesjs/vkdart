@@ -1,12 +1,13 @@
 import 'package:dotenv/dotenv.dart';
 import 'package:shouldly/shouldly.dart';
 import 'package:test/test.dart';
+import 'package:vkdart/methods.dart';
 import 'package:vkdart/vkdart.dart';
 
 void main() {
   final env = DotEnv(includePlatformEnvironment: true)..load();
-  final vk = VkDart(token: env['TOKEN']!);
-  final api = vk.getApi();
+  final vkdart = VkDart(env['TOKEN']!, Event());
+  final api = vkdart.getApi();
 
   group('Testing methods VK', () {
     group('check `request` function', () {
