@@ -42,3 +42,14 @@
 - Removed support for Longpoll API, now only Callback API.
 - The structure of the Callback API interface has been changed.
 - Added lists of `update types`.
+
+## 1.3.0
+Updates:
+- Documentation on using.
+- File structure package.
+- Structure of using the package.
+- Example file.
+
+Added: 
+- **Event class**. Interface containing event streams.
+- Functions to listen for specific events.
