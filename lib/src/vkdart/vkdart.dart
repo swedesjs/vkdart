@@ -17,15 +17,26 @@ class VkDart {
   /// [token] - access token.
   /// [event] - [Event] instance.
   /// [fetcher] - [AbstractUpdateFetcher] instance.
-  VkDart(String token, Event event, {required this.fetcher})
-      : _token = token,
-        _event = event;
+  /// [groupId] - group id.
+  VkDart(
+    String token,
+    Event event, {
+    AbstractUpdateFetcher? fetcher,
+    int? groupId,
+  })  : _token = token,
+        _event = event {
+    if (fetcher is Longpoll && groupId == null) {
+      throw VkDartException('Longpoll fetcher requires group id');
+    }
+
+    this.fetcher = fetcher ?? Longpoll(getApi(), groupId: groupId!);
+  }
 
   final String _token;
   final Event _event;
 
   /// Update fetcher.
-  final AbstractUpdateFetcher fetcher;
+  late final AbstractUpdateFetcher fetcher;
 
   /// Returns [Api] instance.
   Api getApi({
@@ -101,4 +112,16 @@ class VkDart {
 
   /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled` events.
   Stream<Update> onDonutWithdraw() => _event.onDonutWithdraw();
+}
+
+// ignore: public_member_api_docs
+class VkDartException implements Exception {
+  // ignore: public_member_api_docs
+  VkDartException(this.message);
+
+  /// Message of the exception.
+  final String message;
+
+  @override
+  String toString() => 'VkDartException: $message';
 }
