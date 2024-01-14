@@ -1,5 +1,5 @@
-/// This is a library that has many possibilities for interacting with the VK API
-/// and has a number of auxiliary functions
+/// The package contains convenient functionality for interacting with the
+/// [Longpoll] API, [Callback] API, and the VK [Api] itself
 library vkdart;
 
 import 'dart:async';
