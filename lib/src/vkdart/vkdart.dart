@@ -3,8 +3,7 @@ part of '../../../vkdart.dart';
 /// The main class of the library.
 /// It contains methods for working with the VK API.
 /// ```dart
-/// var api = vkdart.getApi();
-/// api.users.get(...);
+/// vkdart.users.get({'user_id': 'durov'});
 /// ```
 /// It also contains methods for working with the update fetcher.
 ///
@@ -12,38 +11,34 @@ part of '../../../vkdart.dart';
 /// vkdart.onMessage().listen((event) => print(event.object['message']['text']));
 /// ```
 /// `vkdart` - Instance of [VkDart].
-class VkDart {
+class VkDart extends Api {
   /// Constructor.
   /// [token] - access token.
   /// [event] - [Event] instance.
   /// [fetcher] - [AbstractUpdateFetcher] instance.
   /// [groupId] - group id.
+  /// [language] - Language.
+  /// [version] - API version
   VkDart(
     String token,
     Event event, {
     AbstractUpdateFetcher? fetcher,
     int? groupId,
-  })  : _token = token,
-        _event = event {
+    LangApi language = LangApi.ru,
+    String version = '5.131',
+  })  : _event = event,
+        super(token: token, language: language, version: version) {
     if ((fetcher is Longpoll && groupId == null) || groupId == null) {
       throw VkDartException('Longpoll fetcher requires group id');
     }
 
-    this.fetcher = fetcher ?? Longpoll(getApi(), groupId: groupId);
+    this.fetcher = fetcher ?? Longpoll(this, groupId: groupId);
   }
 
-  final String _token;
   final Event _event;
 
   /// Update fetcher.
   late final AbstractUpdateFetcher fetcher;
-
-  /// Returns [Api] instance.
-  Api getApi({
-    LangApi lang = LangApi.ru,
-    String version = '5.131',
-  }) =>
-      Api(token: _token, language: lang, version: version);
 
   /// Start fetcher
   Future<void> start() async {
