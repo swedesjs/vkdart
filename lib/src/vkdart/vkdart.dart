@@ -25,11 +25,11 @@ class VkDart {
     int? groupId,
   })  : _token = token,
         _event = event {
-    if (fetcher is Longpoll && groupId == null) {
+    if ((fetcher is Longpoll && groupId == null) || groupId == null) {
       throw VkDartException('Longpoll fetcher requires group id');
     }
 
-    this.fetcher = fetcher ?? Longpoll(getApi(), groupId: groupId!);
+    this.fetcher = fetcher ?? Longpoll(getApi(), groupId: groupId);
   }
 
   final String _token;
