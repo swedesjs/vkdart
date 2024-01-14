@@ -44,6 +44,11 @@ vkdart
   .listen((event) => print('There\'s a new comment on the photo!'));
 ```
 
+Using API:
+```dart
+await vkdart.users.get({'user_id': 'durov'});
+```
+
 ## Future plans
 - Create **contexts** for received events
 - Implement the VK Api **keyboard** interface
