@@ -1,5 +1,7 @@
 import 'package:vkdart/vkdart.dart' show VkDartException;
 
+part 'photo.dart';
+
 /// Base class Attachment
 ///
 /// See https://vk.com/dev/objects/attachments
