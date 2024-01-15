@@ -1,6 +1,7 @@
 import 'package:vkdart/vkdart.dart' show VkDartException;
 
 part 'photo.dart';
+part 'video.dart';
 
 /// Base class Attachment
 ///
@@ -46,7 +47,7 @@ class CustomAttachmentModel extends AttachmentModel {
         'owner_id': int.parse(match[2]!),
         'id': int.parse(match[3]!),
         if (match[4] != null) 'access_key': match[4],
-      }
+      },
     };
 
     return CustomAttachmentModel(attachmentPayload);
