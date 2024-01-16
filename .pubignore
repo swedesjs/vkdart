@@ -1,3 +1,2 @@
 test.dart
-.prettierignore
-.vscode
+build.sh
