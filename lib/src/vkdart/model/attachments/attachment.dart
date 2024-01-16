@@ -3,6 +3,7 @@ import 'package:vkdart/vkdart.dart' show VkDartException;
 part 'photo.dart';
 part 'video.dart';
 part 'audio.dart';
+part 'document.dart';
 
 /// Base class Attachment
 ///
