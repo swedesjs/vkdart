@@ -12,7 +12,8 @@ class Apps {
 
   /// Метод добавляет указанных пользователей в группу тестировщиков мини-приложения.
   Future<ApiResponse<T>> addUsersToTestingGroup<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('apps.addUsersToTestingGroup', params);
 
   /// Deletes all request notifications from the current app.
@@ -61,7 +62,8 @@ class Apps {
 
   /// Метод проверяет, разрешил ли пользователь присылать ему уведомления в мини-приложении.
   Future<ApiResponse<T>> isNotificationsAllowed<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('apps.isNotificationsAllowed', params);
 
   /// Проверить есть ли у пользователя подарок в игре.
@@ -78,7 +80,8 @@ class Apps {
 
   /// Метод удаляет указанных пользователей из групп тестировщиков мини-приложения.
   Future<ApiResponse<T>> removeUsersFromTestingGroups<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('apps.removeUsersFromTestingGroups', params);
 
   /// Sends a request to another user in an app that uses VK authorization.
@@ -87,6 +90,7 @@ class Apps {
 
   /// Метод создает новую или обновляет существующую группу тестировщиков мини-приложения.
   Future<ApiResponse<T>> updateMetaForTestingGroup<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('apps.updateMetaForTestingGroup', params);
 }

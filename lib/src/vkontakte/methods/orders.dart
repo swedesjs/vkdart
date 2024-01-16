@@ -30,7 +30,8 @@ class Orders {
 
   /// Получает информацию о подписке по её идентификатору.
   Future<ApiResponse<T>> getUserSubscriptionById<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('orders.getUserSubscriptionById', params);
 
   /// Получает список активных подписок пользователя.

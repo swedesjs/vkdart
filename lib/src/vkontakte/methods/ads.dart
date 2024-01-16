@@ -161,7 +161,8 @@ class Ads {
 
   /// Сохраняет результат поиска похожей аудитории.
   Future<ApiResponse<T>> saveLookalikeRequestResult<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('ads.saveLookalikeRequestResult', params);
 
   /// Предоставляет доступ к аудитории ретаргетинга другому рекламному кабинету.

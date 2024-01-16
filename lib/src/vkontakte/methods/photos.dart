@@ -86,7 +86,8 @@ class Photos {
 
   /// Returns the server address for market album photo upload.
   Future<ApiResponse<T>> getMarketAlbumUploadServer<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('photos.getMarketAlbumUploadServer', params);
 
   /// Returns the server address for market photo upload.
@@ -95,7 +96,8 @@ class Photos {
 
   /// Returns the server address for photo upload in a private message for a user.
   Future<ApiResponse<T>> getMessagesUploadServer<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('photos.getMessagesUploadServer', params);
 
   /// Returns a list of photos with tags that have not been viewed.
@@ -104,12 +106,14 @@ class Photos {
 
   /// Returns the server address for owner cover upload.
   Future<ApiResponse<T>> getOwnerCoverPhotoUploadServer<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('photos.getOwnerCoverPhotoUploadServer', params);
 
   /// Returns an upload server address for a profile or community photo.
   Future<ApiResponse<T>> getOwnerPhotoUploadServer<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('photos.getOwnerPhotoUploadServer', params);
 
   /// Возвращает список фотографий со страницы пользователя или сообщества.
