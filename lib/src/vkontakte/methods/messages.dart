@@ -12,7 +12,8 @@ class Messages {
 
   /// Allows sending messages from community to the current user.
   Future<ApiResponse<T>> allowMessagesFromGroup<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('messages.allowMessagesFromGroup', params);
 
   /// Creates a chat with several participants.
@@ -57,7 +58,8 @@ class Messages {
 
   /// Returns messages by their IDs within the conversation.
   Future<ApiResponse<T>> getByConversationMessageId<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('messages.getByConversationMessageId', params);
 
   /// Returns messages by their IDs.
@@ -78,7 +80,8 @@ class Messages {
 
   /// Returns a list of IDs of users participating in a chat.
   Future<ApiResponse<T>> getConversationMembers<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('messages.getConversationMembers', params);
 
   /// Returns a list of the current user's conversations.
@@ -140,7 +143,8 @@ class Messages {
 
   /// Returns information whether sending messages from the community to current user is allowed.
   Future<ApiResponse<T>> isMessagesFromGroupAllowed<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('messages.isMessagesFromGroupAllowed', params);
 
   /// Позволяет присоединиться к чату по ссылке-приглашению.
@@ -149,7 +153,8 @@ class Messages {
 
   /// Marks and unmarks conversations as unanswered.
   Future<ApiResponse<T>> markAsAnsweredConversation<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('messages.markAsAnsweredConversation', params);
 
   /// Marks and unmarks messages as important (starred).
@@ -158,7 +163,8 @@ class Messages {
 
   /// Marks and unmarks conversations as important.
   Future<ApiResponse<T>> markAsImportantConversation<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('messages.markAsImportantConversation', params);
 
   /// Marks messages as read.
@@ -196,7 +202,8 @@ class Messages {
 
   /// Отправляет событие с действием, которое произойдет при нажатии на callback-кнопку.
   Future<ApiResponse<T>> sendMessageEventAnswer<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('messages.sendMessageEventAnswer', params);
 
   /// Метод установки реакции на сообщение

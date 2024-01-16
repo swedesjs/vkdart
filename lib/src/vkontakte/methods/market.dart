@@ -120,7 +120,8 @@ class Market {
 
   /// Метод для получения ссылки на сервер загрузки изображений
   Future<ApiResponse<T>> getProductPhotoUploadServer<T>(
-          Map<String, Object> params,) =>
+    Map<String, Object> params,
+  ) =>
       _api.request<T>('market.getProductPhotoUploadServer', params);
 
   /// Возвращает список свойств для указанного сообщества.
