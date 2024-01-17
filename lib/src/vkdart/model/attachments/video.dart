@@ -127,15 +127,29 @@ class VideoAttachmentModel extends CustomAttachmentModel {
 
   /// Likes
   /// See https://vk.com/dev/objects/video#likes
-  VideoLikesModel? get likes => attachmentObject['likes'] != null
-      ? VideoLikesModel(attachmentObject['likes'])
-      : null;
+  Map<String, dynamic>? get likes => attachmentObject['likes'];
 
   /// Reposts
   /// See https://vk.com/dev/objects/video#reposts
-  VideoRepostsModel? get reposts => attachmentObject['reposts'] != null
-      ? VideoRepostsModel(attachmentObject['reposts'])
-      : null;
+  Map<String, dynamic>? get reposts => attachmentObject['reposts'];
+
+  /// Number of likes.
+  int? get likesCount => likes?['count'];
+
+  /// Whether the video has been added to the 'Liked' list of the current user.
+  int? get isUserLiked => likes?['user_likes'];
+
+  /// Number of reposts.
+  int? get repostsCount => reposts?['count'];
+
+  /// repost counter on the wall.
+  int? get repostsWallCount => reposts?['wall_count'];
+
+  /// counter of reposts in personal messages.
+  int? get repostsMailCount => reposts?['mail_count'];
+
+  /// information about whether the current user has reposted this video.
+  int? get isUserReposted => reposts?['user_reposted'];
 }
 
 /// Model Video Cover Image.
@@ -179,44 +193,4 @@ final class VideoFirstFrameImageModel {
 
   /// First frame image height.
   int? get height => firstFrameObject['height'];
-}
-
-/// Model Video Likes
-///
-/// See https://vk.com/dev/objects/video#likes
-final class VideoLikesModel {
-  // ignore: public_member_api_docs
-  VideoLikesModel(this.likesObject);
-
-  /// Payload.
-  final Map<String, dynamic> likesObject;
-
-  /// Number of likes.
-  int? get count => likesObject['count'];
-
-  /// Whether the video has been added to the 'Liked' list of the current user.
-  int? get userLikes => likesObject['user_likes'];
-}
-
-/// Model Video Reposts.
-///
-/// See https://vk.com/dev/objects/video#reposts
-final class VideoRepostsModel {
-  // ignore: public_member_api_docs
-  VideoRepostsModel(this.repostsObject);
-
-  /// Payload.
-  final Map<String, dynamic> repostsObject;
-
-  /// Numbers of count.
-  int? get count => repostsObject['count'];
-
-  /// repost counter on the wall.
-  int? get wallCount => repostsObject['wall_count'];
-
-  /// counter of reposts in personal messages.
-  int? get mailCount => repostsObject['mail_count'];
-
-  /// information about whether the current user has reposted this video.
-  int? get userReposted => repostsObject['user_reposted'];
 }
