@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 part of 'attachment.dart';
 
 /// Model Document.
@@ -26,100 +28,40 @@ class DocumentAttachmentModel extends CustomAttachmentModel {
   int? get documentType => attachmentObject['type'];
 
   /// File preview information.
-  ///
-  /// See https://vk.com/dev/objects/doc#preview
-  DocumentPreviewModel? get preview => attachmentObject['preview'] != null
-      ? DocumentPreviewModel(attachmentObject['preview'])
-      : null;
-}
+  Map<String, dynamic>? get preview => attachmentObject['preview'];
 
-/// Model Document Preview.
-///
-/// See https://vk.com/dev/objects/doc#preview
-final class DocumentPreviewModel {
-  // ignore: public_member_api_docs
-  DocumentPreviewModel(this.previewObject);
+  /// Graffiti data.
+  Map<String, dynamic>? get previewGraffiti => preview?['graffiti'];
 
-  /// Payload.
-  final Map<String, dynamic> previewObject;
-
-  /// preview images.
-  DocumentPreviewPhotoModel? get photo => previewObject['photo'] != null
-      ? DocumentPreviewPhotoModel(previewObject['photo'])
-      : null;
-
-  /// graffiti data.
-  DocumentPreviewGraffitiModel? get graffiti =>
-      previewObject['graffiti'] != null
-          ? DocumentPreviewGraffitiModel(previewObject['graffiti'])
-          : null;
-
-  /// audio message data.
-  DocumentPreviewAudioMessageModel? get audioMessage =>
-      previewObject['audio_message'] != null
-          ? DocumentPreviewAudioMessageModel(previewObject['audio_message'])
-          : null;
-}
-
-/// Model Document Preview.
-/// Field [DocumentPreviewModel.photo].
-///
-/// See https://vk.com/dev/objects/doc#preview
-final class DocumentPreviewPhotoModel {
-  // ignore: public_member_api_docs
-  DocumentPreviewPhotoModel(this.photoObject);
-
-  /// Payload.
-  final Map<String, dynamic> photoObject;
+  /// Audio message data.
+  Map<String, dynamic>? get previewAudioMessage => preview?['audio_message'];
 
   /// an array of image copies in different sizes.
-  List<PhotoCopyModel> get sizes => (photoObject['sizes'] as List)
-      .map((e) => PhotoCopyModel((e as Map).cast<String, dynamic>()))
-      .toList();
-}
-
-/// Model Document Preview.
-/// Field [DocumentPreviewModel.graffiti].
-///
-/// See https://vk.com/dev/objects/doc#preview
-final class DocumentPreviewGraffitiModel {
-  // ignore: public_member_api_docs
-  DocumentPreviewGraffitiModel(this.graffitiObject);
-
-  /// Payload.
-  final Map<String, dynamic> graffitiObject;
+  List<PhotoCopyModel> get previewPhotoSizes =>
+      (preview?['photo']?['sizes'] as List?)
+          ?.map((e) => PhotoCopyModel((e as Map).cast<String, dynamic>()))
+          .toList() ??
+      const [];
 
   /// Graffiti file URL;
-  String? get src => graffitiObject['src'];
+  String? get previewGraffitiSrc => previewGraffiti?['src'];
 
-  /// image width in px;
-  int? get width => graffitiObject['width'];
+  /// graffiti width in px;
+  int? get previewGraffitiWidth => previewGraffiti?['width'];
 
-  /// image height in px;s
-  int? get height => graffitiObject['height'];
-}
-
-/// Model Document Preview.
-/// Field [DocumentPreviewModel.audioMessage].
-///
-/// See https://vk.com/dev/objects/doc#preview
-final class DocumentPreviewAudioMessageModel {
-  // ignore: public_member_api_docs
-  DocumentPreviewAudioMessageModel(this.audioMessageObject);
-
-  /// Payload.
-  final Map<String, dynamic> audioMessageObject;
+  /// graffiti height in px;
+  int? get previewGraffitiHeight => previewGraffiti?['height'];
 
   /// Audio message duration in seconds.
-  int? get duration => audioMessageObject['duration'];
+  int? get previewAudioMessageDuration => previewAudioMessage?['duration'];
 
-  /// Waveform as a list of integers.
-  List<int>? get waveform =>
-      (audioMessageObject['waveform'] as List?)?.cast<int>();
+  /// Audio message waveform.
+  List<int>? get previewAudioMessageWaveform =>
+      (previewAudioMessage?['waveform'] as List?)?.cast<int>();
 
-  /// Ogg format link.
-  String? get linkOgg => audioMessageObject['link_ogg'];
+  /// Audio message ling ogg.
+  String? get previewAudioMessageLinkOgg => previewAudioMessage?['link_ogg'];
 
-  /// Mp3 format link.
-  String? get linkMp3 => audioMessageObject['link_mp3'];
+  /// Audio message ling mp3.
+  String? get previewAudioMessageLinkMp3 => previewAudioMessage?['link_mp3'];
 }
