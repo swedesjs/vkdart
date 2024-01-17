@@ -4,6 +4,7 @@ part 'photo.dart';
 part 'video.dart';
 part 'audio.dart';
 part 'document.dart';
+part 'link.dart';
 
 /// Base class Attachment
 ///
