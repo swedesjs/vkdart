@@ -5,6 +5,7 @@ part 'video.dart';
 part 'audio.dart';
 part 'document.dart';
 part 'link.dart';
+part 'market.dart';
 
 /// Base class Attachment
 ///
@@ -68,10 +69,4 @@ class CustomAttachmentModel extends AttachmentModel {
   @override
   String toString() =>
       '$type${ownerId}_$id${accessKey != null ? '_$accessKey' : ''}';
-}
-
-/// Model External Attachment.
-class ExternalAttachmentModel extends AttachmentModel {
-  // ignore: public_member_api_docs
-  ExternalAttachmentModel(super.payload);
 }
