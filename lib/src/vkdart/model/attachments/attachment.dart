@@ -6,6 +6,7 @@ part 'audio.dart';
 part 'document.dart';
 part 'link.dart';
 part 'market.dart';
+part 'market_album.dart';
 
 /// Base class Attachment
 ///
