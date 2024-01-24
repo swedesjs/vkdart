@@ -3,7 +3,8 @@ part of 'attachment.dart';
 /// Model Video
 ///
 /// See https://vk.com/dev/objects/video
-class VideoAttachmentModel extends CustomAttachmentModel {
+class VideoAttachmentModel extends CustomAttachmentModel
+    with AttachmentLikesMixin, AttachmentRepostsMixin {
   // ignore: public_member_api_docs
   VideoAttachmentModel(super.payload);
 
@@ -124,32 +125,6 @@ class VideoAttachmentModel extends CustomAttachmentModel {
 
   /// Number of viewers of the live broadcast.
   int? get spectators => attachmentObject['spectators'];
-
-  /// Likes
-  /// See https://vk.com/dev/objects/video#likes
-  Map<String, dynamic>? get likes => attachmentObject['likes'];
-
-  /// Reposts
-  /// See https://vk.com/dev/objects/video#reposts
-  Map<String, dynamic>? get reposts => attachmentObject['reposts'];
-
-  /// Number of likes.
-  int? get likesCount => likes?['count'];
-
-  /// Whether the video has been added to the 'Liked' list of the current user.
-  int? get isUserLiked => likes?['user_likes'];
-
-  /// Number of reposts.
-  int? get repostsCount => reposts?['count'];
-
-  /// repost counter on the wall.
-  int? get repostsWallCount => reposts?['wall_count'];
-
-  /// counter of reposts in personal messages.
-  int? get repostsMailCount => reposts?['mail_count'];
-
-  /// information about whether the current user has reposted this video.
-  int? get isUserReposted => reposts?['user_reposted'];
 }
 
 /// Model Video Cover Image.
