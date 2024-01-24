@@ -3,9 +3,9 @@ part of 'attachment.dart';
 /// Model Market Album.
 ///
 /// See https://dev.vk.com/objects/market-album
-class MarketAlbumAttachment extends CustomAttachmentModel {
+class MarketAlbumAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
-  MarketAlbumAttachment(super.payload);
+  MarketAlbumAttachmentModel(super.payload);
 
   /// The name of the collection.
   String? get title => attachmentObject['title'];
