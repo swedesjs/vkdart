@@ -17,7 +17,7 @@ void main() {
 
     test('Testing photo attachment', () {
       photoAttachment
-        ..type.should.be('photo')
+        ..attachType.should.be('photo')
         ..ownerId.should.be(1)
         ..id.should.be(2)
         ..accessKey.should.be('ACCESS_KEY');

@@ -7,6 +7,7 @@ part 'document.dart';
 part 'link.dart';
 part 'market.dart';
 part 'market_album.dart';
+part 'wall.dart';
 
 /// Base class Attachment
 ///
@@ -19,10 +20,10 @@ abstract class AttachmentModel {
   final Map<String, dynamic> payload;
 
   /// Attachment type.
-  String get type => payload['type'];
+  String get attachType => payload['type'];
 
   /// Attachment object.
-  Map<String, dynamic> get attachmentObject => payload[type];
+  Map<String, dynamic> get attachmentObject => payload[attachType];
 }
 
 /// Model Custom Attachment.
@@ -69,5 +70,5 @@ class CustomAttachmentModel extends AttachmentModel {
 
   @override
   String toString() =>
-      '$type${ownerId}_$id${accessKey != null ? '_$accessKey' : ''}';
+      '$attachType${ownerId}_$id${accessKey != null ? '_$accessKey' : ''}';
 }
