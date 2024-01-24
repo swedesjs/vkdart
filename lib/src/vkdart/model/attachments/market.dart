@@ -5,7 +5,8 @@ part of 'attachment.dart';
 /// Model Market
 ///
 /// See https://vk.com/dev/objects/market-item
-class MarketAttachmentModel extends CustomAttachmentModel {
+class MarketAttachmentModel extends CustomAttachmentModel
+    with AttachmentLikesMixin {
   // ignore: public_member_api_docs
   MarketAttachmentModel(super.payload);
 
@@ -35,11 +36,6 @@ class MarketAttachmentModel extends CustomAttachmentModel {
   ///
   /// See https://vk.com/dev/objects/market-item#reject_info
   Map<String, dynamic>? get rejectInfo => attachmentObject['reject_info'];
-
-  /// Information about “Like” marks.
-  ///
-  /// See https://vk.com/dev/objects/market-item#likes
-  Map<String, dynamic>? get likes => attachmentObject['likes'];
 
   /// the price of a product in hundredths of a currency unit.
   int? get priceAmount => price?['amount'];
@@ -94,12 +90,6 @@ class MarketAttachmentModel extends CustomAttachmentModel {
 
   /// support link.
   int? get rejectWhiteToSupportLink => rejectInfo?['white_to_support_link'];
-
-  /// whether there is a “Like” from the current user (1 - yes, 0 - no).
-  int? get isUserLiked => likes?['user_likes'];
-
-  /// number of likes.
-  int? get likesCount => likes?['count'];
 
   /// Weight in grams.
   int? get weight => attachmentObject['weight'];

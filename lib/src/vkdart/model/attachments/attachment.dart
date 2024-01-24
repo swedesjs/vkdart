@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'package:vkdart/vkdart.dart' show VkDartException;
 
 part 'photo.dart';
@@ -71,4 +73,40 @@ class CustomAttachmentModel extends AttachmentModel {
   @override
   String toString() =>
       '$attachType${ownerId}_$id${accessKey != null ? '_$accessKey' : ''}';
+}
+
+/// Mixin for attachment likes.
+mixin AttachmentLikesMixin on AttachmentModel {
+  @override
+  Map<String, dynamic> get attachmentObject;
+
+  /// the number of users who liked the post;
+  int get likesCount => attachmentObject['likes']['count'];
+
+  /// the presence of a "like" mark from the current user (1 — yes, 0 — no);
+  int get userLikes => attachmentObject['likes']['user_likes'];
+
+  /// information about whether the current user can mark "Like" (1 — maybe, 0 — can't);
+  bool? get likesCanLike => attachmentObject['likes']['can_like'];
+
+  /// information about whether the current user can repost the post (1 — maybe, 0 — can't);
+  bool? get likesCanPublish => attachmentObject['likes']['can_publish'];
+}
+
+/// Mixin for attachment reposts.
+mixin AttachmentRepostsMixin on AttachmentModel {
+  @override
+  Map<String, dynamic> get attachmentObject;
+
+  /// the number of reposts;
+  int get repostsCount => attachmentObject['reposts']['count'];
+
+  /// Indicates whether the current user has reposted the attachment.
+  int get userReposted => attachmentObject['reposts']['user_reposted'];
+
+  /// repost counter on the wall.
+  int? get repostsWallCount => attachmentObject['reposts']['wall_count'];
+
+  /// counter of reposts in personal messages.
+  int? get repostsMailCount => attachmentObject['reposts']['mail_count'];
 }
