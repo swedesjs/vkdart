@@ -8,10 +8,10 @@ class LinkAttachmentModel extends AttachmentModel {
   LinkAttachmentModel(super.payload);
 
   /// Link URL.
-  String? get url => attachmentObject['url'];
+  String get url => attachmentObject['url'];
 
   /// Link title.
-  String? get title => attachmentObject['title'];
+  String get title => attachmentObject['title'];
 
   /// Link description.
   String? get description => attachmentObject['description'];
