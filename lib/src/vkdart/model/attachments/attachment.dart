@@ -10,6 +10,7 @@ part 'link.dart';
 part 'market.dart';
 part 'market_album.dart';
 part 'wall.dart';
+part 'wall_reply.dart';
 
 /// Base class Attachment
 ///
