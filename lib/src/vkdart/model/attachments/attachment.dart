@@ -77,9 +77,6 @@ class CustomAttachmentModel extends AttachmentModel {
 
 /// Mixin for attachment likes.
 mixin AttachmentLikesMixin on AttachmentModel {
-  @override
-  Map<String, dynamic> get attachmentObject;
-
   /// the number of users who liked the post;
   int get likesCount => attachmentObject['likes']['count'];
 
@@ -95,9 +92,6 @@ mixin AttachmentLikesMixin on AttachmentModel {
 
 /// Mixin for attachment reposts.
 mixin AttachmentRepostsMixin on AttachmentModel {
-  @override
-  Map<String, dynamic> get attachmentObject;
-
   /// the number of reposts;
   int get repostsCount => attachmentObject['reposts']['count'];
 
