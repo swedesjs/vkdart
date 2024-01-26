@@ -11,11 +11,11 @@ class GiftAttachmentModel extends AttachmentModel {
   int get id => attachmentObject['id'];
 
   /// Thumbnail image URL with size 256.
-  String get thumb256 => attachmentObject['thumb_256'];
+  String? get thumb256 => attachmentObject['thumb_256'];
 
   /// Thumbnail image URL with size 96.
-  String get thumb96 => attachmentObject['thumb_96'];
+  String? get thumb96 => attachmentObject['thumb_96'];
 
   /// Thumbnail image URL with size 48.
-  String get thumb48 => attachmentObject['thumb_48'];
+  String? get thumb48 => attachmentObject['thumb_48'];
 }
