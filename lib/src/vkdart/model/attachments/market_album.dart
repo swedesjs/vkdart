@@ -14,7 +14,7 @@ class MarketAlbumAttachmentModel extends CustomAttachmentModel {
   bool? get isMain => attachmentObject['is_main'];
 
   /// Whether the selection is hidden.
-  bool? get isHidden => attachmentObject['is_hiden'];
+  bool? get isHidden => attachmentObject['is_hidden'];
 
   /// The cover of the collection
   ///
