@@ -30,10 +30,10 @@ class StickerAttachmentModel extends AttachmentModel {
           .toList();
 
   /// The URL of the sticker animation.
-  String get animationUrl => attachmentObject['animation_url'];
+  String? get animationUrl => attachmentObject['animation_url'];
 
   /// Whether the sticker is allowed.
-  bool get isAllowed => attachmentObject['is_allowed'];
+  bool? get isAllowed => attachmentObject['is_allowed'];
 }
 
 /// Model Sticker Attachment Image.
