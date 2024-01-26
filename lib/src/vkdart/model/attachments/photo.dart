@@ -29,6 +29,11 @@ class PhotoAttachmentModel extends CustomAttachmentModel {
 
   /// The height of the original photo in pixels.
   int? get height => attachmentObject['height'];
+
+  /// ID of the record where the photo was uploaded.
+  ///
+  /// see https://dev.vk.com/ru/reference/objects/attachments-wall#Фотография%20(type%20=%20photo)
+  int? get postId => attachmentObject['post_id'];
 }
 
 /// Model Photo copy.
