@@ -11,6 +11,7 @@ part 'market.dart';
 part 'market_album.dart';
 part 'wall.dart';
 part 'wall_reply.dart';
+part 'sticker.dart';
 
 /// Base class Attachment
 ///
