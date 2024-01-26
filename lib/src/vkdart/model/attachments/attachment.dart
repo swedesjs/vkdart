@@ -29,6 +29,16 @@ abstract class AttachmentModel {
 
   /// Attachment object.
   Map<String, dynamic> get attachmentObject => payload[attachType];
+
+  bool? _checkBoolInProperty(String key) {
+    final value = attachmentObject[key];
+
+    if (value is! int) {
+      return null;
+    }
+
+    return value == 1;
+  }
 }
 
 /// Model Custom Attachment.
