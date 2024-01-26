@@ -37,11 +37,10 @@ class DocumentAttachmentModel extends CustomAttachmentModel {
   Map<String, dynamic>? get previewAudioMessage => preview?['audio_message'];
 
   /// an array of image copies in different sizes.
-  List<PhotoCopyModel> get previewPhotoSizes =>
+  List<PhotoCopyModel>? get previewPhotoSizes =>
       (preview?['photo']?['sizes'] as List?)
           ?.map((e) => PhotoCopyModel((e as Map).cast<String, dynamic>()))
-          .toList() ??
-      const [];
+          .toList();
 
   /// Graffiti file URL;
   String? get previewGraffitiSrc => previewGraffiti?['src'];
