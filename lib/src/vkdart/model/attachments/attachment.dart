@@ -90,30 +90,34 @@ class CustomAttachmentModel extends AttachmentModel {
 
 /// Mixin for attachment likes.
 mixin AttachmentLikesMixin on AttachmentModel {
+  Map<String, dynamic>? get _likes => attachmentObject['likes'];
+
   /// the number of users who liked the post;
-  int? get likesCount => attachmentObject['likes']?['count'];
+  int? get likesCount => _likes?['count'];
 
-  /// the presence of a "like" mark from the current user (1 — yes, 0 — no);
-  bool? get isUserLikes => attachmentObject['likes']?['user_likes'] == 1;
+  /// the presence of a "like" mark from the current user ;
+  bool? get isUserLikes => _checkBool(_likes?['user_likes']);
 
-  /// information about whether the current user can mark "Like" (1 — maybe, 0 — can't);
-  bool? get isLikesCanLike => attachmentObject['likes']?['can_like'] == 1;
+  /// information about whether the current user can mark "Like";
+  bool? get isLikesCanLike => _checkBool(_likes?['can_like']);
 
-  /// information about whether the current user can repost the post (1 — maybe, 0 — can't);
-  bool? get isLikesCanPublish => attachmentObject['likes']?['can_publish'] == 1;
+  /// information about whether the current user can repost the post;
+  bool? get isLikesCanPublish => _checkBool(_likes?['can_publish']);
 }
 
 /// Mixin for attachment reposts.
 mixin AttachmentRepostsMixin on AttachmentModel {
+  Map<String, dynamic>? get _reposts => attachmentObject['reposts'];
+
   /// the number of reposts;
-  int? get repostsCount => attachmentObject['reposts']['count'];
+  int? get repostsCount => _reposts?['count'];
 
   /// Indicates whether the current user has reposted the attachment.
-  bool? get isUserReposted => attachmentObject['reposts']['user_reposted'] == 1;
+  bool? get isUserReposted => _checkBool(_reposts?['user_reposted']);
 
   /// repost counter on the wall.
-  int? get repostsWallCount => attachmentObject['reposts']['wall_count'];
+  int? get repostsWallCount => _reposts?['wall_count'];
 
   /// counter of reposts in personal messages.
-  int? get repostsMailCount => attachmentObject['reposts']['mail_count'];
+  int? get repostsMailCount => _reposts?['mail_count'];
 }
