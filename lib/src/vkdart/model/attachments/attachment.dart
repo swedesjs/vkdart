@@ -15,6 +15,7 @@ part 'sticker.dart';
 part 'gift.dart';
 part 'graffiti.dart';
 part 'poll.dart';
+part 'note.dart';
 
 /// Base class Attachment
 ///
