@@ -30,15 +30,15 @@ abstract class AttachmentModel {
   /// Attachment object.
   Map<String, dynamic> get attachmentObject => payload[attachType];
 
-  bool? _checkBoolInProperty(String key) {
-    final value = attachmentObject[key];
-
+  bool? _checkBool(Object value) {
     if (value is! int) {
       return null;
     }
 
     return value == 1;
   }
+
+  bool? _checkBoolInProperty(String key) => _checkBool(attachmentObject[key]);
 }
 
 /// Model Custom Attachment.
@@ -91,25 +91,25 @@ class CustomAttachmentModel extends AttachmentModel {
 /// Mixin for attachment likes.
 mixin AttachmentLikesMixin on AttachmentModel {
   /// the number of users who liked the post;
-  int get likesCount => attachmentObject['likes']['count'];
+  int? get likesCount => attachmentObject['likes']?['count'];
 
   /// the presence of a "like" mark from the current user (1 — yes, 0 — no);
-  int get userLikes => attachmentObject['likes']['user_likes'];
+  bool? get isUserLikes => attachmentObject['likes']?['user_likes'] == 1;
 
   /// information about whether the current user can mark "Like" (1 — maybe, 0 — can't);
-  bool? get likesCanLike => attachmentObject['likes']['can_like'];
+  bool? get isLikesCanLike => attachmentObject['likes']?['can_like'] == 1;
 
   /// information about whether the current user can repost the post (1 — maybe, 0 — can't);
-  bool? get likesCanPublish => attachmentObject['likes']['can_publish'];
+  bool? get isLikesCanPublish => attachmentObject['likes']?['can_publish'] == 1;
 }
 
 /// Mixin for attachment reposts.
 mixin AttachmentRepostsMixin on AttachmentModel {
   /// the number of reposts;
-  int get repostsCount => attachmentObject['reposts']['count'];
+  int? get repostsCount => attachmentObject['reposts']['count'];
 
   /// Indicates whether the current user has reposted the attachment.
-  int get userReposted => attachmentObject['reposts']['user_reposted'];
+  bool? get isUserReposted => attachmentObject['reposts']['user_reposted'] == 1;
 
   /// repost counter on the wall.
   int? get repostsWallCount => attachmentObject['reposts']['wall_count'];
