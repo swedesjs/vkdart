@@ -2,7 +2,7 @@ part of 'attachment.dart';
 
 /// Model Photo
 ///
-/// See https://vk.com/dev/objects/photo
+/// See https://dev.vk.com/ru/reference/objects/photo
 class PhotoAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   PhotoAttachmentModel(super.payload);
@@ -17,7 +17,7 @@ class PhotoAttachmentModel extends CustomAttachmentModel {
   String? get text => attachmentObject['text'];
 
   /// Date added in Unixtime format.
-  int? get date => attachmentObject['date'];
+  int? get createdAt => attachmentObject['date'];
 
   /// An array with copies of the image in different sizes.
   List<PhotoCopyModel> get sizes => (attachmentObject['sizes'] as List)
@@ -41,20 +41,20 @@ class PhotoAttachmentModel extends CustomAttachmentModel {
 /// See https://dev.vk.com/ru/reference/objects/photo-sizes
 class PhotoCopyModel {
   // ignore: public_member_api_docs
-  PhotoCopyModel(this.payload);
+  PhotoCopyModel(this.photoObject);
 
   /// Payload.
-  final Map<String, dynamic> payload;
+  final Map<String, dynamic> photoObject;
 
   /// Photo type.
-  String get type => payload['type'];
+  String get type => photoObject['type'];
 
   /// Photo URL.
-  String get url => payload['url'];
+  String get url => photoObject['url'];
 
   /// Photo width.
-  int get width => payload['width'];
+  int get width => photoObject['width'];
 
   /// Photo height.
-  int get height => payload['height'];
+  int get height => photoObject['height'];
 }

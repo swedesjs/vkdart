@@ -2,7 +2,7 @@ part of 'attachment.dart';
 
 /// Model Link.
 ///
-/// See https://vk.com/dev/objects/link
+/// See https://dev.vk.com/ru/reference/objects/link
 class LinkAttachmentModel extends AttachmentModel {
   // ignore: public_member_api_docs
   LinkAttachmentModel(super.payload);
@@ -27,7 +27,7 @@ class LinkAttachmentModel extends AttachmentModel {
   /// Information about the button to navigate (if available).
   Map<String, dynamic>? get button => attachmentObject['button'];
 
-  /// ID of the content wiki page to preview the content of the page. Returned in the format `"owner_id_page_id"`.
+  /// ID of the content wiki page to preview the content of the page. Returned in the format `owner_id_page_ids`.
   String? get previewPage => attachmentObject['preview_page'];
 
   /// Content page URL to preview the page content.

@@ -2,7 +2,7 @@ part of 'attachment.dart';
 
 /// Model Audio.
 ///
-/// See https://vk.com/dev/objects/audio
+/// See https://dev.vk.com/ru/reference/objects/audio
 class AudioAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   AudioAttachmentModel(super.payload);
@@ -30,12 +30,12 @@ class AudioAttachmentModel extends CustomAttachmentModel {
   int? get genreId => attachmentObject['genre_id'];
 
   /// Date added.
-  int? get date => attachmentObject['date'];
+  int? get createdAt => attachmentObject['date'];
 
-  /// `1` if the “Do not display during search” option is enabled.
+  /// `true` if the “Do not display during search” option is enabled.
   /// If the option is disabled, the field is not returned.
-  int? get noSearch => attachmentObject['no_search'];
+  bool? get isNoSearch => _checkBoolInProperty('no_search');
 
-  /// `1` if the audio is high quality.
-  int? get isHq => attachmentObject['is_hq'];
+  /// `true` if the audio is high quality.
+  bool? get isHq => _checkBoolInProperty('is_hq');
 }
