@@ -30,7 +30,7 @@ abstract class AttachmentModel {
   /// Attachment object.
   Map<String, dynamic> get attachmentObject => payload[attachType];
 
-  bool? _checkBool(Object value) {
+  static bool? _checkBool(Object value) {
     if (value is! int) {
       return null;
     }
@@ -96,13 +96,14 @@ mixin AttachmentLikesMixin on AttachmentModel {
   int? get likesCount => _likes?['count'];
 
   /// the presence of a "like" mark from the current user ;
-  bool? get isUserLikes => _checkBool(_likes?['user_likes']);
+  bool? get isUserLikes => AttachmentModel._checkBool(_likes?['user_likes']);
 
   /// information about whether the current user can mark "Like";
-  bool? get isLikesCanLike => _checkBool(_likes?['can_like']);
+  bool? get isLikesCanLike => AttachmentModel._checkBool(_likes?['can_like']);
 
   /// information about whether the current user can repost the post;
-  bool? get isLikesCanPublish => _checkBool(_likes?['can_publish']);
+  bool? get isLikesCanPublish =>
+      AttachmentModel._checkBool(_likes?['can_publish']);
 }
 
 /// Mixin for attachment reposts.
@@ -113,7 +114,8 @@ mixin AttachmentRepostsMixin on AttachmentModel {
   int? get repostsCount => _reposts?['count'];
 
   /// Indicates whether the current user has reposted the attachment.
-  bool? get isUserReposted => _checkBool(_reposts?['user_reposted']);
+  bool? get isUserReposted =>
+      AttachmentModel._checkBool(_reposts?['user_reposted']);
 
   /// repost counter on the wall.
   int? get repostsWallCount => _reposts?['wall_count'];
