@@ -16,10 +16,11 @@ part 'gift.dart';
 part 'graffiti.dart';
 part 'poll.dart';
 part 'note.dart';
+part 'page.dart';
 
 /// Base class Attachment
 ///
-/// See https://vk.com/dev/objects/attachments
+/// See https://dev.vk.com/ru/docs/attachments
 abstract class AttachmentModel {
   // ignore: public_member_api_docs
   AttachmentModel(this.payload);
