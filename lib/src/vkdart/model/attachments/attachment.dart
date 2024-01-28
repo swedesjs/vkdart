@@ -14,6 +14,7 @@ part 'wall_reply.dart';
 part 'sticker.dart';
 part 'gift.dart';
 part 'graffiti.dart';
+part 'poll.dart';
 
 /// Base class Attachment
 ///
