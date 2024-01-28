@@ -5,7 +5,7 @@ import 'package:vkdart/vkdart.dart';
 void main() async {
   // Group ID is indicated if Longpoll API is used
   // if the fetcher parameter is not specified, Longpoll will be used by default
-  final vkdart = VkDart('accessToken', Event(), groupId: 123);
+  final vkdart = VkDart('accessToken', groupId: 123);
 
   // Use callback
   // final callback = Callback(

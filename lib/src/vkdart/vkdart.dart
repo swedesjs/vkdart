@@ -20,13 +20,13 @@ class VkDart extends Api {
   /// [language] - Language.
   /// [version] - API version
   VkDart(
-    String token,
-    Event event, {
+    String token, {
+    Event? event,
     AbstractUpdateFetcher? fetcher,
     int? groupId,
     LangApi language = LangApi.ru,
     String version = '5.131',
-  })  : _event = event,
+  })  : _event = event ?? Event(),
         super(token: token, language: language, version: version) {
     if ((fetcher is Longpoll && groupId == null) || groupId == null) {
       throw VkDartException('Longpoll fetcher requires group id');

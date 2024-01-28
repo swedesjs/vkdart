@@ -8,7 +8,6 @@ void main() {
   final env = DotEnv(includePlatformEnvironment: true)..load();
   final vkdart = VkDart(
     env['TOKEN']!,
-    Event(),
     groupId: int.parse(env['GROUP_ID']!),
   );
 

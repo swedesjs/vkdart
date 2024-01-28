@@ -23,7 +23,7 @@ import 'package:vkdart/vkdart.dart';
 
 void main() async {
   final TOKEN = ''; // Group Token
-  final vkdart = VkDart(TOKEN, Event(), groupId: 123);
+  final vkdart = VkDart(TOKEN, groupId: 123);
 
   vkdart.start()
 }
