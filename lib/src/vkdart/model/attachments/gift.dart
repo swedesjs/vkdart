@@ -2,7 +2,7 @@ part of 'attachment.dart';
 
 /// Model Gift.
 ///
-/// See https://vk.com/dev/objects/gift
+/// See https://dev.vk.com/ru/reference/objects/gift
 class GiftAttachmentModel extends AttachmentModel {
   // ignore: public_member_api_docs
   GiftAttachmentModel(super.payload);

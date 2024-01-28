@@ -2,7 +2,7 @@ part of 'attachment.dart';
 
 /// Model Market Album.
 ///
-/// See https://dev.vk.com/objects/market-album
+/// See https://dev.vk.com/ru/reference/objects/market-album
 class MarketAlbumAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   MarketAlbumAttachmentModel(super.payload);

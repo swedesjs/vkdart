@@ -4,7 +4,7 @@ part of 'attachment.dart';
 
 /// Model Document.
 ///
-/// See https://vk.com/dev/objects/doc
+/// See https://dev.vk.com/ru/reference/objects/doc
 class DocumentAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   DocumentAttachmentModel(super.payload);
@@ -22,45 +22,40 @@ class DocumentAttachmentModel extends CustomAttachmentModel {
   String? get url => attachmentObject['url'];
 
   /// Date when the document has been uploaded in Unixtime.
-  int? get date => attachmentObject['date'];
+  int? get createdAt => attachmentObject['date'];
 
   /// Document type.
   int? get documentType => attachmentObject['type'];
 
-  /// File preview information.
-  Map<String, dynamic>? get preview => attachmentObject['preview'];
-
-  /// Graffiti data.
-  Map<String, dynamic>? get previewGraffiti => preview?['graffiti'];
-
-  /// Audio message data.
-  Map<String, dynamic>? get previewAudioMessage => preview?['audio_message'];
+  Map<String, dynamic>? get _preview => attachmentObject['preview'];
+  Map<String, dynamic>? get _previewGraffiti => _preview?['graffiti'];
+  Map<String, dynamic>? get _previewAudioMessage => _preview?['audio_message'];
 
   /// an array of image copies in different sizes.
   List<PhotoCopyModel>? get previewPhotoSizes =>
-      (preview?['photo']?['sizes'] as List?)
+      (_preview?['photo']?['sizes'] as List?)
           ?.map((e) => PhotoCopyModel((e as Map).cast<String, dynamic>()))
           .toList();
 
   /// Graffiti file URL;
-  String? get previewGraffitiSrc => previewGraffiti?['src'];
+  String? get previewGraffitiSrc => _previewGraffiti?['src'];
 
   /// graffiti width in px;
-  int? get previewGraffitiWidth => previewGraffiti?['width'];
+  int? get previewGraffitiWidth => _previewGraffiti?['width'];
 
   /// graffiti height in px;
-  int? get previewGraffitiHeight => previewGraffiti?['height'];
+  int? get previewGraffitiHeight => _previewGraffiti?['height'];
 
   /// Audio message duration in seconds.
-  int? get previewAudioMessageDuration => previewAudioMessage?['duration'];
+  int? get previewAudioMessageDuration => _previewAudioMessage?['duration'];
 
   /// Audio message waveform.
   List<int>? get previewAudioMessageWaveform =>
-      (previewAudioMessage?['waveform'] as List?)?.cast<int>();
+      (_previewAudioMessage?['waveform'] as List?)?.cast<int>();
 
   /// Audio message ling ogg.
-  String? get previewAudioMessageLinkOgg => previewAudioMessage?['link_ogg'];
+  String? get previewAudioMessageLinkOgg => _previewAudioMessage?['link_ogg'];
 
   /// Audio message ling mp3.
-  String? get previewAudioMessageLinkMp3 => previewAudioMessage?['link_mp3'];
+  String? get previewAudioMessageLinkMp3 => _previewAudioMessage?['link_mp3'];
 }
