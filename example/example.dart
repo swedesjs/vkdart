@@ -16,7 +16,8 @@ void main() async {
 
   vkdart.onMessage().listen((event) {
     print('new message!');
-    print('message text: ${event.object['message']['text']}');
+    print('SenderType: ${event.senderType.name}');
+    print('message text: ${event.text}');
   });
 
   await vkdart.start().then((_) => print('Longpoll API run!'));
