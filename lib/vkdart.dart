@@ -9,7 +9,7 @@ import 'package:dia/dia.dart';
 import 'package:dia_body/dia_body.dart';
 import 'package:dio/dio.dart';
 import 'package:vkdart/methods.dart' show Api, ApiResponse, LangApi;
-import 'package:vkdart/model.dart' show Update, UpdateType;
+import 'package:vkdart/model.dart';
 
 part 'src/vkdart/event/event.dart';
 part 'src/vkdart/fetch/abstract_update_fetcher.dart';
