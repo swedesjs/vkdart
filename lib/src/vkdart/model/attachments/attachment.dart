@@ -25,6 +25,36 @@ abstract class AttachmentModel {
   // ignore: public_member_api_docs
   AttachmentModel(this.payload);
 
+  /// Transforms the attachment object into a specific model, depending on its type.
+  /// There may be exceptions [VkDartException] in the case of a non-correct object,
+  /// or if the type is not supported
+  factory AttachmentModel.fromSpecificModel(Map<String, dynamic> payload) {
+    final attachType = payload['type'];
+
+    if (attachType == null) {
+      throw VkDartException('non-direct attachment object');
+    }
+
+    return switch (attachType) {
+      'photo' => PhotoAttachmentModel(payload),
+      'video' => VideoAttachmentModel(payload),
+      'audio' => AudioAttachmentModel(payload),
+      'doc' => DocumentAttachmentModel(payload),
+      'link' => LinkAttachmentModel(payload),
+      'market' => MarketAttachmentModel(payload),
+      'market_album' => MarketAlbumAttachmentModel(payload),
+      'wall' => WallAttachmentModel(payload),
+      'wall_reply' => WallReplyAttachmentModel(payload),
+      'sticker' => StickerAttachmentModel(payload),
+      'gift' => GiftAttachmentModel(payload),
+      'graffiti' => GraffitiAttachmentModel(payload),
+      'poll' => PollAttachmentModel(payload),
+      'note' => NoteAttachmentModel(payload),
+      'page' => WikiPageAttachmentModel(payload),
+      _ => throw VkDartException('$attachType of attachment has no support!')
+    };
+  }
+
   /// Payload.
   final Map<String, dynamic> payload;
 
@@ -34,7 +64,7 @@ abstract class AttachmentModel {
   /// Attachment object.
   Map<String, dynamic> get attachmentObject => payload[attachType];
 
-  static bool? _checkBool(Object value) {
+  static bool? _checkBool(Object? value) {
     if (value is! int) {
       return null;
     }
