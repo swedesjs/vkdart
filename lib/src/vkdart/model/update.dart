@@ -25,6 +25,9 @@ enum UpdateType {
   /// Action with message. The user clicked the [Callback button](https://dev.vk.com/ru/api/bots/development/keyboard#Callback-%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B8).
   message_event,
 
+  /// Reaction event.
+  message_reaction_event,
+
   /// Adding a photo.
   photo_new,
 
@@ -176,8 +179,12 @@ class Update {
   final Map<String, dynamic> eventData;
 
   /// Gets the type of the update event.
-  UpdateType get type => UpdateType.values
-      .firstWhere((element) => element.name == eventData['type']);
+  UpdateType get type => UpdateType.values.firstWhere(
+        (element) => element.name == eventData['type'],
+        // ignore: missing_whitespace_between_adjacent_strings
+        orElse: () => throw VkDartException('The event is not supported.'
+            ' Contact this chat to solve the problem - https://t.me/vk_dart'),
+      );
 
   /// Gets the object related to the update event.
   Map<String, dynamic> get object => eventData['object'];
