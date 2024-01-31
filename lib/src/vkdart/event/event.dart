@@ -11,6 +11,7 @@ class Event {
         _messageDenyController = StreamController.broadcast(sync: sync),
         _messageTypingStateController = StreamController.broadcast(sync: sync),
         _messageEventController = StreamController.broadcast(sync: sync),
+        _messageReactionController = StreamController.broadcast(sync: sync),
         _attachmentNewController = StreamController.broadcast(sync: sync),
         _commentController = StreamController.broadcast(sync: sync),
         _wallPostController = StreamController.broadcast(sync: sync),
@@ -37,6 +38,8 @@ class Event {
   final StreamController<Update> _messageTypingStateController;
   // message_event
   final StreamController<Update> _messageEventController;
+  // message_reaction_event
+  final StreamController<Update> _messageReactionController;
   // photo_new, audio_new, video_new
   final StreamController<Update> _attachmentNewController;
   // photo_comment_new, photo_comment_edit, photo_comment_restore, photo_comment_delete,
@@ -85,6 +88,8 @@ class Event {
         _messageTypingStateController.add(update);
       case UpdateType.message_event:
         _messageEventController.add(update);
+      case UpdateType.message_reaction_event:
+        _messageReactionController.add(update);
       case UpdateType.audio_new:
       case UpdateType.photo_new:
       case UpdateType.video_new:
@@ -162,6 +167,9 @@ class Event {
 
   /// Listen for `message_event` events.
   Stream<Update> onMessageEvent() => _messageEventController.stream;
+
+  /// Listen for `message_reaction_event` event.
+  Stream<Update> onMessageReactionEvent() => _messageReactionController.stream;
 
   /// Listen for `photo_new`, `video_new`, `audio_new` events.
   Stream<Update> onAttachmentNew() => _attachmentNewController.stream;
