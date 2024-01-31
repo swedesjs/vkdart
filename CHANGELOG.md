@@ -53,3 +53,6 @@ Updates:
 Added: 
 - **Event class**. Interface containing event streams.
 - Functions to listen for specific events.
+
+## 1.3.1
+Fix: `Longpoll Fetcher`: only one event was read at startup.
