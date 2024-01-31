@@ -1,17 +1,12 @@
-import 'package:vkdart/methods.dart';
 import 'package:vkdart/model.dart';
 
 /// The message allow model.
 class VkDartMessageAllow extends MessageAllowModel with VkDartUpdate {
   // ignore: public_member_api_docs
-  VkDartMessageAllow(Api api, this.update)
-      : _api = api,
-        super(update.object);
+  VkDartMessageAllow(this.update) : super(update.object);
 
   @override
   final Update update;
-  // ignore: unused_field
-  final Api _api;
 }
 
 /// Message Allow model.
