@@ -54,7 +54,8 @@ class VkDart extends Api {
       _event.onMessage().map((event) => VkDartMessage(this, event));
 
   /// Listen for `message_allow` event.
-  Stream<Update> onMessageAllow() => _event.onMessageAllow();
+  Stream<VkDartMessageAllow> onMessageAllow() =>
+      _event.onMessageAllow().map((event) => VkDartMessageAllow(this, event));
 
   /// Listen for `message_deny` event.
   Stream<Update> onMessageDeny() => _event.onMessageDeny();
