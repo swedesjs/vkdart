@@ -70,7 +70,8 @@ class VkDart extends Api {
       _event.onMessageEvent().map(VkDartMessageEvent.new);
 
   /// Listen for `photo_new`, `video_new`, `audio_new` events.
-  Stream<Update> onAttachmentNew() => _event.onAttachmentNew();
+  Stream<VkDartNewAttachment> onAttachmentNew() =>
+      _event.onAttachmentNew().map(VkDartNewAttachment.new);
 
   /// Listen for `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
   /// `video_comment_new`, `video_comment_edit`, `video_comment_restore`, `video_comment_delete`,
