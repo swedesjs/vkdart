@@ -2,6 +2,7 @@
 library vkdart.model;
 
 export 'src/vkdart/model/attachments/attachment.dart';
+export 'src/vkdart/model/updates/comment.dart';
 export 'src/vkdart/model/updates/message.dart';
 export 'src/vkdart/model/updates/message_allow.dart';
 export 'src/vkdart/model/updates/message_deny.dart';
