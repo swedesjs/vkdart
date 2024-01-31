@@ -56,3 +56,6 @@ Added:
 
 ## 1.3.1
 Fix: `Longpoll Fetcher`: only one event was read at startup.
+
+## 1.3.2
+Add: Added a handler for the `message_reaction_event` event.
