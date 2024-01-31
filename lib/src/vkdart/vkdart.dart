@@ -50,32 +50,39 @@ class VkDart extends Api {
   Future<void> stop() => fetcher.stop();
 
   /// Listen for `message_new`, `message_edit`, `message_reply` events
-  Stream<Update> onMessage() => _event.onMessage();
+  Stream<VkDartMessage> onMessage() =>
+      _event.onMessage().map(VkDartMessage.new);
 
   /// Listen for `message_allow` event.
-  Stream<Update> onMessageAllow() => _event.onMessageAllow();
+  Stream<VkDartMessageAllow> onMessageAllow() =>
+      _event.onMessageAllow().map(VkDartMessageAllow.new);
 
   /// Listen for `message_deny` event.
-  Stream<Update> onMessageDeny() => _event.onMessageDeny();
+  Stream<VkDartMessageDeny> onMessageDeny() =>
+      _event.onMessageDeny().map(VkDartMessageDeny.new);
 
   /// Listen for `message_typing_state` event.
-  Stream<Update> onMessageTypingState() => _event.onMessageTypingState();
+  Stream<VkDartMessageTypingState> onMessageTypingState() =>
+      _event.onMessageTypingState().map(VkDartMessageTypingState.new);
 
   /// Listen for `message_event` event.
-  Stream<Update> onMessageEvent() => _event.onMessageEvent();
+  Stream<VkDartMessageEvent> onMessageEvent() =>
+      _event.onMessageEvent().map(VkDartMessageEvent.new);
 
   /// Listen for `message_reaction_event` event.
   Stream<Update> onMessageReactionEvent() => _event.onMessageReactionEvent();
 
   /// Listen for `photo_new`, `video_new`, `audio_new` events.
-  Stream<Update> onAttachmentNew() => _event.onAttachmentNew();
+  Stream<VkDartNewAttachment> onAttachmentNew() =>
+      _event.onAttachmentNew().map(VkDartNewAttachment.new);
 
   /// Listen for `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
   /// `video_comment_new`, `video_comment_edit`, `video_comment_restore`, `video_comment_delete`,
   /// `market_comment_new`, `market_comment_edit`, `market_comment_restore`, `market_comment_delete`
   /// `wall_reply_new`, `wall_reply_edit`, `wall_reply_restore`, `wall_reply_delete`
   /// `board_post_new`, `board_post_edit`, `board_post_restore`, `board_post_delete` events.
-  Stream<Update> onComment() => _event.onComment();
+  Stream<VkDartComment> onComment() =>
+      _event.onComment().map(VkDartComment.new);
 
   /// Listen for `wall_post_new`, `wall_repost` events.
   Stream<Update> onWallPost() => _event.onWallPost();
