@@ -182,3 +182,12 @@ class Update {
   /// Gets the object related to the update event.
   Map<String, dynamic> get object => eventData['object'];
 }
+
+/// Update event for models vkdart.
+abstract mixin class VkDartUpdate {
+  /// Update data.
+  Update get update;
+
+  /// Update type.
+  UpdateType get updateType => update.type;
+}
