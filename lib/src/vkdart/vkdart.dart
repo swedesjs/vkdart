@@ -50,28 +50,22 @@ class VkDart extends Api {
   Future<void> stop() => fetcher.stop();
 
   /// Listen for `message_new`, `message_edit`, `message_reply` events
-  Stream<VkDartMessage> onMessage() =>
-      _event.onMessage().map(VkDartMessage.new);
+  Stream<Update> onMessage() => _event.onMessage();
 
   /// Listen for `message_allow` event.
-  Stream<VkDartMessageAllow> onMessageAllow() =>
-      _event.onMessageAllow().map(VkDartMessageAllow.new);
+  Stream<Update> onMessageAllow() => _event.onMessageAllow();
 
   /// Listen for `message_deny` event.
-  Stream<VkDartMessageDeny> onMessageDeny() =>
-      _event.onMessageDeny().map(VkDartMessageDeny.new);
+  Stream<Update> onMessageDeny() => _event.onMessageDeny();
 
   /// Listen for `message_typing_state` event.
-  Stream<VkDartMessageTypingState> onMessageTypingState() =>
-      _event.onMessageTypingState().map(VkDartMessageTypingState.new);
+  Stream<Update> onMessageTypingState() => _event.onMessageTypingState();
 
   /// Listen for `message_event` event.
-  Stream<VkDartMessageEvent> onMessageEvent() =>
-      _event.onMessageEvent().map(VkDartMessageEvent.new);
+  Stream<Update> onMessageEvent() => _event.onMessageEvent();
 
   /// Listen for `photo_new`, `video_new`, `audio_new` events.
-  Stream<VkDartNewAttachment> onAttachmentNew() =>
-      _event.onAttachmentNew().map(VkDartNewAttachment.new);
+  Stream<Update> onAttachmentNew() => _event.onAttachmentNew();
 
   /// Listen for `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
   /// `video_comment_new`, `video_comment_edit`, `video_comment_restore`, `video_comment_delete`,
