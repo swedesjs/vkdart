@@ -49,7 +49,7 @@ class Longpoll extends AbstractUpdateFetcher {
       lastEventNumber = _eventNumberParse(ts);
     }
 
-    await _recursiveFetchUpdates();
+    unawaited(_recursiveFetchUpdates());
   }
 
   Future<void> _recursiveFetchUpdates() {
@@ -80,6 +80,8 @@ class Longpoll extends AbstractUpdateFetcher {
               emitUpdate(Update(event));
             }
           }
+
+          unawaited(_recursiveFetchUpdates());
         }
       });
     }
@@ -103,7 +105,7 @@ class Longpoll extends AbstractUpdateFetcher {
     switch (failed) {
       case 1:
         lastEventNumber = _eventNumberParse(ts);
-        await _recursiveFetchUpdates();
+        unawaited(_recursiveFetchUpdates());
       N2:
       case 2:
         await stop();
