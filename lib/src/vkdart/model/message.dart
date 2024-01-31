@@ -17,19 +17,16 @@ enum MessageSource {
 }
 
 /// The message model (for events `message_new`, `message_edit`, `message_reply`).
-class VkDartMessage extends MessageModel {
+class VkDartMessage extends MessageModel with VkDartUpdate {
   // ignore: public_member_api_docs
   VkDartMessage(Api api, this.update)
       : _api = api,
         super(update.object);
 
-  /// Update data
+  @override
   final Update update;
   // ignore: unused_field
   final Api _api;
-
-  /// Update type.
-  UpdateType get updateType => update.type;
 }
 
 /// Model Message.
