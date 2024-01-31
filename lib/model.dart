@@ -1,6 +1,8 @@
 /// Various models used by VKDart
 library vkdart.model;
 
+import 'package:vkdart/vkdart.dart' show VkDartException;
+
 export 'src/vkdart/model/attachments/attachment.dart';
 export 'src/vkdart/model/updates/comment.dart';
 export 'src/vkdart/model/updates/message.dart';
