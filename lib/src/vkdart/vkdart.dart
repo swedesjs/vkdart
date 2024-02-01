@@ -70,7 +70,8 @@ class VkDart extends Api {
       _event.onMessageEvent().map(VkDartMessageEvent.new);
 
   /// Listen for `message_reaction_event` event.
-  Stream<Update> onMessageReactionEvent() => _event.onMessageReactionEvent();
+  Stream<VkDartMessageReactionEvent> onMessageReactionEvent() =>
+      _event.onMessageReactionEvent().map(VkDartMessageReactionEvent.new);
 
   /// Listen for `photo_new`, `video_new`, `audio_new` events.
   Stream<VkDartNewAttachment> onAttachmentNew() =>
