@@ -2,6 +2,11 @@ import 'package:vkdart/model.dart';
 import 'package:vkdart/vkdart.dart' show VkDartException;
 
 /// Event Model `new attachment`.
+///
+/// See:
+/// - PhotoNew: https://dev.vk.com/ru/api/community-events/json-schema#photo_new
+/// - VideoNew: https://dev.vk.com/ru/api/community-events/json-schema#video_new
+/// - AudioNew: https://dev.vk.com/ru/api/community-events/json-schema#audio_new
 class VkDartNewAttachment with VkDartUpdate {
   // ignore: public_member_api_docs
   VkDartNewAttachment(this.update);
