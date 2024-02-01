@@ -14,7 +14,7 @@ class Event {
         _messageReactionController = StreamController.broadcast(sync: sync),
         _attachmentNewController = StreamController.broadcast(sync: sync),
         _commentController = StreamController.broadcast(sync: sync),
-        _wallPostController = StreamController.broadcast(sync: sync),
+        _wallController = StreamController.broadcast(sync: sync),
         _likeController = StreamController.broadcast(sync: sync),
         _marketOrderController = StreamController.broadcast(sync: sync),
         _groupController = StreamController.broadcast(sync: sync),
@@ -49,7 +49,7 @@ class Event {
   // board_post_new, board_post_edit, board_post_restore, board_post_delete events
   final StreamController<Update> _commentController;
   // wall_post_new, wall_repost
-  final StreamController<Update> _wallPostController;
+  final StreamController<Update> _wallController;
   // like_add, like_remove
   final StreamController<Update> _likeController;
   // market_order_new, market_order_edit events
@@ -117,7 +117,7 @@ class Event {
         _commentController.add(update);
       case UpdateType.wall_post_new:
       case UpdateType.wall_repost:
-        _wallPostController.add(update);
+        _wallController.add(update);
       case UpdateType.like_add:
       case UpdateType.like_remove:
         _likeController.add(update);
@@ -182,7 +182,7 @@ class Event {
   Stream<Update> onComment() => _commentController.stream;
 
   /// Listen for `wall_post_new`, `wall_repost` events.
-  Stream<Update> onWallPost() => _wallPostController.stream;
+  Stream<Update> onWall() => _wallController.stream;
 
   /// Listen for `like_add`, `like_remove` events.
   Stream<Update> onLike() => _likeController.stream;
