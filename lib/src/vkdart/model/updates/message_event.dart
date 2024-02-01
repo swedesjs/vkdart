@@ -1,23 +1,14 @@
 import 'package:vkdart/model.dart';
 
 /// The message event model.
-class VkDartMessageEvent extends MessageEventModel with VkDartUpdate {
+///
+/// See https://dev.vk.com/ru/api/community-events/json-schema#message_event
+class VkDartMessageEvent with VkDartUpdate {
   // ignore: public_member_api_docs
-  VkDartMessageEvent(this.update) : super(update.object);
+  VkDartMessageEvent(this.update);
 
   @override
   final Update update;
-}
-
-/// Message Event model.
-///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#message_event
-class MessageEventModel {
-  // ignore: public_member_api_docs
-  MessageEventModel(this.payload);
-
-  /// Payload.
-  final Map<String, dynamic> payload;
 
   /// The user ID.
   int get userId => payload['user_id'];
