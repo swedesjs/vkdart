@@ -44,6 +44,29 @@ const _boardPostEvents = [
 ];
 
 /// Event model `comment`.
+///
+/// See:
+/// - PhotoCommentNew: https://dev.vk.com/ru/api/community-events/json-schema#photo_comment_new
+/// - PhotoCommentNew: https://dev.vk.com/ru/api/community-events/json-schema#photo_comment_new
+/// - PhotoCommentEdit: https://dev.vk.com/ru/api/community-events/json-schema#photo_comment_edit
+/// - PhotoCommentDelete: https://dev.vk.com/ru/api/community-events/json-schema#photo_comment_delete
+/// - PhotoCommentRestore: https://dev.vk.com/ru/api/community-events/json-schema#photo_comment_restore
+/// - VideoCommentNew: https://dev.vk.com/ru/api/community-events/json-schema#video_comment_new
+/// - VideoCommentEdit: https://dev.vk.com/ru/api/community-events/json-schema#video_comment_edit
+/// - VideoCommentDelete: https://dev.vk.com/ru/api/community-events/json-schema#video_comment_delete
+/// - VideoCommentRestore: https://dev.vk.com/ru/api/community-events/json-schema#video_comment_restore
+/// - MarketCommentNew: https://dev.vk.com/ru/api/community-events/json-schema#market_comment_new
+/// - MarketCommentEdit: https://dev.vk.com/ru/api/community-events/json-schema#market_comment_edit
+/// - MarketCommentDelete: https://dev.vk.com/ru/api/community-events/json-schema#market_comment_delete
+/// - MarketCommentRestore: https://dev.vk.com/ru/api/community-events/json-schema#market_comment_restore
+/// - WallReplyNew: https://dev.vk.com/ru/api/community-events/json-schema#wall_reply_new
+/// - WallReplyEdit: https://dev.vk.com/ru/api/community-events/json-schema#wall_reply_edit
+/// - WallReplyDelete: https://dev.vk.com/ru/api/community-events/json-schema#wall_reply_delete
+/// - WallReplyRestore: https://dev.vk.com/ru/api/community-events/json-schema#wall_reply_restore
+/// - BoardPostNew: https://dev.vk.com/ru/api/community-events/json-schema#board_post_new
+/// - BoardPostEdit: https://dev.vk.com/ru/api/community-events/json-schema#board_post_edit
+/// - BoardPostDelete: https://dev.vk.com/ru/api/community-events/json-schema#board_post_delete
+/// - BoardPostRestore: https://dev.vk.com/ru/api/community-events/json-schema#board_post_restore
 class VkDartComment with VkDartUpdate {
   // ignore: public_member_api_docs
   VkDartComment(this.update);

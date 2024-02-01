@@ -16,6 +16,8 @@ enum MessageSource {
 }
 
 /// The message model (for events `message_new`, `message_edit`, `message_reply`).
+///
+/// See https://dev.vk.com/ru/reference/objects/message
 class VkDartMessage extends MessageModel with VkDartUpdate {
   // ignore: public_member_api_docs
   VkDartMessage(this.update) : super(update.object);
