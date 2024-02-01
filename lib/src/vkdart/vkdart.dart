@@ -78,7 +78,7 @@ class VkDart extends Api {
   Stream<Update> onComment() => _event.onComment();
 
   /// Listen for `wall_post_new`, `wall_repost` events.
-  Stream<Update> onWallPost() => _event.onWallPost();
+  Stream<Update> onWall() => _event.onWall();
 
   /// Listen for `like_add`, `like_remove` events.
   Stream<Update> onLike() => _event.onLike();
