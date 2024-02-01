@@ -59,3 +59,7 @@ Fix: `Longpoll Fetcher`: only one event was read at startup.
 
 ## 1.3.2
 Add: Added a handler for the `message_reaction_event` event.
+
+## 1.3.3
+Refactor: correction in the name of the event handler `wall_post_new`, `wall_repost`.
+Rename `onWallPost()` -> `onWall()`
