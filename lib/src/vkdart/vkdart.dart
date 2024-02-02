@@ -98,7 +98,8 @@ class VkDart extends Api {
       _event.onMarketOrder().map(VkDartMarketOrderUpdate.new);
 
   /// Listen for `group_join`, `group_leave` events.
-  Stream<Update> onGroup() => _event.onGroup();
+  Stream<VkDartGroupUpdate> onGroup() =>
+      _event.onGroup().map(VkDartGroupUpdate.new);
 
   /// Listen for `user_block`, `user_unblock` events.
   Stream<Update> onUser() => _event.onUser();
