@@ -67,9 +67,9 @@ const _boardPostEvents = [
 /// - BoardPostEdit: https://dev.vk.com/ru/api/community-events/json-schema#board_post_edit
 /// - BoardPostDelete: https://dev.vk.com/ru/api/community-events/json-schema#board_post_delete
 /// - BoardPostRestore: https://dev.vk.com/ru/api/community-events/json-schema#board_post_restore
-class VkDartComment with VkDartUpdate {
+class VkDartComment extends WallReplyAttachmentModel with VkDartUpdate {
   // ignore: public_member_api_docs
-  VkDartComment(this.update);
+  VkDartComment(this.update) : super(update.object);
 
   @override
   final Update update;
@@ -98,22 +98,11 @@ class VkDartComment with VkDartUpdate {
   /// Is the sender a group
   bool get isGroup => fromId < 0;
 
-  /// The ID of the comment.
-  int get id => payload['id'];
-
-  /// The sender's ID.
-  int get fromId => payload['from_id'] ?? payload['user_id'];
-
-  /// The date the comment was created in Unix Time format
-  int? get createdAt => payload['date'];
-
   /// The ID of the user who deleted the comment.
   int? get deleterId => payload['deleter_id'];
 
-  /// Text comment.
-  String? get text => payload['text'];
-
   /// Owner Id
+  @override
   int get ownerId =>
       payload['owner_id'] ??
       payload['photo_owner_id'] ??
