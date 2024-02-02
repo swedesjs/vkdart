@@ -102,7 +102,8 @@ class VkDart extends Api {
       _event.onGroup().map(VkDartGroupUpdate.new);
 
   /// Listen for `user_block`, `user_unblock` events.
-  Stream<Update> onUser() => _event.onUser();
+  Stream<VkDartUserUpdate> onUser() =>
+      _event.onUser().map(VkDartUserUpdate.new);
 
   /// Listen for `poll_vote_new` event.
   Stream<Update> onPollVoteNew() => _event.onPollVoteNew();

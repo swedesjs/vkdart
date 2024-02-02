@@ -15,6 +15,7 @@ export 'src/vkdart/model/updates/message_event.dart';
 export 'src/vkdart/model/updates/message_reaction_event.dart';
 export 'src/vkdart/model/updates/message_typing_state.dart';
 export 'src/vkdart/model/updates/new_attachment.dart';
+export 'src/vkdart/model/updates/user.dart';
 export 'src/vkdart/model/updates/wall.dart';
 
 part 'src/vkdart/model/update.dart';
