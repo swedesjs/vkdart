@@ -67,9 +67,9 @@ const _boardPostEvents = [
 /// - BoardPostEdit: https://dev.vk.com/ru/api/community-events/json-schema#board_post_edit
 /// - BoardPostDelete: https://dev.vk.com/ru/api/community-events/json-schema#board_post_delete
 /// - BoardPostRestore: https://dev.vk.com/ru/api/community-events/json-schema#board_post_restore
-class VkDartComment extends WallReplyAttachmentModel with VkDartUpdate {
+class VkDartCommentUpdate extends WallReplyAttachmentModel with VkDartUpdate {
   // ignore: public_member_api_docs
-  VkDartComment(this.update) : super(update.object);
+  VkDartCommentUpdate(this.update) : super(update.object);
 
   @override
   final Update update;

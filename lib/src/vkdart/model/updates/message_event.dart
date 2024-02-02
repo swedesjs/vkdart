@@ -3,9 +3,9 @@ import 'package:vkdart/model.dart';
 /// The message event model.
 ///
 /// See https://dev.vk.com/ru/api/community-events/json-schema#message_event
-class VkDartMessageEvent with VkDartUpdate {
+class VkDartMessageEventUpdate with VkDartUpdate {
   // ignore: public_member_api_docs
-  VkDartMessageEvent(this.update);
+  VkDartMessageEventUpdate(this.update);
 
   @override
   final Update update;

@@ -3,9 +3,9 @@ import 'package:vkdart/model.dart';
 /// The message typing state model.
 ///
 /// See https://dev.vk.com/ru/api/community-events/json-schema#message_typing_state
-class VkDartMessageTypingState with VkDartUpdate {
+class VkDartMessageTypingStateUpdate with VkDartUpdate {
   // ignore: public_member_api_docs
-  VkDartMessageTypingState(this.update);
+  VkDartMessageTypingStateUpdate(this.update);
 
   @override
   final Update update;
