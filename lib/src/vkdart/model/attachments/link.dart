@@ -5,31 +5,30 @@ part of 'attachment.dart';
 /// See https://dev.vk.com/ru/reference/objects/link
 class LinkAttachmentModel extends AttachmentModel {
   // ignore: public_member_api_docs
-  LinkAttachmentModel(super.payload);
+  LinkAttachmentModel(super.payload) : super(attachType: 'link');
 
   /// Link URL.
-  String get url => attachmentObject['url'];
+  String get url => payload['url'];
 
   /// Link title.
-  String get title => attachmentObject['title'];
+  String get title => payload['title'];
 
   /// Link description.
-  String? get description => attachmentObject['description'];
+  String? get description => payload['description'];
 
   /// Preview image. (if available)
-  PhotoAttachmentModel? get photo => attachmentObject['photo'] != null
-      ? PhotoAttachmentModel(attachmentObject['photo'])
-      : null;
+  PhotoAttachmentModel? get photo =>
+      payload['photo'] != null ? PhotoAttachmentModel(payload['photo']) : null;
 
   /// Product information (if available).
-  Map<String, dynamic>? get product => attachmentObject['product'];
+  Map<String, dynamic>? get product => payload['product'];
 
   /// Information about the button to navigate (if available).
-  Map<String, dynamic>? get button => attachmentObject['button'];
+  Map<String, dynamic>? get button => payload['button'];
 
   /// ID of the content wiki page to preview the content of the page. Returned in the format `owner_id_page_ids`.
-  String? get previewPage => attachmentObject['preview_page'];
+  String? get previewPage => payload['preview_page'];
 
   /// Content page URL to preview the page content.
-  String? get previewUrl => attachmentObject['preview_url'];
+  String? get previewUrl => payload['preview_url'];
 }

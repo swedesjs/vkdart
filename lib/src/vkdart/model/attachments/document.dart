@@ -7,27 +7,27 @@ part of 'attachment.dart';
 /// See https://dev.vk.com/ru/reference/objects/doc
 class DocumentAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
-  DocumentAttachmentModel(super.payload);
+  DocumentAttachmentModel(super.payload) : super(attachType: 'doc');
 
   /// Title of the document.
-  String? get title => attachmentObject['title'];
+  String? get title => payload['title'];
 
   /// Size of the document in bytes.
-  int? get size => attachmentObject['size'];
+  int? get size => payload['size'];
 
   /// MIME type of the document.
-  String? get ext => attachmentObject['ext'];
+  String? get ext => payload['ext'];
 
   /// URL of the document.
-  String? get url => attachmentObject['url'];
+  String? get url => payload['url'];
 
   /// Date when the document has been uploaded in Unixtime.
-  int? get createdAt => attachmentObject['date'];
+  int? get createdAt => payload['date'];
 
   /// Document type.
-  int? get documentType => attachmentObject['type'];
+  int? get documentType => payload['type'];
 
-  Map<String, dynamic>? get _preview => attachmentObject['preview'];
+  Map<String, dynamic>? get _preview => payload['preview'];
   Map<String, dynamic>? get _previewGraffiti => _preview?['graffiti'];
   Map<String, dynamic>? get _previewAudioMessage => _preview?['audio_message'];
 
