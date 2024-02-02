@@ -26,6 +26,13 @@ class VkDartMessage extends MessageModel with VkDartUpdate {
   final Update update;
 }
 
+List<AttachmentModel> _transformAttachments(
+        List<Map<String, dynamic>> attachments) =>
+    attachments.map((e) {
+      final attachType = e['type'];
+      return AttachmentModel.fromSpecificModel(e[attachType], attachType);
+    }).toList();
+
 /// Model Message.
 ///
 /// See https://dev.vk.com/ru/reference/objects/message
@@ -89,10 +96,11 @@ class MessageModel {
   String? get refSource => message['ref_source'];
 
   /// Media attachments of the message (photos, links, etc.).
-  List<AttachmentModel> get attachments => (message['attachments'] as List)
-      .map((e) =>
-          AttachmentModel.fromSpecificModel((e as Map).cast<String, dynamic>()))
-      .toList();
+  List<AttachmentModel> get attachments =>
+      _transformAttachments((message['attachments'] as List?)
+              ?.map((e) => (e as Map).cast<String, dynamic>())
+              .toList() ??
+          const []);
 
   /// true if the message is marked as important.
   bool? get isImportant => message['important'];
