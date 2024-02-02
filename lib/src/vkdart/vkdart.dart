@@ -90,7 +90,8 @@ class VkDart extends Api {
       _event.onWall().map(VkDartWallUpdate.new);
 
   /// Listen for `like_add`, `like_remove` events.
-  Stream<Update> onLike() => _event.onLike();
+  Stream<VkDartLikeUpdate> onLike() =>
+      _event.onLike().map(VkDartLikeUpdate.new);
 
   /// Listen for `market_order_new`, `market_order_edit` events.
   Stream<Update> onMarketOrder() => _event.onMarketOrder();
