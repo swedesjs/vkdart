@@ -5,32 +5,32 @@ part of 'attachment.dart';
 /// See https://dev.vk.com/ru/reference/objects/audio
 class AudioAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
-  AudioAttachmentModel(super.payload);
+  AudioAttachmentModel(super.payload) : super(attachType: 'audio');
 
   /// A singer.
-  String? get artist => attachmentObject['artist'];
+  String? get artist => payload['artist'];
 
   /// Title of the composition.
-  String? get title => attachmentObject['title'];
+  String? get title => payload['title'];
 
   /// Duration of the audio recording in seconds.
-  int? get duration => attachmentObject['duration'];
+  int? get duration => payload['duration'];
 
   /// Link to mp3.
-  String? get url => attachmentObject['url'];
+  String? get url => payload['url'];
 
   /// Audio text ID (if available).
-  int? get lyricsId => attachmentObject['lyrics_id'];
+  int? get lyricsId => payload['lyrics_id'];
 
   /// Identifier of the album in which the audio recording is located (if assigned).
-  int? get albumId => attachmentObject['album_id'];
+  int? get albumId => payload['album_id'];
 
   /// Genre identifier from the list of
   /// [audio genres](https://dev.vk.com/ru/reference/objects/audio-genres).
-  int? get genreId => attachmentObject['genre_id'];
+  int? get genreId => payload['genre_id'];
 
   /// Date added.
-  int? get createdAt => attachmentObject['date'];
+  int? get createdAt => payload['date'];
 
   /// `true` if the “Do not display during search” option is enabled.
   /// If the option is disabled, the field is not returned.

@@ -5,35 +5,35 @@ part of 'attachment.dart';
 /// See https://dev.vk.com/ru/reference/objects/photo
 class PhotoAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
-  PhotoAttachmentModel(super.payload);
+  PhotoAttachmentModel(super.payload) : super(attachType: 'photo');
 
   /// The ID of the album in which the photo is located.
-  int? get albumId => attachmentObject['album_id'];
+  int? get albumId => payload['album_id'];
 
   /// ID of the user who uploaded the photo.
-  int? get userId => attachmentObject['user_id'];
+  int? get userId => payload['user_id'];
 
   /// Photo description text.
-  String? get text => attachmentObject['text'];
+  String? get text => payload['text'];
 
   /// Date added in Unixtime format.
-  int? get createdAt => attachmentObject['date'];
+  int? get createdAt => payload['date'];
 
   /// An array with copies of the image in different sizes.
-  List<PhotoCopyModel> get sizes => (attachmentObject['sizes'] as List)
+  List<PhotoCopyModel> get sizes => (payload['sizes'] as List)
       .map((e) => PhotoCopyModel((e as Map).cast<String, dynamic>()))
       .toList();
 
   /// The width of the original photo in pixels.
-  int? get width => attachmentObject['width'];
+  int? get width => payload['width'];
 
   /// The height of the original photo in pixels.
-  int? get height => attachmentObject['height'];
+  int? get height => payload['height'];
 
   /// ID of the record where the photo was uploaded.
   ///
   /// see https://dev.vk.com/ru/reference/objects/attachments-wall#Фотография%20(type%20=%20photo)
-  int? get postId => attachmentObject['post_id'];
+  int? get postId => payload['post_id'];
 }
 
 /// Model Photo copy.

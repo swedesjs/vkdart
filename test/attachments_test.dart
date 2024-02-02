@@ -6,21 +6,29 @@ import 'package:vkdart/model.dart';
 
 void main() {
   group('Testing attachments', () {
-    final photoAttachment = CustomAttachmentModel({
-      'type': 'photo',
-      'photo': {
-        'owner_id': 1,
-        'id': 2,
-        'access_key': 'ACCESS_KEY',
-      }
-    });
+    final photoCustomAttachment = CustomAttachmentModel({
+      'owner_id': 1,
+      'id': 2,
+      'access_key': 'ACCESS_KEY',
+    }, attachType: 'photo');
+
+    final photoAttachmentNative = PhotoAttachmentModel(
+        {'owner_id': 1, 'id': 2, 'access_key': 'ACCESS_KEY'});
 
     test('Testing photo attachment', () {
-      photoAttachment
+      photoCustomAttachment
         ..attachType.should.be('photo')
         ..ownerId.should.be(1)
         ..id.should.be(2)
-        ..accessKey.should.be('ACCESS_KEY');
+        ..accessKey.should.be('ACCESS_KEY')
+        ..toString().should.be('photo1_2_ACCESS_KEY');
+
+      photoAttachmentNative
+        ..attachType.should.be('photo')
+        ..ownerId.should.be(1)
+        ..id.should.be(2)
+        ..accessKey.should.be('ACCESS_KEY')
+        ..toString().should.be('photo1_2_ACCESS_KEY');
     });
 
     group('Testing function #fromString', () {

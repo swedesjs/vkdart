@@ -23,46 +23,37 @@ part 'page.dart';
 /// See https://dev.vk.com/ru/docs/attachments
 abstract class AttachmentModel {
   // ignore: public_member_api_docs
-  AttachmentModel(this.payload);
+  AttachmentModel(this.payload, {required this.attachType});
 
   /// Transforms the attachment object into a specific model, depending on its type.
   /// There may be exceptions [VkDartException] in the case of a non-correct object,
   /// or if the type is not supported
-  factory AttachmentModel.fromSpecificModel(Map<String, dynamic> payload) {
-    final attachType = payload['type'];
-
-    if (attachType == null) {
-      throw VkDartException('non-direct attachment object');
-    }
-
-    return switch (attachType) {
-      'photo' => PhotoAttachmentModel(payload),
-      'video' => VideoAttachmentModel(payload),
-      'audio' => AudioAttachmentModel(payload),
-      'doc' => DocumentAttachmentModel(payload),
-      'link' => LinkAttachmentModel(payload),
-      'market' => MarketAttachmentModel(payload),
-      'market_album' => MarketAlbumAttachmentModel(payload),
-      'wall' => WallAttachmentModel(payload),
-      'wall_reply' => WallReplyAttachmentModel(payload),
-      'sticker' => StickerAttachmentModel(payload),
-      'gift' => GiftAttachmentModel(payload),
-      'graffiti' => GraffitiAttachmentModel(payload),
-      'poll' => PollAttachmentModel(payload),
-      'note' => NoteAttachmentModel(payload),
-      'page' => WikiPageAttachmentModel(payload),
-      _ => throw VkDartException('$attachType of attachment has no support!')
-    };
-  }
+  factory AttachmentModel.fromSpecificModel(
+          Map<String, dynamic> payload, String attachType) =>
+      switch (attachType) {
+        'photo' => PhotoAttachmentModel(payload),
+        'video' => VideoAttachmentModel(payload),
+        'audio' => AudioAttachmentModel(payload),
+        'doc' => DocumentAttachmentModel(payload),
+        'link' => LinkAttachmentModel(payload),
+        'market' => MarketAttachmentModel(payload),
+        'market_album' => MarketAlbumAttachmentModel(payload),
+        'wall' => WallAttachmentModel(payload),
+        'wall_reply' => WallReplyAttachmentModel(payload),
+        'sticker' => StickerAttachmentModel(payload),
+        'gift' => GiftAttachmentModel(payload),
+        'graffiti' => GraffitiAttachmentModel(payload),
+        'poll' => PollAttachmentModel(payload),
+        'note' => NoteAttachmentModel(payload),
+        'page' => WikiPageAttachmentModel(payload),
+        _ => throw VkDartException('$attachType of attachment has no support!')
+      };
 
   /// Payload.
   final Map<String, dynamic> payload;
 
   /// Attachment type.
-  String get attachType => payload['type'];
-
-  /// Attachment object.
-  Map<String, dynamic> get attachmentObject => payload[attachType];
+  final String attachType;
 
   static bool? _checkBool(Object? value) {
     if (value is! int) {
@@ -72,13 +63,13 @@ abstract class AttachmentModel {
     return value == 1;
   }
 
-  bool? _checkBoolInProperty(String key) => _checkBool(attachmentObject[key]);
+  bool? _checkBoolInProperty(String key) => _checkBool(payload[key]);
 }
 
 /// Model Custom Attachment.
 class CustomAttachmentModel extends AttachmentModel {
   // ignore: public_member_api_docs
-  CustomAttachmentModel(super.payload);
+  CustomAttachmentModel(super.payload, {required super.attachType});
 
   /// Parses an attachment from a string.
   /// Example:
@@ -94,28 +85,25 @@ class CustomAttachmentModel extends AttachmentModel {
     }
 
     final match = parseAttachmentRe.firstMatch(attachment)!;
-    final type = match[1]!;
+    final attachType = match[1]!;
 
     final attachmentPayload = <String, dynamic>{
-      'type': type,
-      type: {
-        'owner_id': int.parse(match[2]!),
-        'id': int.parse(match[3]!),
-        if (match[4] != null) 'access_key': match[4],
-      },
+      'owner_id': int.parse(match[2]!),
+      'id': int.parse(match[3]!),
+      if (match[4] != null) 'access_key': match[4],
     };
 
-    return CustomAttachmentModel(attachmentPayload);
+    return CustomAttachmentModel(attachmentPayload, attachType: attachType);
   }
 
   /// Attachment owner identifier.
-  int get ownerId => attachmentObject['owner_id'];
+  int get ownerId => payload['owner_id'];
 
   /// Attachment ID.
-  int get id => attachmentObject['id'];
+  int get id => payload['id'];
 
   /// Attachment access key.
-  String? get accessKey => attachmentObject['access_key'];
+  String? get accessKey => payload['access_key'];
 
   @override
   String toString() =>
@@ -124,7 +112,7 @@ class CustomAttachmentModel extends AttachmentModel {
 
 /// Mixin for attachment likes.
 mixin AttachmentLikesMixin on AttachmentModel {
-  Map<String, dynamic>? get _likes => attachmentObject['likes'];
+  Map<String, dynamic>? get _likes => payload['likes'];
 
   /// the number of users who liked the post;
   int? get likesCount => _likes?['count'];
@@ -142,7 +130,7 @@ mixin AttachmentLikesMixin on AttachmentModel {
 
 /// Mixin for attachment reposts.
 mixin AttachmentRepostsMixin on AttachmentModel {
-  Map<String, dynamic>? get _reposts => attachmentObject['reposts'];
+  Map<String, dynamic>? get _reposts => payload['reposts'];
 
   /// the number of reposts;
   int? get repostsCount => _reposts?['count'];

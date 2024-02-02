@@ -5,32 +5,32 @@ part of 'attachment.dart';
 /// See https://dev.vk.com/ru/reference/objects/note
 class NoteAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
-  NoteAttachmentModel(super.payload);
+  NoteAttachmentModel(super.payload) : super(attachType: 'note');
 
   /// The title of the note.
-  String? get title => attachmentObject['title'];
+  String? get title => payload['title'];
 
   /// The text of the note.
-  String? get text => attachmentObject['text'];
+  String? get text => payload['text'];
 
   /// The date the note was created in Unixtime format.
-  int? get createdAt => attachmentObject['date'];
+  int? get createdAt => payload['date'];
 
   /// The number of comments.
-  int? get commentsCount => attachmentObject['comments'];
+  int? get commentsCount => payload['comments'];
 
   /// The number of comments read (only when requesting information about the current user's note).
-  int? get readCommentsCount => attachmentObject['read_comments'];
+  int? get readCommentsCount => payload['read_comments'];
 
   /// The URL of the page to display the note.
-  String? get viewUrl => attachmentObject['view_url'];
+  String? get viewUrl => payload['view_url'];
 
   /// Privacy settings for commenting on a note
-  String? get privacyView => attachmentObject['privacy_view'];
+  String? get privacyView => payload['privacy_view'];
 
   /// Is it possible to leave comments
   bool? get isCanComment => _checkBoolInProperty('can_comment');
 
   /// Wiki link tags.
-  String? get textWiki => attachmentObject['text_wiki'];
+  String? get textWiki => payload['text_wiki'];
 }

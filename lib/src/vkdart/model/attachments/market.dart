@@ -8,18 +8,18 @@ part of 'attachment.dart';
 class MarketAttachmentModel extends CustomAttachmentModel
     with AttachmentLikesMixin {
   // ignore: public_member_api_docs
-  MarketAttachmentModel(super.payload);
+  MarketAttachmentModel(super.payload): super(attachType: 'market');
 
   /// Product Name.
-  String? get title => attachmentObject['title'];
+  String? get title => payload['title'];
 
   /// Product description text.
-  String? get description => attachmentObject['description'];
+  String? get description => payload['description'];
 
-  Map<String, dynamic>? get _price => attachmentObject['price'];
-  Map<String, dynamic>? get _dimensions => attachmentObject['dimensions'];
-  Map<String, dynamic>? get _category => attachmentObject['category'];
-  Map<String, dynamic>? get _rejectInfo => attachmentObject['reject_info'];
+  Map<String, dynamic>? get _price => payload['price'];
+  Map<String, dynamic>? get _dimensions => payload['dimensions'];
+  Map<String, dynamic>? get _category => payload['category'];
+  Map<String, dynamic>? get _rejectInfo => payload['reject_info'];
 
   /// the price of a product in hundredths of a currency unit.
   int? get priceAmount => _price?['amount'];
@@ -76,31 +76,30 @@ class MarketAttachmentModel extends CustomAttachmentModel
   String? get rejectWhiteToSupportLink => _rejectInfo?['white_to_support_link'];
 
   /// Weight in grams.
-  int? get weight => attachmentObject['weight'];
+  int? get weight => payload['weight'];
 
   /// Product cover image URL.
-  String? get thumbPhoto => attachmentObject['thumb_photo'];
+  String? get thumbPhoto => payload['thumb_photo'];
 
   /// Product creation date in Unixtime format.
-  int? get createdAt => attachmentObject['date'];
+  int? get createdAt => payload['date'];
 
   /// Product availability status. Possible values:s
   /// `0` — product available.
   /// `1` - product removed.
   /// `2` - product is unavailable.
-  int? get availability => attachmentObject['availability'];
+  int? get availability => payload['availability'];
 
   /// true if the item has been bookmarked by the current user.
-  bool? get isFavorite => attachmentObject['is_favorite'];
+  bool? get isFavorite => payload['is_favorite'];
 
   /// Product article, arbitrary string up to 50 characters long.
-  String? get sku => attachmentObject['sku'];
+  String? get sku => payload['sku'];
 
   /// Product images.
-  List<PhotoAttachmentModel>? get photos =>
-      (attachmentObject['photos'] as List?)
-          ?.map((e) => PhotoAttachmentModel((e as Map).cast<String, dynamic>()))
-          .toList();
+  List<PhotoAttachmentModel>? get photos => (payload['photos'] as List?)
+      ?.map((e) => PhotoAttachmentModel((e as Map).cast<String, dynamic>()))
+      .toList();
 
   /// Ability to comment on a product for the current user.
   bool? get isCanComment => _checkBoolInProperty('can_comment');
@@ -109,8 +108,8 @@ class MarketAttachmentModel extends CustomAttachmentModel
   bool? get isCanRepost => _checkBoolInProperty('can_repost');
 
   /// Link to product in external resources.
-  String? get url => attachmentObject['url'];
+  String? get url => payload['url'];
 
   /// Text on the product button.
-  String? get buttonTitle => attachmentObject['button_title'];
+  String? get buttonTitle => payload['button_title'];
 }

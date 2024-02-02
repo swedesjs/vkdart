@@ -6,52 +6,51 @@ part of 'attachment.dart';
 class VideoAttachmentModel extends CustomAttachmentModel
     with AttachmentLikesMixin, AttachmentRepostsMixin {
   // ignore: public_member_api_docs
-  VideoAttachmentModel(super.payload);
+  VideoAttachmentModel(super.payload) : super(attachType: 'video');
 
   /// Title of the video.
-  String? get title => attachmentObject['title'];
+  String? get title => payload['title'];
 
   /// Video description text.
-  String? get description => attachmentObject['description'];
+  String? get description => payload['description'];
 
   /// The duration of the video in seconds.
-  int? get duration => attachmentObject['duration'];
+  int? get duration => payload['duration'];
 
   /// Cover image.
   /// See https://dev.vk.com/ru/reference/objects/video#image
-  List<VideoCoverImageModel> get image => (attachmentObject['image'] as List)
+  List<VideoCoverImageModel> get image => (payload['image'] as List)
       .map((e) => VideoCoverImageModel((e as Map).cast<String, dynamic>()))
       .toList();
 
   /// First frame image.
   /// See https://vk.com/dev/objects/video#first_frame
-  List<VideoFirstFrameImageModel> get firstFrame =>
-      (attachmentObject['first_frame'] as List)
-          .map((e) =>
-              VideoFirstFrameImageModel((e as Map).cast<String, dynamic>()))
-          .toList();
+  List<VideoFirstFrameImageModel> get firstFrame => (payload['first_frame']
+          as List)
+      .map((e) => VideoFirstFrameImageModel((e as Map).cast<String, dynamic>()))
+      .toList();
 
   /// The date the video was created in Unixtime format.
-  int? get createdAt => attachmentObject['date'];
+  int? get createdAt => payload['date'];
 
   /// The date the video was added by the user or group in Unixtime format.
-  int? get addedAt => attachmentObject['adding_date'];
+  int? get addedAt => payload['adding_date'];
 
   /// Number of video views.
-  int? get viewsCount => attachmentObject['views'];
+  int? get viewsCount => payload['views'];
 
   ///  If the video is external, the number of views on VKontakte.
-  int? get localViews => attachmentObject['local_views'];
+  int? get localViews => payload['local_views'];
 
   /// Number of comments on the video. The field is not returned if comments are not available.
-  int? get commentsCount => attachmentObject['comments'];
+  int? get commentsCount => payload['comments'];
 
   /// URL of a page with a player that can be used to play the video in the browser.
   /// Flash and HTML5 are supported, the player is always scaled to fit the window.
-  String? get player => attachmentObject['player'];
+  String? get player => payload['player'];
 
   /// Platform name (for videos added from external sites).
-  String? get platformName => attachmentObject['platform'];
+  String? get platformName => payload['platform'];
 
   /// Can a user add a video to himself?
   bool? get isCanAdd => _checkBoolInProperty('can_add');
@@ -63,7 +62,7 @@ class VideoAttachmentModel extends CustomAttachmentModel
   bool? get isProcessing => _checkBoolInProperty('processing');
 
   /// true if the item has been bookmarked by the current user.
-  bool? get isFavorite => attachmentObject['is_favorite'];
+  bool? get isFavorite => payload['is_favorite'];
 
   /// Can a user comment on a video?
   bool? get isCanComment => _checkBoolInProperty('can_comment');
@@ -87,13 +86,13 @@ class VideoAttachmentModel extends CustomAttachmentModel
   bool? get isCanAttachLink => _checkBoolInProperty('can_attach_link');
 
   /// Video width.
-  int? get width => attachmentObject['width'];
+  int? get width => payload['width'];
 
   /// Video height.
-  int? get height => attachmentObject['height'];
+  int? get height => payload['height'];
 
   /// ID of the user who uploaded the video, if it was uploaded to the group by one of the participants.
-  int? get userId => attachmentObject['user_id'];
+  int? get userId => payload['user_id'];
 
   /// Does the video convert?
   bool? get isConverting => _checkBoolInProperty('converting');
@@ -109,14 +108,14 @@ class VideoAttachmentModel extends CustomAttachmentModel
 
   /// Video type.
   /// Can take values: video, music_video, movie
-  String? get videoType => attachmentObject['type'];
+  String? get videoType => payload['type'];
 
   /// Donation balance in live broadcast.
-  int? get balance => attachmentObject['balance'];
+  int? get balance => payload['balance'];
 
   /// Live broadcast status.
   /// Can take the following values: waiting, started, finished, failed, upcoming.
-  String? get liveStatus => attachmentObject['live_status'];
+  String? get liveStatus => payload['live_status'];
 
   /// The field returned if the video is a live broadcast always contains 1. Note that in this case the duration field contains the value 0.
   bool? get isBroadcast => _checkBoolInProperty('live');
@@ -125,7 +124,7 @@ class VideoAttachmentModel extends CustomAttachmentModel
   bool? get isUpcoming => _checkBoolInProperty('upcoming');
 
   /// Number of viewers of the live broadcast.
-  int? get spectatorsCount => attachmentObject['spectators'];
+  int? get spectatorsCount => payload['spectators'];
 }
 
 /// Model Video Cover Image.

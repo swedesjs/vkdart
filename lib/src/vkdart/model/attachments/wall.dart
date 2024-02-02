@@ -8,35 +8,35 @@ part of 'attachment.dart';
 class WallAttachmentModel extends CustomAttachmentModel
     with AttachmentLikesMixin, AttachmentRepostsMixin {
   // ignore: public_member_api_docs
-  WallAttachmentModel(super.payload);
+  WallAttachmentModel(super.payload) : super(attachType: 'wall');
 
   @override
-  int get ownerId => attachmentObject['owner_id'] ?? attachmentObject['to_id'];
+  int get ownerId => payload['owner_id'] ?? payload['to_id'];
 
   /// The ID of the author of the record (on whose behalf the record was published).
-  int? get fromId => attachmentObject['from_id'];
+  int? get fromId => payload['from_id'];
 
   /// The ID of the administrator who published the entry (returned only for communities when requested with an administrator access key).
   /// It is returned in records published less than 24 hours ago.
-  int? get createdUserId => attachmentObject['created_by'];
+  int? get createdUserId => payload['created_by'];
 
   /// The time when the record was published in unixtime format.
-  int? get createdAt => attachmentObject['date'];
+  int? get createdAt => payload['date'];
 
   /// Text wall.
-  String? get text => attachmentObject['text'];
+  String? get text => payload['text'];
 
   /// The ID of the owner of the record in response to which the current one was left.
-  int? get replyOwnerId => attachmentObject['reply_owner_id'];
+  int? get replyOwnerId => payload['reply_owner_id'];
 
   /// ID of the record that the current one was left in response to.
-  int? get replyPostId => attachmentObject['reply_post_id'];
+  int? get replyPostId => payload['reply_post_id'];
 
   /// `1`, if the record was created with the "Friends only" option.
   bool? get isFriendsOnly => _checkBoolInProperty('friends_only');
 
-  Map<String, dynamic>? get _comments => attachmentObject['comments'];
-  Map<String, dynamic>? get _copyright => attachmentObject['copyright'];
+  Map<String, dynamic>? get _comments => payload['comments'];
+  Map<String, dynamic>? get _copyright => payload['copyright'];
 
   /// number of comments;
   int? get commentsCount => _comments?['count'];
@@ -67,39 +67,38 @@ class WallAttachmentModel extends CustomAttachmentModel
   String? get copyrightType => _copyright?['type'];
 
   /// the number of views of the wall.
-  int? get viewsCount => attachmentObject['views']?['count'];
+  int? get viewsCount => payload['views']?['count'];
 
   /// The record type can take the following values: post, `copy`, `reply`, `postpone`, `suggest`.
-  String? get postType => attachmentObject['post_type'];
+  String? get postType => payload['post_type'];
 
   /// Information about the recording placement method.
   /// See https://vk.com/dev/objects/wall#post_source
-  Map<String, dynamic>? get postSource => attachmentObject['post_source'];
+  Map<String, dynamic>? get postSource => payload['post_source'];
 
   /// An array of objects corresponding to media resources attached to a record: photos, documents, video files, and others.
   /// See https://dev.vk.com/ru/reference/objects/wall#attachments
   // TODO: implement type selection
-  List<Map<String, dynamic>>? get attachments =>
-      attachmentObject['attachments'];
+  List<Map<String, dynamic>>? get attachments => payload['attachments'];
 
   /// type of place;
-  String? get geoType => attachmentObject['geo']?['type'];
+  String? get geoType => payload['geo']?['type'];
 
   /// location coordinates;
-  String? get geoCoordinates => attachmentObject['geo']?['coordinates'];
+  String? get geoCoordinates => payload['geo']?['coordinates'];
 
   /// description of the place (if it has been added).
   /// See https://dev.vk.com/ru/reference/objects/wall#geo
-  Map<String, dynamic>? get geoPlace => attachmentObject['geo']?['place'];
+  Map<String, dynamic>? get geoPlace => payload['geo']?['place'];
 
   /// The ID of the author, if the entry was published on behalf of the community and signed by the user;
-  int? get signerId => attachmentObject['signer_id'];
+  int? get signerId => payload['signer_id'];
 
   /// An array containing the history of reposts to be recorded.
   /// It is returned only if the record is a repost.
   /// Each of the array objects, in turn, is a standard format record object.
   List<WallAttachmentModel>? get copyHistory =>
-      (attachmentObject['copy_history'] as List?)
+      (payload['copy_history'] as List?)
           ?.map((e) => WallAttachmentModel((e as Map).cast<String, dynamic>()))
           .toList();
 
@@ -119,14 +118,14 @@ class WallAttachmentModel extends CustomAttachmentModel
   bool? get isMarkedAsAds => _checkBoolInProperty('marked_as_ads');
 
   /// `true` if the object has been added to the bookmarks of the current user.
-  bool? get isFavorite => attachmentObject['is_favorite'];
+  bool? get isFavorite => payload['is_favorite'];
 
   /// Information about VK Donut entry:
   ///
   /// See https://dev.vk.com/ru/reference/objects/wall#donut
-  Map<String, dynamic>? get donut => attachmentObject['donut'];
+  Map<String, dynamic>? get donut => payload['donut'];
 
   /// ID of the deferred record.
   /// This field is returned when the recording was on the timer.
-  int? get postponedId => attachmentObject['postponed_id'];
+  int? get postponedId => payload['postponed_id'];
 }

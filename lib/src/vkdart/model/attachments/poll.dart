@@ -5,64 +5,61 @@ part of 'attachment.dart';
 /// See https://dev.vk.com/ru/reference/objects/poll
 class PollAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
-  PollAttachmentModel(super.payload);
+  PollAttachmentModel(super.payload) : super(attachType: 'poll');
 
   /// Date of creation in Unixtime format.
-  int? get createdAt => attachmentObject['created'];
+  int? get createdAt => payload['created'];
 
   /// Question text.
-  String? get question => attachmentObject['question'];
+  String? get question => payload['question'];
 
   /// The number of votes.
-  int? get votesCount => attachmentObject['votes'];
+  int? get votesCount => payload['votes'];
 
   /// An array of objects that contain information about answer options.
-  List<PollAttachmentAnswerModel>? get answers => (attachmentObject['answers']
-          as List?)
+  List<PollAttachmentAnswerModel>? get answers => (payload['answers'] as List?)
       ?.map(
           (e) => PollAttachmentAnswerModel((e as Map).cast<String, dynamic>()))
       .toList();
 
   /// Whether the survey is anonymous.
-  bool? get isAnonymous => attachmentObject['anonymous'];
+  bool? get isAnonymous => payload['anonymous'];
 
   /// Does the survey allow for multiple answer options.
-  bool? get isMultiple => attachmentObject['multiple'];
+  bool? get isMultiple => payload['multiple'];
 
   /// IDs of the answer options selected by the current user.
-  List<int>? get answerIds =>
-      (attachmentObject['answer_ids'] as List?)?.cast<int>();
+  List<int>? get answerIds => (payload['answer_ids'] as List?)?.cast<int>();
 
   /// The date when the survey was completed in Unixtime. 0 if the survey is open-ended.
-  int? get endDate => attachmentObject['end_date'];
+  int? get endDate => payload['end_date'];
 
   /// Whether the survey is completed.
-  bool? get isClosed => attachmentObject['closed'];
+  bool? get isClosed => payload['closed'];
 
   /// Whether the survey is attached to the discussion.
-  bool? get isBoard => attachmentObject['is_board'];
+  bool? get isBoard => payload['is_board'];
 
   /// Is it possible to edit the survey?
-  bool? get isCanEdit => attachmentObject['can_edit'];
+  bool? get isCanEdit => payload['can_edit'];
 
   /// Is it possible to vote in the poll.
-  bool? get isCanVote => attachmentObject['can_vote'];
+  bool? get isCanVote => payload['can_vote'];
 
   /// Is it possible to complain about the survey.
-  bool? get isCanReport => attachmentObject['can_report'];
+  bool? get isCanReport => payload['can_report'];
 
   /// Is it possible to share the survey?
-  bool? get isCanShare => attachmentObject['can_share'];
+  bool? get isCanShare => payload['can_share'];
 
   /// The ID of the survey author.
-  int? get authorId => attachmentObject['author_id'];
+  int? get authorId => payload['author_id'];
 
   /// The photo is the background of the survey snippet.
-  PhotoAttachmentModel? get photo => attachmentObject['photo'] != null
-      ? PhotoAttachmentModel(attachmentObject['photo'])
-      : null;
+  PhotoAttachmentModel? get photo =>
+      payload['photo'] != null ? PhotoAttachmentModel(payload['photo']) : null;
 
-  Map<String, dynamic>? get _background => attachmentObject['background'];
+  Map<String, dynamic>? get _background => payload['background'];
 
   /// background ID.
   int? get backgroundId => _background?['id'];
@@ -93,7 +90,7 @@ class PollAttachmentModel extends CustomAttachmentModel {
           .toList();
 
   /// The IDs of the 3 friends who voted in the poll.
-  List<int>? get friends => (attachmentObject['friends'] as List?)?.cast<int>();
+  List<int>? get friends => (payload['friends'] as List?)?.cast<int>();
 }
 
 /// Model Poll Answer
