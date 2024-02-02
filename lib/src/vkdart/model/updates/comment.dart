@@ -92,9 +92,6 @@ class VkDartComment with VkDartUpdate {
   /// Check is board comment.
   bool get isBoardComment => _boardPostEvents.contains(updateType);
 
-  /// Payload.
-  Map<String, dynamic> get payload => update.object;
-
   /// Is the sender a user.
   bool get isUser => fromId > 0;
 
