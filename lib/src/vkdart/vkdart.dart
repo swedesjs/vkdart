@@ -86,7 +86,8 @@ class VkDart extends Api {
       _event.onComment().map(VkDartComment.new);
 
   /// Listen for `wall_post_new`, `wall_repost` events.
-  Stream<Update> onWall() => _event.onWall();
+  Stream<VkDartWallUpdate> onWall() =>
+      _event.onWall().map(VkDartWallUpdate.new);
 
   /// Listen for `like_add`, `like_remove` events.
   Stream<Update> onLike() => _event.onLike();
