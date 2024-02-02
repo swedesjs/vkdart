@@ -1,9 +1,9 @@
 import 'package:vkdart/model.dart';
 
 /// The message reaction event model.
-class VkDartMessageReactionEvent with VkDartUpdate {
+class VkDartMessageReactionEventUpdate with VkDartUpdate {
   // ignore: public_member_api_docs
-  VkDartMessageReactionEvent(this.update);
+  VkDartMessageReactionEventUpdate(this.update);
 
   @override
   final Update update;
