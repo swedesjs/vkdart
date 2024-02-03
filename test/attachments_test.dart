@@ -2,7 +2,7 @@
 
 import 'package:shouldly/shouldly.dart';
 import 'package:test/test.dart';
-import 'package:vkdart/model.dart';
+import 'package:vkdart/vkontakte.dart';
 
 void main() {
   group('Testing attachments', () {

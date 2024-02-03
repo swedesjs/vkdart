@@ -1,5 +1,6 @@
 import 'package:vkdart/model.dart';
 import 'package:vkdart/vkdart.dart' show VkDartException;
+import 'package:vkdart/vkontakte.dart';
 
 /// Event Model `new attachment`.
 ///

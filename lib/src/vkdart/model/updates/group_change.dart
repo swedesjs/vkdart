@@ -1,4 +1,5 @@
 import 'package:vkdart/model.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// The model `group change` update.
 ///

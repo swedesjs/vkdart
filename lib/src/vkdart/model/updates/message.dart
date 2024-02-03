@@ -1,4 +1,5 @@
 import 'package:vkdart/model.dart';
+import 'package:vkdart/vkontakte.dart';
 
 // ignore: public_member_api_docs
 const peerChatIdOffset = 2000000000;

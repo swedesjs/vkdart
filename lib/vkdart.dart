@@ -8,8 +8,8 @@ import 'dart:io';
 import 'package:dia/dia.dart';
 import 'package:dia_body/dia_body.dart';
 import 'package:dio/dio.dart';
-import 'package:vkdart/methods.dart' show Api, ApiResponse, LangApi;
 import 'package:vkdart/model.dart';
+import 'package:vkdart/vkontakte.dart' show Api, ApiResponse, LangApi;
 
 part 'src/vkdart/event/event.dart';
 part 'src/vkdart/fetch/abstract_update_fetcher.dart';

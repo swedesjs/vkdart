@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_dynamic_calls
 
 import 'package:vkdart/model.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// The model `market order` update.
 ///
