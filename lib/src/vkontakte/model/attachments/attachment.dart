@@ -1,3 +1,4 @@
+import 'package:vkdart/util.dart';
 import 'package:vkdart/vkdart.dart' show VkDartException;
 
 part 'photo.dart';
@@ -53,15 +54,7 @@ abstract class AttachmentModel {
   /// Attachment type.
   final String attachType;
 
-  static bool? _checkBool(Object? value) {
-    if (value is! int) {
-      return null;
-    }
-
-    return value == 1;
-  }
-
-  bool? _checkBoolInProperty(String key) => _checkBool(payload[key]);
+  bool? _checkBoolInProperty(String key) => checkBoolUtil(payload[key]);
 }
 
 /// Model Custom Attachment.
@@ -116,14 +109,13 @@ mixin AttachmentLikesMixin on AttachmentModel {
   int? get likesCount => _likes?['count'];
 
   /// the presence of a "like" mark from the current user ;
-  bool? get isUserLikes => AttachmentModel._checkBool(_likes?['user_likes']);
+  bool? get isUserLikes => checkBoolUtil(_likes?['user_likes']);
 
   /// information about whether the current user can mark "Like";
-  bool? get isLikesCanLike => AttachmentModel._checkBool(_likes?['can_like']);
+  bool? get isLikesCanLike => checkBoolUtil(_likes?['can_like']);
 
   /// information about whether the current user can repost the post;
-  bool? get isLikesCanPublish =>
-      AttachmentModel._checkBool(_likes?['can_publish']);
+  bool? get isLikesCanPublish => checkBoolUtil(_likes?['can_publish']);
 }
 
 /// Mixin for attachment reposts.
@@ -134,8 +126,7 @@ mixin AttachmentRepostsMixin on AttachmentModel {
   int? get repostsCount => _reposts?['count'];
 
   /// Indicates whether the current user has reposted the attachment.
-  bool? get isUserReposted =>
-      AttachmentModel._checkBool(_reposts?['user_reposted']);
+  bool? get isUserReposted => checkBoolUtil(_reposts?['user_reposted']);
 
   /// repost counter on the wall.
   int? get repostsWallCount => _reposts?['wall_count'];

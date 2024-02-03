@@ -40,20 +40,17 @@ class WallAttachmentModel extends CustomAttachmentModel
   int? get commentsCount => _comments?['count'];
 
   /// information about whether the current user can comment on the entry ;
-  bool? get isCommentsCanPost =>
-      AttachmentModel._checkBool(_comments?['can_post']);
+  bool? get isCommentsCanPost => checkBoolUtil(_comments?['can_post']);
 
   /// information about whether communities can comment on the post;
   bool? get isCommentsGroupsCanPost =>
-      AttachmentModel._checkBool(_comments?['groups_can_post']);
+      checkBoolUtil(_comments?['groups_can_post']);
 
   /// Can the current user close comments on the post;
-  bool? get isCommentsCanClose =>
-      AttachmentModel._checkBool(_comments?['can_close']);
+  bool? get isCommentsCanClose => checkBoolUtil(_comments?['can_close']);
 
   /// whether the current user can open comments on the post.
-  bool? get isCommentsCanOpen =>
-      AttachmentModel._checkBool(_comments?['can_open']);
+  bool? get isCommentsCanOpen => checkBoolUtil(_comments?['can_open']);
 
   // ignore: public_member_api_docs
   int get copyrightId => _copyright?['id'];

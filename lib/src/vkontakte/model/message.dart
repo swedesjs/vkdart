@@ -1,26 +1,5 @@
+import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
-
-/// Offset Chat ID.
-const peerChatIdOffset = 2000000000;
-
-/// Message Source
-enum MessageSource {
-  /// User.
-  user,
-
-  /// Group.
-  group,
-
-  /// Chat.
-  chat
-}
-
-List<AttachmentModel> _transformAttachments(
-        List<Map<String, dynamic>> attachments) =>
-    attachments.map((e) {
-      final attachType = e['type'];
-      return AttachmentModel.fromSpecificModel(e[attachType], attachType);
-    }).toList();
 
 /// Model Message.
 ///
@@ -61,13 +40,13 @@ class MessageModel {
   int get peerId => message['peer_id'];
 
   /// The type of destination.
-  MessageSource get peerType => _getPeerType(peerId);
+  MessageSource get peerType => getPeerType(peerId);
 
   /// The sender's ID.
   int get senderId => message['from_id'];
 
   /// The sender's type.
-  MessageSource get senderType => _getPeerType(senderId);
+  MessageSource get senderType => getPeerType(senderId);
 
   /// The text of the message.
   String get text => message['text'];
@@ -86,7 +65,7 @@ class MessageModel {
 
   /// Media attachments of the message (photos, links, etc.).
   List<AttachmentModel> get attachments =>
-      _transformAttachments((message['attachments'] as List?)
+      transformAttachments((message['attachments'] as List?)
               ?.map((e) => (e as Map).cast<String, dynamic>())
               .toList() ??
           const []);
@@ -186,16 +165,4 @@ class MessageModel {
 
   /// The URL of the 200 px wide copy of the conversation photo.
   String? get photo200 => message['photo_200'];
-
-  MessageSource _getPeerType(int id) {
-    if (peerChatIdOffset < id) {
-      return MessageSource.chat;
-    }
-
-    if (id < 0) {
-      return MessageSource.group;
-    }
-
-    return MessageSource.user;
-  }
 }
