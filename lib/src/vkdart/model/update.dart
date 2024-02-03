@@ -1,6 +1,6 @@
-part of '../../../model.dart';
-
 // ignore_for_file: constant_identifier_names
+
+import 'package:vkdart/vkdart.dart' show VkDartException;
 
 /// [UpdateType] is an enumeration of possible event types.
 enum UpdateType {

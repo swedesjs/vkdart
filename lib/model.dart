@@ -1,8 +1,7 @@
 /// Various models used by VKDart
 library vkdart.model;
 
-import 'package:vkdart/vkdart.dart' show VkDartException;
-
+export 'src/vkdart/model/update.dart';
 export 'src/vkdart/model/updates/app_payload.dart';
 export 'src/vkdart/model/updates/comment.dart';
 export 'src/vkdart/model/updates/donut.dart';
@@ -21,5 +20,3 @@ export 'src/vkdart/model/updates/poll_vote_new.dart';
 export 'src/vkdart/model/updates/user.dart';
 export 'src/vkdart/model/updates/vk_pay_transaction.dart';
 export 'src/vkdart/model/updates/wall.dart';
-
-part 'src/vkdart/model/update.dart';
