@@ -104,11 +104,9 @@ class VkDart extends Api {
   /// Listen for `app_payload` events.
   Stream<Update> onAppPayload() => _event.onAppPayload();
 
-  /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`, `donut_subscription_price_changed` events.
-  Stream<Update> onDonutSubscription() => _event.onDonutSubscription();
-
-  /// Listen for `donut_money_withdraw`, `donut_money_withdraw_error` events.
-  Stream<Update> onDonutWithdraw() => _event.onDonutWithdraw();
+  /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`,
+  /// `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error`s events.
+  Stream<Update> onDonut() => _event.onDonut();
 }
 
 // ignore: public_member_api_docs
