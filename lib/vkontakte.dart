@@ -3,6 +3,8 @@ library vkdart.vkontakte;
 
 export 'src/vkontakte/api.dart';
 
+export 'src/vkontakte/model/api_error.dart';
+
 export 'src/vkontakte/model/attachments/attachment.dart';
 export 'src/vkontakte/model/attachments/audio.dart';
 export 'src/vkontakte/model/attachments/document.dart';

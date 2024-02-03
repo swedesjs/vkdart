@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:vkdart/vkontakte.dart';
 
 part 'methods/account.dart';
 part 'methods/ads.dart';
@@ -46,8 +46,6 @@ part 'methods/store.dart';
 part 'methods/stories.dart';
 part 'methods/translations.dart';
 part 'methods/status.dart';
-
-part 'api.g.dart';
 
 /// Перечисление языков поддерживаемых VK API
 enum LangApi {
@@ -129,7 +127,7 @@ class Api {
     final response = data['response'] as Object?;
 
     if (error != null) {
-      throw ApiException.fromJson(error);
+      throw ApiException(error);
     }
 
     return ApiResponse<T>(
@@ -305,54 +303,11 @@ class ApiResponse<T> {
   final Map<String, dynamic> requestOptions;
 }
 
-/// Класс предназначенный для ошибок связанных с API VK
-@JsonSerializable(fieldRename: FieldRename.snake)
-class ApiException implements Exception {
-  /// Конструктор класса [ApiException]
-  ApiException({
-    required this.code,
-    required this.message,
-    required this.requestParams,
-  });
-
-  /// Преобразует JSON в экземпляр класса
-  factory ApiException.fromJson(Map<String, dynamic> json) =>
-      _$ApiExceptionFromJson(json);
-
-  /// Код ошибки
-  @JsonKey(name: 'error_code')
-  final int code;
-
-  /// Сообщение ошибки
-  @JsonKey(name: 'error_msg')
-  final String message;
-
-  /// Параметры запроса
-  final List<RequestParams> requestParams;
-
-  /// Преобразует экземпляр в JSON
-  Map<String, dynamic> toJson() => _$ApiExceptionToJson(this);
+// ignore: public_member_api_docs
+class ApiException extends ApiErrorModel implements Exception {
+  // ignore: public_member_api_docs
+  ApiException(super.payload);
 
   @override
   String toString() => 'ApiException[$code]: $message';
-}
-
-/// Интерфейс request_params
-@JsonSerializable()
-class RequestParams {
-  /// Экземляр интерфейса request_params
-  RequestParams({required this.key, required this.value});
-
-  /// Преобразует JSON в экземпляр класса
-  factory RequestParams.fromJson(Map<String, dynamic> json) =>
-      _$RequestParamsFromJson(json);
-
-  /// Key
-  final String key;
-
-  /// Value
-  final Object value;
-
-  /// Преобразует экземпляр в JSON
-  Map<String, dynamic> toJson() => _$RequestParamsToJson(this);
 }
