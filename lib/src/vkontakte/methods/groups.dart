@@ -1,19 +1,19 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с сообществами.
+/// Methods for working with communities.
+///
+/// See https://dev.vk.com/ru/method/groups
 class Groups {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Groups(this._api);
   final Api _api;
 
-  /// Позволяет добавить адрес в сообщество. Список адресов может быть получен методом [getAddresses].
-  ///
-
-  /// - Для того, чтобы воспользоваться этим методом, вы должны быть администратором сообщества.
+  /// Allows you to add an address to the community.
+  /// The list of addresses can be obtained using the [getAddresses] method.
   Future<ApiResponse<T>> addAddress<T>(Map<String, Object> params) =>
       _api.request<T>('groups.addAddress', params);
 
-  /// Добавляет сервер для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) в сообщество.
+  /// Adds a server for the [Callback API](https://dev.vk.com/ru/api/callback/getting-started) to the community.
   Future<ApiResponse<T>> addCallbackServer<T>(Map<String, Object> params) =>
       _api.request<T>('groups.addCallbackServer', params);
 
@@ -25,7 +25,7 @@ class Groups {
   Future<ApiResponse<T>> approveRequest<T>(Map<String, Object> params) =>
       _api.request<T>('groups.approveRequest', params);
 
-  /// Добавляет пользователя или группу в черный список сообщества.
+  /// Adds a user or group to the community blacklist.
   Future<ApiResponse<T>> ban<T>(Map<String, Object> params) =>
       _api.request<T>('groups.ban', params);
 
@@ -33,11 +33,11 @@ class Groups {
   Future<ApiResponse<T>> create<T>(Map<String, Object> params) =>
       _api.request<T>('groups.create', params);
 
-  /// Удаляет адрес сообщества.
+  /// Deletes the address of the community.
   Future<ApiResponse<T>> deleteAddress<T>(Map<String, Object> params) =>
       _api.request<T>('groups.deleteAddress', params);
 
-  /// Удаляет сервер для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) из сообщества.
+  /// Deletes the server for the [Callback API](https://dev.vk.com/ru/api/callback/getting-started) from the community.
   Future<ApiResponse<T>> deleteCallbackServer<T>(Map<String, Object> params) =>
       _api.request<T>('groups.deleteCallbackServer', params);
 
@@ -45,7 +45,7 @@ class Groups {
   Future<ApiResponse<T>> deleteLink<T>(Map<String, Object> params) =>
       _api.request<T>('groups.deleteLink', params);
 
-  /// Выключает статус «онлайн» в сообществе.
+  /// Disables the "online" status in the community.
   Future<ApiResponse<T>> disableOnline<T>(Map<String, Object> params) =>
       _api.request<T>('groups.disableOnline', params);
 
@@ -53,12 +53,12 @@ class Groups {
   Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
       _api.request<T>('groups.edit', params);
 
-  /// Метод редактирует адрес в сообществе. Чтобы получить список адресов,
-  /// вызовите метод [getAddresses].
+  /// The method edits the address in the community.
+  /// To get a list of addresses, call the [getAddresses] method.
   Future<ApiResponse<T>> editAddress<T>(Map<String, Object> params) =>
       _api.request<T>('groups.editAddress', params);
 
-  /// Редактирует данные сервера для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) в сообществе.
+  /// Edits server data for [Callback API](https://dev.vk.com/ru/api/callback/getting-started) in the community.
   Future<ApiResponse<T>> editCallbackServer<T>(Map<String, Object> params) =>
       _api.request<T>('groups.editCallbackServer', params);
 
@@ -70,11 +70,11 @@ class Groups {
   Future<ApiResponse<T>> editManager<T>(Map<String, Object> params) =>
       _api.request<T>('groups.editManager', params);
 
-  /// Позволяет редактировать информацию о месте группы.
+  /// Allows you to edit information about the location of the group.
   Future<ApiResponse<T>> editPlace<T>(Map<String, Object> params) =>
       _api.request<T>('groups.editPlace', params);
 
-  /// Включает статус «онлайн» в сообществе.
+  /// Enables the "online" status in the community.
   Future<ApiResponse<T>> enableOnline<T>(Map<String, Object> params) =>
       _api.request<T>('groups.enableOnline', params);
 
@@ -100,13 +100,13 @@ class Groups {
   ) =>
       _api.request<T>('groups.getCallbackConfirmationCode', params);
 
-  /// Позволяет получить информацию о настройках сервера для получения уведомлений Callback API в сообществе.
+  /// Allows you to get information about the server settings for receiving Callback API notifications in the community.
   Future<ApiResponse<T>> getCallbackServerSettings<T>(
     Map<String, Object> params,
   ) =>
       _api.request<T>('groups.getCallbackServerSettings', params);
 
-  /// Получает информацию о серверах для [Callback API](https://dev.vk.com/ru/api/callback/getting-started) в сообществе.
+  /// Retrieves information about servers for the [Callback API](https://dev.vk.com/ru/api/callback/getting-started) in the community.
   Future<ApiResponse<T>> getCallbackServers<T>(Map<String, Object> params) =>
       _api.request<T>('groups.getCallbackServers', params);
 
@@ -142,7 +142,7 @@ class Groups {
   Future<ApiResponse<T>> getMembers<T>(Map<String, Object> params) =>
       _api.request<T>('groups.getMembers', params);
 
-  /// Получает информацию о статусе «онлайн» в сообществе.
+  /// Receives information about the "online" status in the community.
   Future<ApiResponse<T>> getOnlineStatus<T>(Map<String, Object> params) =>
       _api.request<T>('groups.getOnlineStatus', params);
 
@@ -158,7 +158,7 @@ class Groups {
   Future<ApiResponse<T>> getTagList<T>(Map<String, Object> params) =>
       _api.request<T>('groups.getTagList', params);
 
-  /// Возвращает настройки прав для ключа доступа сообщества.
+  /// Returns the rights settings for the community access key.
   Future<ApiResponse<T>> getTokenPermissions<T>(Map<String, Object> params) =>
       _api.request<T>('groups.getTokenPermissions', params);
 
@@ -199,7 +199,7 @@ class Groups {
   Future<ApiResponse<T>> setLongPollSettings<T>(Map<String, Object> params) =>
       _api.request<T>('groups.setLongPollSettings', params);
 
-  /// Устанавливает настройки сообщества
+  /// Sets the community settings
   Future<ApiResponse<T>> setSettings<T>(Map<String, Object> params) =>
       _api.request<T>('groups.setSettings', params);
 
@@ -223,11 +223,11 @@ class Groups {
   Future<ApiResponse<T>> tagUpdate<T>(Map<String, Object> params) =>
       _api.request<T>('groups.tagUpdate', params);
 
-  /// Переключает функционал раздела «Товаров» в выбранной группе.
+  /// Switches the functionality of the "Products" section in the selected group.
   Future<ApiResponse<T>> toggleMarket<T>(Map<String, Object> params) =>
       _api.request<T>('groups.toggleMarket', params);
 
-  /// Убирает пользователя или группу из черного списка сообщества.
+  /// Removes a user or group from the community blacklist.
   Future<ApiResponse<T>> unban<T>(Map<String, Object> params) =>
       _api.request<T>('groups.unban', params);
 }

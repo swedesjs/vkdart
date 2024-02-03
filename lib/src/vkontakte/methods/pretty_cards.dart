@@ -1,37 +1,34 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Карусель — набор карточек, которые прикрепляются к записи.
-
-/// К каждой карточке можно добавить название и короткое описание, изображение, кнопку.
-
-/// Также можно установить две цены — старую и новую — например, чтобы показать скидку.
+/// A carousel is a set of cards that are attached to a record.
+///
+/// See https://dev.vk.com/ru/method/prettyCards
 class PrettyCards {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   PrettyCards(this._api);
   final Api _api;
 
-  /// Метод создаёт карточку карусели.
-  /// - Созданную карточку необходимо вручную добавить в карусель.
+  /// The method creates a carousel card.
   Future<ApiResponse<T>> create<T>(Map<String, Object> params) =>
       _api.request<T>('prettyCards.create', params);
 
-  /// Удаляет карточку.
+  /// Deletes the card.
   Future<ApiResponse<T>> delete<T>(Map<String, Object> params) =>
       _api.request<T>('prettyCards.delete', params);
 
-  /// Редактирует карточку карусели.
+  /// Edits the carousel card.
   Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
       _api.request<T>('prettyCards.edit', params);
 
-  /// Возвращает неиспользованные карточки владельца.
+  /// Returns unused owner's cards.
   Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
       _api.request<T>('prettyCards.get', params);
 
-  /// Возвращает информацию о карточке.
+  /// Returns information about the card.
   Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
       _api.request<T>('prettyCards.getById', params);
 
-  /// Возвращает URL для загрузки фотографии для карточки.
+  /// Returns the URL for uploading a photo for the card.
   Future<ApiResponse<T>> getUploadURL<T>(Map<String, Object> params) =>
       _api.request<T>('prettyCards.getUploadURL', params);
 }

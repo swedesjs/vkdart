@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с заметками.
+/// Methods for working with notes.
+///
+/// See https://dev.vk.com/ru/method/notes
 class Notes {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Notes(this._api);
   final Api _api;
 
@@ -42,7 +44,7 @@ class Notes {
   Future<ApiResponse<T>> getComments<T>(Map<String, Object> params) =>
       _api.request<T>('notes.getComments', params);
 
-  /// Возвращает список заметок друзей пользователя.
+  /// Returns a list of the user's friends' notes.
   Future<ApiResponse<T>> getFriendsNotes<T>(Map<String, Object> params) =>
       _api.request<T>('notes.getFriendsNotes', params);
 

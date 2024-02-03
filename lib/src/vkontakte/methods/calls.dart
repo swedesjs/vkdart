@@ -1,16 +1,18 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы со звонками.
+/// Methods for working with calls.
+///
+/// See https://dev.vk.com/ru/method/calls
 class Calls {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Calls(this._api);
   final Api _api;
 
-  /// Принудительно завершить звонок
+  /// Forcibly end the call
   Future<ApiResponse<T>> forceFinish<T>(Map<String, Object> params) =>
       _api.request<T>('calls.forceFinish', params);
 
-  /// Создать новый звонок от имени пользователя или сообщества
+  /// Create a new call on behalf of a user or community
   Future<ApiResponse<T>> start<T>(Map<String, Object> params) =>
       _api.request<T>('calls.start', params);
 }

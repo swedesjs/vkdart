@@ -1,14 +1,14 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы этой секции предоставляют дополнительную
-/// возможность управления состоянием заказов,
-/// которые были сделаны пользователями в приложениях.
+/// The methods in this section provide an additional opportunity to manage the status of orders that have been made by users in applications.
+///
+/// See https://dev.vk.com/ru/method/orders
 class Orders {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Orders(this._api);
   final Api _api;
 
-  /// Отменяет подписку.
+  /// Cancels the subscription.
   Future<ApiResponse<T>> cancelSubscription<T>(Map<String, Object> params) =>
       _api.request<T>('orders.cancelSubscription', params);
 
@@ -20,7 +20,7 @@ class Orders {
   Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
       _api.request<T>('orders.get', params);
 
-  /// Возвращает стоимость голосов в валюте пользователя.
+  /// Returns the cost of votes in the user's currency.
   Future<ApiResponse<T>> getAmount<T>(Map<String, Object> params) =>
       _api.request<T>('orders.getAmount', params);
 
@@ -28,17 +28,17 @@ class Orders {
   Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
       _api.request<T>('orders.getById', params);
 
-  /// Получает информацию о подписке по её идентификатору.
+  /// Gets information about the subscription by its ID.
   Future<ApiResponse<T>> getUserSubscriptionById<T>(
     Map<String, Object> params,
   ) =>
       _api.request<T>('orders.getUserSubscriptionById', params);
 
-  /// Получает список активных подписок пользователя.
+  /// Retrieves a list of the user's active subscriptions.
   Future<ApiResponse<T>> getUserSubscriptions<T>(Map<String, Object> params) =>
       _api.request<T>('orders.getUserSubscriptions', params);
 
-  /// Обновляет цену подписки для пользователя.
+  /// Updates the subscription price for the user.
   Future<ApiResponse<T>> updateSubscription<T>(Map<String, Object> params) =>
       _api.request<T>('orders.updateSubscription', params);
 }

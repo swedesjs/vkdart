@@ -1,12 +1,14 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с местами.
+/// Methods for working with places.
+///
+/// See https://dev.vk.com/ru/method/places
 class Places {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Places(this._api);
   final Api _api;
 
-  /// Возвращает список отметок пользователей в местах согласно заданным параметрам.
+  /// Returns a list of user marks in places according to the specified parameters.
   Future<ApiResponse<T>> getCheckins<T>(Map<String, Object> params) =>
       _api.request<T>('places.getCheckins', params);
 }

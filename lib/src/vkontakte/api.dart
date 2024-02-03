@@ -1,39 +1,38 @@
 import 'package:dio/dio.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// Перечисление языков поддерживаемых VK API
+/// Listing of languages supported by VK API.
 enum LangApi {
-  /// Русский
+  /// Russian.
   ru,
 
-  /// Украинский
+  /// Ukrainian
   uk,
 
-  /// Белорусский
+  /// Belarusian
   be,
 
-  /// Английский
+  /// English
   en,
 
-  /// Финский
+  /// Finnish
   fi,
 
-  /// Немецкий
+  /// German
   de,
 
-  /// Итальянский
+  /// Italian
   it
 }
 
-/// Класс для взаимодействия с Vk API
+/// The class of interaction with the VK API.
 class Api {
-  /// Основной конструктор для создания экземпляра класс [Api]
+  /// Creating a base instance of the [Api] class.
   ///
-  /// Что-бы получать данные от некоторых методов на определенном языке
-  /// укажите параметр [language]
-  ///
-  /// Для того что-б указать необходимую версию укажите [version]
-  /// ([Самая актуальная версия на данный момент](https://dev.vk.com/reference/versions))
+  /// [token] - access key.
+  /// [language] - defines the language in which various data will be returned,
+  /// such as the names of countries and cities.
+  /// [version] - API version used.
   Api({
     required String token,
     required LangApi language,
@@ -49,8 +48,8 @@ class Api {
   final LangApi _language;
   final String _version;
 
-  /// Позволяет создавать запросы к Апи Вк
-  /// В [T] указываем возвращаемый тип результата выполнения запроса.
+  /// Allows you to create requests to the VK Api.
+  /// In [T] we specify the return type of the query result.
   Future<ApiResponse<T>> request<T>(
     String methodName,
     Map<String, Object> params,
@@ -90,170 +89,246 @@ class Api {
     );
   }
 
-  /// Методы для работы с аккаунтом.
+  /// Methods for working with the account.
+  ///
+  /// See https://dev.vk.com/ru/method/account
   Account get account => Account(this);
 
-  /// Рекламный API позволяет автоматизировать работу с рекламными возможностямиы ВКонтакте и эффективно реализовать специфичные для вашего бизнеса рекламные кампании.
+  /// The advertising API allows you to automate work with VKontakte
+  /// advertising opportunities and effectively implement advertising campaigns specific to your business.
+  ///
+  /// See https://dev.vk.com/ru/method/abs
   Ads get abs => Ads(this);
 
-  /// Методы для работы с приложениями.
+  /// Methods for working with applications.
+  ///
+  /// See https://dev.vk.com/ru/method/apps
   Apps get apps => Apps(this);
 
-  /// Методы для работы с аудиозаписями.
+  /// Methods for working with audio recordings.
+  ///
+  /// See https://dev.vk.com/ru/method/asr
   Asr get asr => Asr(this);
 
-  /// Список методов секции appWidgets
+  /// List of methods in the AppWidgets section
+  ///
+  /// See https://dev.vk.com/ru/method/appWidgets
   AppWidgets get appWidgets => AppWidgets(this);
 
-  /// Методы для работы с авторизацией.
+  /// Methods for working with authorization.
+  ///
+  /// See https://dev.vk.com/ru/method/auth
   Auth get auth => Auth(this);
 
-  /// Методы для работы с обсуждениями.
+  /// Methods for working with discussions.
+  ///
+  /// See https://dev.vk.com/ru/method/board
   Board get board => Board(this);
 
-  /// Методы для работы с платформой тестирования VK Testers.
+  /// Methods for working with the VK Testers testing platform.
+  ///
+  /// See https://dev.vk.com/ru/method/bugtracker
   Bugtracker get bugtracker => Bugtracker(this);
 
-  /// Методы для работы со звонками.
+  /// Methods for working with calls.
+  ///
+  /// See https://dev.vk.com/ru/method/calls
   Calls get calls => Calls(this);
 
-  /// Методы этой секции предоставляют доступ к базе данных учебных заведений ВКонтакте.
+  /// The methods of this section provide access to the VKontakte database of educational institutions.
   ///
-  /// Доступ к данным является бесплатным и не требует авторизации,
-  /// однако количество запросов с одного IP адреса может быть ограничено,
-  /// при необходимости делать большое количество запросов рекомендуется выполнять запросы с клиентской стороны, используя JSONP.
+  /// See https://dev.vk.com/ru/method/database
   Database get database => Database(this);
 
-  /// Методы для работы с документами.
+  /// Methods for working with documents.
+  ///
+  /// See https://dev.vk.com/ru/method/docs
   Docs get docs => Docs(this);
 
-  /// Методы для работы с VK Donut.
+  /// Methods for working with VK Donut.
+  ///
+  /// See https://dev.vk.com/ru/method/donut
   Donut get donut => Donut(this);
 
-  /// Методы для работы с играми ВК
+  /// Methods for working with VK games
+  ///
+  /// See https://dev.vk.com/ru/method/downloadedGames
   DownloadedGames get downloadedGames => DownloadedGames(this);
 
-  /// Методы для работы с закладками.
+  /// Methods for working with bookmarks.
+  ///
+  /// See https://dev.vk.com/ru/method/fave
   Fave get fave => Fave(this);
 
-  /// Методы для работы с друзьями.
+  /// Methods for working with friends.
+  ///
+  /// See https://dev.vk.com/ru/method/friends
   Friends get friends => Friends(this);
 
-  /// Методы для работы с подарками.
+  /// Methods for working with gifts.
+  ///
+  /// See https://dev.vk.com/ru/method/gifts
   Gifts get gifts => Gifts(this);
 
-  /// Методы для работы с сообществами.
+  /// Methods for working with communities.
+  ///
+  /// See https://dev.vk.com/ru/method/groups
   Groups get groups => Groups(this);
 
-  /// Формы сбора заявок
+  /// Application collection forms
   ///
-  /// Подойдут для записи клиентов, предварительной регистрации, подписки на рассылки, запросов информации, подключения услуг, оформления заказов и многого другого.
-  /// Вы создаете формы с заявками, а пользователи оставляют свою контактную информацию.
-  /// Вам остается завершить оформление заявки, связавшись с ними удобным способом.
+  /// See https://dev.vk.com/ru/method/leadForms
   LeadForms get leadForms => LeadForms(this);
 
-  /// Методы для работы с отметками «Мне нравится».
+  /// Methods for working with "I like" marks.
+  ///
+  /// See https://dev.vk.com/ru/method/likes
   Likes get likes => Likes(this);
 
-  /// Методы market позволяют работать с товарами в сообществах.
+  /// Market methods allow you to work with products in communities.
+  ///
+  /// See https://dev.vk.com/ru/method/market
   Market get market => Market(this);
 
-  /// Методы для работы с личными сообщениями.
+  /// Methods for working with personal messages.
   ///
-  /// Для получения входящих сообщений используйте LongPoll сервер.
-  /// Внимание: доступ к методами секции с ключом пользователя ограничен.
-  /// Информация об ограничении Messages API находится в Roadmap.
-  /// Обратите внимание: методы для работы со звонками были перенесены в новую секцию calls. Старые методы звонков из секции messages были помечены устаревшими и могут быть удалены в будущих версиях API.
+  /// See https://dev.vk.com/ru/method/messages
   Messages get messages => Messages(this);
 
-  /// Методы для работы с новостной лентой пользователя.
+  /// Methods for working with the user's news feed.
+  ///
+  /// See https://dev.vk.com/ru/method/newsfeed
   Newsfeed get newsfeed => Newsfeed(this);
 
-  /// Методы для работы с заметками.
+  /// Methods for working with notes.
+  ///
+  /// See https://dev.vk.com/ru/method/notes
   Notes get notes => Notes(this);
 
-  /// Методы для работы с оповещениями
+  /// Methods for working with alerts.
+  ///
+  /// See https://dev.vk.com/ru/method/notifications
   Notifications get notifications => Notifications(this);
 
-  /// Методы этой секции предоставляют дополнительную возможность управления
-  /// состоянием заказов, которые были сделаны пользователями в приложениях.
+  /// The methods in this section provide an additional opportunity to manage the
+  /// status of orders that have been made by users in applications.
+  ///
+  /// See https://dev.vk.com/ru/method/orders
   Orders get orders => Orders(this);
 
-  /// Методы для работы с вики-страницами.
+  /// Methods for working with wiki pages.
+  ///
+  /// See https://dev.vk.com/ru/method/pages
   Pages get pages => Pages(this);
 
-  /// Методы для работы с фотографиями.
+  /// Methods for working with photos.
+  ///
+  /// See https://dev.vk.com/ru/method/photos
   Photos get photos => Photos(this);
 
-  /// Методы для работы с местами.
+  /// Methods for working with places.
+  ///
+  /// See https://dev.vk.com/ru/method/places
   Places get places => Places(this);
 
-  /// Методы для работы с подкастами.
+  /// Methods for working with photos.
+  ///
+  /// See https://dev.vk.com/ru/method/podcasts
   Podcasts get podcasts => Podcasts(this);
 
-  /// Методы для работы с опросами.
+  /// Methods for working with surveys.
+  ///
+  /// See https://dev.vk.com/ru/method/polls
   Polls get polls => Polls(this);
 
-  /// Карусель — набор карточек, которые прикрепляются к записи.
+  /// A carousel is a set of cards that are attached to a record.
   ///
-  /// К каждой карточке можно добавить название и короткое описание, изображение, кнопку.
-  /// Также можно установить две цены — старую и новую — например, чтобы показать скидку.
-  /// На текущий момент карусель поддерживается только в скрытых рекламных записях (см. wall.postAdsStealth).
+  /// See https://dev.vk.com/ru/method/prettyCards
   PrettyCards get prettyCards => PrettyCards(this);
 
-  /// Методы для работы с поиском.
+  /// Methods for working with the search.
+  ///
+  /// See https://dev.vk.com/ru/method/search
   Search get search => Search(this);
 
-  /// В этой секции представлены административные методы, предназначенные для вызова от имени приложения с использованием стороннего сервера. Для использования этих методов необходимо применять сервисный ключ из настроек приложения.
+  /// This section presents administrative methods designed to be invoked on behalf
+  /// of an application using a third-party server.
+  /// To use these methods, you must apply the service key from the application settings.
+  ///
+  /// See https://dev.vk.com/ru/method/secure
   Secure get secure => Secure(this);
 
-  /// Методы для работы со статистикой.
+  /// Methods for working with statistics.
+  ///
+  /// See https://dev.vk.com/ru/method/stats
   Stats get stats => Stats(this);
 
-  /// Методы для работы со статусом.
+  /// Methods for working with the status.
+  ///
+  /// See https://dev.vk.com/ru/method/status
   Status get status => Status(this);
 
-  /// Методы для работы с переменными в приложении.
+  /// Methods for working with variables in the application.
+  ///
+  /// See https://dev.vk.com/ru/method/storage
   Storage get storage => Storage(this);
 
-  /// Методы для работы со стикерами.
+  /// Methods for working with stickers.
+  ///
+  /// See https://dev.vk.com/ru/method/store
   Store get store => Store(this);
 
-  /// Методы для работы с историями.
+  /// Methods for working with stories.
+  ///
+  /// See https://dev.vk.com/ru/method/stories
   Stories get stories => Stories(this);
 
-  /// Методы для работы с Streaming API.
+  /// Methods for working with the Streaming API.
+  ///
+  /// See https://dev.vk.com/ru/method/streaming
   Streaming get streaming => Streaming(this);
 
-  /// Методы для работы с переводом.
+  /// Methods for working with translation.
+  ///
+  /// See https://dev.vk.com/ru/method/translations
   Translations get translations => Translations(this);
 
-  /// Методы для работы с данными пользователей.
+  /// Methods for working with user data.
+  ///
+  /// See https://dev.vk.com/ru/method/users
   Users get users => Users(this);
 
-  /// Служебные методы.
+  /// Service methods.
+  ///
+  /// See https://dev.vk.com/ru/method/utils
   Utils get utils => Utils(this);
 
-  /// Методы для работы с видеозаписями.
+  /// Methods for working with video recordings.
+  ///
+  /// See https://dev.vk.com/ru/method/video
   Video get video => Video(this);
 
-  /// Методы для работы с записями на стене.
+  /// Methods for working with wall posts.
+  ///
+  /// See https://dev.vk.com/ru/method/wall
   Wall get wall => Wall(this);
 
-  /// Методы для работы с виджетами на внешних сайтах.
+  /// Methods for working with widgets on external sites.
+  ///
+  /// See https://dev.vk.com/ru/method/widgets
   Widgets get widgets => Widgets(this);
 }
 
-/// Класс [ApiResponse] содержит полезную нагрузку.
-/// Предосталяет информацию к опциям запроса к метода, а так же результат запроса.
+/// The [ApiResponse] class contains a payload.
+/// Provides information about the options of the method request, as well as the result of the request.
 class ApiResponse<T> {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   ApiResponse({required this.data, required this.requestOptions});
 
-  /// Результат выполнения запроса
+  /// The result of the query execution.
   final T data;
 
-  /// Опции запроса.
+  /// Request options.
   final Map<String, dynamic> requestOptions;
 }
 

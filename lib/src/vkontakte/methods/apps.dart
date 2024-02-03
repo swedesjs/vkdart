@@ -1,16 +1,18 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с приложениями.
+/// Methods for working with applications.
+///
+/// See https://dev.vk.com/ru/method/apps
 class Apps {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Apps(this._api);
   final Api _api;
 
-  /// Метод добавляет новый сниппет в коллекцию сниппетов мини-приложения или игры.
+  /// The method adds a new snippet to the snippet collection of a mini-app or game.
   Future<ApiResponse<T>> addSnippet<T>(Map<String, Object> params) =>
       _api.request<T>('apps.addSnippet', params);
 
-  /// Метод добавляет указанных пользователей в группу тестировщиков мини-приложения.
+  /// This adds the specified users to the group of testers of the mini-application.
   Future<ApiResponse<T>> addUsersToTestingGroup<T>(
     Map<String, Object> params,
   ) =>
@@ -20,7 +22,7 @@ class Apps {
   Future<ApiResponse<T>> deleteAppRequests<T>(Map<String, Object> params) =>
       _api.request<T>('apps.deleteAppRequests', params);
 
-  /// Метод удаляет сниппет мини-приложения или игры.
+  /// The method deletes the snippet of the mini-application or game.
   Future<ApiResponse<T>> deleteSnippet<T>(Map<String, Object> params) =>
       _api.request<T>('apps.deleteSnippet', params);
 
@@ -52,33 +54,33 @@ class Apps {
   Future<ApiResponse<T>> getScore<T>(Map<String, Object> params) =>
       _api.request<T>('apps.getScore', params);
 
-  /// Метод возвращает информацию о сниппетах мини-приложения или игры, созданных с помощью [addSnippet].
+  /// The method returns information about snippets of a mini-application or game created using [addSnippet].
   Future<ApiResponse<T>> getSnippets<T>(Map<String, Object> params) =>
       _api.request<T>('apps.getSnippets', params);
 
-  /// Метод возвращает группы тестировщиков мини-приложения.
+  /// The method returns groups of testers of the mini-application.
   Future<ApiResponse<T>> getTestingGroups<T>(Map<String, Object> params) =>
       _api.request<T>('apps.getTestingGroups', params);
 
-  /// Метод проверяет, разрешил ли пользователь присылать ему уведомления в мини-приложении.
+  /// The method checks whether the user has allowed notifications to be sent to him in the mini-application.
   Future<ApiResponse<T>> isNotificationsAllowed<T>(
     Map<String, Object> params,
   ) =>
       _api.request<T>('apps.isNotificationsAllowed', params);
 
-  /// Проверить есть ли у пользователя подарок в игре.
+  /// Check if the user has a gift in the game.
   Future<ApiResponse<T>> promoHasActiveGift<T>(Map<String, Object> params) =>
       _api.request<T>('apps.promoHasActiveGift', params);
 
-  /// Метод отмечает подарок, полученный пользователем в промоакции, как использованный.
+  /// The method marks the gift received by the user in the promotion as used.
   Future<ApiResponse<T>> promoUseGift<T>(Map<String, Object> params) =>
       _api.request<T>('apps.promoUseGift', params);
 
-  /// Метод удаляет указанную группу тестировщиков мини-приложения.
+  /// The method deletes the specified group of testers of the mini-application.
   Future<ApiResponse<T>> removeTestingGroup<T>(Map<String, Object> params) =>
       _api.request<T>('apps.removeTestingGroup', params);
 
-  /// Метод удаляет указанных пользователей из групп тестировщиков мини-приложения.
+  /// The method removes the specified users from the groups of testers of the mini-application.
   Future<ApiResponse<T>> removeUsersFromTestingGroups<T>(
     Map<String, Object> params,
   ) =>
@@ -88,7 +90,7 @@ class Apps {
   Future<ApiResponse<T>> sendRequest<T>(Map<String, Object> params) =>
       _api.request<T>('apps.sendRequest', params);
 
-  /// Метод создает новую или обновляет существующую группу тестировщиков мини-приложения.
+  /// The method creates a new or updates an existing group of mini-application testers.
   Future<ApiResponse<T>> updateMetaForTestingGroup<T>(
     Map<String, Object> params,
   ) =>

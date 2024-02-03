@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с переменными в приложении.
+/// Methods for working with variables in the application.
+///
+/// See https://dev.vk.com/ru/method/storage
 class Storage {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Storage(this._api);
   final Api _api;
 

@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Служебные методы.
+/// Service methods.
+///
+/// See https://dev.vk.com/ru/method/utils
 class Utils {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Utils(this._api);
   final Api _api;
 

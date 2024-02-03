@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы со статистикой.
+/// Methods for working with statistics.
+///
+/// See https://dev.vk.com/ru/method/stats
 class Stats {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Stats(this._api);
   final Api _api;
 
@@ -14,7 +16,7 @@ class Stats {
   Future<ApiResponse<T>> getPostReach<T>(Map<String, Object> params) =>
       _api.request<T>('stats.getPostReach', params);
 
-  /// Добавляет данные о текущем сеансе в статистику посещаемости приложения.
+  /// Adds data about the current session to the app's attendance statistics.
   Future<ApiResponse<T>> trackVisitor<T>(Map<String, Object> params) =>
       _api.request<T>('stats.trackVisitor', params);
 }

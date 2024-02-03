@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с данными пользователей.
+/// Methods for working with user data.
+///
+/// See https://dev.vk.com/ru/method/users
 class Users {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Users(this._api);
   final Api _api;
 

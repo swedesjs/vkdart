@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы со статусом.
+/// Methods for working with the status.
+///
+/// See https://dev.vk.com/ru/method/status
 class Status {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Status(this._api);
   final Api _api;
 

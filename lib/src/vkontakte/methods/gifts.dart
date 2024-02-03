@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с подарками.
+/// Methods for working with gifts.
+///
+/// See https://dev.vk.com/ru/method/gifts
 class Gifts {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Gifts(this._api);
   final Api _api;
 

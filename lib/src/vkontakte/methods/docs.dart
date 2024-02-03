@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с документами.
+/// Methods for working with documents.
+///
+/// See https://dev.vk.com/ru/method/docs
 class Docs {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Docs(this._api);
   final Api _api;
 

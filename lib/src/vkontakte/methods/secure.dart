@@ -1,12 +1,9 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// В этой секции представлены административные методы,
-
-/// предназначенные для вызова от имени приложения с использованием стороннего сервера.
-
-/// Для использования этих методов необходимо применять сервисный ключ из настроек приложения.
+/// This section presents administrative methods designed to be invoked on behalf of an application using a third-party server.
+/// To use these methods, you must apply the service key from the application settings.
 class Secure {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Secure(this._api);
   final Api _api;
 
@@ -53,7 +50,7 @@ class Secure {
   Future<ApiResponse<T>> setCounter<T>(Map<String, Object> params) =>
       _api.request<T>('secure.setCounter', params);
 
-  /// Устанавливает игровой уровень пользователя в приложении, который смогут увидеть его друзья.
+  /// Sets the user's game level in the app that his friends can see.
   Future<ApiResponse<T>> setUserLevel<T>(Map<String, Object> params) =>
       _api.request<T>('secure.setUserLevel', params);
 }

@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с рекламой.
+/// Methods for working with advertising.
+///
+/// See https://dev.vk.com/ru/method/ads
 class Ads {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Ads(this._api);
   final Api _api;
 
@@ -59,7 +61,7 @@ class Ads {
   Future<ApiResponse<T>> getAdsLayout<T>(Map<String, Object> params) =>
       _api.request<T>('ads.getAdsLayout', params);
 
-  /// Возвращает подробную информацию об охвате рекламных записей.
+  /// Returns detailed information about the coverage of advertising records.
   Future<ApiResponse<T>> getAdsPostsReach<T>(Map<String, Object> params) =>
       _api.request<T>('ads.getAdsPostsReach', params);
 
@@ -92,15 +94,15 @@ class Ads {
   Future<ApiResponse<T>> getFloodStats<T>(Map<String, Object> params) =>
       _api.request<T>('ads.getFloodStats', params);
 
-  /// Возвращает список запросов на поиск похожей аудитории.
+  /// Returns a list of search queries for a similar audience.
   Future<ApiResponse<T>> getLookalikeRequests<T>(Map<String, Object> params) =>
       _api.request<T>('ads.getLookalikeRequests', params);
 
-  /// Возвращает информацию о музыкантах, на слушателей которых доступно таргетирование.
+  /// Returns information about the musicians whose listeners are targeted.
   Future<ApiResponse<T>> getMusicians<T>(Map<String, Object> params) =>
       _api.request<T>('ads.getMusicians', params);
 
-  /// Возвращает информацию о музыкантах на слушателей, для которых доступно таргетирование.
+  /// Returns information about musicians to listeners for whom targeting is available.
   Future<ApiResponse<T>> getMusiciansByIds<T>(Map<String, Object> params) =>
       _api.request<T>('ads.getMusiciansByIds', params);
 
@@ -129,7 +131,7 @@ class Ads {
   Future<ApiResponse<T>> getTargetGroups<T>(Map<String, Object> params) =>
       _api.request<T>('ads.getTargetGroups', params);
 
-  /// Возвращает список пикселей ретаргетинга.
+  /// Returns a list of retargeting pixels.
   Future<ApiResponse<T>> getTargetPixels<T>(Map<String, Object> params) =>
       _api.request<T>('ads.getTargetPixels', params);
 
@@ -155,19 +157,17 @@ class Ads {
   Future<ApiResponse<T>> removeOfficeUsers<T>(Map<String, Object> params) =>
       _api.request<T>('ads.removeOfficeUsers', params);
 
-  /// Принимает запрос на исключение контактов рекламодателя из аудитории ретаргетинга.
+  /// Accepts a request to exclude the advertiser's contacts from the retargeting audience.
   Future<ApiResponse<T>> removeTargetContacts<T>(Map<String, Object> params) =>
       _api.request<T>('ads.removeTargetContacts', params);
 
-  /// Сохраняет результат поиска похожей аудитории.
+  /// Saves the search result for a similar audience.
   Future<ApiResponse<T>> saveLookalikeRequestResult<T>(
     Map<String, Object> params,
   ) =>
       _api.request<T>('ads.saveLookalikeRequestResult', params);
 
-  /// Предоставляет доступ к аудитории ретаргетинга другому рекламному кабинету.
-
-  /// В результате выполнения метода возвращается идентификатор аудитории для указанного кабинета.
+  /// Provides access to the retargeting audience to another advertising account.
   Future<ApiResponse<T>> shareTargetGroup<T>(Map<String, Object> params) =>
       _api.request<T>('ads.shareTargetGroup', params);
 
@@ -191,7 +191,7 @@ class Ads {
   Future<ApiResponse<T>> updateTargetGroup<T>(Map<String, Object> params) =>
       _api.request<T>('ads.updateTargetGroup', params);
 
-  /// Редактирует пиксель ретаргетинга.
+  /// Edits the retargeting pixel.
   Future<ApiResponse<T>> updateTargetPixel<T>(Map<String, Object> params) =>
       _api.request<T>('ads.updateTargetPixel', params);
 }

@@ -1,12 +1,14 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с записями на стене.
+/// Methods for working with wall posts.
+///
+/// See https://dev.vk.com/ru/method/wall
 class Wall {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Wall(this._api);
   final Api _api;
 
-  /// Добавить лайк на запись.
+  /// Add a like to the record.
   Future<ApiResponse<T>> addLike<T>(Map<String, Object> params) =>
       _api.request<T>('wall.addLike', params);
 
@@ -14,7 +16,7 @@ class Wall {
   Future<ApiResponse<T>> checkCopyrightLink<T>(Map<String, Object> params) =>
       _api.request<T>('wall.checkCopyrightLink', params);
 
-  /// Закрыть комментарии к посту.
+  /// Close comments on the post.
   Future<ApiResponse<T>> closeComments<T>(Map<String, Object> params) =>
       _api.request<T>('wall.closeComments', params);
 
@@ -62,13 +64,12 @@ class Wall {
   Future<ApiResponse<T>> getReposts<T>(Map<String, Object> params) =>
       _api.request<T>('wall.getReposts', params);
 
-  /// Открыть комментарии к посту.
+  /// Open the comments to the post.
   Future<ApiResponse<T>> openComments<T>(Map<String, Object> params) =>
       _api.request<T>('wall.openComments', params);
 
-  /// Принимает на вход ссылки и возвращает дополнительную информацию,
-
-  /// которая может быть использована для создания сниппетов при публикации ссылки на стене пользователя и других ресурсах.
+  /// Accepts links as input and returns additional information that can be used
+  /// to create snippets when posting links on the user's wall and other resources.
   Future<ApiResponse<T>> parseAttachedLink<T>(Map<String, Object> params) =>
       _api.request<T>('wall.parseAttachedLink', params);
 

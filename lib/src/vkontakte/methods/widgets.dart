@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с виджетами на [внешних сайтах](https://dev.vk.com/ru/widgets/overview).
+/// Methods for working with widgets on [external sites](https://dev.vk.com/ru/widgets/overview).
+///
+/// See https://dev.vk.com/ru/method/widgets
 class Widgets {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Widgets(this._api);
   final Api _api;
 

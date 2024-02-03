@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы market позволяют работать с товарами в сообществах.
+/// Market methods allow you to work with products in communities.
+///
+/// See https://dev.vk.com/ru/method/market
 class Market {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Market(this._api);
   final Api _api;
 
@@ -14,11 +16,11 @@ class Market {
   Future<ApiResponse<T>> addAlbum<T>(Map<String, Object> params) =>
       _api.request<T>('market.addAlbum', params);
 
-  /// Добавляет новое свойство, которое может быть задано для товаров сообщества (например, «цвет», «размер» и т.д.).
+  /// Adds a new property that can be set for community products (for example, "color", "size", etc.).
   Future<ApiResponse<T>> addProperty<T>(Map<String, Object> params) =>
       _api.request<T>('market.addProperty', params);
 
-  /// Добавляет вариант свойства. Всего у свойства может быть 50 вариантов.
+  /// Adds a property option. In total, a property can have 50 options.
   Future<ApiResponse<T>> addPropertyVariant<T>(Map<String, Object> params) =>
       _api.request<T>('market.addPropertyVariant', params);
 
@@ -42,11 +44,11 @@ class Market {
   Future<ApiResponse<T>> deleteComment<T>(Map<String, Object> params) =>
       _api.request<T>('market.deleteComment', params);
 
-  /// Удаляет свойство товара.
+  /// Deletes a product property.
   Future<ApiResponse<T>> deleteProperty<T>(Map<String, Object> params) =>
       _api.request<T>('market.deleteProperty', params);
 
-  /// Удаляет вариант свойства.
+  /// Deletes the property option.
   Future<ApiResponse<T>> deletePropertyVariant<T>(Map<String, Object> params) =>
       _api.request<T>('market.deletePropertyVariant', params);
 
@@ -66,11 +68,11 @@ class Market {
   Future<ApiResponse<T>> editOrder<T>(Map<String, Object> params) =>
       _api.request<T>('market.editOrder', params);
 
-  /// Редактирует свойство товара.
+  /// Edits the product property.
   Future<ApiResponse<T>> editProperty<T>(Map<String, Object> params) =>
       _api.request<T>('market.editProperty', params);
 
-  /// Редактирует вариант свойства.
+  /// Edits a property option.
   Future<ApiResponse<T>> editPropertyVariant<T>(Map<String, Object> params) =>
       _api.request<T>('market.editPropertyVariant', params);
 
@@ -114,21 +116,21 @@ class Market {
   Future<ApiResponse<T>> getOrderItems<T>(Map<String, Object> params) =>
       _api.request<T>('market.getOrderItems', params);
 
-  /// Возвращает заказы.
+  /// Returns orders.
   Future<ApiResponse<T>> getOrders<T>(Map<String, Object> params) =>
       _api.request<T>('market.getOrders', params);
 
-  /// Метод для получения ссылки на сервер загрузки изображений
+  /// Method for getting a link to the image upload server
   Future<ApiResponse<T>> getProductPhotoUploadServer<T>(
     Map<String, Object> params,
   ) =>
       _api.request<T>('market.getProductPhotoUploadServer', params);
 
-  /// Возвращает список свойств для указанного сообщества.
+  /// Returns a list of properties for the specified community.
   Future<ApiResponse<T>> getProperties<T>(Map<String, Object> params) =>
       _api.request<T>('market.getProperties', params);
 
-  /// Объединяет товары в группу товаров.
+  /// Combines products into a group of products.
   Future<ApiResponse<T>> groupItems<T>(Map<String, Object> params) =>
       _api.request<T>('market.groupItems', params);
 
@@ -160,7 +162,7 @@ class Market {
   Future<ApiResponse<T>> restoreComment<T>(Map<String, Object> params) =>
       _api.request<T>('market.restoreComment', params);
 
-  /// Метод для сохранения изображений
+  /// Method for saving images
   Future<ApiResponse<T>> saveProductPhoto<T>(Map<String, Object> params) =>
       _api.request<T>('market.saveProductPhoto', params);
 
@@ -176,7 +178,7 @@ class Market {
   Future<ApiResponse<T>> searchItemsBasic<T>(Map<String, Object> params) =>
       _api.request<T>('market.searchItemsBasic', params);
 
-  /// Разделяет группу товаров на несколько товаров.
+  /// Divides a product group into several products.
   Future<ApiResponse<T>> ungroupItems<T>(Map<String, Object> params) =>
       _api.request<T>('market.ungroupItems', params);
 }
