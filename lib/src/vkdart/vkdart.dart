@@ -122,7 +122,8 @@ class VkDart extends Api {
       _event.onAppPayload().map(VkDartAppPayloadUpdate.new);
 
   /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`, `donut_subscription_price_changed` events.
-  Stream<Update> onDonutSubscription() => _event.onDonutSubscription();
+  Stream<VkDartDonutUpdate> onDonutSubscription() =>
+      _event.onDonutSubscription().map(VkDartDonutUpdate.new);
 
   /// Listen for `donut_money_withdraw`, `donut_money_withdraw_error` events.
   Stream<Update> onDonutWithdraw() => _event.onDonutWithdraw();
