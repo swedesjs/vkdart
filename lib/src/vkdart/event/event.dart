@@ -24,8 +24,6 @@ class Event {
         _vkpayTransactionController = StreamController.broadcast(sync: sync),
         _appPayloadController = StreamController.broadcast(sync: sync),
         _donutSubscriptionController = StreamController.broadcast(sync: sync),
-        _donutSubscriptionPriceChangedController =
-            StreamController.broadcast(sync: sync),
         _donutWithdrawController = StreamController.broadcast(sync: sync);
 
   // message_new, message_edit, message_reply,
@@ -66,10 +64,8 @@ class Event {
   final StreamController<Update> _vkpayTransactionController;
   // app_payload
   final StreamController<Update> _appPayloadController;
-  // donut_subscription_create, donut_subscription_prolonged, donut_subscription_expired, donut_subscription_cancelled
+  // donut_subscription_create, donut_subscription_prolonged, donut_subscription_expired, donut_subscription_cancelled, donut_subscription_price_changed
   final StreamController<Update> _donutSubscriptionController;
-  // donut_subscription_price_changed
-  final StreamController<Update> _donutSubscriptionPriceChangedController;
   // donut_money_withdraw, donut_money_withdraw_error
   final StreamController<Update> _donutWithdrawController;
 
@@ -144,9 +140,8 @@ class Event {
       case UpdateType.donut_subscription_prolonged:
       case UpdateType.donut_subscription_expired:
       case UpdateType.donut_subscription_cancelled:
-        _donutSubscriptionController.add(update);
       case UpdateType.donut_subscription_price_changed:
-        _donutSubscriptionPriceChangedController.add(update);
+        _donutSubscriptionController.add(update);
       case UpdateType.donut_money_withdraw:
       case UpdateType.donut_money_withdraw_error:
         _donutWithdrawController.add(update);
@@ -208,12 +203,8 @@ class Event {
   /// Listen for `app_payload` events.
   Stream<Update> onAppPayload() => _appPayloadController.stream;
 
-  /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled` events.
+  /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`, `donut_subscription_price_changed` events.
   Stream<Update> onDonutSubscription() => _donutSubscriptionController.stream;
-
-  /// Listen for `donut_subscription_price_changed` events.
-  Stream<Update> onDonutSubscriptionPriceChanged() =>
-      _donutSubscriptionPriceChangedController.stream;
 
   /// Listen for `donut_money_withdraw`, `donut_money_withdraw_error` events.
   Stream<Update> onDonutWithdraw() => _donutWithdrawController.stream;
