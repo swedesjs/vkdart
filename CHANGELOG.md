@@ -70,3 +70,6 @@ Rename `onGroupUpdate()` -> `onGroupChange()`
 
 ## 1.3.5
 fix: adjustment of `donut` handlers.
+
+## 1.3.6
+Update: two `donut` handlers are combined into one (`onDonut()`)
