@@ -1,4 +1,4 @@
-part of 'attachment.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Poll
 ///

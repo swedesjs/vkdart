@@ -1,4 +1,4 @@
-part of 'attachment.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Market
 ///
@@ -100,10 +100,10 @@ class MarketAttachmentModel extends CustomAttachmentModel
       .toList();
 
   /// Ability to comment on a product for the current user.
-  bool? get isCanComment => _checkBoolInProperty('can_comment');
+  bool? get isCanComment => checkBoolInProperty('can_comment');
 
   /// Ability to repost a product for the current user.
-  bool? get isCanRepost => _checkBoolInProperty('can_repost');
+  bool? get isCanRepost => checkBoolInProperty('can_repost');
 
   /// Link to product in external resources.
   String? get url => payload['url'];

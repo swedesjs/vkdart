@@ -1,4 +1,4 @@
-part of 'attachment.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Wiki Page.
 ///
@@ -18,11 +18,11 @@ class WikiPageAttachmentModel extends CustomAttachmentModel {
   String? get title => payload['title'];
 
   /// Can a user edit the text of a wiki page
-  bool? get isCanEdit => _checkBoolInProperty('current_user_can_edit');
+  bool? get isCanEdit => checkBoolInProperty('current_user_can_edit');
 
   /// Can a user change the access rights of a wiki page
   bool? get isCanEditAccess =>
-      _checkBoolInProperty('current_user_can_edit_access');
+      checkBoolInProperty('current_user_can_edit_access');
 
   /// Information about who can view the wiki page:
   /// - 2 — everyone can view the page;

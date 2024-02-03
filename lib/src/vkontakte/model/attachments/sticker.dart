@@ -1,11 +1,11 @@
-part of 'attachment.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Sticker.
 ///
 /// See https://vk.com/dev/objects/sticker
 class StickerAttachmentModel extends AttachmentModel {
   // ignore: public_member_api_docs
-  StickerAttachmentModel(super.payload): super(attachType: 'sticker');
+  StickerAttachmentModel(super.payload) : super(attachType: 'sticker');
 
   /// The ID of the set.
   int get productId => payload['product_id'];
