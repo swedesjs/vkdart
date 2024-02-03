@@ -1,4 +1,5 @@
 import 'package:vkdart/model.dart';
+import 'package:vkdart/vkontakte.dart';
 
 const _newEvents = [
   UpdateType.photo_comment_new,
