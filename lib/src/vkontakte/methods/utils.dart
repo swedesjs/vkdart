@@ -1,4 +1,4 @@
-part of '../api.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Служебные методы.
 class Utils {

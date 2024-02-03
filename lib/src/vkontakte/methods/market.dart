@@ -1,4 +1,4 @@
-part of '../api.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Методы market позволяют работать с товарами в сообществах.
 class Market {

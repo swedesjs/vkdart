@@ -1,4 +1,4 @@
-part of '../api.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Методы для работы с VK Donut. [Документация VK Donut.](https://dev.vk.com/ru/api/donut/getting-started)
 class Donut {
