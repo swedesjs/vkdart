@@ -110,7 +110,7 @@ class VkDart extends Api {
       _event.onPollVoteNew().map(VkDartPollVoteNewUpdate.new);
 
   /// Listen for `group_officers_edit`, `group_change_settings`, `group_change_photo` events.
-  Stream<Update> onGroupUpdate() => _event.onGroupUpdate();
+  Stream<Update> onGroupChange() => _event.onGroupChange();
 
   /// Listen for `vk_pay_transaction` events.
   Stream<Update> onVkpayTransaction() => _event.onVkpayTransaction();
