@@ -147,8 +147,7 @@ final class VideoCoverImageModel {
   int get height => videoCoverImageObject['height'];
 
   /// The field returned if the image is padded, always contains 1.
-  bool? get withPadding =>
-      AttachmentModel._checkBool(videoCoverImageObject['with_padding']);
+  bool? get withPadding => checkBoolUtil(videoCoverImageObject['with_padding']);
 }
 
 /// Model Video First Frame Image.
