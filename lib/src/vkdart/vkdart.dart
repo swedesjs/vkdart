@@ -96,7 +96,7 @@ class VkDart extends Api {
   Stream<Update> onPollVoteNew() => _event.onPollVoteNew();
 
   /// Listen for `group_officers_edit`, `group_change_settings`, `group_change_photo` events.
-  Stream<Update> onGroupUpdate() => _event.onGroupUpdate();
+  Stream<Update> onGroupChange() => _event.onGroupChange();
 
   /// Listen for `vk_pay_transaction` events.
   Stream<Update> onVkpayTransaction() => _event.onVkpayTransaction();
