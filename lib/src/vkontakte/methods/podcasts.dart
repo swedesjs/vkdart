@@ -1,12 +1,14 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с подкастами.
+/// Methods for working with podcasts.
+///
+/// See https://dev.vk.com/ru/method/podcasts
 class Podcasts {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Podcasts(this._api);
   final Api _api;
 
-  /// Выполняет поиск подкастов по ключевым фразам.
+  /// Searches for podcasts by keywords.
   Future<ApiResponse<T>> searchPodcast<T>(Map<String, Object> params) =>
       _api.request<T>('podcasts.searchPodcast', params);
 }

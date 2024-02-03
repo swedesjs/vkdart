@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с поиском.
+/// Methods for working with the search.
+///
+/// See https://dev.vk.com/ru/method/search
 class Search {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Search(this._api);
   final Api _api;
 

@@ -1,12 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы этой секции предоставляют доступ к базе данных учебных заведений ВКонтакте.
-/// Доступ к данным является бесплатным и не требует авторизации,
-/// однако количество запросов с одного IP адреса может быть ограничено,
-/// при необходимости делать большое количество запросов рекомендуется
-/// выполнять запросы с клиентской стороны, используя [JSONP](https://dev.vk.com/ru/api/api-requests).
+/// The methods of this section provide access to the VKontakte database of educational institutions.
+///
+/// See https://dev.vk.com/ru/method/database
 class Database {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Database(this._api);
   final Api _api;
 

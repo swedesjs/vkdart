@@ -1,12 +1,14 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с играми ВК.
+/// Methods for working with VK games.
+///
+/// See https://dev.vk.com/ru/method/downloaded_games
 class DownloadedGames {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   DownloadedGames(this._api);
   final Api _api;
 
-  /// Метод получает информацию, купил ли пользователь игру или нет.
+  /// The method gets information whether the user has bought the game or not.
   Future<ApiResponse<T>> getPaidStatus<T>(Map<String, Object> params) =>
       _api.request<T>('downloadedGames.getPaidStatus', params);
 }

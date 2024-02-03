@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с отметками «Мне нравится».
+/// Methods for working with "I like" marks.
+///
+/// See https://dev.vk.com/ru/method/likes
 class Likes {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Likes(this._api);
   final Api _api;
 

@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с новостной лентой пользователя.
+/// Methods for working with the user's news feed.
+///
+/// See https://dev.vk.com/ru/method/newsfeed
 class Newsfeed {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Newsfeed(this._api);
   final Api _api;
 
@@ -16,7 +18,7 @@ class Newsfeed {
   Future<ApiResponse<T>> deleteBan<T>(Map<String, Object> params) =>
       _api.request<T>('newsfeed.deleteBan', params);
 
-  /// Метод позволяет удалить пользовательский список новостей.
+  /// The method allows you to delete a custom news list.
   Future<ApiResponse<T>> deleteList<T>(Map<String, Object> params) =>
       _api.request<T>('newsfeed.deleteList', params);
 

@@ -1,12 +1,14 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с аккаунтом.
+/// Methods for working with the account.
+///
+/// See https://dev.vk.com/ru/method/account
 class Account {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Account(this._api);
   final Api _api;
 
-  /// Добавляет пользователя или группу в черный список.
+  /// Adds a user or group to the blacklist.
   Future<ApiResponse<T>> ban<T>(Map<String, Object> params) =>
       _api.request<T>('account.ban', params);
 
@@ -43,9 +45,9 @@ class Account {
   Future<ApiResponse<T>> getPushSettings<T>(Map<String, Object> params) =>
       _api.request<T>('account.getPushSettings', params);
 
-  /// Позволяет искать пользователей ВКонтакте, используя телефонные номера,
-  /// email-адреса, и идентификаторы пользователей в других сервисах.
-  /// Найденные пользователи могут быть также в дальнейшем получены методом friends.getSuggestions.
+  /// Allows you to search for VKontakte users using phone numbers, email addresses,
+  /// and user IDs in other services.
+  /// The found users can also be further obtained using the friends.getSuggestions method.
   Future<ApiResponse<T>> lookupContacts<T>(Map<String, Object> params) =>
       _api.request<T>('account.lookupContacts', params);
 
@@ -61,8 +63,8 @@ class Account {
   Future<ApiResponse<T>> setInfo<T>(Map<String, Object> params) =>
       _api.request<T>('account.setInfo', params);
 
-  /// Устанавливает короткое название приложения (до 17 символов),
-  /// которое выводится пользователю в левом меню.
+  /// Sets the short name of the application (up to 17 characters),
+  /// which is displayed to the user in the left menu.
   Future<ApiResponse<T>> setNameInMenu<T>(Map<String, Object> params) =>
       _api.request<T>('account.setNameInMenu', params);
 
@@ -82,7 +84,7 @@ class Account {
   Future<ApiResponse<T>> setSilenceMode<T>(Map<String, Object> params) =>
       _api.request<T>('account.setSilenceMode', params);
 
-  /// Удаляет пользователя или группу из черного списка.
+  /// Removes a user or group from the blacklist.
   Future<ApiResponse<T>> unban<T>(Map<String, Object> params) =>
       _api.request<T>('account.unban', params);
 

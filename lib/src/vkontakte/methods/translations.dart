@@ -1,13 +1,15 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с переводом.
+/// Methods for working with translation.
+///
+/// See https://dev.vk.com/ru/method/translations
 class Translations {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Translations(this._api);
 
   final Api _api;
 
-  /// Переводит текст.
+  /// Translates the text.
   Future<ApiResponse<T>> translate<T>(Map<String, Object> params) =>
       _api.request<T>('translations.translate', params);
 }

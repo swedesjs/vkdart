@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с оповещениями.
+/// Methods for working with alerts.
+///
+/// See https://dev.vk.com/ru/method/notifications
 class Notifications {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Notifications(this._api);
   final Api _api;
 
@@ -16,7 +18,7 @@ class Notifications {
   Future<ApiResponse<T>> markAsViewed<T>(Map<String, Object> params) =>
       _api.request<T>('notifications.markAsViewed', params);
 
-  /// Метод отправляет уведомление пользователю мини-приложения.
+  /// The method sends a notification to the user of the mini-application.
   Future<ApiResponse<T>> sendMessage<T>(Map<String, Object> params) =>
       _api.request<T>('notifications.sendMessage', params);
 }

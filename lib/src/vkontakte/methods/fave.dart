@@ -1,60 +1,62 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с закладками.
+/// Methods for working with bookmarks.
+///
+/// See https://dev.vk.com/ru/method/fave
 class Fave {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Fave(this._api);
   final Api _api;
 
-  /// Добавляет статью в закладки.
+  /// Bookmarks the article.
   Future<ApiResponse<T>> addArticle<T>(Map<String, Object> params) =>
       _api.request<T>('fave.addArticle', params);
 
-  /// Добавляет ссылку в закладки.
+  /// Adds a link to bookmarks.
   Future<ApiResponse<T>> addLink<T>(Map<String, Object> params) =>
       _api.request<T>('fave.addLink', params);
 
-  /// Добавляет сообщество или пользователя в закладки.
+  /// Adds a community or user to bookmarks.
   Future<ApiResponse<T>> addPage<T>(Map<String, Object> params) =>
       _api.request<T>('fave.addPage', params);
 
-  /// Добавляет запись со стены пользователя или сообщества в закладки.
+  /// Adds an entry from the user's or community's wall to bookmarks.
   Future<ApiResponse<T>> addPost<T>(Map<String, Object> params) =>
       _api.request<T>('fave.addPost', params);
 
-  /// Добавляет товар в закладки.
+  /// Adds the product to the bookmarks.
   Future<ApiResponse<T>> addProduct<T>(Map<String, Object> params) =>
       _api.request<T>('fave.addProduct', params);
 
-  /// Создаёт метку закладок.
+  /// Creates a bookmark label.
   Future<ApiResponse<T>> addTag<T>(Map<String, Object> params) =>
       _api.request<T>('fave.addTag', params);
 
-  /// Добавляет видеозапись в закладки.
+  /// Adds a video recording to bookmarks.
   Future<ApiResponse<T>> addVideo<T>(Map<String, Object> params) =>
       _api.request<T>('fave.addVideo', params);
 
-  /// Редактирует метку.
+  /// Edits the label.
   Future<ApiResponse<T>> editTag<T>(Map<String, Object> params) =>
       _api.request<T>('fave.editTag', params);
 
-  /// Возвращает объекты, добавленные в закладки пользователя.
+  /// Returns objects added to the user's bookmarks.
   Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
       _api.request<T>('fave.get', params);
 
-  /// Возвращает страницы пользователей и сообществ, добавленных в закладки.
+  /// Returns pages of users and communities that have been added to bookmarks.
   Future<ApiResponse<T>> getPages<T>(Map<String, Object> params) =>
       _api.request<T>('fave.getPages', params);
 
-  /// Возвращает список меток в закладках.
+  /// Returns a list of labels in bookmarks.
   Future<ApiResponse<T>> getTags<T>(Map<String, Object> params) =>
       _api.request<T>('fave.getTags', params);
 
-  /// Отмечает закладки как просмотренные.
+  /// Marks bookmarks as viewed.
   Future<ApiResponse<T>> markSeen<T>(Map<String, Object> params) =>
       _api.request<T>('fave.markSeen', params);
 
-  /// Удаляет статью из закладок.
+  /// Deletes an article from bookmarks.
   Future<ApiResponse<T>> removeArticle<T>(Map<String, Object> params) =>
       _api.request<T>('fave.removeArticle', params);
 
@@ -62,39 +64,39 @@ class Fave {
   Future<ApiResponse<T>> removeLink<T>(Map<String, Object> params) =>
       _api.request<T>('fave.removeLink', params);
 
-  /// Удаляет из закладок сообщество или страницу пользователя.
+  /// Deletes a community or a user's page from bookmarks.
   Future<ApiResponse<T>> removePage<T>(Map<String, Object> params) =>
       _api.request<T>('fave.removePage', params);
 
-  /// Удаляет из закладок запись на стене пользователя или сообщества.
+  /// Deletes an entry on the user's or community's wall from bookmarks.
   Future<ApiResponse<T>> removePost<T>(Map<String, Object> params) =>
       _api.request<T>('fave.removePost', params);
 
-  /// Удаляет товар из закладок.
+  /// Removes an item from bookmarks.
   Future<ApiResponse<T>> removeProduct<T>(Map<String, Object> params) =>
       _api.request<T>('fave.removeProduct', params);
 
-  /// Удаляет метку закладок.
+  /// Deletes the bookmark label.
   Future<ApiResponse<T>> removeTag<T>(Map<String, Object> params) =>
       _api.request<T>('fave.removeTag', params);
 
-  /// Удаляет видеозапись из списка закладок.
+  /// Deletes the video from the bookmarks list.
   Future<ApiResponse<T>> removeVideo<T>(Map<String, Object> params) =>
       _api.request<T>('fave.removeVideo', params);
 
-  /// Меняет порядок меток закладок в списке.
+  /// Changes the order of bookmark labels in the list.
   Future<ApiResponse<T>> reorderTags<T>(Map<String, Object> params) =>
       _api.request<T>('fave.reorderTags', params);
 
-  /// Устанавливает метку странице пользователя или сообщества.
+  /// Sets the label for the user's or community's page.
   Future<ApiResponse<T>> setPageTags<T>(Map<String, Object> params) =>
       _api.request<T>('fave.setPageTags', params);
 
-  /// Устанавливает метку выбранному объекту в списке закладок.
+  /// Sets a label for the selected object in the bookmarks list.
   Future<ApiResponse<T>> setTags<T>(Map<String, Object> params) =>
       _api.request<T>('fave.setTags', params);
 
-  /// Устанавливает страницу пользователя или сообщества в топ закладок.
+  /// Sets the user's or community's page to the top of bookmarks.
   Future<ApiResponse<T>> trackPageInteraction<T>(Map<String, Object> params) =>
       _api.request<T>('fave.trackPageInteraction', params);
 }

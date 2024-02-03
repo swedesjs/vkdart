@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с вики-страницами.
+/// Methods for working with wiki pages.
+///
+/// See https://dev.vk.com/ru/method/pages
 class Pages {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Pages(this._api);
   final Api _api;
 

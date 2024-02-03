@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с друзьями.
+/// Methods for working with friends.
+///
+/// See https://dev.vk.com/ru/method/friends
 class Friends {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Friends(this._api);
   final Api _api;
 
@@ -46,7 +48,7 @@ class Friends {
   Future<ApiResponse<T>> getAppUsers<T>(Map<String, Object> params) =>
       _api.request<T>('friends.getAppUsers', params);
 
-  /// Позволяет получить список идентификаторов пользователей, доступных для вызова из приложения.
+  /// Allows you to get a list of user IDs available for calling from the application.
   Future<ApiResponse<T>> getAvailableForCall<T>(Map<String, Object> params) =>
       _api.request<T>('friends.getAvailableForCall', params);
 

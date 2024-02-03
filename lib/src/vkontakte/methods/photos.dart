@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с фотографиями.
+/// Methods for working with photos.
+///
+/// See https://dev.vk.com/ru/method/photos
 class Photos {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Photos(this._api);
   final Api _api;
 
@@ -116,7 +118,7 @@ class Photos {
   ) =>
       _api.request<T>('photos.getOwnerPhotoUploadServer', params);
 
-  /// Возвращает список фотографий со страницы пользователя или сообщества.
+  /// Returns a list of photos from the user's or community's page.
   Future<ApiResponse<T>> getProfile<T>(Map<String, Object> params) =>
       _api.request<T>('photos.getProfile', params);
 

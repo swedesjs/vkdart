@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с историями.
+/// Methods for working with stories.
+///
+/// See https://dev.vk.com/ru/method/stories
 class Stories {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Stories(this._api);
   final Api _api;
 
@@ -58,15 +60,15 @@ class Stories {
   Future<ApiResponse<T>> hideReply<T>(Map<String, Object> params) =>
       _api.request<T>('stories.hideReply', params);
 
-  /// Метод сохраняет историю в профиле после её успешной загрузки на сервер.
+  /// The method saves the history in the profile after it is successfully uploaded to the server.
   Future<ApiResponse<T>> save<T>(Map<String, Object> params) =>
       _api.request<T>('stories.save', params);
 
-  /// Возвращает результаты поиска по историям.
+  /// Returns the results of the history search.
   Future<ApiResponse<T>> search<T>(Map<String, Object> params) =>
       _api.request<T>('stories.search', params);
 
-  /// Отправляет фидбек на историю.
+  /// Sends feedback on the story.
   Future<ApiResponse<T>> sendInteraction<T>(Map<String, Object> params) =>
       _api.request<T>('stories.sendInteraction', params);
 

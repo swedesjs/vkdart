@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с обсуждениями.
+/// Methods for working with discussions.
+///
+/// See https://dev.vk.com/ru/method/board
 class Board {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Board(this._api);
   final Api _api;
 

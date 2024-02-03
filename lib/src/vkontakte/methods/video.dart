@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с видеозаписями.
+/// Methods for working with video recordings.
+///
+/// See https://dev.vk.com/ru/method/video
 class Video {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Video(this._api);
   final Api _api;
 
@@ -14,7 +16,7 @@ class Video {
   Future<ApiResponse<T>> addAlbum<T>(Map<String, Object> params) =>
       _api.request<T>('video.addAlbum', params);
 
-  /// Добавить видео в альбом.
+  /// Add a video to an album.
   Future<ApiResponse<T>> addToAlbum<T>(Map<String, Object> params) =>
       _api.request<T>('video.addToAlbum', params);
 
@@ -58,7 +60,7 @@ class Video {
   Future<ApiResponse<T>> getAlbums<T>(Map<String, Object> params) =>
       _api.request<T>('video.getAlbums', params);
 
-  /// Получить список альбов.
+  /// Get a list of albums.
   Future<ApiResponse<T>> getAlbumsByVideo<T>(Map<String, Object> params) =>
       _api.request<T>('video.getAlbumsByVideo', params);
 
@@ -70,11 +72,11 @@ class Video {
   Future<ApiResponse<T>> getLongPollServer<T>(Map<String, Object> params) =>
       _api.request<T>('video.getLongPollServer', params);
 
-  /// Поиск видеозаписи по тегу.
+  /// Search for a video by tag.
   Future<ApiResponse<T>> getNewTags<T>(Map<String, Object> params) =>
       _api.request<T>('video.getNewTags', params);
 
-  /// Возвращает теги видеозаписи.
+  /// Returns the tags of the video recording.
   Future<ApiResponse<T>> getTags<T>(Map<String, Object> params) =>
       _api.request<T>('video.getTags', params);
 
@@ -90,11 +92,11 @@ class Video {
   Future<ApiResponse<T>> putTag<T>(Map<String, Object> params) =>
       _api.request<T>('video.putTag', params);
 
-  /// Удалить видео из альбома.
+  /// Delete the video from the album.
   Future<ApiResponse<T>> removeFromAlbum<T>(Map<String, Object> params) =>
       _api.request<T>('video.removeFromAlbum', params);
 
-  /// Удалить тег с видеозаписи.
+  /// Remove the tag from the video.
   Future<ApiResponse<T>> removeTag<T>(Map<String, Object> params) =>
       _api.request<T>('video.removeTag', params);
 

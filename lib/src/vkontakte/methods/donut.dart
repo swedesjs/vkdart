@@ -1,16 +1,18 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с VK Donut. [Документация VK Donut.](https://dev.vk.com/ru/api/donut/getting-started)
+/// Methods for working with VK Donut.
+///
+/// See https://dev.vk.com/ru/method/donut
 class Donut {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Donut(this._api);
   final Api _api;
 
-  /// Возвращает список донов, которые подписаны на определенные сообщества, из числа друзей пользователя.
+  /// Returns a list of dons who are subscribed to certain communities from among the user's friends.
   Future<ApiResponse<T>> getFriends<T>(Map<String, Object> params) =>
       _api.request<T>('donut.getFriends', params);
 
-  /// Возвращает информацию о подписке VK Donut.
+  /// Returns information about VK Donut subscription.
   Future<ApiResponse<T>> getSubscription<T>(Map<String, Object> params) =>
       _api.request<T>('donut.getSubscription', params);
 
@@ -18,8 +20,7 @@ class Donut {
   Future<ApiResponse<T>> getSubscriptions<T>(Map<String, Object> params) =>
       _api.request<T>('donut.getSubscriptions', params);
 
-  /// Возвращает информацию о том, подписан ли пользователь на платный контент
-  /// (является доном).
+  /// Returns information about whether the user is subscribed to paid content (is a don).
   Future<ApiResponse<T>> isDon<T>(Map<String, Object> params) =>
       _api.request<T>('donut.isDon', params);
 }

@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы со стикерами.
+/// Methods for working with stickers.
+///
+/// See https://dev.vk.com/ru/method/store
 class Store {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Store(this._api);
   final Api _api;
 
@@ -10,15 +12,15 @@ class Store {
   Future<ApiResponse<T>> addStickersToFavorite<T>(Map<String, Object> params) =>
       _api.request<T>('store.addStickersToFavorite', params);
 
-  /// Возвращает список избранных стикеров.
+  /// Returns a list of favorite stickers.
   Future<ApiResponse<T>> getFavoriteStickers<T>(Map<String, Object> params) =>
       _api.request<T>('store.getFavoriteStickers', params);
 
-  /// Возвращает список продуктов.
+  /// Returns a list of products.
   Future<ApiResponse<T>> getProducts<T>(Map<String, Object> params) =>
       _api.request<T>('store.getProducts', params);
 
-  /// Возвращает список ключевых слов для стикеров.
+  /// Returns a list of keywords for stickers.
   Future<ApiResponse<T>> getStickersKeywords<T>(Map<String, Object> params) =>
       _api.request<T>('store.getStickersKeywords', params);
 

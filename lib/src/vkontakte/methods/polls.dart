@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с опросами.
+/// Methods for working with surveys.
+///
+/// See https://dev.vk.com/ru/method/polls
 class Polls {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Polls(this._api);
   final Api _api;
 
@@ -22,7 +24,7 @@ class Polls {
   Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
       _api.request<T>('polls.edit', params);
 
-  /// Возвращает варианты фонового изображения для опросов.
+  /// Returns options for the background image for surveys.
   Future<ApiResponse<T>> getBackgrounds<T>(Map<String, Object> params) =>
       _api.request<T>('polls.getBackgrounds', params);
 
@@ -30,7 +32,7 @@ class Polls {
   Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
       _api.request<T>('polls.getById', params);
 
-  /// Возвращает адрес сервера для загрузки фоновой фотографии в опрос.
+  /// Returns the server address for uploading the background photo to the survey.
   Future<ApiResponse<T>> getPhotoUploadServer<T>(Map<String, Object> params) =>
       _api.request<T>('polls.getPhotoUploadServer', params);
 
@@ -38,7 +40,7 @@ class Polls {
   Future<ApiResponse<T>> getVoters<T>(Map<String, Object> params) =>
       _api.request<T>('polls.getVoters', params);
 
-  /// Сохраняет фотографию, загруженную в опрос.
+  /// Saves the photo uploaded to the survey.
   Future<ApiResponse<T>> savePhoto<T>(Map<String, Object> params) =>
       _api.request<T>('polls.savePhoto', params);
 }

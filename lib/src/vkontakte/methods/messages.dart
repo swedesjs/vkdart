@@ -1,8 +1,10 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Методы для работы с личными сообщениями.
+/// Methods for working with personal messages.
+///
+/// See https://dev.vk.com/ru/method/messages
 class Messages {
-  /// Конструктор.
+  // ignore: public_member_api_docs
   Messages(this._api);
   final Api _api;
 
@@ -32,7 +34,7 @@ class Messages {
   Future<ApiResponse<T>> deleteConversation<T>(Map<String, Object> params) =>
       _api.request<T>('messages.deleteConversation', params);
 
-  /// Удаление ранее поставленной реакции.
+  /// Deleting a previously set reaction.
   Future<ApiResponse<T>> deleteReaction<T>(Map<String, Object> params) =>
       _api.request<T>('messages.deleteReaction', params);
 
@@ -48,11 +50,11 @@ class Messages {
   Future<ApiResponse<T>> editChat<T>(Map<String, Object> params) =>
       _api.request<T>('messages.editChat', params);
 
-  /// Метод используется для принудительного завершения звонка.
+  /// The method is used to force the end of the call.
   Future<ApiResponse<T>> forceCallFinish<T>(Map<String, Object> params) =>
       _api.request<T>('messages.forceCallFinish', params);
 
-  /// Возвращает список входящих личных сообщений текущего пользователя или сообщества.
+  /// Returns a list of incoming private messages from the current user or community.
   Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
       _api.request<T>('messages.get', params);
 
@@ -66,15 +68,15 @@ class Messages {
   Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getById', params);
 
-  /// Возвращает информацию о беседе.
+  /// Returns information about the conversation.
   Future<ApiResponse<T>> getChat<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getChat', params);
 
-  /// Получает данные для превью чата с приглашением по ссылке.
+  /// Receives data for a preview of the chat with an invitation by link.
   Future<ApiResponse<T>> getChatPreview<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getChatPreview', params);
 
-  /// Позволяет получить список пользователей мультидиалога по его `id`.
+  /// Allows you to get a list of users of a multidirectory by its `id`.
   Future<ApiResponse<T>> getChatUsers<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getChatUsers', params);
 
@@ -92,8 +94,8 @@ class Messages {
   Future<ApiResponse<T>> getConversationsById<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getConversationsById', params);
 
-  /// Возвращает список диалогов текущего пользователя или сообщества.
-  /// Актуальный метод: [getConversations].
+  /// Returns a list of dialogs of the current user or community.
+  /// Actual: [getConversations].
   Future<ApiResponse<T>> getDialogs<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getDialogs', params);
 
@@ -109,11 +111,11 @@ class Messages {
   Future<ApiResponse<T>> getImportantMessages<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getImportantMessages', params);
 
-  /// Метод отдает пользователей, которые подписались на определенные интенты.
+  /// The method returns users who have subscribed to certain intents.
   Future<ApiResponse<T>> getIntentUsers<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getIntentUsers', params);
 
-  /// Получает ссылку для приглашения пользователя в беседу.
+  /// Receives a link to invite the user to a conversation.
   Future<ApiResponse<T>> getInviteLink<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getInviteLink', params);
 
@@ -129,15 +131,15 @@ class Messages {
   Future<ApiResponse<T>> getLongPollServer<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getLongPollServer', params);
 
-  /// Получить актуальные счётчики реакций на сообщения
+  /// Get up-to-date counters of reactions to messages
   Future<ApiResponse<T>> getMessagesReactions<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getMessagesReactions', params);
 
-  /// Получить список пользователей и сообществ, которые поставили реакцию на сообщение
+  /// Get a list of users and communities who have responded to a message
   Future<ApiResponse<T>> getReactedPeers<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getReactedPeers', params);
 
-  /// Получение ассетов реакций
+  /// Getting reaction assets
   Future<ApiResponse<T>> getReactionsAssets<T>(Map<String, Object> params) =>
       _api.request<T>('messages.getReactionsAssets', params);
 
@@ -147,7 +149,7 @@ class Messages {
   ) =>
       _api.request<T>('messages.isMessagesFromGroupAllowed', params);
 
-  /// Позволяет присоединиться к чату по ссылке-приглашению.
+  /// Allows you to join the chat via an invitation link.
   Future<ApiResponse<T>> joinChatByInviteLink<T>(Map<String, Object> params) =>
       _api.request<T>('messages.joinChatByInviteLink', params);
 
@@ -192,7 +194,7 @@ class Messages {
   Future<ApiResponse<T>> searchConversations<T>(Map<String, Object> params) =>
       _api.request<T>('messages.searchConversations', params);
 
-  /// Возвращает список найденных диалогов текущего пользователя по введенной строке поиска.
+  /// Returns a list of found dialogs of the current user by the entered search string.
   Future<ApiResponse<T>> searchDialogs<T>(Map<String, Object> params) =>
       _api.request<T>('messages.searchDialogs', params);
 
@@ -200,13 +202,13 @@ class Messages {
   Future<ApiResponse<T>> send<T>(Map<String, Object> params) =>
       _api.request<T>('messages.send', params);
 
-  /// Отправляет событие с действием, которое произойдет при нажатии на callback-кнопку.
+  /// Sends an event with an action that will occur when the callback button is clicked.
   Future<ApiResponse<T>> sendMessageEventAnswer<T>(
     Map<String, Object> params,
   ) =>
       _api.request<T>('messages.sendMessageEventAnswer', params);
 
-  /// Метод установки реакции на сообщение
+  /// The method of setting the response to the message
   Future<ApiResponse<T>> sendReaction<T>(Map<String, Object> params) =>
       _api.request<T>('messages.sendReaction', params);
 
@@ -218,11 +220,11 @@ class Messages {
   Future<ApiResponse<T>> setChatPhoto<T>(Map<String, Object> params) =>
       _api.request<T>('messages.setChatPhoto', params);
 
-  /// Старт нового звонка от имени пользователя или от сообщества
+  /// Starting a new call on behalf of the user or from the community
   Future<ApiResponse<T>> startCall<T>(Map<String, Object> params) =>
       _api.request<T>('messages.startCall', params);
 
-  /// Открепляет сообщение.
+  /// Unpin the message.
   Future<ApiResponse<T>> unpin<T>(Map<String, Object> params) =>
       _api.request<T>('messages.unpin', params);
 }
