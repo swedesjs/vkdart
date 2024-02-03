@@ -20,7 +20,7 @@ class Event {
         _groupController = StreamController.broadcast(sync: sync),
         _userController = StreamController.broadcast(sync: sync),
         _pollVoteNewController = StreamController.broadcast(sync: sync),
-        _groupUpdateController = StreamController.broadcast(sync: sync),
+        _groupChangeController = StreamController.broadcast(sync: sync),
         _vkpayTransactionController = StreamController.broadcast(sync: sync),
         _appPayloadController = StreamController.broadcast(sync: sync),
         _donutSubscriptionController = StreamController.broadcast(sync: sync),
@@ -61,7 +61,7 @@ class Event {
   // poll_vote_new,
   final StreamController<Update> _pollVoteNewController;
   // group_officers_edit, group_change_settings, group_change_photo
-  final StreamController<Update> _groupUpdateController;
+  final StreamController<Update> _groupChangeController;
   // vk_pay_transaction
   final StreamController<Update> _vkpayTransactionController;
   // app_payload
@@ -135,7 +135,7 @@ class Event {
       case UpdateType.group_officers_edit:
       case UpdateType.group_change_settings:
       case UpdateType.group_change_photo:
-        _groupUpdateController.add(update);
+        _groupChangeController.add(update);
       case UpdateType.vkpay_transaction:
         _vkpayTransactionController.add(update);
       case UpdateType.app_payload:
@@ -200,7 +200,7 @@ class Event {
   Stream<Update> onPollVoteNew() => _pollVoteNewController.stream;
 
   /// Listen for `group_officers_edit`, `group_change_settings`, `group_change_photo` events.
-  Stream<Update> onGroupUpdate() => _groupUpdateController.stream;
+  Stream<Update> onGroupChange() => _groupChangeController.stream;
 
   /// Listen for `vk_pay_transaction` events.
   Stream<Update> onVkpayTransaction() => _vkpayTransactionController.stream;
