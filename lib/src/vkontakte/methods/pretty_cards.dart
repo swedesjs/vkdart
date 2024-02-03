@@ -1,4 +1,4 @@
-part of '../api.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Карусель — набор карточек, которые прикрепляются к записи.
 

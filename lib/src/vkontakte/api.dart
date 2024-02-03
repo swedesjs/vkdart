@@ -1,52 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:vkdart/vkontakte.dart';
 
-part 'methods/account.dart';
-part 'methods/ads.dart';
-part 'methods/app_widgets.dart';
-part 'methods/apps.dart';
-part 'methods/asr.dart';
-part 'methods/auth.dart';
-part 'methods/board.dart';
-part 'methods/bugtracker.dart';
-part 'methods/calls.dart';
-part 'methods/database.dart';
-part 'methods/docs.dart';
-part 'methods/donut.dart';
-part 'methods/downloaded_games.dart';
-part 'methods/fave.dart';
-part 'methods/friends.dart';
-part 'methods/gifts.dart';
-part 'methods/groups.dart';
-part 'methods/lead_forms.dart';
-part 'methods/likes.dart';
-part 'methods/market.dart';
-part 'methods/messages.dart';
-part 'methods/newsfeed.dart';
-part 'methods/notes.dart';
-part 'methods/notifications.dart';
-part 'methods/orders.dart';
-part 'methods/pages.dart';
-part 'methods/photos.dart';
-part 'methods/places.dart';
-part 'methods/podcasts.dart';
-part 'methods/polls.dart';
-part 'methods/pretty_cards.dart';
-part 'methods/search.dart';
-part 'methods/widgets.dart';
-part 'methods/wall.dart';
-part 'methods/video.dart';
-part 'methods/users.dart';
-part 'methods/streaming.dart';
-part 'methods/storage.dart';
-part 'methods/secure.dart';
-part 'methods/stats.dart';
-part 'methods/utils.dart';
-part 'methods/store.dart';
-part 'methods/stories.dart';
-part 'methods/translations.dart';
-part 'methods/status.dart';
-
 /// Перечисление языков поддерживаемых VK API
 enum LangApi {
   /// Русский

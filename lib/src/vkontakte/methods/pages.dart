@@ -1,4 +1,4 @@
-part of '../api.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Методы для работы с вики-страницами.
 class Pages {

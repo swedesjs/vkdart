@@ -1,4 +1,4 @@
-part of '../api.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// В этой секции представлены административные методы,
 
