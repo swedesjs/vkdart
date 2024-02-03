@@ -6,6 +6,7 @@ import 'package:vkdart/vkdart.dart' show VkDartException;
 export 'src/vkdart/model/attachments/attachment.dart';
 export 'src/vkdart/model/updates/app_payload.dart';
 export 'src/vkdart/model/updates/comment.dart';
+export 'src/vkdart/model/updates/donut.dart';
 export 'src/vkdart/model/updates/group.dart';
 export 'src/vkdart/model/updates/group_change.dart';
 export 'src/vkdart/model/updates/like.dart';
