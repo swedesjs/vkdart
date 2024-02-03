@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_dynamic_calls
-
 part of 'attachment.dart';
 
 /// Model Market
@@ -8,7 +6,7 @@ part of 'attachment.dart';
 class MarketAttachmentModel extends CustomAttachmentModel
     with AttachmentLikesMixin {
   // ignore: public_member_api_docs
-  MarketAttachmentModel(super.payload): super(attachType: 'market');
+  MarketAttachmentModel(super.payload) : super(attachType: 'market');
 
   /// Product Name.
   String? get title => payload['title'];

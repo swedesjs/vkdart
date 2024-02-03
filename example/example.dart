@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_declarations, avoid_dynamic_calls, avoid_print
+// ignore_for_file: prefer_const_declarations, avoid_print
 
 import 'package:vkdart/vkdart.dart';
 

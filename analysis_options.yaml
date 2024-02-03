@@ -3,7 +3,6 @@ include: package:lints/recommended.yaml
 linter:
   rules:
     - always_use_package_imports
-    - avoid_dynamic_calls
     - camel_case_types
     - empty_statements
     - avoid_empty_else
