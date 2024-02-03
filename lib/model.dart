@@ -6,6 +6,7 @@ import 'package:vkdart/vkdart.dart' show VkDartException;
 export 'src/vkdart/model/attachments/attachment.dart';
 export 'src/vkdart/model/updates/comment.dart';
 export 'src/vkdart/model/updates/group.dart';
+export 'src/vkdart/model/updates/group_change.dart';
 export 'src/vkdart/model/updates/like.dart';
 export 'src/vkdart/model/updates/market_order.dart';
 export 'src/vkdart/model/updates/message.dart';
