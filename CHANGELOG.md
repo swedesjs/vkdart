@@ -63,3 +63,7 @@ Add: Added a handler for the `message_reaction_event` event.
 ## 1.3.3
 Refactor: correction in the name of the event handler `wall_post_new`, `wall_repost`.
 Rename `onWallPost()` -> `onWall()`
+
+## 1.3.4
+Refactor: correction in the name of the event handler `group_officers_edit`, `group_change_settings`, `group_change_photo`.
+Rename `onGroupUpdate()` -> `onGroupChange()`
