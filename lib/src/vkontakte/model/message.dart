@@ -1,6 +1,6 @@
-// ignore: public_member_api_docs
 import 'package:vkdart/vkontakte.dart';
 
+/// Offset Chat ID.
 const peerChatIdOffset = 2000000000;
 
 /// Message Source
