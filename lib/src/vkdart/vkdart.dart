@@ -114,7 +114,8 @@ class VkDart extends Api {
       _event.onGroupChange().map(VkDartGroupChangeUpdate.new);
 
   /// Listen for `vk_pay_transaction` events.
-  Stream<Update> onVkpayTransaction() => _event.onVkpayTransaction();
+  Stream<VkDartPayTransactionUpdate> onVkpayTransaction() =>
+      _event.onVkpayTransaction().map(VkDartPayTransactionUpdate.new);
 
   /// Listen for `app_payload` events.
   Stream<Update> onAppPayload() => _event.onAppPayload();
