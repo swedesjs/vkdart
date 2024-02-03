@@ -67,3 +67,6 @@ Rename `onWallPost()` -> `onWall()`
 ## 1.3.4
 Refactor: correction in the name of the event handler `group_officers_edit`, `group_change_settings`, `group_change_photo`.
 Rename `onGroupUpdate()` -> `onGroupChange()`
+
+## 1.3.5
+fix: adjustment of `donut` handlers.
