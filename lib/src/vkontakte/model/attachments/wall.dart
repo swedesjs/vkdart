@@ -1,4 +1,5 @@
-part of 'attachment.dart';
+import 'package:vkdart/util.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Wall.
 ///
@@ -31,7 +32,7 @@ class WallAttachmentModel extends CustomAttachmentModel
   int? get replyPostId => payload['reply_post_id'];
 
   /// `1`, if the record was created with the "Friends only" option.
-  bool? get isFriendsOnly => _checkBoolInProperty('friends_only');
+  bool? get isFriendsOnly => checkBoolInProperty('friends_only');
 
   Map<String, dynamic>? get _comments => payload['comments'];
   Map<String, dynamic>? get _copyright => payload['copyright'];
@@ -98,19 +99,19 @@ class WallAttachmentModel extends CustomAttachmentModel
           .toList();
 
   /// Information about whether the current user can pin the record
-  bool? get isCanPin => _checkBoolInProperty('can_pin');
+  bool? get isCanPin => checkBoolInProperty('can_pin');
 
   /// Information about whether the current user can delete an entry
-  bool? get isCanDelete => _checkBoolInProperty('can_delete');
+  bool? get isCanDelete => checkBoolInProperty('can_delete');
 
   /// Information about whether the current user can edit the record
-  bool? get isCanEdit => _checkBoolInProperty('can_edit');
+  bool? get isCanEdit => checkBoolInProperty('can_edit');
 
   /// Information that the record is pinned.
-  bool? get isPinned => _checkBoolInProperty('is_pinned');
+  bool? get isPinned => checkBoolInProperty('is_pinned');
 
   /// Information about whether the record contains the mark "advertising"
-  bool? get isMarkedAsAds => _checkBoolInProperty('marked_as_ads');
+  bool? get isMarkedAsAds => checkBoolInProperty('marked_as_ads');
 
   /// `true` if the object has been added to the bookmarks of the current user.
   bool? get isFavorite => payload['is_favorite'];

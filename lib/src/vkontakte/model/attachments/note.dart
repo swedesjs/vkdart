@@ -1,4 +1,4 @@
-part of 'attachment.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Note
 ///
@@ -29,7 +29,7 @@ class NoteAttachmentModel extends CustomAttachmentModel {
   String? get privacyView => payload['privacy_view'];
 
   /// Is it possible to leave comments
-  bool? get isCanComment => _checkBoolInProperty('can_comment');
+  bool? get isCanComment => checkBoolInProperty('can_comment');
 
   /// Wiki link tags.
   String? get textWiki => payload['text_wiki'];

@@ -1,4 +1,4 @@
-part of 'attachment.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Audio.
 ///
@@ -34,8 +34,8 @@ class AudioAttachmentModel extends CustomAttachmentModel {
 
   /// `true` if the “Do not display during search” option is enabled.
   /// If the option is disabled, the field is not returned.
-  bool? get isNoSearch => _checkBoolInProperty('no_search');
+  bool? get isNoSearch => checkBoolInProperty('no_search');
 
   /// `true` if the audio is high quality.
-  bool? get isHq => _checkBoolInProperty('is_hq');
+  bool? get isHq => checkBoolInProperty('is_hq');
 }

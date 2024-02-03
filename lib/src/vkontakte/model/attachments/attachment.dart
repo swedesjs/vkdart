@@ -1,21 +1,6 @@
 import 'package:vkdart/util.dart';
 import 'package:vkdart/vkdart.dart' show VkDartException;
-
-part 'photo.dart';
-part 'video.dart';
-part 'audio.dart';
-part 'document.dart';
-part 'link.dart';
-part 'market.dart';
-part 'market_album.dart';
-part 'wall.dart';
-part 'wall_reply.dart';
-part 'sticker.dart';
-part 'gift.dart';
-part 'graffiti.dart';
-part 'poll.dart';
-part 'note.dart';
-part 'page.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Base class Attachment
 ///
@@ -54,7 +39,8 @@ abstract class AttachmentModel {
   /// Attachment type.
   final String attachType;
 
-  bool? _checkBoolInProperty(String key) => checkBoolUtil(payload[key]);
+  // ignore: public_member_api_docs
+  bool? checkBoolInProperty(String key) => checkBoolUtil(payload[key]);
 }
 
 /// Model Custom Attachment.

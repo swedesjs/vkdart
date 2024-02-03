@@ -1,4 +1,5 @@
-part of 'attachment.dart';
+import 'package:vkdart/util.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Video
 ///
@@ -53,37 +54,37 @@ class VideoAttachmentModel extends CustomAttachmentModel
   String? get platformName => payload['platform'];
 
   /// Can a user add a video to himself?
-  bool? get isCanAdd => _checkBoolInProperty('can_add');
+  bool? get isCanAdd => checkBoolInProperty('can_add');
 
   /// The field is returned if the video is private (for example, it was uploaded to a private message), always contains 1.
-  bool? get isPrivate => _checkBoolInProperty('is_private');
+  bool? get isPrivate => checkBoolInProperty('is_private');
 
   /// The field is returned if the video is in the process of processing, always contains 1.
-  bool? get isProcessing => _checkBoolInProperty('processing');
+  bool? get isProcessing => checkBoolInProperty('processing');
 
   /// true if the item has been bookmarked by the current user.
   bool? get isFavorite => payload['is_favorite'];
 
   /// Can a user comment on a video?
-  bool? get isCanComment => _checkBoolInProperty('can_comment');
+  bool? get isCanComment => checkBoolInProperty('can_comment');
 
   /// Can the user edit the video?
-  bool? get isCanEdit => _checkBoolInProperty('can_edit');
+  bool? get isCanEdit => checkBoolInProperty('can_edit');
 
   /// Can a user add a video to their "Like" list.
-  bool? get isCanLike => _checkBoolInProperty('can_like');
+  bool? get isCanLike => checkBoolInProperty('can_like');
 
   /// Can a user repost a video?
-  bool? get isCanRepost => _checkBoolInProperty('can_repost');
+  bool? get isCanRepost => checkBoolInProperty('can_repost');
 
   /// Can a user subscribe to the author of a video?
-  bool? get isCanSubscribe => _checkBoolInProperty('can_subscribe');
+  bool? get isCanSubscribe => checkBoolInProperty('can_subscribe');
 
   /// Whether the user can add a video to favorites.
-  bool? get isCanAddToFaves => _checkBoolInProperty('can_add_to_faves');
+  bool? get isCanAddToFaves => checkBoolInProperty('can_add_to_faves');
 
   /// Can a user attach an action button to a video.
-  bool? get isCanAttachLink => _checkBoolInProperty('can_attach_link');
+  bool? get isCanAttachLink => checkBoolInProperty('can_attach_link');
 
   /// Video width.
   int? get width => payload['width'];
@@ -95,16 +96,16 @@ class VideoAttachmentModel extends CustomAttachmentModel
   int? get userId => payload['user_id'];
 
   /// Does the video convert?
-  bool? get isConverting => _checkBoolInProperty('converting');
+  bool? get isConverting => checkBoolInProperty('converting');
 
   /// Whether the video has been added to the user's albums.
-  bool? get isAdded => _checkBoolInProperty('added');
+  bool? get isAdded => checkBoolInProperty('added');
 
   /// Whether the user is subscribed to the author of the video.
-  bool? get isSubscribed => _checkBoolInProperty('is_subscribed');
+  bool? get isSubscribed => checkBoolInProperty('is_subscribed');
 
   /// Field returned if the video is looped, always contains 1
-  bool? get isRepeat => _checkBoolInProperty('repeat');
+  bool? get isRepeat => checkBoolInProperty('repeat');
 
   /// Video type.
   /// Can take values: video, music_video, movie
@@ -118,10 +119,10 @@ class VideoAttachmentModel extends CustomAttachmentModel
   String? get liveStatus => payload['live_status'];
 
   /// The field returned if the video is a live broadcast always contains 1. Note that in this case the duration field contains the value 0.
-  bool? get isBroadcast => _checkBoolInProperty('live');
+  bool? get isBroadcast => checkBoolInProperty('live');
 
   /// The field indicates that the broadcast will begin soon. For live =1.
-  bool? get isUpcoming => _checkBoolInProperty('upcoming');
+  bool? get isUpcoming => checkBoolInProperty('upcoming');
 
   /// Number of viewers of the live broadcast.
   int? get spectatorsCount => payload['spectators'];

@@ -1,4 +1,4 @@
-part of 'attachment.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Model Wall Reply.
 ///
@@ -26,10 +26,10 @@ class WallReplyAttachmentModel extends CustomAttachmentModel {
   String? get donutPlacholder => payload['donut']?['placeholder'];
 
   /// The ID of the user or community to whom the current comment was left in response (if applicable).
-  bool? get isReplyToUser => _checkBoolInProperty('reply_to_user');
+  bool? get isReplyToUser => checkBoolInProperty('reply_to_user');
 
   /// The ID of the comment that the current one was left in response to (if applicable).
-  bool? get isReplyToComment => _checkBoolInProperty('reply_to_comment');
+  bool? get isReplyToComment => checkBoolInProperty('reply_to_comment');
 
   /// Media commentary attachments (photos, links, etc.).
   /// See https://dev.vk.com/ru/reference/objects/comment#attachments
