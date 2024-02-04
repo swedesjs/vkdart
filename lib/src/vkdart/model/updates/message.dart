@@ -10,4 +10,13 @@ class VkDartMessageUpdate extends MessageModel with VkDartUpdate {
 
   @override
   final Update update;
+
+  /// Check is message new.
+  bool get isNew => updateType == UpdateType.message_new;
+
+  /// Check is message edit.
+  bool get isEdit => updateType == UpdateType.message_edit;
+
+  /// Check is message reply.
+  bool get isReply => updateType == UpdateType.message_reply;
 }
