@@ -73,3 +73,14 @@ fix: adjustment of `donut` handlers.
 
 ## 1.3.6
 Update: two `donut` handlers are combined into one (`onDonut()`)
+
+## 2.0.0
+Update:
+- A census of the API package documentation.
+- Refactoring code.
+- Got rid of the dependency json_annotation, json_serializable, build_runner
+
+Release: 
+- Of attachment models, messages, and events.
+- Of an unsupported event handler.
+- The util library, which contains useful functions for working correctly with the package.
