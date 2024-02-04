@@ -49,7 +49,7 @@ class VkDart extends Api {
   /// Stop fetcher
   Future<void> stop() => fetcher.stop();
 
-  /// Listen for `message_new`, `message_edit`, `message_reply` events
+  /// Listen for `message_new`, `message_edit`, `message_reply` events.
   Stream<VkDartMessageUpdate> onMessage() =>
       _event.onMessage().map(VkDartMessageUpdate.new);
 
@@ -113,11 +113,11 @@ class VkDart extends Api {
   Stream<VkDartGroupChangeUpdate> onGroupChange() =>
       _event.onGroupChange().map(VkDartGroupChangeUpdate.new);
 
-  /// Listen for `vk_pay_transaction` events.
+  /// Listen for `vk_pay_transaction` event.
   Stream<VkDartPayTransactionUpdate> onVkpayTransaction() =>
       _event.onVkpayTransaction().map(VkDartPayTransactionUpdate.new);
 
-  /// Listen for `app_payload` events.
+  /// Listen for `app_payload` event.
   Stream<VkDartAppPayloadUpdate> onAppPayload() =>
       _event.onAppPayload().map(VkDartAppPayloadUpdate.new);
 
@@ -126,7 +126,7 @@ class VkDart extends Api {
   Stream<VkDartDonutUpdate> onDonut() =>
       _event.onDonut().map(VkDartDonutUpdate.new);
 
-  /// Wiretapping of unknown events.
+  /// Listen of unknown events.
   Stream<VkDartUnsupportedEventUpdate> onUnsupportedEvent() =>
       _event.onUnsupportedEvent().map(VkDartUnsupportedEventUpdate.new);
 }
