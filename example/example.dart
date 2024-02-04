@@ -12,7 +12,8 @@ void main() async {
   //  secretKey: 'mySecretKey', // optional
   //  confirmationHandler: (_) async => 'confirimationCode',
   //  );
-  // final vkdart = VkDart('accessToken', Event(), fetcher: callback);
+  //
+  // final vkdart = VkDart('accessToken', event: Event(), fetcher: callback);
 
   // message_new, message_edit, message_reply
   vkdart.onMessage().where((event) => event.isNew).listen((event) {

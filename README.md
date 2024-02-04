@@ -14,6 +14,7 @@
 3. **Event support.** Supports Callback API, Longpoll API
 4. **Developing.** Functionality is becoming more!
 5. **Easy to use.** Very easy to use!
+6. **Support for models.**. It has a description of event models, attachments, and objects.ы 
 
 ## Usage
 
@@ -22,8 +23,10 @@ Initialization:
 import 'package:vkdart/vkdart.dart';
 
 void main() async {
-  final TOKEN = ''; // Group Token
-  final vkdart = VkDart(TOKEN, groupId: 123);
+  final TOKEN = '';
+  final GROUP_ID = 123;
+
+  final vkdart = VkDart(TOKEN, groupId: GROUP_ID);
 
   vkdart.start();
 }
@@ -41,7 +44,7 @@ vkdart.onMessage().listen((event) => print('A message has arrived!\n\n'
 
 // message_event
 vkdart.onMessageEvent().listen((event) => print(
-    'The user clicked on the Callback button!\n'
+    'The user clicked on the Callback button!\n\n'
     'Dialog ID: ${event.peerId}\n'
     'UserID: ${event.userId}'
     '${event.eventPayload != null ? '\nPayload: ${event.eventPayload}' : ''}'
@@ -67,7 +70,6 @@ vkdart
         'Owner ID: ${event.ownerId}\n'
         'Photo ID: ${event.objectId}'
         '${event.attachments.isNotEmpty ? '\nAttachments: ${event.attachments}' : ''}'));
-
 ```
 
 All event handlers:
@@ -85,7 +87,7 @@ Stream<VkDartMessageDenyUpdate> onMessageDeny();
 Stream<VkDartMessageTypingStateUpdate> onMessageTypingState();
 
 /// Listen for `message_event` event.
-Stream<Update> onMessageEvent();
+Stream<VkDartMessageEventUpdate> onMessageEvent();
 
 /// Listen for `message_reaction_event` event.
 Stream<VkDartMessageReactionEvent> onMessageReactionEvent();
@@ -107,7 +109,7 @@ Stream<VkDartWallUpdate> onWall();
 Stream<VkDartLikeUpdate> onLike();
 
 /// Listen for `market_order_new`, `market_order_edit` events.
-Stream<Update> onMarketOrder();
+Stream<VkDartMarketOrderUpdate> onMarketOrder();
 
 /// Listen for `group_join`, `group_leave` events.
 Stream<VkDartGroupUpdate> onGroup();
