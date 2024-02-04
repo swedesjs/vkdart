@@ -149,19 +149,19 @@ class Event {
     }
   }
 
-  /// Listen for `message_new`, `message_edit`, `message_reply` events
+  /// Listen for `message_new`, `message_edit`, `message_reply` events.
   Stream<Update> onMessage() => _messageController.stream;
 
-  /// Listen for `message_allow` events.
+  /// Listen for `message_allow` event.
   Stream<Update> onMessageAllow() => _messageAllowController.stream;
 
-  /// Listens for `message_deny` events.
+  /// Listen for `message_deny` event.
   Stream<Update> onMessageDeny() => _messageDenyController.stream;
 
-  /// Listen for `message_typing_state` events.
+  /// Listen for `message_typing_state` event.
   Stream<Update> onMessageTypingState() => _messageTypingStateController.stream;
 
-  /// Listen for `message_event` events.
+  /// Listen for `message_event` event.
   Stream<Update> onMessageEvent() => _messageEventController.stream;
 
   /// Listen for `message_reaction_event` event.
@@ -192,22 +192,22 @@ class Event {
   /// Listen for `user_block`, `user_unblock` events.
   Stream<Update> onUser() => _userController.stream;
 
-  /// Listen for `poll_vote_new` events.
+  /// Listen for `poll_vote_new` event.
   Stream<Update> onPollVoteNew() => _pollVoteNewController.stream;
 
   /// Listen for `group_officers_edit`, `group_change_settings`, `group_change_photo` events.
   Stream<Update> onGroupChange() => _groupChangeController.stream;
 
-  /// Listen for `vk_pay_transaction` events.
+  /// Listen for `vk_pay_transaction` event.
   Stream<Update> onVkpayTransaction() => _vkpayTransactionController.stream;
 
-  /// Listen for `app_payload` events.
+  /// Listen for `app_payload` event.
   Stream<Update> onAppPayload() => _appPayloadController.stream;
 
   /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`,
   /// `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error`s events.
   Stream<Update> onDonut() => _donutController.stream;
 
-  /// Wiretapping of unknown events.
+  /// Listen of unknown events.
   Stream<Update> onUnsupportedEvent() => _unsupportedEventController.stream;
 }
