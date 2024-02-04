@@ -1,4 +1,9 @@
-part of '../../../vkdart.dart';
+import 'dart:async';
+
+import 'package:dio/dio.dart';
+import 'package:vkdart/model.dart';
+import 'package:vkdart/vkdart.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// Longpoll fetcher.
 class Longpoll extends AbstractUpdateFetcher {

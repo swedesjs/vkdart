@@ -1,4 +1,6 @@
-part of '../../../vkdart.dart';
+import 'dart:async';
+
+import 'package:vkdart/model.dart';
 
 /// Base class for update fetcher.
 abstract class AbstractUpdateFetcher {

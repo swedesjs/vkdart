@@ -1,4 +1,6 @@
-part of '../../../vkdart.dart';
+import 'dart:async';
+
+import 'package:vkdart/model.dart';
 
 /// This class provides methods to subscribe to events.
 /// for example to listen to new messages.
