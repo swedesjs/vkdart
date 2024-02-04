@@ -1,7 +1,7 @@
 import 'package:vkdart/vkontakte.dart';
 
 /// Methods for working with audio recordings.
-/// 
+///
 /// See https://dev.vk.com/ru/method/asr
 class Asr {
   // ignore: public_member_api_docs
