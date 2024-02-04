@@ -1,4 +1,5 @@
 import 'package:vkdart/model.dart';
+import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
 /// The message model (for events `message_new`, `message_edit`, `message_reply`).
@@ -19,4 +20,10 @@ class VkDartMessageUpdate extends MessageModel with VkDartUpdate {
 
   /// Check is message reply.
   bool get isReply => updateType == UpdateType.message_reply;
+
+  /// Whether the message is out.
+  bool get isOutbox => checkBoolUtil(message['out'] as int)!;
+
+  /// Whether the message is inboxed.
+  bool get isInbox => !isOutbox;
 }
