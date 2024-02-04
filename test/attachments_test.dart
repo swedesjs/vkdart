@@ -1,16 +1,12 @@
-// ignore_for_file: require_trailing_commas
-
 import 'package:shouldly/shouldly.dart';
 import 'package:test/test.dart';
 import 'package:vkdart/vkontakte.dart';
 
 void main() {
   group('Testing attachments', () {
-    final photoCustomAttachment = CustomAttachmentModel({
-      'owner_id': 1,
-      'id': 2,
-      'access_key': 'ACCESS_KEY',
-    }, attachType: 'photo');
+    final photoCustomAttachment = CustomAttachmentModel(
+        {'owner_id': 1, 'id': 2, 'access_key': 'ACCESS_KEY'},
+        attachType: 'photo');
 
     final photoAttachmentNative = PhotoAttachmentModel(
         {'owner_id': 1, 'id': 2, 'access_key': 'ACCESS_KEY'});

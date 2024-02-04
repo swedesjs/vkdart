@@ -6,10 +6,7 @@ import 'package:vkdart/vkontakte.dart';
 
 void main() {
   final env = DotEnv(includePlatformEnvironment: true)..load();
-  final vkdart = VkDart(
-    env['TOKEN']!,
-    groupId: int.parse(env['GROUP_ID']!),
-  );
+  final vkdart = VkDart(env['TOKEN']!, groupId: int.parse(env['GROUP_ID']!));
 
   group('Testing methods VK', () {
     group('check `request` function', () {
