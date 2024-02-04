@@ -24,7 +24,7 @@ class Event {
         _vkpayTransactionController = StreamController.broadcast(sync: sync),
         _appPayloadController = StreamController.broadcast(sync: sync),
         _donutController = StreamController.broadcast(sync: sync),
-        _unsupportedEventController = StreamController(sync: sync);
+        _unsupportedEventController = StreamController.broadcast(sync: sync);
 
   // message_new, message_edit, message_reply,
   final StreamController<Update> _messageController;
