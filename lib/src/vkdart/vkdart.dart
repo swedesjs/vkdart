@@ -125,6 +125,10 @@ class VkDart extends Api {
   /// `donut_subscription_cancelled`, `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error` events.
   Stream<VkDartDonutUpdate> onDonut() =>
       _event.onDonut().map(VkDartDonutUpdate.new);
+
+  /// Wiretapping of unknown events.
+  Stream<VkDartUnsupportedEventUpdate> onUnsupportedEvent() =>
+      _event.onUnsupportedEvent().map(VkDartUnsupportedEventUpdate.new);
 }
 
 // ignore: public_member_api_docs

@@ -1,7 +1,5 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:vkdart/vkdart.dart' show VkDartException;
-
 /// [UpdateType] is an enumeration of possible event types.
 enum UpdateType {
   /// Represents a new message event.
@@ -164,7 +162,10 @@ enum UpdateType {
   donut_money_withdraw,
 
   /// Withdrawal error from VK Donut.
-  donut_money_withdraw_error;
+  donut_money_withdraw_error,
+
+  /// An unknown event.
+  unknown_event;
 }
 
 /// The [Update] class is used to represent an update event.
@@ -182,8 +183,7 @@ class Update {
   UpdateType get type => UpdateType.values.firstWhere(
         (element) => element.name == eventData['type'],
         // ignore: missing_whitespace_between_adjacent_strings
-        orElse: () => throw VkDartException('The event is not supported.'
-            ' Contact this chat to solve the problem - https://t.me/vk_dart'),
+        orElse: () => UpdateType.unknown_event,
       );
 
   /// Gets the object related to the update event.
