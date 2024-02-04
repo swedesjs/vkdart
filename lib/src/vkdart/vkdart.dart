@@ -1,4 +1,6 @@
-part of '../../../vkdart.dart';
+import 'package:vkdart/model.dart';
+import 'package:vkdart/vkdart.dart';
+import 'package:vkdart/vkontakte.dart';
 
 /// The main class of the library.
 /// It contains methods for working with the VK API.

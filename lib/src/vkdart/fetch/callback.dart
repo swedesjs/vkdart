@@ -1,4 +1,9 @@
-part of '../../../vkdart.dart';
+import 'dart:io';
+
+import 'package:dia/dia.dart';
+import 'package:dia_body/dia_body.dart';
+import 'package:vkdart/model.dart';
+import 'package:vkdart/vkdart.dart';
 
 class _ContextWithBody extends Context with ParsedBody {
   _ContextWithBody(HttpRequest request) : super(request);
