@@ -1,3 +1,4 @@
+import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
 /// Model Wall Reply.
@@ -33,7 +34,11 @@ class WallReplyAttachmentModel extends CustomAttachmentModel {
 
   /// Media commentary attachments (photos, links, etc.).
   /// See https://dev.vk.com/ru/reference/objects/comment#attachments
-  List<Map<String, dynamic>>? get attachments => payload['attachments'];
+  List<AttachmentModel> get attachments =>
+      transformAttachments((payload['attachments'] as List?)
+              ?.map((e) => (e as Map).cast<String, dynamic>())
+              .toList() ??
+          const []);
 
   /// An array of IDs of parent comments.
   List<int>? get parentsStack => payload['parents_stack'];

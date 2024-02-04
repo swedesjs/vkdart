@@ -74,8 +74,11 @@ class WallAttachmentModel extends CustomAttachmentModel
 
   /// An array of objects corresponding to media resources attached to a record: photos, documents, video files, and others.
   /// See https://dev.vk.com/ru/reference/objects/wall#attachments
-  // TODO: implement type selection
-  List<Map<String, dynamic>>? get attachments => payload['attachments'];
+  List<AttachmentModel> get attachments =>
+      transformAttachments((payload['attachments'] as List?)
+              ?.map((e) => (e as Map).cast<String, dynamic>())
+              .toList() ??
+          const []);
 
   /// type of place;
   String? get geoType => payload['geo']?['type'];
