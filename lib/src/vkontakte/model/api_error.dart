@@ -10,7 +10,7 @@ class ApiErrorModel {
   int get code => payload['error_code'];
 
   /// Error message.
-  String get message => payload['message'];
+  String get message => payload['error_msg'];
 
   /// Request params.
   List<ApiErrorParamModel> get requestParams =>
