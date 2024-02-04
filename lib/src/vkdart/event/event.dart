@@ -23,7 +23,8 @@ class Event {
         _groupChangeController = StreamController.broadcast(sync: sync),
         _vkpayTransactionController = StreamController.broadcast(sync: sync),
         _appPayloadController = StreamController.broadcast(sync: sync),
-        _donutController = StreamController.broadcast(sync: sync);
+        _donutController = StreamController.broadcast(sync: sync),
+        _unsupportedEventController = StreamController(sync: sync);
 
   // message_new, message_edit, message_reply,
   final StreamController<Update> _messageController;
@@ -66,6 +67,7 @@ class Event {
   // donut_subscription_create, donut_subscription_prolonged, donut_subscription_expired,
   // donut_subscription_cancelled, donut_subscription_price_changed donut_money_withdraw, donut_money_withdraw_error
   final StreamController<Update> _donutController;
+  final StreamController<Update> _unsupportedEventController;
 
   /// Emiter update.
   void emitUpdate(Update update) {
@@ -142,6 +144,8 @@ class Event {
       case UpdateType.donut_money_withdraw:
       case UpdateType.donut_money_withdraw_error:
         _donutController.add(update);
+      case UpdateType.unknown_event:
+        _unsupportedEventController.add(update);
     }
   }
 
@@ -203,4 +207,7 @@ class Event {
   /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`,
   /// `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error`s events.
   Stream<Update> onDonut() => _donutController.stream;
+
+  /// Wiretapping of unknown events.
+  Stream<Update> onUnsupportedEvent() => _unsupportedEventController.stream;
 }
