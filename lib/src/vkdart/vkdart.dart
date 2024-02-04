@@ -8,7 +8,7 @@ part of '../../../vkdart.dart';
 /// It also contains methods for working with the update fetcher.
 ///
 /// ```dart
-/// vkdart.onMessage().listen((event) => print(event.object['message']['text']));
+/// vkdart.onMessage().listen((event) => print(event.text));
 /// ```
 /// `vkdart` - Instance of [VkDart].
 class VkDart extends Api {
