@@ -24,19 +24,19 @@ class VkDartGroupChangeUpdate with VkDartUpdate {
   bool get isPhoto => updateType == UpdateType.group_change_photo;
 
   /// User ID.
-  int get userId => payload['user_id'];
+  int get userId => updateObject['user_id'];
 
   /// The ID of the supervisor who made the changes.
-  int? get adminId => payload['admin_id'];
+  int? get adminId => updateObject['admin_id'];
 
   /// The old level of authority.
-  int? get levelOld => payload['level_old'];
+  int? get levelOld => updateObject['level_old'];
 
   /// The new level of authority.
-  int? get levelNew => payload['level_new'];
+  int? get levelNew => updateObject['level_new'];
 
   /// See https://dev.vk.com/ru/api/community-events/json-schema#group_change_settings
-  Map<String, dynamic>? get changes => payload['changes'];
+  Map<String, dynamic>? get changes => updateObject['changes'];
 
   /// Title change.
   (Object, Object)? get changeTitle => _changeToRecord(changes?['title']);
@@ -118,6 +118,7 @@ class VkDartGroupChangeUpdate with VkDartUpdate {
 
   /// Photo.
   /// It is returned if [isPhoto] = true.
-  PhotoAttachmentModel? get photo =>
-      payload['photo'] != null ? PhotoAttachmentModel(payload['photo']) : null;
+  PhotoAttachmentModel? get photo => updateObject['photo'] != null
+      ? PhotoAttachmentModel(updateObject['photo'])
+      : null;
 }

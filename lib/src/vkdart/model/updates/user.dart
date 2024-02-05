@@ -18,13 +18,13 @@ class VkDartUserUpdate with VkDartUpdate {
   bool get isUnblock => updateType == UpdateType.user_unblock;
 
   /// The ID of the administrator who blacklisted the user.
-  int get adminId => payload['admin_id'];
+  int get adminId => updateObject['admin_id'];
 
   /// The user ID.
-  int get userId => payload['user_id'];
+  int get userId => updateObject['user_id'];
 
   /// The date of unblocking.
-  int? get unblockDate => payload['unblock_date'];
+  int? get unblockDate => updateObject['unblock_date'];
 
   /// The reason for the blockage.
   /// Possible values:
@@ -33,11 +33,11 @@ class VkDartUserUpdate with VkDartUpdate {
   /// - 2 — insulting the participants.
   /// - 3 — obscene expressions.
   /// - 4 — Off-topic messages.
-  int? get reason => payload['reason'];
+  int? get reason => updateObject['reason'];
 
   /// The administrator's comment on the block.
-  String? get comment => payload['comment'];
+  String? get comment => updateObject['comment'];
 
   /// The date of unblocking.
-  int? get endDate => payload['by_end_date'];
+  int? get endDate => updateObject['by_end_date'];
 }

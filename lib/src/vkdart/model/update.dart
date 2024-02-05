@@ -199,5 +199,5 @@ abstract mixin class VkDartUpdate {
   UpdateType get updateType => update.type;
 
   /// Payload.
-  Map<String, dynamic> get payload => update.object;
+  Map<String, dynamic> get updateObject => update.object;
 }

@@ -100,23 +100,23 @@ class VkDartCommentUpdate extends WallReplyAttachmentModel with VkDartUpdate {
   bool get isGroup => fromId < 0;
 
   /// The ID of the user who deleted the comment.
-  int? get deleterId => payload['deleter_id'];
+  int? get deleterId => updateObject['deleter_id'];
 
   /// Owner Id
   @override
   int get ownerId =>
-      payload['owner_id'] ??
-      payload['photo_owner_id'] ??
-      payload['video_owner_id'] ??
-      payload['post_owner_id'] ??
-      payload['market_owner_id'] ??
-      payload['topic_owner_id'];
+      updateObject['owner_id'] ??
+      updateObject['photo_owner_id'] ??
+      updateObject['video_owner_id'] ??
+      updateObject['post_owner_id'] ??
+      updateObject['market_owner_id'] ??
+      updateObject['topic_owner_id'];
 
   /// Object ID.
   int get objectId =>
-      payload['photo_id'] ??
-      payload['video_id'] ??
-      payload['post_id'] ??
-      payload['item_id'] ??
-      payload['topic_id'];
+      updateObject['photo_id'] ??
+      updateObject['video_id'] ??
+      updateObject['post_id'] ??
+      updateObject['item_id'] ??
+      updateObject['topic_id'];
 }

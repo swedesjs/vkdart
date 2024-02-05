@@ -11,8 +11,8 @@ class VkDartMessageAllowUpdate with VkDartUpdate {
   final Update update;
 
   /// The user ID.
-  int get userId => payload['user_id'];
+  int get userId => updateObject['user_id'];
 
   /// The parameter passed in the messages.allowMessagesFromGroup method.
-  String get key => payload['key'];
+  String get key => updateObject['key'];
 }

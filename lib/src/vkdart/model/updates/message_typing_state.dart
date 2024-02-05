@@ -11,11 +11,11 @@ class VkDartMessageTypingStateUpdate with VkDartUpdate {
   final Update update;
 
   /// The status of the typing status.
-  String get state => payload['state'];
+  String get state => updateObject['state'];
 
   /// The ID of the user who is typing the text.
-  int get fromId => payload['from_id'];
+  int get fromId => updateObject['from_id'];
 
   /// The ID of the community to which the user is writing the message.
-  int get toId => payload['to_id'];
+  int get toId => updateObject['to_id'];
 }

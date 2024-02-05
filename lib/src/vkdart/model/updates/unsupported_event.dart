@@ -11,5 +11,5 @@ class VkDartUnsupportedEventUpdate with VkDartUpdate {
   String get eventType => update.eventData['type'];
 
   /// Object.
-  Map<String, dynamic> get object => payload;
+  Map<String, dynamic> get object => updateObject;
 }
