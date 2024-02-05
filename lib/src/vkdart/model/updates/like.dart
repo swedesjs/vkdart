@@ -11,20 +11,20 @@ class VkDartLikeUpdate with VkDartUpdate {
   final Update update;
 
   /// The ID of the user who checked the box.
-  int get likerId => payload['liker_id'];
+  int get likerId => updateObject['liker_id'];
 
   /// The type of material.
-  String get objectType => payload['object_type'];
+  String get objectType => updateObject['object_type'];
 
   /// The ID of the owner of the material.
-  int get objectOwnerId => payload['object_owner_id'];
+  int get objectOwnerId => updateObject['object_owner_id'];
 
   /// The ID of the material.
-  int get objectId => payload['object_id'];
+  int get objectId => updateObject['object_id'];
 
   /// ID of the parent comment or entry.
-  int get threadReplyId => payload['thread_reply_id'];
+  int get threadReplyId => updateObject['thread_reply_id'];
 
   /// The ID of the record (returned for the comment left under the record).
-  int get postId => payload['post_id'];
+  int get postId => updateObject['post_id'];
 }

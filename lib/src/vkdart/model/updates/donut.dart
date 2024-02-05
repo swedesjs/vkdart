@@ -34,26 +34,26 @@ class VkDartDonutUpdate with VkDartUpdate {
       updateType == UpdateType.donut_money_withdraw_error;
 
   /// User ID.
-  int? get userId => payload['user_id'];
+  int? get userId => updateObject['user_id'];
 
   /// the amount in rubles.
-  int? get amount => payload['amount'];
+  int? get amount => updateObject['amount'];
 
   /// the amount without commission (in rubles).
-  double? get amountWithoutFee => payload['amount_without_fee'];
+  double? get amountWithoutFee => updateObject['amount_without_fee'];
 
   /// the old price is in rubles.
-  int? get amountOld => payload['amount_old'];
+  int? get amountOld => updateObject['amount_old'];
 
   /// the new price is in rubles.
-  int? get amountNew => payload['amount_new'];
+  int? get amountNew => updateObject['amount_new'];
 
   /// the amount of the surcharge in rubles.
-  double? get amountDiff => payload['amount_diff'];
+  double? get amountDiff => updateObject['amount_diff'];
 
   /// the amount of the surcharge without commission (in rubles).
-  double? get amountDiffWithoutFee => payload['amount_diff_without_fee'];
+  double? get amountDiffWithoutFee => updateObject['amount_diff_without_fee'];
 
   /// the reason for the error.
-  String? get reason => payload['reason'];
+  String? get reason => updateObject['reason'];
 }

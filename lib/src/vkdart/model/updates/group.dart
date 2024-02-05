@@ -19,11 +19,11 @@ class VkDartGroupUpdate with VkDartUpdate {
   bool get isJoin => updateType == UpdateType.group_join;
 
   /// User ID.
-  int get userId => payload['user_id'];
+  int get userId => updateObject['user_id'];
 
   /// A value indicating whether the user was deleted or logged out on their own.
-  int? get self => payload['self'];
+  int? get self => updateObject['self'];
 
   /// Specifies exactly how the participant was added.
-  String? get joinType => payload['join_type'];
+  String? get joinType => updateObject['join_type'];
 }

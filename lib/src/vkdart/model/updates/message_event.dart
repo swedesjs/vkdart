@@ -11,19 +11,19 @@ class VkDartMessageEventUpdate with VkDartUpdate {
   final Update update;
 
   /// The user ID.
-  int get userId => payload['user_id'];
+  int get userId => updateObject['user_id'];
 
   /// The ID of the dialog on the bot's side.
-  int get peerId => payload['peer_id'];
+  int get peerId => updateObject['peer_id'];
 
   /// A random string.
   /// Active for a minute, becomes invalid after a minute.
-  String get eventId => payload['event_id'];
+  String get eventId => updateObject['event_id'];
 
   /// Additional information specified in the key.
-  Object? get eventPayload => payload['payload'];
+  Object? get eventPayload => updateObject['payload'];
 
   /// The ID of the message in the conversation.
   /// It is not transmitted for conversation keyboards.
-  int? get conversationMessageId => payload['conversation_message_id'];
+  int? get conversationMessageId => updateObject['conversation_message_id'];
 }

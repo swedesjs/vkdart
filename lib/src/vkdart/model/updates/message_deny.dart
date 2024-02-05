@@ -11,5 +11,5 @@ class VkDartMessageDenyUpdate with VkDartUpdate {
   final Update update;
 
   /// The user ID.
-  int get userId => payload['user_id'];
+  int get userId => updateObject['user_id'];
 }

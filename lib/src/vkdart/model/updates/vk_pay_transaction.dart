@@ -10,14 +10,14 @@ class VkDartPayTransactionUpdate with VkDartUpdate {
   final Update update;
 
   /// the ID of the user who sent the transfer.
-  int get fromId => payload['from_id'];
+  int get fromId => updateObject['from_id'];
 
   /// the amount of the transfer in thousandths of a ruble.
-  int get amount => payload['amount'];
+  int get amount => updateObject['amount'];
 
   /// comment on the translation.
-  String? get description => payload['description'];
+  String? get description => updateObject['description'];
 
   /// the time when the transfer was sent to Unixtime.
-  int get transferAt => payload['date'];
+  int get transferAt => updateObject['date'];
 }

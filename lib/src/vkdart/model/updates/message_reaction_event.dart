@@ -9,9 +9,9 @@ class VkDartMessageReactionEventUpdate with VkDartUpdate {
   final Update update;
 
   // ignore: public_member_api_docs
-  int get reactedId => payload['reacted_id'];
+  int get reactedId => updateObject['reacted_id'];
   // ignore: public_member_api_docs
-  int get peerId => payload['peer_id'];
+  int get peerId => updateObject['peer_id'];
   // ignore: public_member_api_docs
-  int get reactionId => payload['reaction_id'];
+  int get reactionId => updateObject['reaction_id'];
 }

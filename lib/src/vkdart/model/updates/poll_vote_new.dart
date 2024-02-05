@@ -10,14 +10,14 @@ class VkDartPollVoteNewUpdate with VkDartUpdate {
   final Update update;
 
   /// The ID of the poll owner.
-  int get ownerId => payload['owner_id'];
+  int get ownerId => updateObject['owner_id'];
 
   /// The ID of the poll.
-  int get pollId => payload['poll_id'];
+  int get pollId => updateObject['poll_id'];
 
   /// The ID of the answer option.
-  int get optionId => payload['option_id'];
+  int get optionId => updateObject['option_id'];
 
   /// The user ID.
-  int get userId => payload['user_id'];
+  int get userId => updateObject['user_id'];
 }

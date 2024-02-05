@@ -10,14 +10,14 @@ class VkDartAppPayloadUpdate with VkDartUpdate {
   final Update update;
 
   /// the ID of the user whose action sent the event in the application.
-  int get userId => payload['user_id'];
+  int get userId => updateObject['user_id'];
 
   /// The ID of the application from which the event was sent.
-  int get appId => payload['app_id'];
+  int get appId => updateObject['app_id'];
 
   /// transmitted useful data.
-  Object? get appPayload => payload['payload'];
+  Object? get appPayload => updateObject['payload'];
 
   /// the ID of the community to which the notification was sent.
-  int get groupId => payload['group_id'];
+  int get groupId => updateObject['group_id'];
 }
