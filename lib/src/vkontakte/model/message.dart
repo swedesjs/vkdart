@@ -6,23 +6,30 @@ import 'package:vkdart/vkontakte.dart';
 /// See https://dev.vk.com/ru/reference/objects/message
 class MessageModel {
   // ignore: public_member_api_docs
-  MessageModel(this.payload) {
-    if (payload['client_info'] == null) {
-      payload = {
-        'message': payload,
-        'client_info': {
-          'button_actions': [],
-          'keyboard': false,
-          'inline_keyboard': false,
-          'carousel': false,
-          'lang_id': 0
-        }
-      };
-    }
+  MessageModel(Map<String, dynamic> payload) {
+    applyPayload(payload);
+  }
+
+  /// Apply payload.
+  void applyPayload(Map<String, dynamic> payload) {
+    final checkClientInfo = payload['client_info'] != null;
+
+    this.payload = checkClientInfo
+        ? payload
+        : {
+            'message': payload,
+            'client_info': {
+              'button_actions': [],
+              'keyboard': false,
+              'inline_keyboard': false,
+              'carousel': false,
+              'lang_id': 0
+            }
+          };
   }
 
   /// Update data.
-  Map<String, dynamic> payload;
+  late final Map<String, dynamic> payload;
 
   /// Message object.
   Map<String, dynamic> get message => payload['message'];
