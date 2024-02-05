@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
 /// Listing of languages supported by VK API.
@@ -42,7 +42,6 @@ class Api {
         _version = version;
 
   static const _baseUrl = 'https://api.vk.com/method/';
-  static final _dio = Dio();
 
   final String _token;
   final LangApi _language;
@@ -63,18 +62,13 @@ class Api {
     params.remove('lang');
 
     final requestOptions = {
-      'access_token': _token,
       'lang': langConclusion,
       'v': _version,
       ...params,
     };
 
-    // ignore: unnecessary_null_checks
-    final Response(:data!) = await _dio.post<Map<String, dynamic>>(
-      _baseUrl + methodName,
-      data: requestOptions.entries.map((e) => '${e.key}=${e.value}').join('&'),
-      options: Options(contentType: 'application/x-www-form-urlencoded'),
-    );
+    final data = await HttpClient.httpPost(_baseUrl + methodName,
+        body: requestOptions, headers: {'Authorization': 'Bearer $_token'});
 
     final error = (data['error'] as Map?)?.cast<String, dynamic>();
     final response = data['response'] as Object?;
@@ -85,7 +79,7 @@ class Api {
 
     return ApiResponse<T>(
       data: response as T,
-      requestOptions: requestOptions..remove('access_token'),
+      requestOptions: requestOptions,
     );
   }
 
