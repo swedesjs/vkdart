@@ -21,6 +21,21 @@ class VkDartMessageUpdate extends MessageModel with VkDartUpdate {
   /// Check is message reply.
   bool get isReply => updateType == UpdateType.message_reply;
 
+  /// Is this a dialog with the user.
+  bool get isUser => peerType == MessageSource.user;
+
+  /// Is this a dialogue with the group.
+  bool get isGroup => peerType == MessageSource.group;
+
+  /// Whether this dialog is in a chat.
+  bool get isChat => peerType == MessageSource.chat;
+
+  /// Whether the sender is a user.
+  bool get isFromUser => senderType == MessageSource.user;
+
+  /// Whether the sender is a group.
+  bool get isFromGroup => senderType == MessageSource.group;
+
   /// Whether the message is out.
   bool get isOutbox => checkBoolUtil(message['out'] as int)!;
 
