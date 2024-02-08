@@ -15,7 +15,6 @@ linter:
     - comment_references
     - control_flow_in_finally
     - deprecated_member_use_from_same_package
-    - discarded_futures
     - hash_and_equals
     - implicit_reopen
     - invalid_case_patterns
@@ -30,7 +29,6 @@ linter:
     - unnecessary_statements
     - valid_regexps
     - always_declare_return_types
-    - always_put_control_body_on_new_line
     - always_put_required_named_parameters_first
     - annotate_overrides
     - annotate_redeclares
