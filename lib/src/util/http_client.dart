@@ -27,5 +27,6 @@ class HttpClient {
           .post(Uri.parse(url),
               body: _transformBody(body), headers: {...?headers, ..._headers})
           .then(_responseParsedBody)
-          .catchError(Future.error);
+          // ignore: unnecessary_lambdas
+          .catchError((error) => Future.error(error));
 }
