@@ -70,7 +70,8 @@ class CustomAttachmentModel extends AttachmentModel {
       if (match[4] != null) 'access_key': match[4],
     };
 
-    return CustomAttachmentModel(attachmentPayload, attachType: attachType);
+    return AttachmentModel.fromSpecificModel(attachmentPayload, attachType)
+        as CustomAttachmentModel;
   }
 
   /// Attachment owner identifier.
