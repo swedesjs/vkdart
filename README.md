@@ -32,43 +32,41 @@ void main() async {
 }
 ```
 
-Listening to events:
-```dart
-// message_new, message_edit, message_reply
-vkdart.onMessage().listen((event) {
-    if (event.isInbox)
-      vkdart.messages.send({
-        'peer_id': event.peerId,
-        'message': 'Hello!',
-        'random_id': RANDOM_ID,
-      });
-});
-```
-
-Listening on unsupported events:
-```dart
-vkdart
-    .onUnsupportedEvent()
-    .listen((event) => print('An unsupported event has arrived!\n'
-        'It is necessary to inform the chat https://t.me/vk_dart\n\n'
-        'Type of event ${event.eventType}\n'
-        'Event Object: ${event.object}'));
-```
-
-Modifying [Stream](https://www.dartlang.org/tutorials/language/streams#methods-that-modify-a-stream):
-```dart
-vkdart
-    .onMessage()
-    .where((event) => event.isNew && event.isChat)
-    .listen((event) => print('A new message from the chat room under the number: ${event.chatId}'));
-```
-
-All event handlers can be found on this [page](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html).
-
 Using API:
 ```dart
 await vkdart.users.get({'user_id': 'durov'});
 ```
+
+## Events
+[VkDart](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html) base class contains functions for processing VK API events.
+Some events are combined into a single handler, consider this example: 
+```dart
+/// message_new, message_reply, message_reply.
+vkdart.onMessage().listen((event) { ... });
+```
+
+In this case the events message_new, message_reply, message_edit will be processed in this listen. 
+In order to filter the necessary events, you can modify [Stream](https://www.dartlang.org/tutorials/language/streams#methods-that-modify-a-stream): 
+```dart
+vkdart.onMessage().where((event) => event.isNew && event.isChat).listen((event) { ... });
+```
+
+Due to the fact that VK API is also updated, new events are added, there is a handler [onUnsupportedEvent](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onUnsupportedEvent.html).
+If you have caught such an event, please report it to our [chat](https://t.me/vk_dart).
+```dart
+vkdart.onUnsupportedEvent().listen((event) {
+    print(
+      'An unsupported event has arrived!\n'
+      'It is necessary to inform the chat https://t.me/vk_dart\n\n'
+      'Type of event ${event.eventType}\n'
+      'Event Object: ${event.object}',
+    );
+});
+```
+
+> Each event handler, has its own functions, fields and other useful features. All update models can be found on this [page](https://pub.dev/documentation/vkdart/latest/vkdart.model/vkdart.model-library.html). 
+> 
+> All event handlers can be found on this [page](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html). 
 
 ## Keyboard
 The package includes a [keyboard builder](https://pub.dev/documentation/vkdart/latest/vkdart.util/VkDartKeyboard-class.html):
