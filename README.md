@@ -4,17 +4,17 @@
 [![Pub Popularity](https://img.shields.io/pub/popularity/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 [![Pub Points](https://img.shields.io/pub/points/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 
-> Package helps to make working with the [VK API](https://dev.vk.com/) easier.
+> The package helps to simplify the work with [VK API](https://dev.vk.com/).
 >
-> Chat discussion of the package - https://t.me/vk_dart
+> A chat room to discuss how the package works - https://t.me/vk_dart
 
 ## Features
-1. **Supports all methods.** Has interfaces of all public VK methods.
-2. **Reliable.** Functionality of the package is wrapped in Unit tests 
-3. **Event support.** Supports Callback API, Longpoll API
-4. **Developing.** Functionality is becoming more!
+1. **Supports all methods.** Has a description of all public VK methods.
+2. **Reliability.** Package functionality is wrapped in unit tests. 
+3. **Supports events.** Supports Callback API, Longpoll API
+4. **Development.** Functionality is becoming more and more every day!
 5. **Easy to use.** Very easy to use!
-6. **Support for models.**. It has a description of event models, attachments, and objects.ы 
+6. **Model support.**. There is a description of event, attachment and object models.
 
 ## Usage
 
@@ -35,20 +35,14 @@ void main() async {
 Listening to events:
 ```dart
 // message_new, message_edit, message_reply
-vkdart.onMessage().listen((event) => print('A message has arrived!\n\n'
-    'From ID: ${event.senderId}\n'
-    'From Type: ${event.senderType.name}\n'
-    'Dialog ID: ${event.peerId}\n'
-    'Dialog Type: ${event.peerType.name}\n'
-    'Outbox: ${event.isOutbox}'));
-
-// message_event
-vkdart.onMessageEvent().listen((event) => print(
-    'The user clicked on the Callback button!\n\n'
-    'Dialog ID: ${event.peerId}\n'
-    'UserID: ${event.userId}'
-    '${event.eventPayload != null ? '\nPayload: ${event.eventPayload}' : ''}'
-    '\nEventID: ${event.eventId}'));
+vkdart.onMessage().listen((event) {
+    if (event.isInbox)
+      vkdart.messages.send({
+        'peer_id': event.peerId,
+        'message': 'Hello!',
+        'random_id': RANDOM_ID,
+      });
+});
 ```
 
 Listening on unsupported events:
@@ -64,88 +58,140 @@ vkdart
 Modifying [Stream](https://www.dartlang.org/tutorials/language/streams#methods-that-modify-a-stream):
 ```dart
 vkdart
-    .onComment()
-    .where((event) => event.isPhotoComment && event.isNew)
-    .listen((event) => print('Commented on the photo!\n\n'
-        'Owner ID: ${event.ownerId}\n'
-        'Photo ID: ${event.objectId}'
-        '${event.attachments.isNotEmpty ? '\nAttachments: ${event.attachments}' : ''}'));
+    .onMessage()
+    .where((event) => event.isNew && event.isChat)
+    .listen((event) => print('A new message from the chat room under the number: ${event.chatId}'));
 ```
 
-All event handlers:
-```dart
-/// Listen for `message_new`, `message_edit`, `message_reply` events.
-Stream<VkDartMessageUpdate> onMessage();
-
-/// Listen for `message_allow` event.
-Stream<VkDartMessageAllowUpdate> onMessageAllow();
-
-/// Listen for `message_deny` event.
-Stream<VkDartMessageDenyUpdate> onMessageDeny();
-
-/// Listen for `message_typing_state` event.
-Stream<VkDartMessageTypingStateUpdate> onMessageTypingState();
-
-/// Listen for `message_event` event.
-Stream<VkDartMessageEventUpdate> onMessageEvent();
-
-/// Listen for `message_reaction_event` event.
-Stream<VkDartMessageReactionEvent> onMessageReactionEvent();
-
-/// Listen for `photo_new`, `video_new`, `audio_new` events.
-Stream<VkDartNewAttachmentUpdate> onAttachmentNew();
-
-/// Listen for `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
-/// `video_comment_new`, `video_comment_edit`, `video_comment_restore`, `video_comment_delete`,
-/// `market_comment_new`, `market_comment_edit`, `market_comment_restore`, `market_comment_delete`
-/// `wall_reply_new`, `wall_reply_edit`, `wall_reply_restore`, `wall_reply_delete`
-/// `board_post_new`, `board_post_edit`, `board_post_restore`, `board_post_delete` events.
-Stream<VkDartCommentUpdate> onComment();
-
-/// Listen for `wall_post_new`, `wall_repost` events.
-Stream<VkDartWallUpdate> onWall();
-
-/// Listen for `like_add`, `like_remove` events.
-Stream<VkDartLikeUpdate> onLike();
-
-/// Listen for `market_order_new`, `market_order_edit` events.
-Stream<VkDartMarketOrderUpdate> onMarketOrder();
-
-/// Listen for `group_join`, `group_leave` events.
-Stream<VkDartGroupUpdate> onGroup();
-
-/// Listen for `user_block`, `user_unblock` events.
-Stream<VkDartUserUpdate> onUser();
-
-/// Listen for `poll_vote_new` event.
-Stream<VkDartPollVoteNewUpdate> onPollVoteNew();
-
-/// Listen for `group_officers_edit`, `group_change_settings`, `group_change_photo` events.
-Stream<VkDartGroupChangeUpdate> onGroupChange();
-
-/// Listen for `vk_pay_transaction` event.
-Stream<VkDartPayTransactionUpdate> onVkpayTransaction();
-
-/// Listen for `app_payload` event.
-Stream<VkDartAppPayloadUpdate> onAppPayload();
-
-/// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`,
-/// `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error`s events.
-Stream<VkDartDonutUpdate> onDonut();
-
-/// Listen of unknown events.
-Stream<VkDartUnsupportedEventUpdate> onUnsupportedEvent();
-```
+All event handlers can be found on this [page](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html).
 
 Using API:
 ```dart
 await vkdart.users.get({'user_id': 'durov'});
 ```
 
+## Keyboard
+The package includes a [keyboard builder](https://pub.dev/documentation/vkdart/latest/vkdart.util/VkDartKeyboard-class.html):
+```dart
+import 'package:vkdart/util.dart' show VkDartKeyboard, VkDartKeyboardColor;
+
+final keyboard = VkDartKeyboard(
+    oneTime: true, // default value
+    inline: false // default value
+);
+```
+
+> Warning!
+> The keyboard grid has limitations:
+> - For conventional keyboard size: 5 × 10, maximum number of keys: 40
+> - For inline keyboard size: 5 × 6, maximum number of keys: 10
+
+Text button:
+```dart
+keyboard.addButtonText('Hello world!', color: VkDartKeyboardColor.primary, payload: {'button': 'text'});
+```
+> The payload will be available in [message_new](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onMessage.html) event, in the [messagePayload](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MessageModel/messagePayload.html) property. 
+
+URL button:
+```dart
+keyboard.addButtonLink('mysite.com', 'My Site');
+```
+
+Location button:
+```dart
+keyboard.addButtonLocation(payload: {'button': 'location'});
+```
+> The payload will be available in [message_new](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onMessage.html) event, in the [messagePayload](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MessageModel/messagePayload.html) property. 
+
+Vk Pay button: 
+```dart
+keyboard.addButtonVkPay("action=transfer-to-group&group_id=1&aid=10");
+```
+
+Open APP button:
+```dart
+keyboard.addButtonApp(6232540, -157525928, hash: "123", appName: 'LiveWidget');
+```
+
+Callback button:
+```dart
+keyboard.addButtonCallback(
+    'Hello world!', 
+    color: VkDartKeyboard.secondary, // default value
+    payload: {'button': 'callback'}
+);
+```
+> The payload will be available in the [message_event](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onMessageEvent.html) event, in the [eventPayload](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartMessageEventUpdate/eventPayload.html) property. 
+
+Usage in the [messages.send](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/Messages/send.html) method:
+```dart
+vkdart.messages.send({
+    'peer_id': PEER_ID,
+    'message': 'Hello world!',
+    'random_id': RANDOM_ID,
+    'keyboard': keyboard.toJson()
+});
+```
+
+Button Colors:
+| Field                         | Description                  | Color |
+| ----------------------------- | ---------------------------- | ----- |
+| VkDartKeyboardColor.primary   | Main Action                  | Blue  |
+| VkDartKeyboardColor.secondary | It's just a button           | White |
+| VkDartKeyboardColor.negative  | Dangerous Action or Failure  | Red   |
+| VkDartKeyboardColor.positive  | "Agree," "Confirm."          | Green |
+
+## Attachments
+There are two types of class:
+- [AttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/CustomAttachmentModel-class.html) - A base class on which all attachments (and those that can be attached) depend, which cannot be attached.
+  - [GiftAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/GiftAttachmentModel-class.html)
+  - [LinkAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/LinkAttachmentModel-class.html)
+  - [StickerAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/StickerAttachmentModel-class.html)
+- [CustomAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/CustomAttachmentModel-class.html) - Attachment class that can be attached `{attachment_type}{owner_id}_{attach_id}_{?access_key?}`.
+  - [PhotoAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/PhotoAttachmentModel-class.html)
+  - [AudioAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/AudioAttachmentModel-class.html)
+  - [DocumentAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/DocumentAttachmentModel-class.html)
+  - [GraffitiAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/GraffitiAttachmentModel-class.html)
+  - [MarketAlbumAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MarketAlbumAttachmentModel-class.html)
+  - [MarketAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MarketAttachmentModel-class.html)
+  - [NoteAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/NoteAttachmentModel-class.html)
+  - [PollAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/PollAttachmentModel-class.html)
+  - [VideoAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/VideoAttachmentModel-class.html)
+  - [WallAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/WallAttachmentModel-class.html)
+  - [WallReplyAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/WallReplyAttachmentModel-class.html)
+  - [WikiPageAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/WikiPageAttachmentModel-class.html)
+
+```dart
+final customAttachment = CustomAttachmentModel({
+    'owner_id': 1,
+    'id': 2,
+    // 'access_key': 'ACCESS_KEY'
+}, attachType: 'photo'); 
+```
+
+In VK there is a format of attachments, let's say to send it in private messages, for convenience the `CustomAttachmentModel` class has an overridden function `toString()`, which will return this format.
+```dart
+customAttachment.toString(); // photo1_2 and photo1_2_ACCESS_KEY (if access != null)
+[customAttachment, customAttachment].join(',') // photo1_2,photo1_2
+```
+
+Suppose we have an attachment object in Map format, in order to convert it into the necessary model, we will use the [`fromSpecificModel`](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/AttachmentModel/AttachmentModel.fromSpecificModel.html) constructor:
+```dart
+AttachmentModel.fromSpecificModel({
+    'owner_id': 1,
+    'id': 2
+}, attachType: 'photo'); // PhotoAttachmentModel
+```
+
+Convert the attachment string to a model: 
+```dart
+CustomAttachment.fromString('photo1_2'); // PhotoAttachmentModel
+```
+
 ## Future plans
-- Create **models** for received events ✔
-- Implement the VK Api **keyboard** interface.
-- Create a **command** constructor to simplify the creation of chatbots.
+- Release models of VK API objects. ✔
+- Release a class that makes keyboarding easier. ✔
+- Release features, for chat bot commands.
 
 ## Bugs and feature requests
 
