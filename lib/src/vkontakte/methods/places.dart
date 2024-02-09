@@ -9,6 +9,6 @@ class Places {
   final Api _api;
 
   /// Returns a list of user marks in places according to the specified parameters.
-  Future<ApiResponse<T>> getCheckins<T>(Map<String, Object> params) =>
-      _api.request<T>('places.getCheckins', params);
+  Future<Object> getCheckins(Map<String, dynamic> params) =>
+      _api.request('places.getCheckins', params);
 }

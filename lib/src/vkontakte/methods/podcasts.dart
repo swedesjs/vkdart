@@ -9,6 +9,6 @@ class Podcasts {
   final Api _api;
 
   /// Searches for podcasts by keywords.
-  Future<ApiResponse<T>> searchPodcast<T>(Map<String, Object> params) =>
-      _api.request<T>('podcasts.searchPodcast', params);
+  Future<Object> searchPodcast(Map<String, dynamic> params) =>
+      _api.request('podcasts.searchPodcast', params);
 }

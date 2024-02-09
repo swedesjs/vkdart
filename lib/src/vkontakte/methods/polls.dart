@@ -9,38 +9,38 @@ class Polls {
   final Api _api;
 
   /// Adds the current user's vote to the selected answer in the poll.
-  Future<ApiResponse<T>> addVote<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.addVote', params);
+  Future<Object> addVote(Map<String, dynamic> params) =>
+      _api.request('polls.addVote', params);
 
   /// Creates polls that can be attached to the users' or communities' posts.
-  Future<ApiResponse<T>> create<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.create', params);
+  Future<Object> create(Map<String, dynamic> params) =>
+      _api.request('polls.create', params);
 
   /// Deletes the current user's vote from the selected answer in the poll.
-  Future<ApiResponse<T>> deleteVote<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.deleteVote', params);
+  Future<Object> deleteVote(Map<String, dynamic> params) =>
+      _api.request('polls.deleteVote', params);
 
   /// Edits created polls
-  Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.edit', params);
+  Future<Object> edit(Map<String, dynamic> params) =>
+      _api.request('polls.edit', params);
 
   /// Returns options for the background image for surveys.
-  Future<ApiResponse<T>> getBackgrounds<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.getBackgrounds', params);
+  Future<Object> getBackgrounds(Map<String, dynamic> params) =>
+      _api.request('polls.getBackgrounds', params);
 
   /// Returns detailed information about a poll by its ID.
-  Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.getById', params);
+  Future<Object> getById(Map<String, dynamic> params) =>
+      _api.request('polls.getById', params);
 
   /// Returns the server address for uploading the background photo to the survey.
-  Future<ApiResponse<T>> getPhotoUploadServer<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.getPhotoUploadServer', params);
+  Future<Object> getPhotoUploadServer(Map<String, dynamic> params) =>
+      _api.request('polls.getPhotoUploadServer', params);
 
   /// Returns a list of IDs of users who selected specific answers in the poll.
-  Future<ApiResponse<T>> getVoters<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.getVoters', params);
+  Future<Object> getVoters(Map<String, dynamic> params) =>
+      _api.request('polls.getVoters', params);
 
   /// Saves the photo uploaded to the survey.
-  Future<ApiResponse<T>> savePhoto<T>(Map<String, Object> params) =>
-      _api.request<T>('polls.savePhoto', params);
+  Future<Object> savePhoto(Map<String, dynamic> params) =>
+      _api.request('polls.savePhoto', params);
 }

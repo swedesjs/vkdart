@@ -9,48 +9,46 @@ class Docs {
   final Api _api;
 
   /// Copies a document to a user's or community's document list.
-  Future<ApiResponse<T>> add<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.add', params);
+  Future<Object> add(Map<String, dynamic> params) =>
+      _api.request('docs.add', params);
 
   /// Deletes a user or community document.
-  Future<ApiResponse<T>> delete<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.delete', params);
+  Future<Object> delete(Map<String, dynamic> params) =>
+      _api.request('docs.delete', params);
 
   /// Edits a document.
-  Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.edit', params);
+  Future<Object> edit(Map<String, dynamic> params) =>
+      _api.request('docs.edit', params);
 
   /// Returns detailed information about user or community documents.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('docs.get', params);
 
   /// Returns information about documents by their IDs.
-  Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.getById', params);
+  Future<Object> getById(Map<String, dynamic> params) =>
+      _api.request('docs.getById', params);
 
   /// Returns the server address for document upload.
-  Future<ApiResponse<T>> getMessagesUploadServer<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('docs.getMessagesUploadServer', params);
+  Future<Object> getMessagesUploadServer(Map<String, dynamic> params) =>
+      _api.request('docs.getMessagesUploadServer', params);
 
   /// Returns documents types available for current user.
-  Future<ApiResponse<T>> getTypes<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.getTypes', params);
+  Future<Object> getTypes(Map<String, dynamic> params) =>
+      _api.request('docs.getTypes', params);
 
   /// Returns the server address for document upload.
-  Future<ApiResponse<T>> getUploadServer<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.getUploadServer', params);
+  Future<Object> getUploadServer(Map<String, dynamic> params) =>
+      _api.request('docs.getUploadServer', params);
 
   /// Returns the server address for document upload onto a user's or community's wall.
-  Future<ApiResponse<T>> getWallUploadServer<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.getWallUploadServer', params);
+  Future<Object> getWallUploadServer(Map<String, dynamic> params) =>
+      _api.request('docs.getWallUploadServer', params);
 
   /// Saves a document after [uploading it to a server](vk.com/dev/upload_files_2).
-  Future<ApiResponse<T>> save<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.save', params);
+  Future<Object> save(Map<String, dynamic> params) =>
+      _api.request('docs.save', params);
 
   /// Returns a list of documents matching the search criteria.
-  Future<ApiResponse<T>> search<T>(Map<String, Object> params) =>
-      _api.request<T>('docs.search', params);
+  Future<Object> search(Map<String, dynamic> params) =>
+      _api.request('docs.search', params);
 }

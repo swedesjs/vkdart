@@ -9,34 +9,34 @@ class Pages {
   final Api _api;
 
   /// Allows to clear the cache of particular 'external' pages which may be attached to VK posts.
-  Future<ApiResponse<T>> clearCache<T>(Map<String, Object> params) =>
-      _api.request<T>('pages.clearCache', params);
+  Future<Object> clearCache(Map<String, dynamic> params) =>
+      _api.request('pages.clearCache', params);
 
   /// Returns information about a wiki page.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('pages.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('pages.get', params);
 
   /// Returns a list of all previous versions of a wiki page.
-  Future<ApiResponse<T>> getHistory<T>(Map<String, Object> params) =>
-      _api.request<T>('pages.getHistory', params);
+  Future<Object> getHistory(Map<String, dynamic> params) =>
+      _api.request('pages.getHistory', params);
 
   /// Returns a list of wiki pages in a group.
-  Future<ApiResponse<T>> getTitles<T>(Map<String, Object> params) =>
-      _api.request<T>('pages.getTitles', params);
+  Future<Object> getTitles(Map<String, dynamic> params) =>
+      _api.request('pages.getTitles', params);
 
   /// Returns the text of one of the previous versions of a wiki page.
-  Future<ApiResponse<T>> getVersion<T>(Map<String, Object> params) =>
-      _api.request<T>('pages.getVersion', params);
+  Future<Object> getVersion(Map<String, dynamic> params) =>
+      _api.request('pages.getVersion', params);
 
   /// Returns HTML representation of the wiki markup.
-  Future<ApiResponse<T>> parseWiki<T>(Map<String, Object> params) =>
-      _api.request<T>('pages.parseWiki', params);
+  Future<Object> parseWiki(Map<String, dynamic> params) =>
+      _api.request('pages.parseWiki', params);
 
   /// Saves the text of a wiki page.
-  Future<ApiResponse<T>> save<T>(Map<String, Object> params) =>
-      _api.request<T>('pages.save', params);
+  Future<Object> save(Map<String, dynamic> params) =>
+      _api.request('pages.save', params);
 
   /// Saves modified read and edit access settings for a wiki page.
-  Future<ApiResponse<T>> saveAccess<T>(Map<String, Object> params) =>
-      _api.request<T>('pages.saveAccess', params);
+  Future<Object> saveAccess(Map<String, dynamic> params) =>
+      _api.request('pages.saveAccess', params);
 }

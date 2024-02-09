@@ -9,30 +9,30 @@ class LeadForms {
   final Api _api;
 
   /// Creates a request collection form.
-  Future<ApiResponse<T>> create<T>(Map<String, Object> params) =>
-      _api.request<T>('leadForms.create', params);
+  Future<Object> create(Map<String, dynamic> params) =>
+      _api.request('leadForms.create', params);
 
   /// Deletes the request collection form.
-  Future<ApiResponse<T>> delete<T>(Map<String, Object> params) =>
-      _api.request<T>('leadForms.delete', params);
+  Future<Object> delete(Map<String, dynamic> params) =>
+      _api.request('leadForms.delete', params);
 
   /// Returns information about the application collection form.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('leadForms.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('leadForms.get', params);
 
   /// Returns the form requests.
-  Future<ApiResponse<T>> getLeads<T>(Map<String, Object> params) =>
-      _api.request<T>('leadForms.getLeads', params);
+  Future<Object> getLeads(Map<String, dynamic> params) =>
+      _api.request('leadForms.getLeads', params);
 
   /// Returns the URL for uploading the cover for the form.
-  Future<ApiResponse<T>> getUploadURL<T>(Map<String, Object> params) =>
-      _api.request<T>('leadForms.getUploadURL', params);
+  Future<Object> getUploadURL(Map<String, dynamic> params) =>
+      _api.request('leadForms.getUploadURL', params);
 
   /// Returns a list of community forms.
-  Future<ApiResponse<T>> list<T>(Map<String, Object> params) =>
-      _api.request<T>('leadForms.list', params);
+  Future<Object> list(Map<String, dynamic> params) =>
+      _api.request('leadForms.list', params);
 
   /// Updates the application collection form.
-  Future<ApiResponse<T>> update<T>(Map<String, Object> params) =>
-      _api.request<T>('leadForms.update', params);
+  Future<Object> update(Map<String, dynamic> params) =>
+      _api.request('leadForms.update', params);
 }

@@ -10,6 +10,6 @@ class Translations {
   final Api _api;
 
   /// Translates the text.
-  Future<ApiResponse<T>> translate<T>(Map<String, Object> params) =>
-      _api.request<T>('translations.translate', params);
+  Future<Object> translate(Map<String, dynamic> params) =>
+      _api.request('translations.translate', params);
 }

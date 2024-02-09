@@ -10,224 +10,220 @@ class Groups {
 
   /// Allows you to add an address to the community.
   /// The list of addresses can be obtained using the [getAddresses] method.
-  Future<ApiResponse<T>> addAddress<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.addAddress', params);
+  Future<Object> addAddress(Map<String, dynamic> params) =>
+      _api.request('groups.addAddress', params);
 
   /// Adds a server for the [Callback API](https://dev.vk.com/ru/api/callback/getting-started) to the community.
-  Future<ApiResponse<T>> addCallbackServer<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.addCallbackServer', params);
+  Future<Object> addCallbackServer(Map<String, dynamic> params) =>
+      _api.request('groups.addCallbackServer', params);
 
   /// Allows to add a link to the community.
-  Future<ApiResponse<T>> addLink<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.addLink', params);
+  Future<Object> addLink(Map<String, dynamic> params) =>
+      _api.request('groups.addLink', params);
 
   /// Allows to approve join request to the community.
-  Future<ApiResponse<T>> approveRequest<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.approveRequest', params);
+  Future<Object> approveRequest(Map<String, dynamic> params) =>
+      _api.request('groups.approveRequest', params);
 
   /// Adds a user or group to the community blacklist.
-  Future<ApiResponse<T>> ban<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.ban', params);
+  Future<Object> ban(Map<String, dynamic> params) =>
+      _api.request('groups.ban', params);
 
   /// Creates a new community.
-  Future<ApiResponse<T>> create<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.create', params);
+  Future<Object> create(Map<String, dynamic> params) =>
+      _api.request('groups.create', params);
 
   /// Deletes the address of the community.
-  Future<ApiResponse<T>> deleteAddress<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.deleteAddress', params);
+  Future<Object> deleteAddress(Map<String, dynamic> params) =>
+      _api.request('groups.deleteAddress', params);
 
   /// Deletes the server for the [Callback API](https://dev.vk.com/ru/api/callback/getting-started) from the community.
-  Future<ApiResponse<T>> deleteCallbackServer<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.deleteCallbackServer', params);
+  Future<Object> deleteCallbackServer(Map<String, dynamic> params) =>
+      _api.request('groups.deleteCallbackServer', params);
 
   /// Allows to delete a link from the community.
-  Future<ApiResponse<T>> deleteLink<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.deleteLink', params);
+  Future<Object> deleteLink(Map<String, dynamic> params) =>
+      _api.request('groups.deleteLink', params);
 
   /// Disables the "online" status in the community.
-  Future<ApiResponse<T>> disableOnline<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.disableOnline', params);
+  Future<Object> disableOnline(Map<String, dynamic> params) =>
+      _api.request('groups.disableOnline', params);
 
   /// Edits a community.
-  Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.edit', params);
+  Future<Object> edit(Map<String, dynamic> params) =>
+      _api.request('groups.edit', params);
 
   /// The method edits the address in the community.
   /// To get a list of addresses, call the [getAddresses] method.
-  Future<ApiResponse<T>> editAddress<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.editAddress', params);
+  Future<Object> editAddress(Map<String, dynamic> params) =>
+      _api.request('groups.editAddress', params);
 
   /// Edits server data for [Callback API](https://dev.vk.com/ru/api/callback/getting-started) in the community.
-  Future<ApiResponse<T>> editCallbackServer<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.editCallbackServer', params);
+  Future<Object> editCallbackServer(Map<String, dynamic> params) =>
+      _api.request('groups.editCallbackServer', params);
 
   /// Allows to edit a link in the community.
-  Future<ApiResponse<T>> editLink<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.editLink', params);
+  Future<Object> editLink(Map<String, dynamic> params) =>
+      _api.request('groups.editLink', params);
 
   /// Allows to add, remove or edit the community manager.
-  Future<ApiResponse<T>> editManager<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.editManager', params);
+  Future<Object> editManager(Map<String, dynamic> params) =>
+      _api.request('groups.editManager', params);
 
   /// Allows you to edit information about the location of the group.
-  Future<ApiResponse<T>> editPlace<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.editPlace', params);
+  Future<Object> editPlace(Map<String, dynamic> params) =>
+      _api.request('groups.editPlace', params);
 
   /// Enables the "online" status in the community.
-  Future<ApiResponse<T>> enableOnline<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.enableOnline', params);
+  Future<Object> enableOnline(Map<String, dynamic> params) =>
+      _api.request('groups.enableOnline', params);
 
   /// Returns a list of the communities to which a user belongs.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('groups.get', params);
 
   /// Returns a list of community addresses.
-  Future<ApiResponse<T>> getAddresses<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getAddresses', params);
+  Future<Object> getAddresses(Map<String, dynamic> params) =>
+      _api.request('groups.getAddresses', params);
 
   /// Returns a list of users on a community blacklist.
-  Future<ApiResponse<T>> getBanned<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getBanned', params);
+  Future<Object> getBanned(Map<String, dynamic> params) =>
+      _api.request('groups.getBanned', params);
 
   /// Returns information about communities by their IDs.
-  Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getById', params);
+  Future<Object> getById(Map<String, dynamic> params) =>
+      _api.request('groups.getById', params);
 
   /// Returns Callback API confirmation code for the community.
-  Future<ApiResponse<T>> getCallbackConfirmationCode<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('groups.getCallbackConfirmationCode', params);
+  Future<Object> getCallbackConfirmationCode(Map<String, dynamic> params) =>
+      _api.request('groups.getCallbackConfirmationCode', params);
 
   /// Allows you to get information about the server settings for receiving Callback API notifications in the community.
-  Future<ApiResponse<T>> getCallbackServerSettings<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('groups.getCallbackServerSettings', params);
+  Future<Object> getCallbackServerSettings(Map<String, dynamic> params) =>
+      _api.request('groups.getCallbackServerSettings', params);
 
   /// Retrieves information about servers for the [Callback API](https://dev.vk.com/ru/api/callback/getting-started) in the community.
-  Future<ApiResponse<T>> getCallbackServers<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getCallbackServers', params);
+  Future<Object> getCallbackServers(Map<String, dynamic> params) =>
+      _api.request('groups.getCallbackServers', params);
 
   /// Returns [Callback API](vk.com/dev/callback_api) notifications settings.
-  Future<ApiResponse<T>> getCallbackSettings<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getCallbackSettings', params);
+  Future<Object> getCallbackSettings(Map<String, dynamic> params) =>
+      _api.request('groups.getCallbackSettings', params);
 
   /// Returns communities list for a catalog category.
-  Future<ApiResponse<T>> getCatalog<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getCatalog', params);
+  Future<Object> getCatalog(Map<String, dynamic> params) =>
+      _api.request('groups.getCatalog', params);
 
   /// Returns categories list for communities catalog
-  Future<ApiResponse<T>> getCatalogInfo<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getCatalogInfo', params);
+  Future<Object> getCatalogInfo(Map<String, dynamic> params) =>
+      _api.request('groups.getCatalogInfo', params);
 
   /// Returns invited users list of a community
-  Future<ApiResponse<T>> getInvitedUsers<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getInvitedUsers', params);
+  Future<Object> getInvitedUsers(Map<String, dynamic> params) =>
+      _api.request('groups.getInvitedUsers', params);
 
   /// Returns a list of invitations to join communities and events.
-  Future<ApiResponse<T>> getInvites<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getInvites', params);
+  Future<Object> getInvites(Map<String, dynamic> params) =>
+      _api.request('groups.getInvites', params);
 
   /// Returns the data needed to query a Long Poll server for events
-  Future<ApiResponse<T>> getLongPollServer<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getLongPollServer', params);
+  Future<Object> getLongPollServer(Map<String, dynamic> params) =>
+      _api.request('groups.getLongPollServer', params);
 
   /// Returns Long Poll notification settings
-  Future<ApiResponse<T>> getLongPollSettings<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getLongPollSettings', params);
+  Future<Object> getLongPollSettings(Map<String, dynamic> params) =>
+      _api.request('groups.getLongPollSettings', params);
 
   /// Returns a list of community members.
-  Future<ApiResponse<T>> getMembers<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getMembers', params);
+  Future<Object> getMembers(Map<String, dynamic> params) =>
+      _api.request('groups.getMembers', params);
 
   /// Receives information about the "online" status in the community.
-  Future<ApiResponse<T>> getOnlineStatus<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getOnlineStatus', params);
+  Future<Object> getOnlineStatus(Map<String, dynamic> params) =>
+      _api.request('groups.getOnlineStatus', params);
 
   /// Returns a list of requests to the community.
-  Future<ApiResponse<T>> getRequests<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getRequests', params);
+  Future<Object> getRequests(Map<String, dynamic> params) =>
+      _api.request('groups.getRequests', params);
 
   /// Returns community settings.
-  Future<ApiResponse<T>> getSettings<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getSettings', params);
+  Future<Object> getSettings(Map<String, dynamic> params) =>
+      _api.request('groups.getSettings', params);
 
   /// List of group's tags
-  Future<ApiResponse<T>> getTagList<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getTagList', params);
+  Future<Object> getTagList(Map<String, dynamic> params) =>
+      _api.request('groups.getTagList', params);
 
   /// Returns the rights settings for the community access key.
-  Future<ApiResponse<T>> getTokenPermissions<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.getTokenPermissions', params);
+  Future<Object> getTokenPermissions(Map<String, dynamic> params) =>
+      _api.request('groups.getTokenPermissions', params);
 
   /// Allows to invite friends to the community.
-  Future<ApiResponse<T>> invite<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.invite', params);
+  Future<Object> invite(Map<String, dynamic> params) =>
+      _api.request('groups.invite', params);
 
   /// Returns information specifying whether a user is a member of a community.
-  Future<ApiResponse<T>> isMember<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.isMember', params);
+  Future<Object> isMember(Map<String, dynamic> params) =>
+      _api.request('groups.isMember', params);
 
   /// With this method you can join the group or public page,
   /// and also confirm your participation in an event.
-  Future<ApiResponse<T>> join<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.join', params);
+  Future<Object> join(Map<String, dynamic> params) =>
+      _api.request('groups.join', params);
 
   /// With this method you can leave a group, public page, or event.
-  Future<ApiResponse<T>> leave<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.leave', params);
+  Future<Object> leave(Map<String, dynamic> params) =>
+      _api.request('groups.leave', params);
 
   /// Removes a user from the community.
-  Future<ApiResponse<T>> removeUser<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.removeUser', params);
+  Future<Object> removeUser(Map<String, dynamic> params) =>
+      _api.request('groups.removeUser', params);
 
   /// Allows to reorder links in the community.
-  Future<ApiResponse<T>> reorderLink<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.reorderLink', params);
+  Future<Object> reorderLink(Map<String, dynamic> params) =>
+      _api.request('groups.reorderLink', params);
 
   /// Returns a list of communities matching the search criteria.
-  Future<ApiResponse<T>> search<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.search', params);
+  Future<Object> search(Map<String, dynamic> params) =>
+      _api.request('groups.search', params);
 
   /// Allow to set notifications settings for group.
-  Future<ApiResponse<T>> setCallbackSettings<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.setCallbackSettings', params);
+  Future<Object> setCallbackSettings(Map<String, dynamic> params) =>
+      _api.request('groups.setCallbackSettings', params);
 
   /// Sets Long Poll notification settings
-  Future<ApiResponse<T>> setLongPollSettings<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.setLongPollSettings', params);
+  Future<Object> setLongPollSettings(Map<String, dynamic> params) =>
+      _api.request('groups.setLongPollSettings', params);
 
   /// Sets the community settings
-  Future<ApiResponse<T>> setSettings<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.setSettings', params);
+  Future<Object> setSettings(Map<String, dynamic> params) =>
+      _api.request('groups.setSettings', params);
 
   /// In order to save note about group participant
-  Future<ApiResponse<T>> setUserNote<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.setUserNote', params);
+  Future<Object> setUserNote(Map<String, dynamic> params) =>
+      _api.request('groups.setUserNote', params);
 
   /// Add new group's tag
-  Future<ApiResponse<T>> tagAdd<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.tagAdd', params);
+  Future<Object> tagAdd(Map<String, dynamic> params) =>
+      _api.request('groups.tagAdd', params);
 
   /// Bind or unbind group's tag to user
-  Future<ApiResponse<T>> tagBind<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.tagBind', params);
+  Future<Object> tagBind(Map<String, dynamic> params) =>
+      _api.request('groups.tagBind', params);
 
   /// Delete group's tag
-  Future<ApiResponse<T>> tagDelete<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.tagDelete', params);
+  Future<Object> tagDelete(Map<String, dynamic> params) =>
+      _api.request('groups.tagDelete', params);
 
   /// Update group's tag
-  Future<ApiResponse<T>> tagUpdate<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.tagUpdate', params);
+  Future<Object> tagUpdate(Map<String, dynamic> params) =>
+      _api.request('groups.tagUpdate', params);
 
   /// Switches the functionality of the "Products" section in the selected group.
-  Future<ApiResponse<T>> toggleMarket<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.toggleMarket', params);
+  Future<Object> toggleMarket(Map<String, dynamic> params) =>
+      _api.request('groups.toggleMarket', params);
 
   /// Removes a user or group from the community blacklist.
-  Future<ApiResponse<T>> unban<T>(Map<String, Object> params) =>
-      _api.request<T>('groups.unban', params);
+  Future<Object> unban(Map<String, dynamic> params) =>
+      _api.request('groups.unban', params);
 }

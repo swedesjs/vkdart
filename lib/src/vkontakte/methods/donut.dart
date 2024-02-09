@@ -9,18 +9,18 @@ class Donut {
   final Api _api;
 
   /// Returns a list of dons who are subscribed to certain communities from among the user's friends.
-  Future<ApiResponse<T>> getFriends<T>(Map<String, Object> params) =>
-      _api.request<T>('donut.getFriends', params);
+  Future<Object> getFriends(Map<String, dynamic> params) =>
+      _api.request('donut.getFriends', params);
 
   /// Returns information about VK Donut subscription.
-  Future<ApiResponse<T>> getSubscription<T>(Map<String, Object> params) =>
-      _api.request<T>('donut.getSubscription', params);
+  Future<Object> getSubscription(Map<String, dynamic> params) =>
+      _api.request('donut.getSubscription', params);
 
   /// Returns a list of user's VK Donut subscriptions.
-  Future<ApiResponse<T>> getSubscriptions<T>(Map<String, Object> params) =>
-      _api.request<T>('donut.getSubscriptions', params);
+  Future<Object> getSubscriptions(Map<String, dynamic> params) =>
+      _api.request('donut.getSubscriptions', params);
 
   /// Returns information about whether the user is subscribed to paid content (is a don).
-  Future<ApiResponse<T>> isDon<T>(Map<String, Object> params) =>
-      _api.request<T>('donut.isDon', params);
+  Future<Object> isDon(Map<String, dynamic> params) =>
+      _api.request('donut.isDon', params);
 }

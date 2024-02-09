@@ -9,10 +9,10 @@ class Status {
   final Api _api;
 
   /// Returns data required to show the status of a user or community.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('status.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('status.get', params);
 
   /// Sets a new status for the current user.
-  Future<ApiResponse<T>> set<T>(Map<String, Object> params) =>
-      _api.request<T>('status.set', params);
+  Future<Object> set(Map<String, dynamic> params) =>
+      _api.request('status.set', params);
 }

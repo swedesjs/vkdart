@@ -9,10 +9,10 @@ class Widgets {
   final Api _api;
 
   /// Gets a list of comments for the page added through the [Comments widget](vk.com/dev/Comments).
-  Future<ApiResponse<T>> getComments<T>(Map<String, Object> params) =>
-      _api.request<T>('widgets.getComments', params);
+  Future<Object> getComments(Map<String, dynamic> params) =>
+      _api.request('widgets.getComments', params);
 
   /// Gets a list of application/site pages where the [Comments widget](vk.com/dev/Comments) or [Like widget](vk.com/dev/Like) is installed.
-  Future<ApiResponse<T>> getPages<T>(Map<String, Object> params) =>
-      _api.request<T>('widgets.getPages', params);
+  Future<Object> getPages(Map<String, dynamic> params) =>
+      _api.request('widgets.getPages', params);
 }

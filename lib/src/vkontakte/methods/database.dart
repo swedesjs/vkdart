@@ -9,50 +9,50 @@ class Database {
   final Api _api;
 
   /// Returns list of chairs on a specified faculty.
-  Future<ApiResponse<T>> getChairs<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getChairs', params);
+  Future<Object> getChairs(Map<String, dynamic> params) =>
+      _api.request('database.getChairs', params);
 
   /// Returns a list of cities.
-  Future<ApiResponse<T>> getCities<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getCities', params);
+  Future<Object> getCities(Map<String, dynamic> params) =>
+      _api.request('database.getCities', params);
 
   /// Returns information about cities by their IDs.
-  Future<ApiResponse<T>> getCitiesById<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getCitiesById', params);
+  Future<Object> getCitiesById(Map<String, dynamic> params) =>
+      _api.request('database.getCitiesById', params);
 
   /// Returns a list of countries.
-  Future<ApiResponse<T>> getCountries<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getCountries', params);
+  Future<Object> getCountries(Map<String, dynamic> params) =>
+      _api.request('database.getCountries', params);
 
   /// Returns information about countries by their IDs.
-  Future<ApiResponse<T>> getCountriesById<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getCountriesById', params);
+  Future<Object> getCountriesById(Map<String, dynamic> params) =>
+      _api.request('database.getCountriesById', params);
 
   /// Returns a list of faculties (i.e., university departments).
-  Future<ApiResponse<T>> getFaculties<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getFaculties', params);
+  Future<Object> getFaculties(Map<String, dynamic> params) =>
+      _api.request('database.getFaculties', params);
 
   /// Get metro stations by city
-  Future<ApiResponse<T>> getMetroStations<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getMetroStations', params);
+  Future<Object> getMetroStations(Map<String, dynamic> params) =>
+      _api.request('database.getMetroStations', params);
 
   /// Get metro station by his id
-  Future<ApiResponse<T>> getMetroStationsById<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getMetroStationsById', params);
+  Future<Object> getMetroStationsById(Map<String, dynamic> params) =>
+      _api.request('database.getMetroStationsById', params);
 
   /// Returns a list of regions.
-  Future<ApiResponse<T>> getRegions<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getRegions', params);
+  Future<Object> getRegions(Map<String, dynamic> params) =>
+      _api.request('database.getRegions', params);
 
   /// Returns a list of school classes specified for the country.
-  Future<ApiResponse<T>> getSchoolClasses<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getSchoolClasses', params);
+  Future<Object> getSchoolClasses(Map<String, dynamic> params) =>
+      _api.request('database.getSchoolClasses', params);
 
   /// Returns a list of schools.
-  Future<ApiResponse<T>> getSchools<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getSchools', params);
+  Future<Object> getSchools(Map<String, dynamic> params) =>
+      _api.request('database.getSchools', params);
 
   /// Returns a list of higher education institutions.
-  Future<ApiResponse<T>> getUniversities<T>(Map<String, Object> params) =>
-      _api.request<T>('database.getUniversities', params);
+  Future<Object> getUniversities(Map<String, dynamic> params) =>
+      _api.request('database.getUniversities', params);
 }
