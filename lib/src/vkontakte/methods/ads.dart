@@ -9,189 +9,187 @@ class Ads {
   final Api _api;
 
   /// Adds managers and/or supervisors to advertising account.
-  Future<ApiResponse<T>> addOfficeUsers<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.addOfficeUsers', params);
+  Future<Object> addOfficeUsers(Map<String, dynamic> params) =>
+      _api.request('ads.addOfficeUsers', params);
 
   /// Allows to check the ad link.
-  Future<ApiResponse<T>> checkLink<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.checkLink', params);
+  Future<Object> checkLink(Map<String, dynamic> params) =>
+      _api.request('ads.checkLink', params);
 
   /// Creates ads.
-  Future<ApiResponse<T>> createAds<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.createAds', params);
+  Future<Object> createAds(Map<String, dynamic> params) =>
+      _api.request('ads.createAds', params);
 
   /// Creates advertising campaigns.
-  Future<ApiResponse<T>> createCampaigns<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.createCampaigns', params);
+  Future<Object> createCampaigns(Map<String, dynamic> params) =>
+      _api.request('ads.createCampaigns', params);
 
   /// Creates clients of an advertising agency.
-  Future<ApiResponse<T>> createClients<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.createClients', params);
+  Future<Object> createClients(Map<String, dynamic> params) =>
+      _api.request('ads.createClients', params);
 
   /// Creates a group to re-target ads for users who visited advertiser's site
   /// (viewed information about the product, registered, etc.).
-  Future<ApiResponse<T>> createTargetGroup<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.createTargetGroup', params);
+  Future<Object> createTargetGroup(Map<String, dynamic> params) =>
+      _api.request('ads.createTargetGroup', params);
 
   /// Archives ads.
-  Future<ApiResponse<T>> deleteAds<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.deleteAds', params);
+  Future<Object> deleteAds(Map<String, dynamic> params) =>
+      _api.request('ads.deleteAds', params);
 
   /// Archives advertising campaigns.
-  Future<ApiResponse<T>> deleteCampaigns<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.deleteCampaigns', params);
+  Future<Object> deleteCampaigns(Map<String, dynamic> params) =>
+      _api.request('ads.deleteCampaigns', params);
 
   /// Archives clients of an advertising agency.
-  Future<ApiResponse<T>> deleteClients<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.deleteClients', params);
+  Future<Object> deleteClients(Map<String, dynamic> params) =>
+      _api.request('ads.deleteClients', params);
 
   /// Deletes a retarget group.
-  Future<ApiResponse<T>> deleteTargetGroup<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.deleteTargetGroup', params);
+  Future<Object> deleteTargetGroup(Map<String, dynamic> params) =>
+      _api.request('ads.deleteTargetGroup', params);
 
   /// Returns a list of advertising accounts.
-  Future<ApiResponse<T>> getAccounts<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getAccounts', params);
+  Future<Object> getAccounts(Map<String, dynamic> params) =>
+      _api.request('ads.getAccounts', params);
 
   /// Returns number of ads.
-  Future<ApiResponse<T>> getAds<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getAds', params);
+  Future<Object> getAds(Map<String, dynamic> params) =>
+      _api.request('ads.getAds', params);
 
   /// Returns descriptions of ad layouts.
-  Future<ApiResponse<T>> getAdsLayout<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getAdsLayout', params);
+  Future<Object> getAdsLayout(Map<String, dynamic> params) =>
+      _api.request('ads.getAdsLayout', params);
 
   /// Returns detailed information about the coverage of advertising records.
-  Future<ApiResponse<T>> getAdsPostsReach<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getAdsPostsReach', params);
+  Future<Object> getAdsPostsReach(Map<String, dynamic> params) =>
+      _api.request('ads.getAdsPostsReach', params);
 
   /// Returns ad targeting parameters.
-  Future<ApiResponse<T>> getAdsTargeting<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getAdsTargeting', params);
+  Future<Object> getAdsTargeting(Map<String, dynamic> params) =>
+      _api.request('ads.getAdsTargeting', params);
 
   /// Returns current budget of the advertising account.
-  Future<ApiResponse<T>> getBudget<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getBudget', params);
+  Future<Object> getBudget(Map<String, dynamic> params) =>
+      _api.request('ads.getBudget', params);
 
   /// Returns a list of campaigns in an advertising account.
-  Future<ApiResponse<T>> getCampaigns<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getCampaigns', params);
+  Future<Object> getCampaigns(Map<String, dynamic> params) =>
+      _api.request('ads.getCampaigns', params);
 
   /// Returns a list of possible ad categories.
-  Future<ApiResponse<T>> getCategories<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getCategories', params);
+  Future<Object> getCategories(Map<String, dynamic> params) =>
+      _api.request('ads.getCategories', params);
 
   /// Returns a list of advertising agency's clients.
-  Future<ApiResponse<T>> getClients<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getClients', params);
+  Future<Object> getClients(Map<String, dynamic> params) =>
+      _api.request('ads.getClients', params);
 
   /// Returns demographics for ads or campaigns.
-  Future<ApiResponse<T>> getDemographics<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getDemographics', params);
+  Future<Object> getDemographics(Map<String, dynamic> params) =>
+      _api.request('ads.getDemographics', params);
 
   /// Returns information about current state of a counter — number of remaining
   ///  runs of methods and time to the next counter nulling in seconds.
-  Future<ApiResponse<T>> getFloodStats<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getFloodStats', params);
+  Future<Object> getFloodStats(Map<String, dynamic> params) =>
+      _api.request('ads.getFloodStats', params);
 
   /// Returns a list of search queries for a similar audience.
-  Future<ApiResponse<T>> getLookalikeRequests<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getLookalikeRequests', params);
+  Future<Object> getLookalikeRequests(Map<String, dynamic> params) =>
+      _api.request('ads.getLookalikeRequests', params);
 
   /// Returns information about the musicians whose listeners are targeted.
-  Future<ApiResponse<T>> getMusicians<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getMusicians', params);
+  Future<Object> getMusicians(Map<String, dynamic> params) =>
+      _api.request('ads.getMusicians', params);
 
   /// Returns information about musicians to listeners for whom targeting is available.
-  Future<ApiResponse<T>> getMusiciansByIds<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getMusiciansByIds', params);
+  Future<Object> getMusiciansByIds(Map<String, dynamic> params) =>
+      _api.request('ads.getMusiciansByIds', params);
 
   /// Returns a list of managers and supervisors of advertising account.
-  Future<ApiResponse<T>> getOfficeUsers<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getOfficeUsers', params);
+  Future<Object> getOfficeUsers(Map<String, dynamic> params) =>
+      _api.request('ads.getOfficeUsers', params);
 
   /// Returns detailed statistics of promoted posts reach from campaigns and ads.
-  Future<ApiResponse<T>> getPostsReach<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getPostsReach', params);
+  Future<Object> getPostsReach(Map<String, dynamic> params) =>
+      _api.request('ads.getPostsReach', params);
 
   /// Returns a reason of ad rejection for pre-moderation.
-  Future<ApiResponse<T>> getRejectionReason<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getRejectionReason', params);
+  Future<Object> getRejectionReason(Map<String, dynamic> params) =>
+      _api.request('ads.getRejectionReason', params);
 
   /// Returns statistics of performance indicators for ads, campaigns, clients
   ///  or the whole account.
-  Future<ApiResponse<T>> getStatistics<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getStatistics', params);
+  Future<Object> getStatistics(Map<String, dynamic> params) =>
+      _api.request('ads.getStatistics', params);
 
   /// Returns a set of auto-suggestions for various targeting parameters.
-  Future<ApiResponse<T>> getSuggestions<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getSuggestions', params);
+  Future<Object> getSuggestions(Map<String, dynamic> params) =>
+      _api.request('ads.getSuggestions', params);
 
   /// Returns a list of target groups.
-  Future<ApiResponse<T>> getTargetGroups<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getTargetGroups', params);
+  Future<Object> getTargetGroups(Map<String, dynamic> params) =>
+      _api.request('ads.getTargetGroups', params);
 
   /// Returns a list of retargeting pixels.
-  Future<ApiResponse<T>> getTargetPixels<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getTargetPixels', params);
+  Future<Object> getTargetPixels(Map<String, dynamic> params) =>
+      _api.request('ads.getTargetPixels', params);
 
   /// Returns the size of targeting audience, and also recommended values for
   ///  CPC and CPM.
-  Future<ApiResponse<T>> getTargetingStats<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getTargetingStats', params);
+  Future<Object> getTargetingStats(Map<String, dynamic> params) =>
+      _api.request('ads.getTargetingStats', params);
 
   /// Returns URL to upload an ad photo to.
-  Future<ApiResponse<T>> getUploadURL<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getUploadURL', params);
+  Future<Object> getUploadURL(Map<String, dynamic> params) =>
+      _api.request('ads.getUploadURL', params);
 
   /// Returns URL to upload an ad video to.
-  Future<ApiResponse<T>> getVideoUploadURL<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.getVideoUploadURL', params);
+  Future<Object> getVideoUploadURL(Map<String, dynamic> params) =>
+      _api.request('ads.getVideoUploadURL', params);
 
   /// Imports a list of advertiser's contacts to count VK registered users again
   /// st the target group.
-  Future<ApiResponse<T>> importTargetContacts<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.importTargetContacts', params);
+  Future<Object> importTargetContacts(Map<String, dynamic> params) =>
+      _api.request('ads.importTargetContacts', params);
 
   /// Removes managers and/or supervisors from advertising account.
-  Future<ApiResponse<T>> removeOfficeUsers<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.removeOfficeUsers', params);
+  Future<Object> removeOfficeUsers(Map<String, dynamic> params) =>
+      _api.request('ads.removeOfficeUsers', params);
 
   /// Accepts a request to exclude the advertiser's contacts from the retargeting audience.
-  Future<ApiResponse<T>> removeTargetContacts<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.removeTargetContacts', params);
+  Future<Object> removeTargetContacts(Map<String, dynamic> params) =>
+      _api.request('ads.removeTargetContacts', params);
 
   /// Saves the search result for a similar audience.
-  Future<ApiResponse<T>> saveLookalikeRequestResult<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('ads.saveLookalikeRequestResult', params);
+  Future<Object> saveLookalikeRequestResult(Map<String, dynamic> params) =>
+      _api.request('ads.saveLookalikeRequestResult', params);
 
   /// Provides access to the retargeting audience to another advertising account.
-  Future<ApiResponse<T>> shareTargetGroup<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.shareTargetGroup', params);
+  Future<Object> shareTargetGroup(Map<String, dynamic> params) =>
+      _api.request('ads.shareTargetGroup', params);
 
   /// Edits ads.
-  Future<ApiResponse<T>> updateAds<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.updateAds', params);
+  Future<Object> updateAds(Map<String, dynamic> params) =>
+      _api.request('ads.updateAds', params);
 
   /// Edits advertising campaigns.
-  Future<ApiResponse<T>> updateCampaigns<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.updateCampaigns', params);
+  Future<Object> updateCampaigns(Map<String, dynamic> params) =>
+      _api.request('ads.updateCampaigns', params);
 
   /// Edits clients of an advertising agency.
-  Future<ApiResponse<T>> updateClients<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.updateClients', params);
+  Future<Object> updateClients(Map<String, dynamic> params) =>
+      _api.request('ads.updateClients', params);
 
   /// Adds managers and/or supervisors to advertising account.
-  Future<ApiResponse<T>> updateOfficeUsers<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.updateOfficeUsers', params);
+  Future<Object> updateOfficeUsers(Map<String, dynamic> params) =>
+      _api.request('ads.updateOfficeUsers', params);
 
   /// Edits a retarget group.
-  Future<ApiResponse<T>> updateTargetGroup<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.updateTargetGroup', params);
+  Future<Object> updateTargetGroup(Map<String, dynamic> params) =>
+      _api.request('ads.updateTargetGroup', params);
 
   /// Edits the retargeting pixel.
-  Future<ApiResponse<T>> updateTargetPixel<T>(Map<String, Object> params) =>
-      _api.request<T>('ads.updateTargetPixel', params);
+  Future<Object> updateTargetPixel(Map<String, dynamic> params) =>
+      _api.request('ads.updateTargetPixel', params);
 }

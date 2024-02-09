@@ -9,33 +9,31 @@ class Utils {
   final Api _api;
 
   /// Checks whether a link is blocked in VK.
-  Future<ApiResponse<T>> checkLink<T>(Map<String, Object> params) =>
-      _api.request<T>('utils.checkLink', params);
+  Future<Object> checkLink(Map<String, dynamic> params) =>
+      _api.request('utils.checkLink', params);
 
   /// Deletes shortened link from user's list.
-  Future<ApiResponse<T>> deleteFromLastShortened<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('utils.deleteFromLastShortened', params);
+  Future<Object> deleteFromLastShortened(Map<String, dynamic> params) =>
+      _api.request('utils.deleteFromLastShortened', params);
 
   /// Returns a list of user's shortened links.
-  Future<ApiResponse<T>> getLastShortenedLinks<T>(Map<String, Object> params) =>
-      _api.request<T>('utils.getLastShortenedLinks', params);
+  Future<Object> getLastShortenedLinks(Map<String, dynamic> params) =>
+      _api.request('utils.getLastShortenedLinks', params);
 
   /// Returns stats data for shortened link.
-  Future<ApiResponse<T>> getLinkStats<T>(Map<String, Object> params) =>
-      _api.request<T>('utils.getLinkStats', params);
+  Future<Object> getLinkStats(Map<String, dynamic> params) =>
+      _api.request('utils.getLinkStats', params);
 
   /// Returns the current time of the VK server.
-  Future<ApiResponse<T>> getServerTime<T>(Map<String, Object> params) =>
-      _api.request<T>('utils.getServerTime', params);
+  Future<Object> getServerTime(Map<String, dynamic> params) =>
+      _api.request('utils.getServerTime', params);
 
   /// Allows to receive a link shortened via vk.cc.
-  Future<ApiResponse<T>> getShortLink<T>(Map<String, Object> params) =>
-      _api.request<T>('utils.getShortLink', params);
+  Future<Object> getShortLink(Map<String, dynamic> params) =>
+      _api.request('utils.getShortLink', params);
 
   /// Detects a type of object (e.g., user, community, application) and its ID
   /// by screen name.
-  Future<ApiResponse<T>> resolveScreenName<T>(Map<String, Object> params) =>
-      _api.request<T>('utils.resolveScreenName', params);
+  Future<Object> resolveScreenName(Map<String, dynamic> params) =>
+      _api.request('utils.resolveScreenName', params);
 }

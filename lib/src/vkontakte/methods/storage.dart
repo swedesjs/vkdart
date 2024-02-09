@@ -9,14 +9,14 @@ class Storage {
   final Api _api;
 
   /// Returns a value of variable with the name set by key parameter.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('storage.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('storage.get', params);
 
   /// Returns the names of all variables.
-  Future<ApiResponse<T>> getKeys<T>(Map<String, Object> params) =>
-      _api.request<T>('storage.getKeys', params);
+  Future<Object> getKeys(Map<String, dynamic> params) =>
+      _api.request('storage.getKeys', params);
 
   /// Saves a value of variable with the name set by 'key' parameter.
-  Future<ApiResponse<T>> set<T>(Map<String, Object> params) =>
-      _api.request<T>('storage.set', params);
+  Future<Object> set(Map<String, dynamic> params) =>
+      _api.request('storage.set', params);
 }

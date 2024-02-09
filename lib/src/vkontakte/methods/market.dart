@@ -9,176 +9,174 @@ class Market {
   final Api _api;
 
   /// Ads a new item to the market.
-  Future<ApiResponse<T>> add<T>(Map<String, Object> params) =>
-      _api.request<T>('market.add', params);
+  Future<Object> add(Map<String, dynamic> params) =>
+      _api.request('market.add', params);
 
   /// Creates new collection of items
-  Future<ApiResponse<T>> addAlbum<T>(Map<String, Object> params) =>
-      _api.request<T>('market.addAlbum', params);
+  Future<Object> addAlbum(Map<String, dynamic> params) =>
+      _api.request('market.addAlbum', params);
 
   /// Adds a new property that can be set for community products (for example, "color", "size", etc.).
-  Future<ApiResponse<T>> addProperty<T>(Map<String, Object> params) =>
-      _api.request<T>('market.addProperty', params);
+  Future<Object> addProperty(Map<String, dynamic> params) =>
+      _api.request('market.addProperty', params);
 
   /// Adds a property option. In total, a property can have 50 options.
-  Future<ApiResponse<T>> addPropertyVariant<T>(Map<String, Object> params) =>
-      _api.request<T>('market.addPropertyVariant', params);
+  Future<Object> addPropertyVariant(Map<String, dynamic> params) =>
+      _api.request('market.addPropertyVariant', params);
 
   /// Adds an item to one or multiple collections.
-  Future<ApiResponse<T>> addToAlbum<T>(Map<String, Object> params) =>
-      _api.request<T>('market.addToAlbum', params);
+  Future<Object> addToAlbum(Map<String, dynamic> params) =>
+      _api.request('market.addToAlbum', params);
 
   /// Creates a new comment for an item.
-  Future<ApiResponse<T>> createComment<T>(Map<String, Object> params) =>
-      _api.request<T>('market.createComment', params);
+  Future<Object> createComment(Map<String, dynamic> params) =>
+      _api.request('market.createComment', params);
 
   /// Deletes an item.
-  Future<ApiResponse<T>> delete<T>(Map<String, Object> params) =>
-      _api.request<T>('market.delete', params);
+  Future<Object> delete(Map<String, dynamic> params) =>
+      _api.request('market.delete', params);
 
   /// Deletes a collection of items.
-  Future<ApiResponse<T>> deleteAlbum<T>(Map<String, Object> params) =>
-      _api.request<T>('market.deleteAlbum', params);
+  Future<Object> deleteAlbum(Map<String, dynamic> params) =>
+      _api.request('market.deleteAlbum', params);
 
   /// Deletes an item's comment
-  Future<ApiResponse<T>> deleteComment<T>(Map<String, Object> params) =>
-      _api.request<T>('market.deleteComment', params);
+  Future<Object> deleteComment(Map<String, dynamic> params) =>
+      _api.request('market.deleteComment', params);
 
   /// Deletes a product property.
-  Future<ApiResponse<T>> deleteProperty<T>(Map<String, Object> params) =>
-      _api.request<T>('market.deleteProperty', params);
+  Future<Object> deleteProperty(Map<String, dynamic> params) =>
+      _api.request('market.deleteProperty', params);
 
   /// Deletes the property option.
-  Future<ApiResponse<T>> deletePropertyVariant<T>(Map<String, Object> params) =>
-      _api.request<T>('market.deletePropertyVariant', params);
+  Future<Object> deletePropertyVariant(Map<String, dynamic> params) =>
+      _api.request('market.deletePropertyVariant', params);
 
   /// Edits an item.
-  Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
-      _api.request<T>('market.edit', params);
+  Future<Object> edit(Map<String, dynamic> params) =>
+      _api.request('market.edit', params);
 
   /// Edits a collection of items
-  Future<ApiResponse<T>> editAlbum<T>(Map<String, Object> params) =>
-      _api.request<T>('market.editAlbum', params);
+  Future<Object> editAlbum(Map<String, dynamic> params) =>
+      _api.request('market.editAlbum', params);
 
   /// Chages item comment's text
-  Future<ApiResponse<T>> editComment<T>(Map<String, Object> params) =>
-      _api.request<T>('market.editComment', params);
+  Future<Object> editComment(Map<String, dynamic> params) =>
+      _api.request('market.editComment', params);
 
   /// Edit order
-  Future<ApiResponse<T>> editOrder<T>(Map<String, Object> params) =>
-      _api.request<T>('market.editOrder', params);
+  Future<Object> editOrder(Map<String, dynamic> params) =>
+      _api.request('market.editOrder', params);
 
   /// Edits the product property.
-  Future<ApiResponse<T>> editProperty<T>(Map<String, Object> params) =>
-      _api.request<T>('market.editProperty', params);
+  Future<Object> editProperty(Map<String, dynamic> params) =>
+      _api.request('market.editProperty', params);
 
   /// Edits a property option.
-  Future<ApiResponse<T>> editPropertyVariant<T>(Map<String, Object> params) =>
-      _api.request<T>('market.editPropertyVariant', params);
+  Future<Object> editPropertyVariant(Map<String, dynamic> params) =>
+      _api.request('market.editPropertyVariant', params);
 
   // ignore: public_member_api_docs
-  Future<ApiResponse<T>> filterCategories<T>(Map<String, Object> params) =>
-      _api.request<T>('market.filterCategories', params);
+  Future<Object> filterCategories(Map<String, dynamic> params) =>
+      _api.request('market.filterCategories', params);
 
   /// Returns items list for a community.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('market.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('market.get', params);
 
   /// Returns items album's data
-  Future<ApiResponse<T>> getAlbumById<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getAlbumById', params);
+  Future<Object> getAlbumById(Map<String, dynamic> params) =>
+      _api.request('market.getAlbumById', params);
 
   /// Returns community's market collections list.
-  Future<ApiResponse<T>> getAlbums<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getAlbums', params);
+  Future<Object> getAlbums(Map<String, dynamic> params) =>
+      _api.request('market.getAlbums', params);
 
   /// Returns information about market items by their ids.
-  Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getById', params);
+  Future<Object> getById(Map<String, dynamic> params) =>
+      _api.request('market.getById', params);
 
   /// Returns a list of market categories.
-  Future<ApiResponse<T>> getCategories<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getCategories', params);
+  Future<Object> getCategories(Map<String, dynamic> params) =>
+      _api.request('market.getCategories', params);
 
   /// Returns comments list for an item.
-  Future<ApiResponse<T>> getComments<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getComments', params);
+  Future<Object> getComments(Map<String, dynamic> params) =>
+      _api.request('market.getComments', params);
 
   /// Get market orders
-  Future<ApiResponse<T>> getGroupOrders<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getGroupOrders', params);
+  Future<Object> getGroupOrders(Map<String, dynamic> params) =>
+      _api.request('market.getGroupOrders', params);
 
   /// Get order
-  Future<ApiResponse<T>> getOrderById<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getOrderById', params);
+  Future<Object> getOrderById(Map<String, dynamic> params) =>
+      _api.request('market.getOrderById', params);
 
   /// Get market items in the order
-  Future<ApiResponse<T>> getOrderItems<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getOrderItems', params);
+  Future<Object> getOrderItems(Map<String, dynamic> params) =>
+      _api.request('market.getOrderItems', params);
 
   /// Returns orders.
-  Future<ApiResponse<T>> getOrders<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getOrders', params);
+  Future<Object> getOrders(Map<String, dynamic> params) =>
+      _api.request('market.getOrders', params);
 
   /// Method for getting a link to the image upload server
-  Future<ApiResponse<T>> getProductPhotoUploadServer<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('market.getProductPhotoUploadServer', params);
+  Future<Object> getProductPhotoUploadServer(Map<String, dynamic> params) =>
+      _api.request('market.getProductPhotoUploadServer', params);
 
   /// Returns a list of properties for the specified community.
-  Future<ApiResponse<T>> getProperties<T>(Map<String, Object> params) =>
-      _api.request<T>('market.getProperties', params);
+  Future<Object> getProperties(Map<String, dynamic> params) =>
+      _api.request('market.getProperties', params);
 
   /// Combines products into a group of products.
-  Future<ApiResponse<T>> groupItems<T>(Map<String, Object> params) =>
-      _api.request<T>('market.groupItems', params);
+  Future<Object> groupItems(Map<String, dynamic> params) =>
+      _api.request('market.groupItems', params);
 
   /// Removes an item from one or multiple collections.
-  Future<ApiResponse<T>> removeFromAlbum<T>(Map<String, Object> params) =>
-      _api.request<T>('market.removeFromAlbum', params);
+  Future<Object> removeFromAlbum(Map<String, dynamic> params) =>
+      _api.request('market.removeFromAlbum', params);
 
   /// Reorders the collections list.
-  Future<ApiResponse<T>> reorderAlbums<T>(Map<String, Object> params) =>
-      _api.request<T>('market.reorderAlbums', params);
+  Future<Object> reorderAlbums(Map<String, dynamic> params) =>
+      _api.request('market.reorderAlbums', params);
 
   /// Changes item place in a collection.
-  Future<ApiResponse<T>> reorderItems<T>(Map<String, Object> params) =>
-      _api.request<T>('market.reorderItems', params);
+  Future<Object> reorderItems(Map<String, dynamic> params) =>
+      _api.request('market.reorderItems', params);
 
   /// Sends a complaint to the item.
-  Future<ApiResponse<T>> report<T>(Map<String, Object> params) =>
-      _api.request<T>('market.report', params);
+  Future<Object> report(Map<String, dynamic> params) =>
+      _api.request('market.report', params);
 
   /// Sends a complaint to the item's comment.
-  Future<ApiResponse<T>> reportComment<T>(Map<String, Object> params) =>
-      _api.request<T>('market.reportComment', params);
+  Future<Object> reportComment(Map<String, dynamic> params) =>
+      _api.request('market.reportComment', params);
 
   /// Restores recently deleted item
-  Future<ApiResponse<T>> restore<T>(Map<String, Object> params) =>
-      _api.request<T>('market.restore', params);
+  Future<Object> restore(Map<String, dynamic> params) =>
+      _api.request('market.restore', params);
 
   /// Restores a recently deleted comment
-  Future<ApiResponse<T>> restoreComment<T>(Map<String, Object> params) =>
-      _api.request<T>('market.restoreComment', params);
+  Future<Object> restoreComment(Map<String, dynamic> params) =>
+      _api.request('market.restoreComment', params);
 
   /// Method for saving images
-  Future<ApiResponse<T>> saveProductPhoto<T>(Map<String, Object> params) =>
-      _api.request<T>('market.saveProductPhoto', params);
+  Future<Object> saveProductPhoto(Map<String, dynamic> params) =>
+      _api.request('market.saveProductPhoto', params);
 
   /// Searches market items in a community's catalog
-  Future<ApiResponse<T>> search<T>(Map<String, Object> params) =>
-      _api.request<T>('market.search', params);
+  Future<Object> search(Map<String, dynamic> params) =>
+      _api.request('market.search', params);
 
   // ignore: public_member_api_docs
-  Future<ApiResponse<T>> searchItems<T>(Map<String, Object> params) =>
-      _api.request<T>('market.searchItems', params);
+  Future<Object> searchItems(Map<String, dynamic> params) =>
+      _api.request('market.searchItems', params);
 
   // ignore: public_member_api_docs
-  Future<ApiResponse<T>> searchItemsBasic<T>(Map<String, Object> params) =>
-      _api.request<T>('market.searchItemsBasic', params);
+  Future<Object> searchItemsBasic(Map<String, dynamic> params) =>
+      _api.request('market.searchItemsBasic', params);
 
   /// Divides a product group into several products.
-  Future<ApiResponse<T>> ungroupItems<T>(Map<String, Object> params) =>
-      _api.request<T>('market.ungroupItems', params);
+  Future<Object> ungroupItems(Map<String, dynamic> params) =>
+      _api.request('market.ungroupItems', params);
 }

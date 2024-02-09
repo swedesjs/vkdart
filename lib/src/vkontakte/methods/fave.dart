@@ -9,94 +9,94 @@ class Fave {
   final Api _api;
 
   /// Bookmarks the article.
-  Future<ApiResponse<T>> addArticle<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.addArticle', params);
+  Future<Object> addArticle(Map<String, dynamic> params) =>
+      _api.request('fave.addArticle', params);
 
   /// Adds a link to bookmarks.
-  Future<ApiResponse<T>> addLink<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.addLink', params);
+  Future<Object> addLink(Map<String, dynamic> params) =>
+      _api.request('fave.addLink', params);
 
   /// Adds a community or user to bookmarks.
-  Future<ApiResponse<T>> addPage<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.addPage', params);
+  Future<Object> addPage(Map<String, dynamic> params) =>
+      _api.request('fave.addPage', params);
 
   /// Adds an entry from the user's or community's wall to bookmarks.
-  Future<ApiResponse<T>> addPost<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.addPost', params);
+  Future<Object> addPost(Map<String, dynamic> params) =>
+      _api.request('fave.addPost', params);
 
   /// Adds the product to the bookmarks.
-  Future<ApiResponse<T>> addProduct<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.addProduct', params);
+  Future<Object> addProduct(Map<String, dynamic> params) =>
+      _api.request('fave.addProduct', params);
 
   /// Creates a bookmark label.
-  Future<ApiResponse<T>> addTag<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.addTag', params);
+  Future<Object> addTag(Map<String, dynamic> params) =>
+      _api.request('fave.addTag', params);
 
   /// Adds a video recording to bookmarks.
-  Future<ApiResponse<T>> addVideo<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.addVideo', params);
+  Future<Object> addVideo(Map<String, dynamic> params) =>
+      _api.request('fave.addVideo', params);
 
   /// Edits the label.
-  Future<ApiResponse<T>> editTag<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.editTag', params);
+  Future<Object> editTag(Map<String, dynamic> params) =>
+      _api.request('fave.editTag', params);
 
   /// Returns objects added to the user's bookmarks.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('fave.get', params);
 
   /// Returns pages of users and communities that have been added to bookmarks.
-  Future<ApiResponse<T>> getPages<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.getPages', params);
+  Future<Object> getPages(Map<String, dynamic> params) =>
+      _api.request('fave.getPages', params);
 
   /// Returns a list of labels in bookmarks.
-  Future<ApiResponse<T>> getTags<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.getTags', params);
+  Future<Object> getTags(Map<String, dynamic> params) =>
+      _api.request('fave.getTags', params);
 
   /// Marks bookmarks as viewed.
-  Future<ApiResponse<T>> markSeen<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.markSeen', params);
+  Future<Object> markSeen(Map<String, dynamic> params) =>
+      _api.request('fave.markSeen', params);
 
   /// Deletes an article from bookmarks.
-  Future<ApiResponse<T>> removeArticle<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.removeArticle', params);
+  Future<Object> removeArticle(Map<String, dynamic> params) =>
+      _api.request('fave.removeArticle', params);
 
   /// Removes link from the user's faves.
-  Future<ApiResponse<T>> removeLink<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.removeLink', params);
+  Future<Object> removeLink(Map<String, dynamic> params) =>
+      _api.request('fave.removeLink', params);
 
   /// Deletes a community or a user's page from bookmarks.
-  Future<ApiResponse<T>> removePage<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.removePage', params);
+  Future<Object> removePage(Map<String, dynamic> params) =>
+      _api.request('fave.removePage', params);
 
   /// Deletes an entry on the user's or community's wall from bookmarks.
-  Future<ApiResponse<T>> removePost<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.removePost', params);
+  Future<Object> removePost(Map<String, dynamic> params) =>
+      _api.request('fave.removePost', params);
 
   /// Removes an item from bookmarks.
-  Future<ApiResponse<T>> removeProduct<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.removeProduct', params);
+  Future<Object> removeProduct(Map<String, dynamic> params) =>
+      _api.request('fave.removeProduct', params);
 
   /// Deletes the bookmark label.
-  Future<ApiResponse<T>> removeTag<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.removeTag', params);
+  Future<Object> removeTag(Map<String, dynamic> params) =>
+      _api.request('fave.removeTag', params);
 
   /// Deletes the video from the bookmarks list.
-  Future<ApiResponse<T>> removeVideo<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.removeVideo', params);
+  Future<Object> removeVideo(Map<String, dynamic> params) =>
+      _api.request('fave.removeVideo', params);
 
   /// Changes the order of bookmark labels in the list.
-  Future<ApiResponse<T>> reorderTags<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.reorderTags', params);
+  Future<Object> reorderTags(Map<String, dynamic> params) =>
+      _api.request('fave.reorderTags', params);
 
   /// Sets the label for the user's or community's page.
-  Future<ApiResponse<T>> setPageTags<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.setPageTags', params);
+  Future<Object> setPageTags(Map<String, dynamic> params) =>
+      _api.request('fave.setPageTags', params);
 
   /// Sets a label for the selected object in the bookmarks list.
-  Future<ApiResponse<T>> setTags<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.setTags', params);
+  Future<Object> setTags(Map<String, dynamic> params) =>
+      _api.request('fave.setTags', params);
 
   /// Sets the user's or community's page to the top of bookmarks.
-  Future<ApiResponse<T>> trackPageInteraction<T>(Map<String, Object> params) =>
-      _api.request<T>('fave.trackPageInteraction', params);
+  Future<Object> trackPageInteraction(Map<String, dynamic> params) =>
+      _api.request('fave.trackPageInteraction', params);
 }

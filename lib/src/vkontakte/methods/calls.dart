@@ -9,10 +9,10 @@ class Calls {
   final Api _api;
 
   /// Forcibly end the call
-  Future<ApiResponse<T>> forceFinish<T>(Map<String, Object> params) =>
-      _api.request<T>('calls.forceFinish', params);
+  Future<Object> forceFinish(Map<String, dynamic> params) =>
+      _api.request('calls.forceFinish', params);
 
   /// Create a new call on behalf of a user or community
-  Future<ApiResponse<T>> start<T>(Map<String, Object> params) =>
-      _api.request<T>('calls.start', params);
+  Future<Object> start(Map<String, dynamic> params) =>
+      _api.request('calls.start', params);
 }

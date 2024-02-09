@@ -9,14 +9,14 @@ class Stats {
   final Api _api;
 
   /// Returns statistics of a community or an application.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('stats.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('stats.get', params);
 
   /// Returns stats for a wall post.
-  Future<ApiResponse<T>> getPostReach<T>(Map<String, Object> params) =>
-      _api.request<T>('stats.getPostReach', params);
+  Future<Object> getPostReach(Map<String, dynamic> params) =>
+      _api.request('stats.getPostReach', params);
 
   /// Adds data about the current session to the app's attendance statistics.
-  Future<ApiResponse<T>> trackVisitor<T>(Map<String, Object> params) =>
-      _api.request<T>('stats.trackVisitor', params);
+  Future<Object> trackVisitor(Map<String, dynamic> params) =>
+      _api.request('stats.trackVisitor', params);
 }

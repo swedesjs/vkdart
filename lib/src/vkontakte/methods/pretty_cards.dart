@@ -9,26 +9,26 @@ class PrettyCards {
   final Api _api;
 
   /// The method creates a carousel card.
-  Future<ApiResponse<T>> create<T>(Map<String, Object> params) =>
-      _api.request<T>('prettyCards.create', params);
+  Future<Object> create(Map<String, dynamic> params) =>
+      _api.request('prettyCards.create', params);
 
   /// Deletes the card.
-  Future<ApiResponse<T>> delete<T>(Map<String, Object> params) =>
-      _api.request<T>('prettyCards.delete', params);
+  Future<Object> delete(Map<String, dynamic> params) =>
+      _api.request('prettyCards.delete', params);
 
   /// Edits the carousel card.
-  Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
-      _api.request<T>('prettyCards.edit', params);
+  Future<Object> edit(Map<String, dynamic> params) =>
+      _api.request('prettyCards.edit', params);
 
   /// Returns unused owner's cards.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('prettyCards.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('prettyCards.get', params);
 
   /// Returns information about the card.
-  Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
-      _api.request<T>('prettyCards.getById', params);
+  Future<Object> getById(Map<String, dynamic> params) =>
+      _api.request('prettyCards.getById', params);
 
   /// Returns the URL for uploading a photo for the card.
-  Future<ApiResponse<T>> getUploadURL<T>(Map<String, Object> params) =>
-      _api.request<T>('prettyCards.getUploadURL', params);
+  Future<Object> getUploadURL(Map<String, dynamic> params) =>
+      _api.request('prettyCards.getUploadURL', params);
 }

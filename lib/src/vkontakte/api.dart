@@ -48,39 +48,28 @@ class Api {
   final String _version;
 
   /// Allows you to create requests to the VK Api.
-  /// In [T] we specify the return type of the query result.
-  Future<ApiResponse<T>> request<T>(
+  Future<Object> request(
     String methodName,
-    Map<String, Object> params,
+    Map<String, dynamic> params,
   ) async {
-    final langConclusion = switch (params['lang']) {
-      LangApi() => (params['lang']! as LangApi).index,
-      int() || String() => params['lang']!,
-      _ => _language.index
-    };
-
-    params.remove('lang');
-
-    final requestOptions = {
-      'lang': langConclusion,
-      'v': _version,
+    final body = {
       ...params,
+      'v': _version,
+      'lang': _language.index,
     };
 
-    final data = await HttpClient.httpPost(_baseUrl + methodName,
-        body: requestOptions, headers: {'Authorization': 'Bearer $_token'});
+    final headers = {'Authorization': 'Bearer $_token'};
 
-    final error = (data['error'] as Map?)?.cast<String, dynamic>();
-    final response = data['response'] as Object?;
+    return HttpClient.httpPost(_baseUrl + methodName,
+            body: body, headers: headers)
+        .then((data) {
+      final error = (data['error'] as Map?)?.cast<String, dynamic>();
+      final response = data['response'] as Object?;
 
-    if (error != null) {
-      throw ApiException(error);
-    }
+      if (error != null) return Future.error(ApiException(error));
 
-    return ApiResponse<T>(
-      data: response as T,
-      requestOptions: requestOptions,
-    );
+      return response!;
+    });
   }
 
   /// Methods for working with the account.
@@ -311,19 +300,6 @@ class Api {
   ///
   /// See https://dev.vk.com/ru/method/widgets
   Widgets get widgets => Widgets(this);
-}
-
-/// The [ApiResponse] class contains a payload.
-/// Provides information about the options of the method request, as well as the result of the request.
-class ApiResponse<T> {
-  // ignore: public_member_api_docs
-  ApiResponse({required this.data, required this.requestOptions});
-
-  /// The result of the query execution.
-  final T data;
-
-  /// Request options.
-  final Map<String, dynamic> requestOptions;
 }
 
 // ignore: public_member_api_docs

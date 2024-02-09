@@ -9,6 +9,6 @@ class Gifts {
   final Api _api;
 
   /// Returns a list of user gifts.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('gifts.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('gifts.get', params);
 }

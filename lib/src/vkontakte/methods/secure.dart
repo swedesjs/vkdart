@@ -8,49 +8,47 @@ class Secure {
   final Api _api;
 
   /// Adds user activity information to an application
-  Future<ApiResponse<T>> addAppEvent<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.addAppEvent', params);
+  Future<Object> addAppEvent(Map<String, dynamic> params) =>
+      _api.request('secure.addAppEvent', params);
 
   /// Checks the user authentication in 'IFrame' and 'Flash' apps using the 'access_token' parameter.
-  Future<ApiResponse<T>> checkToken<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.checkToken', params);
+  Future<Object> checkToken(Map<String, dynamic> params) =>
+      _api.request('secure.checkToken', params);
 
   /// Returns payment balance of the application in hundredth of a vote.
-  Future<ApiResponse<T>> getAppBalance<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.getAppBalance', params);
+  Future<Object> getAppBalance(Map<String, dynamic> params) =>
+      _api.request('secure.getAppBalance', params);
 
   /// Shows a list of SMS notifications sent by the application using
   /// [sendSMSNotification] method.
-  Future<ApiResponse<T>> getSMSHistory<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.getSMSHistory', params);
+  Future<Object> getSMSHistory(Map<String, dynamic> params) =>
+      _api.request('secure.getSMSHistory', params);
 
   /// Shows history of votes transaction between users and the application.
-  Future<ApiResponse<T>> getTransactionsHistory<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('secure.getTransactionsHistory', params);
+  Future<Object> getTransactionsHistory(Map<String, dynamic> params) =>
+      _api.request('secure.getTransactionsHistory', params);
 
   /// Returns one of the previously set game levels of one or more users in the application.
-  Future<ApiResponse<T>> getUserLevel<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.getUserLevel', params);
+  Future<Object> getUserLevel(Map<String, dynamic> params) =>
+      _api.request('secure.getUserLevel', params);
 
   /// Opens the game achievement and gives the user a sticker
-  Future<ApiResponse<T>> giveEventSticker<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.giveEventSticker', params);
+  Future<Object> giveEventSticker(Map<String, dynamic> params) =>
+      _api.request('secure.giveEventSticker', params);
 
   /// Sends notification to the user.
-  Future<ApiResponse<T>> sendNotification<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.sendNotification', params);
+  Future<Object> sendNotification(Map<String, dynamic> params) =>
+      _api.request('secure.sendNotification', params);
 
   /// Sends 'SMS' notification to a user's mobile device.
-  Future<ApiResponse<T>> sendSMSNotification<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.sendSMSNotification', params);
+  Future<Object> sendSMSNotification(Map<String, dynamic> params) =>
+      _api.request('secure.sendSMSNotification', params);
 
   /// Sets a counter which is shown to the user in bold in the left menu.
-  Future<ApiResponse<T>> setCounter<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.setCounter', params);
+  Future<Object> setCounter(Map<String, dynamic> params) =>
+      _api.request('secure.setCounter', params);
 
   /// Sets the user's game level in the app that his friends can see.
-  Future<ApiResponse<T>> setUserLevel<T>(Map<String, Object> params) =>
-      _api.request<T>('secure.setUserLevel', params);
+  Future<Object> setUserLevel(Map<String, dynamic> params) =>
+      _api.request('secure.setUserLevel', params);
 }

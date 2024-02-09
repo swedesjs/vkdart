@@ -9,36 +9,34 @@ class Orders {
   final Api _api;
 
   /// Cancels the subscription.
-  Future<ApiResponse<T>> cancelSubscription<T>(Map<String, Object> params) =>
-      _api.request<T>('orders.cancelSubscription', params);
+  Future<Object> cancelSubscription(Map<String, dynamic> params) =>
+      _api.request('orders.cancelSubscription', params);
 
   /// Changes order status.
-  Future<ApiResponse<T>> changeState<T>(Map<String, Object> params) =>
-      _api.request<T>('orders.changeState', params);
+  Future<Object> changeState(Map<String, dynamic> params) =>
+      _api.request('orders.changeState', params);
 
   /// Returns a list of orders.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('orders.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('orders.get', params);
 
   /// Returns the cost of votes in the user's currency.
-  Future<ApiResponse<T>> getAmount<T>(Map<String, Object> params) =>
-      _api.request<T>('orders.getAmount', params);
+  Future<Object> getAmount(Map<String, dynamic> params) =>
+      _api.request('orders.getAmount', params);
 
   /// Returns information about orders by their IDs.
-  Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
-      _api.request<T>('orders.getById', params);
+  Future<Object> getById(Map<String, dynamic> params) =>
+      _api.request('orders.getById', params);
 
   /// Gets information about the subscription by its ID.
-  Future<ApiResponse<T>> getUserSubscriptionById<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('orders.getUserSubscriptionById', params);
+  Future<Object> getUserSubscriptionById(Map<String, dynamic> params) =>
+      _api.request('orders.getUserSubscriptionById', params);
 
   /// Retrieves a list of the user's active subscriptions.
-  Future<ApiResponse<T>> getUserSubscriptions<T>(Map<String, Object> params) =>
-      _api.request<T>('orders.getUserSubscriptions', params);
+  Future<Object> getUserSubscriptions(Map<String, dynamic> params) =>
+      _api.request('orders.getUserSubscriptions', params);
 
   /// Updates the subscription price for the user.
-  Future<ApiResponse<T>> updateSubscription<T>(Map<String, Object> params) =>
-      _api.request<T>('orders.updateSubscription', params);
+  Future<Object> updateSubscription(Map<String, dynamic> params) =>
+      _api.request('orders.updateSubscription', params);
 }

@@ -9,23 +9,23 @@ class Users {
   final Api _api;
 
   /// Returns detailed information on users.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('users.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('users.get', params);
 
   /// Returns a list of IDs of followers of the user in question, sorted by date added,
   /// most recent first.
-  Future<ApiResponse<T>> getFollowers<T>(Map<String, Object> params) =>
-      _api.request<T>('users.getFollowers', params);
+  Future<Object> getFollowers(Map<String, dynamic> params) =>
+      _api.request('users.getFollowers', params);
 
   /// Returns a list of IDs of users and communities followed by the user.
-  Future<ApiResponse<T>> getSubscriptions<T>(Map<String, Object> params) =>
-      _api.request<T>('users.getSubscriptions', params);
+  Future<Object> getSubscriptions(Map<String, dynamic> params) =>
+      _api.request('users.getSubscriptions', params);
 
   /// Reports (submits a complain about) a user.
-  Future<ApiResponse<T>> report<T>(Map<String, Object> params) =>
-      _api.request<T>('users.report', params);
+  Future<Object> report(Map<String, dynamic> params) =>
+      _api.request('users.report', params);
 
   /// Returns a list of users matching the search criteria.
-  Future<ApiResponse<T>> search<T>(Map<String, Object> params) =>
-      _api.request<T>('users.search', params);
+  Future<Object> search(Map<String, dynamic> params) =>
+      _api.request('users.search', params);
 }

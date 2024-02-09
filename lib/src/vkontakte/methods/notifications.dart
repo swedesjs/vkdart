@@ -10,15 +10,15 @@ class Notifications {
 
   /// Returns a list of notifications about other users' feedback
   /// to the current user's wall posts.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('notifications.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('notifications.get', params);
 
   /// Resets the counter of new notifications about other users' feedback to the
   /// current user's wall posts.
-  Future<ApiResponse<T>> markAsViewed<T>(Map<String, Object> params) =>
-      _api.request<T>('notifications.markAsViewed', params);
+  Future<Object> markAsViewed(Map<String, dynamic> params) =>
+      _api.request('notifications.markAsViewed', params);
 
   /// The method sends a notification to the user of the mini-application.
-  Future<ApiResponse<T>> sendMessage<T>(Map<String, Object> params) =>
-      _api.request<T>('notifications.sendMessage', params);
+  Future<Object> sendMessage(Map<String, dynamic> params) =>
+      _api.request('notifications.sendMessage', params);
 }

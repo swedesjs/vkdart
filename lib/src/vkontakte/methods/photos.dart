@@ -9,206 +9,198 @@ class Photos {
   final Api _api;
 
   /// Confirms a tag on a photo.
-  Future<ApiResponse<T>> confirmTag<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.confirmTag', params);
+  Future<Object> confirmTag(Map<String, dynamic> params) =>
+      _api.request('photos.confirmTag', params);
 
   /// Allows to copy a photo to the "Saved photos" album
-  Future<ApiResponse<T>> copy<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.copy', params);
+  Future<Object> copy(Map<String, dynamic> params) =>
+      _api.request('photos.copy', params);
 
   /// Creates an empty photo album.
-  Future<ApiResponse<T>> createAlbum<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.createAlbum', params);
+  Future<Object> createAlbum(Map<String, dynamic> params) =>
+      _api.request('photos.createAlbum', params);
 
   /// Adds a new comment on the photo.
-  Future<ApiResponse<T>> createComment<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.createComment', params);
+  Future<Object> createComment(Map<String, dynamic> params) =>
+      _api.request('photos.createComment', params);
 
   /// Deletes a photo.
-  Future<ApiResponse<T>> delete<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.delete', params);
+  Future<Object> delete(Map<String, dynamic> params) =>
+      _api.request('photos.delete', params);
 
   /// Deletes a photo album belonging to the current user.
-  Future<ApiResponse<T>> deleteAlbum<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.deleteAlbum', params);
+  Future<Object> deleteAlbum(Map<String, dynamic> params) =>
+      _api.request('photos.deleteAlbum', params);
 
   /// Deletes a comment on the photo.
-  Future<ApiResponse<T>> deleteComment<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.deleteComment', params);
+  Future<Object> deleteComment(Map<String, dynamic> params) =>
+      _api.request('photos.deleteComment', params);
 
   /// Edits the caption of a photo.
-  Future<ApiResponse<T>> edit<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.edit', params);
+  Future<Object> edit(Map<String, dynamic> params) =>
+      _api.request('photos.edit', params);
 
   /// Edits information about a photo album.
-  Future<ApiResponse<T>> editAlbum<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.editAlbum', params);
+  Future<Object> editAlbum(Map<String, dynamic> params) =>
+      _api.request('photos.editAlbum', params);
 
   /// Edits a comment on a photo.
-  Future<ApiResponse<T>> editComment<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.editComment', params);
+  Future<Object> editComment(Map<String, dynamic> params) =>
+      _api.request('photos.editComment', params);
 
   /// Returns a list of a user's or community's photos.
-  Future<ApiResponse<T>> get<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.get', params);
+  Future<Object> get(Map<String, dynamic> params) =>
+      _api.request('photos.get', params);
 
   /// Returns a list of a user's or community's photo albums.
-  Future<ApiResponse<T>> getAlbums<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getAlbums', params);
+  Future<Object> getAlbums(Map<String, dynamic> params) =>
+      _api.request('photos.getAlbums', params);
 
   /// Returns the number of photo albums belonging to a user or community.
-  Future<ApiResponse<T>> getAlbumsCount<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getAlbumsCount', params);
+  Future<Object> getAlbumsCount(Map<String, dynamic> params) =>
+      _api.request('photos.getAlbumsCount', params);
 
   /// Returns a list of photos belonging to a user or community,
   /// in reverse chronological order.
-  Future<ApiResponse<T>> getAll<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getAll', params);
+  Future<Object> getAll(Map<String, dynamic> params) =>
+      _api.request('photos.getAll', params);
 
   /// Returns a list of comments on a specific photo album or all albums of the
   /// user sorted in reverse chronological order.
-  Future<ApiResponse<T>> getAllComments<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getAllComments', params);
+  Future<Object> getAllComments(Map<String, dynamic> params) =>
+      _api.request('photos.getAllComments', params);
 
   /// Returns information about photos by their IDs.
-  Future<ApiResponse<T>> getById<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getById', params);
+  Future<Object> getById(Map<String, dynamic> params) =>
+      _api.request('photos.getById', params);
 
   /// Returns an upload link for chat cover pictures.
-  Future<ApiResponse<T>> getChatUploadServer<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getChatUploadServer', params);
+  Future<Object> getChatUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getChatUploadServer', params);
 
   /// Returns a list of comments on a photo.
-  Future<ApiResponse<T>> getComments<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getComments', params);
+  Future<Object> getComments(Map<String, dynamic> params) =>
+      _api.request('photos.getComments', params);
 
   // ignore: public_member_api_docs
-  Future<ApiResponse<T>> getMailUploadServer<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getMailUploadServer', params);
+  Future<Object> getMailUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getMailUploadServer', params);
 
   /// Returns the server address for market album photo upload.
-  Future<ApiResponse<T>> getMarketAlbumUploadServer<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('photos.getMarketAlbumUploadServer', params);
+  Future<Object> getMarketAlbumUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getMarketAlbumUploadServer', params);
 
   /// Returns the server address for market photo upload.
-  Future<ApiResponse<T>> getMarketUploadServer<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getMarketUploadServer', params);
+  Future<Object> getMarketUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getMarketUploadServer', params);
 
   /// Returns the server address for photo upload in a private message for a user.
-  Future<ApiResponse<T>> getMessagesUploadServer<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('photos.getMessagesUploadServer', params);
+  Future<Object> getMessagesUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getMessagesUploadServer', params);
 
   /// Returns a list of photos with tags that have not been viewed.
-  Future<ApiResponse<T>> getNewTags<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getNewTags', params);
+  Future<Object> getNewTags(Map<String, dynamic> params) =>
+      _api.request('photos.getNewTags', params);
 
   /// Returns the server address for owner cover upload.
-  Future<ApiResponse<T>> getOwnerCoverPhotoUploadServer<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('photos.getOwnerCoverPhotoUploadServer', params);
+  Future<Object> getOwnerCoverPhotoUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getOwnerCoverPhotoUploadServer', params);
 
   /// Returns an upload server address for a profile or community photo.
-  Future<ApiResponse<T>> getOwnerPhotoUploadServer<T>(
-    Map<String, Object> params,
-  ) =>
-      _api.request<T>('photos.getOwnerPhotoUploadServer', params);
+  Future<Object> getOwnerPhotoUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getOwnerPhotoUploadServer', params);
 
   /// Returns a list of photos from the user's or community's page.
-  Future<ApiResponse<T>> getProfile<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getProfile', params);
+  Future<Object> getProfile(Map<String, dynamic> params) =>
+      _api.request('photos.getProfile', params);
 
   /// Returns a list of tags on a photo.
-  Future<ApiResponse<T>> getTags<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getTags', params);
+  Future<Object> getTags(Map<String, dynamic> params) =>
+      _api.request('photos.getTags', params);
 
   /// Returns the server address for photo upload.
-  Future<ApiResponse<T>> getUploadServer<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getUploadServer', params);
+  Future<Object> getUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getUploadServer', params);
 
   /// Returns a list of photos in which a user is tagged.
-  Future<ApiResponse<T>> getUserPhotos<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getUserPhotos', params);
+  Future<Object> getUserPhotos(Map<String, dynamic> params) =>
+      _api.request('photos.getUserPhotos', params);
 
   /// Returns the server address for photo upload onto a user's wall.
-  Future<ApiResponse<T>> getWallUploadServer<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.getWallUploadServer', params);
+  Future<Object> getWallUploadServer(Map<String, dynamic> params) =>
+      _api.request('photos.getWallUploadServer', params);
 
   /// Makes a photo into an album cover.
-  Future<ApiResponse<T>> makeCover<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.makeCover', params);
+  Future<Object> makeCover(Map<String, dynamic> params) =>
+      _api.request('photos.makeCover', params);
 
   /// Moves a photo from one album to another.
-  Future<ApiResponse<T>> move<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.move', params);
+  Future<Object> move(Map<String, dynamic> params) =>
+      _api.request('photos.move', params);
 
   /// Adds a tag on the photo.
-  Future<ApiResponse<T>> putTag<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.putTag', params);
+  Future<Object> putTag(Map<String, dynamic> params) =>
+      _api.request('photos.putTag', params);
 
   /// Removes a tag from a photo.
-  Future<ApiResponse<T>> removeTag<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.removeTag', params);
+  Future<Object> removeTag(Map<String, dynamic> params) =>
+      _api.request('photos.removeTag', params);
 
   /// Reorders the album in the list of user albums.
-  Future<ApiResponse<T>> reorderAlbums<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.reorderAlbums', params);
+  Future<Object> reorderAlbums(Map<String, dynamic> params) =>
+      _api.request('photos.reorderAlbums', params);
 
   /// Reorders the photo in the list of photos of the user album.
-  Future<ApiResponse<T>> reorderPhotos<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.reorderPhotos', params);
+  Future<Object> reorderPhotos(Map<String, dynamic> params) =>
+      _api.request('photos.reorderPhotos', params);
 
   /// Reports (submits a complaint about) a photo.
-  Future<ApiResponse<T>> report<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.report', params);
+  Future<Object> report(Map<String, dynamic> params) =>
+      _api.request('photos.report', params);
 
   /// Reports (submits a complaint about) a comment on a photo.
-  Future<ApiResponse<T>> reportComment<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.reportComment', params);
+  Future<Object> reportComment(Map<String, dynamic> params) =>
+      _api.request('photos.reportComment', params);
 
   /// Restores a deleted photo.
-  Future<ApiResponse<T>> restore<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.restore', params);
+  Future<Object> restore(Map<String, dynamic> params) =>
+      _api.request('photos.restore', params);
 
   /// Restores a deleted comment on a photo.
-  Future<ApiResponse<T>> restoreComment<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.restoreComment', params);
+  Future<Object> restoreComment(Map<String, dynamic> params) =>
+      _api.request('photos.restoreComment', params);
 
   /// Saves photos after successful uploading.
-  Future<ApiResponse<T>> save<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.save', params);
+  Future<Object> save(Map<String, dynamic> params) =>
+      _api.request('photos.save', params);
 
   /// Saves market album photos after successful uploading.
-  Future<ApiResponse<T>> saveMarketAlbumPhoto<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.saveMarketAlbumPhoto', params);
+  Future<Object> saveMarketAlbumPhoto(Map<String, dynamic> params) =>
+      _api.request('photos.saveMarketAlbumPhoto', params);
 
   /// Saves market photos after successful uploading.
-  Future<ApiResponse<T>> saveMarketPhoto<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.saveMarketPhoto', params);
+  Future<Object> saveMarketPhoto(Map<String, dynamic> params) =>
+      _api.request('photos.saveMarketPhoto', params);
 
   /// Saves a photo after being successfully uploaded. URL obtained with
   /// [Photos.getMessagesUploadServer] method.
-  Future<ApiResponse<T>> saveMessagesPhoto<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.saveMessagesPhoto', params);
+  Future<Object> saveMessagesPhoto(Map<String, dynamic> params) =>
+      _api.request('photos.saveMessagesPhoto', params);
 
   /// Saves cover photo after successful uploading.
-  Future<ApiResponse<T>> saveOwnerCoverPhoto<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.saveOwnerCoverPhoto', params);
+  Future<Object> saveOwnerCoverPhoto(Map<String, dynamic> params) =>
+      _api.request('photos.saveOwnerCoverPhoto', params);
 
   /// Saves a profile or community photo. Upload URL can be got with the
   /// [Photos.getOwnerPhotoUploadServer] method.
-  Future<ApiResponse<T>> saveOwnerPhoto<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.saveOwnerPhoto', params);
+  Future<Object> saveOwnerPhoto(Map<String, dynamic> params) =>
+      _api.request('photos.saveOwnerPhoto', params);
 
   /// Saves a photo to a user's or community's wall after being uploaded.
-  Future<ApiResponse<T>> saveWallPhoto<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.saveWallPhoto', params);
+  Future<Object> saveWallPhoto(Map<String, dynamic> params) =>
+      _api.request('photos.saveWallPhoto', params);
 
   /// Returns a list of photos.
-  Future<ApiResponse<T>> search<T>(Map<String, Object> params) =>
-      _api.request<T>('photos.search', params);
+  Future<Object> search(Map<String, dynamic> params) =>
+      _api.request('photos.search', params);
 }
