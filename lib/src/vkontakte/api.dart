@@ -48,10 +48,8 @@ class Api {
   final String _version;
 
   /// Allows you to create requests to the VK Api.
-  Future<Object> request(
-    String methodName,
-    Map<String, dynamic> params,
-  ) async {
+  Future<Object> request(String methodName,
+      [Map<String, dynamic> params = const {}]) async {
     final body = {
       ...params,
       'v': _version,
