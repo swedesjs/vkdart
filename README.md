@@ -14,7 +14,7 @@
 3. **Supports events.** Supports Callback API, Longpoll API
 4. **Development.** Functionality is becoming more and more every day!
 5. **Easy to use.** Very easy to use!
-6. **Model support.**. There is a description of event, attachment and object models.
+6. **Model support.** There is a description of event, attachment and object models.
 
 ## Usage
 
@@ -34,7 +34,11 @@ void main() async {
 
 Using API:
 ```dart
-await vkdart.users.get({'user_id': 'durov'});
+await vkdart.users.get({'user_id': 'durov'}); // List<Map<String, dynamic>>
+await vkdart.utils.getServerTime({}); // int
+
+// request via native function
+await vkdart.request('groups.getById', {'group_id': 1}); // List<Map<String, dynamic>>
 ```
 
 ## Events

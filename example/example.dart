@@ -26,5 +26,9 @@ void main() async {
   await vkdart.start().then((_) => print('Longpoll API run!'));
 
   // use API
-  // await vkdart.users.get({'user_id': 'durov'});
+  // await vkdart.users.get({'user_id': 'durov'}); // List<Map<String, dynamic>>
+  // await vkdart.utils.getServerTime({}); // int
+  //
+  // request via native function
+  // await vkdart.request('groups.getById', {'group_id': 1}); // List<Map<String, dynamic>>
 }
