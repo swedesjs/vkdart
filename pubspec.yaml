@@ -1,7 +1,7 @@
 name: vkdart
 description: Package helps simplify working with the VK API.
   Completely wraps VK methods, has event support and much more.
-version: 2.1.0
+version: 2.2.0
 repository: https://github.com/swedesjs/vkdart
 issue_tracker: https://github.com/swedesjs/vkdart/issues
 

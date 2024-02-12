@@ -1,28 +1,38 @@
-## 2.1.0
-Update:
-- The documentation has become more correct and clearer.
-- Got rid of the `dia`, `dia_body`, `dio` dependencies. `Dio` was replaced by the `http` package and `dia` by `dart:io`.
-- [VkDartUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartUpdate-class.html): payload property renamed to updateObject.
+## 2.2.0
+Change:
+- Remove class `ApiResponse`.
+- The `VkDartUpdate` class-mixin was removed, the `Update` class was renamed to `VkDartUpdate`. ([Commit](https://github.com/swedesjs/vkdart/commit/215637989b6b3e9758ab0340006641db4eaeb7b3#diff-d57374fc48bdddbb8ba6e673b90a428de20bce6e128f5435b36d5c662f3be063))
+  - The `eventData` property has been renamed to `data`.
+- [Api.request](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/Api/request.html): implementation of API invocation, function return type and input parameters type. ([Commit](https://github.com/swedesjs/vkdart/commit/4af4bd67a6767162e40beed3344d96fbf0978d1d)) 
 
 New:
-- [MessageModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MessageModel-class.html): function [applyPayload](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MessageModel/applyPayload.html) is implemented, which overloads the payload correctly.
-- [HttpClient](https://pub.dev/documentation/vkdart/latest/vkdart.util/HttpClient-class.html): for convenient use of requests to the VK server.
-- [VkDartMessageUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartMessageUpdate-class.html): new [modifiers](https://github.com/swedesjs/vkdart/commit/a0b2c137d6202a48173c792aa125e53c42ff01d2).
-- [VkDartKeyboard](https://pub.dev/documentation/vkdart/latest/vkdart.util/VkDartKeyboard-class.html): for convenient use of VK keyboards. 
+- [VkDartLikeUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartLikeUpdate-class.html), [VkDartMarketOrderUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartMarketOrderUpdate-class.html), [VkDartWallUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartWallUpdate-class.html): new [modifiers](https://github.com/swedesjs/vkdart/commit/599d169782a82190e4ebff20624baf40c52c1321).
+
+## 2.1.0
+Change:
+- The documentation has become more correct and clearer.
+- Got rid of the `dia`, `dia_body`, `dio` dependencies. `Dio` was replaced by the `http` package and `dia` by `dart:io`.
+- [VkDartUpdate](https://pub.dev/documentation/vkdart/2.1.0/vkdart.model/VkDartUpdate-class.html): payload property renamed to updateObject.
+
+New:
+- [MessageModel](https://pub.dev/documentation/vkdart/2.1.0/vkdart.vkontakte/MessageModel-class.html): function [applyPayload](https://pub.dev/documentation/vkdart/2.1.0/vkdart.vkontakte/MessageModel/applyPayload.html) is implemented, which overloads the payload correctly.
+- [HttpClient](https://pub.dev/documentation/vkdart/2.1.0/vkdart.util/HttpClient-class.html): for convenient use of requests to the VK server.
+- [VkDartMessageUpdate](https://pub.dev/documentation/vkdart/2.1.0/vkdart.model/VkDartMessageUpdate-class.html): new [modifiers](https://github.com/swedesjs/vkdart/commit/a0b2c137d6202a48173c792aa125e53c42ff01d2).
+- [VkDartKeyboard](https://pub.dev/documentation/vkdart/2.1.0/vkdart.util/VkDartKeyboard-class.html): for convenient use of VK keyboards. 
 
 ## 2.0.0
-Update:
+Change:
 - A census of the API package documentation.
 - Refactoring code.
 - Got rid of the dependency json_annotation, json_serializable, build_runner
 
-Release: 
+New: 
 - Of attachment models, messages, and events.
 - Of an unsupported event handler.
 - The util library, which contains useful functions for working correctly with the package.
 
 ## 1.3.6
-Update: two `donut` handlers are combined into one (`onDonut()`)
+Change: two `donut` handlers are combined into one (`onDonut()`)
 
 ## 1.3.5
 fix: adjustment of `donut` handlers.
@@ -42,13 +52,13 @@ Add: Added a handler for the `message_reaction_event` event.
 Fix: `Longpoll Fetcher`: only one event was read at startup.
 
 ## 1.3.0
-Updates:
+Change:
 - Documentation on using.
 - File structure package.
 - Structure of using the package.
 - Example file.
 
-Added: 
+New: 
 - **Event class**. Interface containing event streams.
 - Functions to listen for specific events.
 
