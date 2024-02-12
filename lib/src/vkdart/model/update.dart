@@ -174,18 +174,18 @@ enum UpdateType {
 /// of the event and the object related to the event.
 class VkDartUpdate {
   /// The event data for this update.
-  final Map<String, dynamic> updateData;
+  final Map<String, dynamic> data;
 
   /// Creates an instance of [VkDartUpdate] with the specified event data.
-  VkDartUpdate(this.updateData);
+  VkDartUpdate(this.data);
 
   /// Gets the type of the update event.
   UpdateType get type => UpdateType.values.firstWhere(
-        (element) => element.name == updateData['type'],
+        (element) => element.name == data['type'],
         // ignore: missing_whitespace_between_adjacent_strings
         orElse: () => UpdateType.unknown_event,
       );
 
   /// Gets the object related to the update event.
-  Map<String, dynamic> get object => updateData['object'];
+  Map<String, dynamic> get object => data['object'];
 }
