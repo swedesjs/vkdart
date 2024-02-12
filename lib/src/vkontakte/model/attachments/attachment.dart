@@ -6,6 +6,12 @@ import 'package:vkdart/vkontakte.dart';
 ///
 /// See https://dev.vk.com/ru/docs/attachments
 abstract class AttachmentModel {
+  /// Payload.
+  final Map<String, dynamic> payload;
+
+  /// Attachment type.
+  final String attachType;
+
   // ignore: public_member_api_docs
   AttachmentModel(this.payload, {required this.attachType});
 
@@ -32,12 +38,6 @@ abstract class AttachmentModel {
         'page' => WikiPageAttachmentModel(payload),
         _ => throw VkDartException('$attachType of attachment has no support!')
       };
-
-  /// Payload.
-  final Map<String, dynamic> payload;
-
-  /// Attachment type.
-  final String attachType;
 
   // ignore: public_member_api_docs
   bool? checkBoolInProperty(String key) => checkBoolUtil(payload[key]);

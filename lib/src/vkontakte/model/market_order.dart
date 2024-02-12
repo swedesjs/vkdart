@@ -4,11 +4,11 @@ import 'package:vkdart/vkontakte.dart';
 ///
 /// See https://dev.vk.com/ru/reference/objects/market-order
 class MarketOrderModel {
-  // ignore: public_member_api_docs
-  MarketOrderModel(this.payload);
-
   /// Payload.
   final Map<String, dynamic> payload;
+
+  // ignore: public_member_api_docs
+  MarketOrderModel(this.payload);
 
   /// The order ID.
   int? get id => payload['id'];

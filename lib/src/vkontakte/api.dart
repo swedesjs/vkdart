@@ -27,6 +27,12 @@ enum LangApi {
 
 /// The class of interaction with the VK API.
 class Api {
+  static const _baseUrl = 'https://api.vk.com/method/';
+
+  final String _token;
+  final LangApi _language;
+  final String _version;
+
   /// Creating a base instance of the [Api] class.
   ///
   /// [token] - access key.
@@ -40,12 +46,6 @@ class Api {
   })  : _token = token,
         _language = language,
         _version = version;
-
-  static const _baseUrl = 'https://api.vk.com/method/';
-
-  final String _token;
-  final LangApi _language;
-  final String _version;
 
   /// Allows you to create requests to the VK Api.
   Future<Object> request(String methodName,

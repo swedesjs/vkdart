@@ -14,6 +14,11 @@ import 'package:vkdart/vkontakte.dart';
 /// ```
 /// `vkdart` - Instance of [VkDart].
 class VkDart extends Api {
+  final Event _event;
+
+  /// Update fetcher.
+  late final AbstractUpdateFetcher fetcher;
+
   /// Constructor.
   /// [token] - access token.
   /// [event] - [Event] instance.
@@ -36,11 +41,6 @@ class VkDart extends Api {
 
     this.fetcher = fetcher ?? Longpoll(this, groupId: groupId);
   }
-
-  final Event _event;
-
-  /// Update fetcher.
-  late final AbstractUpdateFetcher fetcher;
 
   /// Start fetcher
   Future<void> start() async {
@@ -135,11 +135,11 @@ class VkDart extends Api {
 
 // ignore: public_member_api_docs
 class VkDartException implements Exception {
-  // ignore: public_member_api_docs
-  VkDartException(this.message);
-
   /// Message of the exception.
   final String message;
+
+  // ignore: public_member_api_docs
+  VkDartException(this.message);
 
   @override
   String toString() => 'VkDartException: $message';
