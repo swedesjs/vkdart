@@ -125,6 +125,14 @@ keyboard.addButtonCallback(
 ```
 > The payload will be available in the [message_event](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onMessageEvent.html) event, in the [eventPayload](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartMessageEventUpdate/eventPayload.html) property. 
 
+Move on to the next row:
+```dart
+keyboard
+  ..addButtonText('1 row: Hello world!')
+  ..nextRow()
+  ..addButtonText('2 row: Hello world!');
+```
+
 Usage in the [messages.send](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/Messages/send.html) method:
 ```dart
 vkdart.messages.send({
