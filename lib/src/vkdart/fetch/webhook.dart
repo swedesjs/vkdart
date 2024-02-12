@@ -71,7 +71,7 @@ class Webhook extends AbstractUpdateFetcher {
                 'The vk server requested confirimation token, specify this parameter!');
           }
         } else {
-          emitUpdate(Update(data));
+          emitUpdate(VkDartUpdate(data));
         }
 
         request.response

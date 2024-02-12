@@ -6,9 +6,7 @@ import 'package:vkdart/vkontakte.dart';
 /// See:
 /// - https://dev.vk.com/ru/reference/objects/market-order
 /// - https://dev.vk.com/ru/reference/objects/market-order_edit
-class VkDartMarketOrderUpdate extends MarketOrderModel with VkDartUpdate {
+class VkDartMarketOrderUpdate extends MarketOrderModel {
   // ignore: public_member_api_docs
-  VkDartMarketOrderUpdate(this.update) : super(update.object);
-  @override
-  final Update update;
+  VkDartMarketOrderUpdate(VkDartUpdate update) : super(update.object);
 }

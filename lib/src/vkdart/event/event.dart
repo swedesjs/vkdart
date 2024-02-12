@@ -29,50 +29,50 @@ class Event {
         _unsupportedEventController = StreamController.broadcast(sync: sync);
 
   // message_new, message_edit, message_reply,
-  final StreamController<Update> _messageController;
+  final StreamController<VkDartUpdate> _messageController;
   // message_allow
-  final StreamController<Update> _messageAllowController;
+  final StreamController<VkDartUpdate> _messageAllowController;
   // message_deny
-  final StreamController<Update> _messageDenyController;
+  final StreamController<VkDartUpdate> _messageDenyController;
   // message_typing_state
-  final StreamController<Update> _messageTypingStateController;
+  final StreamController<VkDartUpdate> _messageTypingStateController;
   // message_event
-  final StreamController<Update> _messageEventController;
+  final StreamController<VkDartUpdate> _messageEventController;
   // message_reaction_event
-  final StreamController<Update> _messageReactionController;
+  final StreamController<VkDartUpdate> _messageReactionController;
   // photo_new, audio_new, video_new
-  final StreamController<Update> _attachmentNewController;
+  final StreamController<VkDartUpdate> _attachmentNewController;
   // photo_comment_new, photo_comment_edit, photo_comment_restore, photo_comment_delete,
   // video_comment_new, video_comment_edit, video_comment_restore, video_comment_delete
   // market_comment_new, market_comment_edit, market_comment_restore, market_comment_delete
   // wall_reply_new, wall_reply_edit, wall_reply_restore, wall_reply_delete
   // board_post_new, board_post_edit, board_post_restore, board_post_delete events
-  final StreamController<Update> _commentController;
+  final StreamController<VkDartUpdate> _commentController;
   // wall_post_new, wall_repost
-  final StreamController<Update> _wallController;
+  final StreamController<VkDartUpdate> _wallController;
   // like_add, like_remove
-  final StreamController<Update> _likeController;
+  final StreamController<VkDartUpdate> _likeController;
   // market_order_new, market_order_edit events
-  final StreamController<Update> _marketOrderController;
+  final StreamController<VkDartUpdate> _marketOrderController;
   // group_join, group_leave
-  final StreamController<Update> _groupController;
+  final StreamController<VkDartUpdate> _groupController;
   // user_block, user_unblock
-  final StreamController<Update> _userController;
+  final StreamController<VkDartUpdate> _userController;
   // poll_vote_new,
-  final StreamController<Update> _pollVoteNewController;
+  final StreamController<VkDartUpdate> _pollVoteNewController;
   // group_officers_edit, group_change_settings, group_change_photo
-  final StreamController<Update> _groupChangeController;
+  final StreamController<VkDartUpdate> _groupChangeController;
   // vk_pay_transaction
-  final StreamController<Update> _vkpayTransactionController;
+  final StreamController<VkDartUpdate> _vkpayTransactionController;
   // app_payload
-  final StreamController<Update> _appPayloadController;
+  final StreamController<VkDartUpdate> _appPayloadController;
   // donut_subscription_create, donut_subscription_prolonged, donut_subscription_expired,
   // donut_subscription_cancelled, donut_subscription_price_changed donut_money_withdraw, donut_money_withdraw_error
-  final StreamController<Update> _donutController;
-  final StreamController<Update> _unsupportedEventController;
+  final StreamController<VkDartUpdate> _donutController;
+  final StreamController<VkDartUpdate> _unsupportedEventController;
 
   /// Emiter update.
-  void emitUpdate(Update update) {
+  void emitUpdate(VkDartUpdate update) {
     switch (update.type) {
       case UpdateType.message_new:
       case UpdateType.message_reply:
@@ -152,64 +152,68 @@ class Event {
   }
 
   /// Listen for `message_new`, `message_edit`, `message_reply` events.
-  Stream<Update> onMessage() => _messageController.stream;
+  Stream<VkDartUpdate> onMessage() => _messageController.stream;
 
   /// Listen for `message_allow` event.
-  Stream<Update> onMessageAllow() => _messageAllowController.stream;
+  Stream<VkDartUpdate> onMessageAllow() => _messageAllowController.stream;
 
   /// Listen for `message_deny` event.
-  Stream<Update> onMessageDeny() => _messageDenyController.stream;
+  Stream<VkDartUpdate> onMessageDeny() => _messageDenyController.stream;
 
   /// Listen for `message_typing_state` event.
-  Stream<Update> onMessageTypingState() => _messageTypingStateController.stream;
+  Stream<VkDartUpdate> onMessageTypingState() =>
+      _messageTypingStateController.stream;
 
   /// Listen for `message_event` event.
-  Stream<Update> onMessageEvent() => _messageEventController.stream;
+  Stream<VkDartUpdate> onMessageEvent() => _messageEventController.stream;
 
   /// Listen for `message_reaction_event` event.
-  Stream<Update> onMessageReactionEvent() => _messageReactionController.stream;
+  Stream<VkDartUpdate> onMessageReactionEvent() =>
+      _messageReactionController.stream;
 
   /// Listen for `photo_new`, `video_new`, `audio_new` events.
-  Stream<Update> onAttachmentNew() => _attachmentNewController.stream;
+  Stream<VkDartUpdate> onAttachmentNew() => _attachmentNewController.stream;
 
   /// Listen for `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
   /// `video_comment_new`, `video_comment_edit`, `video_comment_restore`, `video_comment_delete`,
   /// `market_comment_new`, `market_comment_edit`, `market_comment_restore`, `market_comment_delete`
   /// `wall_reply_new`, `wall_reply_edit`, `wall_reply_restore`, `wall_reply_delete`
   /// `board_post_new`, `board_post_edit`, `board_post_restore`, `board_post_delete` events.
-  Stream<Update> onComment() => _commentController.stream;
+  Stream<VkDartUpdate> onComment() => _commentController.stream;
 
   /// Listen for `wall_post_new`, `wall_repost` events.
-  Stream<Update> onWall() => _wallController.stream;
+  Stream<VkDartUpdate> onWall() => _wallController.stream;
 
   /// Listen for `like_add`, `like_remove` events.
-  Stream<Update> onLike() => _likeController.stream;
+  Stream<VkDartUpdate> onLike() => _likeController.stream;
 
   /// Listen for `market_order_new`, `market_order_edit` events.
-  Stream<Update> onMarketOrder() => _marketOrderController.stream;
+  Stream<VkDartUpdate> onMarketOrder() => _marketOrderController.stream;
 
   /// Listen for `group_join`, `group_leave` events.
-  Stream<Update> onGroup() => _groupController.stream;
+  Stream<VkDartUpdate> onGroup() => _groupController.stream;
 
   /// Listen for `user_block`, `user_unblock` events.
-  Stream<Update> onUser() => _userController.stream;
+  Stream<VkDartUpdate> onUser() => _userController.stream;
 
   /// Listen for `poll_vote_new` event.
-  Stream<Update> onPollVoteNew() => _pollVoteNewController.stream;
+  Stream<VkDartUpdate> onPollVoteNew() => _pollVoteNewController.stream;
 
   /// Listen for `group_officers_edit`, `group_change_settings`, `group_change_photo` events.
-  Stream<Update> onGroupChange() => _groupChangeController.stream;
+  Stream<VkDartUpdate> onGroupChange() => _groupChangeController.stream;
 
   /// Listen for `vk_pay_transaction` event.
-  Stream<Update> onVkpayTransaction() => _vkpayTransactionController.stream;
+  Stream<VkDartUpdate> onVkpayTransaction() =>
+      _vkpayTransactionController.stream;
 
   /// Listen for `app_payload` event.
-  Stream<Update> onAppPayload() => _appPayloadController.stream;
+  Stream<VkDartUpdate> onAppPayload() => _appPayloadController.stream;
 
   /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`,
   /// `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error`s events.
-  Stream<Update> onDonut() => _donutController.stream;
+  Stream<VkDartUpdate> onDonut() => _donutController.stream;
 
   /// Listen of unknown events.
-  Stream<Update> onUnsupportedEvent() => _unsupportedEventController.stream;
+  Stream<VkDartUpdate> onUnsupportedEvent() =>
+      _unsupportedEventController.stream;
 }

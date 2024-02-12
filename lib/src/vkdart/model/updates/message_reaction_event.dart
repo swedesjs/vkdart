@@ -1,17 +1,17 @@
 import 'package:vkdart/model.dart';
 
 /// The message reaction event model.
-class VkDartMessageReactionEventUpdate with VkDartUpdate {
+class VkDartMessageReactionEventUpdate {
+  // ignore: public_member_api_docs
+  final VkDartUpdate update;
+
   // ignore: public_member_api_docs
   VkDartMessageReactionEventUpdate(this.update);
 
-  @override
-  final Update update;
-
   // ignore: public_member_api_docs
-  int get reactedId => updateObject['reacted_id'];
+  int get reactedId => update.object['reacted_id'];
   // ignore: public_member_api_docs
-  int get peerId => updateObject['peer_id'];
+  int get peerId => update.object['peer_id'];
   // ignore: public_member_api_docs
-  int get reactionId => updateObject['reaction_id'];
+  int get reactionId => update.object['reaction_id'];
 }

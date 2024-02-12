@@ -7,36 +7,36 @@ import 'package:vkdart/vkontakte.dart';
 /// - https://dev.vk.com/ru/api/community-events/json-schema#group_officers_edit
 /// - https://dev.vk.com/ru/api/community-events/json-schema#group_change_settings
 /// - https://dev.vk.com/ru/api/community-events/json-schema#group_change_photo
-class VkDartGroupChangeUpdate with VkDartUpdate {
+class VkDartGroupChangeUpdate {
+  // ignore: public_member_api_docs
+  final VkDartUpdate update;
+
   // ignore: public_member_api_docs
   VkDartGroupChangeUpdate(this.update);
 
-  @override
-  final Update update;
-
   /// Check is group edit.
-  bool get isEdit => updateType == UpdateType.group_officers_edit;
+  bool get isEdit => update.type == UpdateType.group_officers_edit;
 
   /// Check is group change settings.
-  bool get isSettings => updateType == UpdateType.group_change_settings;
+  bool get isSettings => update.type == UpdateType.group_change_settings;
 
   /// Check is group change photo.
-  bool get isPhoto => updateType == UpdateType.group_change_photo;
+  bool get isPhoto => update.type == UpdateType.group_change_photo;
 
   /// User ID.
-  int get userId => updateObject['user_id'];
+  int get userId => update.object['user_id'];
 
   /// The ID of the supervisor who made the changes.
-  int? get adminId => updateObject['admin_id'];
+  int? get adminId => update.object['admin_id'];
 
   /// The old level of authority.
-  int? get levelOld => updateObject['level_old'];
+  int? get levelOld => update.object['level_old'];
 
   /// The new level of authority.
-  int? get levelNew => updateObject['level_new'];
+  int? get levelNew => update.object['level_new'];
 
   /// See https://dev.vk.com/ru/api/community-events/json-schema#group_change_settings
-  Map<String, dynamic>? get changes => updateObject['changes'];
+  Map<String, dynamic>? get changes => update.object['changes'];
 
   /// Title change.
   (Object, Object)? get changeTitle => _changeToRecord(changes?['title']);
@@ -118,7 +118,7 @@ class VkDartGroupChangeUpdate with VkDartUpdate {
 
   /// Photo.
   /// It is returned if [isPhoto] = true.
-  PhotoAttachmentModel? get photo => updateObject['photo'] != null
-      ? PhotoAttachmentModel(updateObject['photo'])
+  PhotoAttachmentModel? get photo => update.object['photo'] != null
+      ? PhotoAttachmentModel(update.object['photo'])
       : null;
 }

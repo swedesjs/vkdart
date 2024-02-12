@@ -68,30 +68,30 @@ const _boardPostEvents = [
 /// - BoardPostEdit: https://dev.vk.com/ru/api/community-events/json-schema#board_post_edit
 /// - BoardPostDelete: https://dev.vk.com/ru/api/community-events/json-schema#board_post_delete
 /// - BoardPostRestore: https://dev.vk.com/ru/api/community-events/json-schema#board_post_restore
-class VkDartCommentUpdate extends WallReplyAttachmentModel with VkDartUpdate {
+class VkDartCommentUpdate extends WallReplyAttachmentModel {
+  // ignore: public_member_api_docs
+  final VkDartUpdate update;
+
   // ignore: public_member_api_docs
   VkDartCommentUpdate(this.update) : super(update.object);
 
-  @override
-  final Update update;
-
   /// Check is new comment
-  bool get isNew => _newEvents.contains(updateType);
+  bool get isNew => _newEvents.contains(update.type);
 
   /// Check is photo comment.
-  bool get isPhotoComment => _photoCommentEvents.contains(updateType);
+  bool get isPhotoComment => _photoCommentEvents.contains(update.type);
 
   /// Check is video comment.
-  bool get isVideoComment => _videoCommentEvents.contains(updateType);
+  bool get isVideoComment => _videoCommentEvents.contains(update.type);
 
   /// Check is market comment.
-  bool get isMarketComment => _marketCommentEvents.contains(updateType);
+  bool get isMarketComment => _marketCommentEvents.contains(update.type);
 
   /// Check is wall comment.
-  bool get isWallComment => _wallReplyEvents.contains(updateType);
+  bool get isWallComment => _wallReplyEvents.contains(update.type);
 
   /// Check is board comment.
-  bool get isBoardComment => _boardPostEvents.contains(updateType);
+  bool get isBoardComment => _boardPostEvents.contains(update.type);
 
   /// Is the sender a user.
   bool get isUser => fromId > 0;
@@ -100,23 +100,23 @@ class VkDartCommentUpdate extends WallReplyAttachmentModel with VkDartUpdate {
   bool get isGroup => fromId < 0;
 
   /// The ID of the user who deleted the comment.
-  int? get deleterId => updateObject['deleter_id'];
+  int? get deleterId => update.object['deleter_id'];
 
   /// Owner Id
   @override
   int get ownerId =>
-      updateObject['owner_id'] ??
-      updateObject['photo_owner_id'] ??
-      updateObject['video_owner_id'] ??
-      updateObject['post_owner_id'] ??
-      updateObject['market_owner_id'] ??
-      updateObject['topic_owner_id'];
+      update.object['owner_id'] ??
+      update.object['photo_owner_id'] ??
+      update.object['video_owner_id'] ??
+      update.object['post_owner_id'] ??
+      update.object['market_owner_id'] ??
+      update.object['topic_owner_id'];
 
   /// Object ID.
   int get objectId =>
-      updateObject['photo_id'] ??
-      updateObject['video_id'] ??
-      updateObject['post_id'] ??
-      updateObject['item_id'] ??
-      updateObject['topic_id'];
+      update.object['photo_id'] ??
+      update.object['video_id'] ??
+      update.object['post_id'] ??
+      update.object['item_id'] ??
+      update.object['topic_id'];
 }

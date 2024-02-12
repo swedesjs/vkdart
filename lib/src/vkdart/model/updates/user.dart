@@ -5,26 +5,27 @@ import 'package:vkdart/model.dart';
 /// See:
 /// - https://dev.vk.com/ru/api/community-events/json-schema#user_block
 /// - https://dev.vk.com/ru/api/community-events/json-schema#user_unblocks
-class VkDartUserUpdate with VkDartUpdate {
+class VkDartUserUpdate {
+  // ignore: public_member_api_docs
+  final VkDartUpdate update;
+
   // ignore: public_member_api_docs
   VkDartUserUpdate(this.update);
-  @override
-  final Update update;
 
   /// Check is user block.
-  bool get isBlock => updateType == UpdateType.user_block;
+  bool get isBlock => update.type == UpdateType.user_block;
 
   /// Check is user unblock.
-  bool get isUnblock => updateType == UpdateType.user_unblock;
+  bool get isUnblock => update.type == UpdateType.user_unblock;
 
   /// The ID of the administrator who blacklisted the user.
-  int get adminId => updateObject['admin_id'];
+  int get adminId => update.object['admin_id'];
 
   /// The user ID.
-  int get userId => updateObject['user_id'];
+  int get userId => update.object['user_id'];
 
   /// The date of unblocking.
-  int? get unblockDate => updateObject['unblock_date'];
+  int? get unblockDate => update.object['unblock_date'];
 
   /// The reason for the blockage.
   /// Possible values:
@@ -33,11 +34,11 @@ class VkDartUserUpdate with VkDartUpdate {
   /// - 2 — insulting the participants.
   /// - 3 — obscene expressions.
   /// - 4 — Off-topic messages.
-  int? get reason => updateObject['reason'];
+  int? get reason => update.object['reason'];
 
   /// The administrator's comment on the block.
-  String? get comment => updateObject['comment'];
+  String? get comment => update.object['comment'];
 
   /// The date of unblocking.
-  int? get endDate => updateObject['by_end_date'];
+  int? get endDate => update.object['by_end_date'];
 }

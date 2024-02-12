@@ -168,36 +168,24 @@ enum UpdateType {
   unknown_event;
 }
 
-/// The [Update] class is used to represent an update event.
+/// The [VkDartUpdate] class is used to represent an update event.
 ///
 /// It contains the event data and provides methods to get the type
 /// of the event and the object related to the event.
-class Update {
-  /// Creates an instance of [Update] with the specified event data.
-  Update(this.eventData);
-
+class VkDartUpdate {
   /// The event data for this update.
-  final Map<String, dynamic> eventData;
+  final Map<String, dynamic> updateData;
+
+  /// Creates an instance of [VkDartUpdate] with the specified event data.
+  VkDartUpdate(this.updateData);
 
   /// Gets the type of the update event.
   UpdateType get type => UpdateType.values.firstWhere(
-        (element) => element.name == eventData['type'],
+        (element) => element.name == updateData['type'],
         // ignore: missing_whitespace_between_adjacent_strings
         orElse: () => UpdateType.unknown_event,
       );
 
   /// Gets the object related to the update event.
-  Map<String, dynamic> get object => eventData['object'];
-}
-
-/// Update event for models vkdart.
-abstract mixin class VkDartUpdate {
-  /// Update data.
-  Update get update;
-
-  /// Update type.
-  UpdateType get updateType => update.type;
-
-  /// Payload.
-  Map<String, dynamic> get updateObject => update.object;
+  Map<String, dynamic> get object => updateData['object'];
 }
