@@ -9,7 +9,7 @@ class VkDartUnsupportedEventUpdate {
   VkDartUnsupportedEventUpdate(this.update);
 
   /// The type of event from the VK side.
-  String get eventType => update.updateData['type'];
+  String get eventType => update.data['type'];
 
   /// Object.
   Map<String, dynamic> get object => update.object;
