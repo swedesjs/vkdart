@@ -10,6 +10,12 @@ class VkDartLikeUpdate {
   // ignore: public_member_api_docs
   VkDartLikeUpdate(this.update);
 
+  /// Check is like add
+  bool get isAdd => update.type == UpdateType.like_add;
+
+  /// Check is like remove.
+  bool get isRemove => update.type == UpdateType.like_remove;
+
   /// The ID of the user who checked the box.
   int get likerId => update.object['liker_id'];
 

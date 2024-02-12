@@ -4,7 +4,7 @@ import 'package:vkdart/model.dart';
 ///
 /// See:
 /// - https://dev.vk.com/ru/api/community-events/json-schema#user_block
-/// - https://dev.vk.com/ru/api/community-events/json-schema#user_unblocks
+/// - https://dev.vk.com/ru/api/community-events/json-schema#user_unblock
 class VkDartUserUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;

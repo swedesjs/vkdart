@@ -4,7 +4,10 @@ import 'package:vkdart/vkontakte.dart';
 
 /// The message model (for events `message_new`, `message_edit`, `message_reply`).
 ///
-/// See https://dev.vk.com/ru/reference/objects/message
+/// See:
+/// - https://dev.vk.com/ru/api/community-events/json-schema#message_new
+/// - https://dev.vk.com/ru/api/community-events/json-schema#message_reply
+/// - https://dev.vk.com/ru/api/community-events/json-schema#message_edit
 class VkDartMessageUpdate extends MessageModel {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
