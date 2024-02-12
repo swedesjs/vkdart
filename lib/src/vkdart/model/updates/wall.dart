@@ -4,12 +4,9 @@ import 'package:vkdart/vkontakte.dart';
 /// The model `wall` updates.
 ///
 /// See https://dev.vk.com/ru/api/community-events/json-schema#Записи%20на%20стене
-class VkDartWallUpdate extends WallAttachmentModel with VkDartUpdate {
+class VkDartWallUpdate extends WallAttachmentModel {
   // ignore: public_member_api_docs
-  VkDartWallUpdate(this.update) : super(update.object);
-
-  @override
-  final Update update;
+  VkDartWallUpdate(VkDartUpdate update) : super(update.object);
 
   /// Check is User.
   bool get isUser => fromId! > 0;

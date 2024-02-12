@@ -8,21 +8,21 @@ import 'package:vkdart/vkontakte.dart';
 /// - PhotoNew: https://dev.vk.com/ru/api/community-events/json-schema#photo_new
 /// - VideoNew: https://dev.vk.com/ru/api/community-events/json-schema#video_new
 /// - AudioNew: https://dev.vk.com/ru/api/community-events/json-schema#audio_new
-class VkDartNewAttachmentUpdate with VkDartUpdate {
+class VkDartNewAttachmentUpdate {
+  // ignore: public_member_api_docs
+  final VkDartUpdate update;
+
   // ignore: public_member_api_docs
   VkDartNewAttachmentUpdate(this.update);
 
-  @override
-  final Update update;
-
   /// Check attachment is photo
-  bool get isPhoto => updateType == UpdateType.photo_new;
+  bool get isPhoto => update.type == UpdateType.photo_new;
 
   /// Check attachment is video
-  bool get isVideo => updateType == UpdateType.video_new;
+  bool get isVideo => update.type == UpdateType.video_new;
 
   /// Check attachment is audio
-  bool get isAudio => updateType == UpdateType.audio_new;
+  bool get isAudio => update.type == UpdateType.audio_new;
 
   /// Attachment.
   AttachmentModel get attachment {
@@ -40,6 +40,6 @@ class VkDartNewAttachmentUpdate with VkDartUpdate {
       return AudioAttachmentModel(attachmentPayload);
     }
 
-    throw VkDartException('type $updateType is not supported.');
+    throw VkDartException('type ${update.type} is not supported.');
   }
 }

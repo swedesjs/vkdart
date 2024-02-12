@@ -75,7 +75,7 @@ class Longpoll extends AbstractUpdateFetcher {
 
         if (updates.isNotEmpty) {
           for (Map<String, dynamic> event in updates) {
-            emitUpdate(Update(event));
+            emitUpdate(VkDartUpdate(event));
           }
         }
 
