@@ -119,11 +119,11 @@ class Longpoll extends AbstractUpdateFetcher {
 
 // ignore: public_member_api_docs
 class LongpollException implements Exception {
-  // ignore: public_member_api_docs
-  LongpollException(this.message);
-
   /// Message of the exception.
   final String message;
+
+  // ignore: public_member_api_docs
+  LongpollException(this.message);
 
   @override
   String toString() => 'LongpollException: $message';

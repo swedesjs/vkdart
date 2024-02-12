@@ -97,11 +97,11 @@ class Webhook extends AbstractUpdateFetcher {
 
 // ignore: public_member_api_docs
 class WebhookException implements Exception {
-  // ignore: public_member_api_docs
-  WebhookException(this.message);
-
   /// The message of the exception.
   final String message;
+
+  // ignore: public_member_api_docs
+  WebhookException(this.message);
 
   @override
   String toString() => 'CallbackException: $message';

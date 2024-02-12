@@ -1,10 +1,10 @@
 /// The model VK API Error.
 class ApiErrorModel {
-  // ignore: public_member_api_docs
-  ApiErrorModel(this.payload);
-
   /// Payload.
   final Map<String, dynamic> payload;
+
+  // ignore: public_member_api_docs
+  ApiErrorModel(this.payload);
 
   /// Error Code.
   int get code => payload['error_code'];
@@ -21,11 +21,11 @@ class ApiErrorModel {
 
 /// The model Request Params VK API Error.
 class ApiErrorParamModel {
-  // ignore: public_member_api_docs
-  ApiErrorParamModel(this.payload);
-
   /// Payload.
   final Map<String, dynamic> payload;
+
+  // ignore: public_member_api_docs
+  ApiErrorParamModel(this.payload);
 
   /// Key.
   String get key => payload['key'];

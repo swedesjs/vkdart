@@ -6,28 +6,6 @@ import 'package:vkdart/model.dart';
 /// for example to listen to new messages.
 ///
 class Event {
-  // ignore: public_member_api_docs
-  Event({bool sync = false})
-      : _messageController = StreamController.broadcast(sync: sync),
-        _messageAllowController = StreamController.broadcast(sync: sync),
-        _messageDenyController = StreamController.broadcast(sync: sync),
-        _messageTypingStateController = StreamController.broadcast(sync: sync),
-        _messageEventController = StreamController.broadcast(sync: sync),
-        _messageReactionController = StreamController.broadcast(sync: sync),
-        _attachmentNewController = StreamController.broadcast(sync: sync),
-        _commentController = StreamController.broadcast(sync: sync),
-        _wallController = StreamController.broadcast(sync: sync),
-        _likeController = StreamController.broadcast(sync: sync),
-        _marketOrderController = StreamController.broadcast(sync: sync),
-        _groupController = StreamController.broadcast(sync: sync),
-        _userController = StreamController.broadcast(sync: sync),
-        _pollVoteNewController = StreamController.broadcast(sync: sync),
-        _groupChangeController = StreamController.broadcast(sync: sync),
-        _vkpayTransactionController = StreamController.broadcast(sync: sync),
-        _appPayloadController = StreamController.broadcast(sync: sync),
-        _donutController = StreamController.broadcast(sync: sync),
-        _unsupportedEventController = StreamController.broadcast(sync: sync);
-
   // message_new, message_edit, message_reply,
   final StreamController<VkDartUpdate> _messageController;
   // message_allow
@@ -70,6 +48,28 @@ class Event {
   // donut_subscription_cancelled, donut_subscription_price_changed donut_money_withdraw, donut_money_withdraw_error
   final StreamController<VkDartUpdate> _donutController;
   final StreamController<VkDartUpdate> _unsupportedEventController;
+
+  // ignore: public_member_api_docs
+  Event({bool sync = false})
+      : _messageController = StreamController.broadcast(sync: sync),
+        _messageAllowController = StreamController.broadcast(sync: sync),
+        _messageDenyController = StreamController.broadcast(sync: sync),
+        _messageTypingStateController = StreamController.broadcast(sync: sync),
+        _messageEventController = StreamController.broadcast(sync: sync),
+        _messageReactionController = StreamController.broadcast(sync: sync),
+        _attachmentNewController = StreamController.broadcast(sync: sync),
+        _commentController = StreamController.broadcast(sync: sync),
+        _wallController = StreamController.broadcast(sync: sync),
+        _likeController = StreamController.broadcast(sync: sync),
+        _marketOrderController = StreamController.broadcast(sync: sync),
+        _groupController = StreamController.broadcast(sync: sync),
+        _userController = StreamController.broadcast(sync: sync),
+        _pollVoteNewController = StreamController.broadcast(sync: sync),
+        _groupChangeController = StreamController.broadcast(sync: sync),
+        _vkpayTransactionController = StreamController.broadcast(sync: sync),
+        _appPayloadController = StreamController.broadcast(sync: sync),
+        _donutController = StreamController.broadcast(sync: sync),
+        _unsupportedEventController = StreamController.broadcast(sync: sync);
 
   /// Emiter update.
   void emitUpdate(VkDartUpdate update) {

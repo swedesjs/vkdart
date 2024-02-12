@@ -5,6 +5,9 @@ import 'package:vkdart/vkontakte.dart';
 ///
 /// See https://dev.vk.com/ru/reference/objects/message
 class MessageModel {
+  /// Update data.
+  late final Map<String, dynamic> payload;
+
   // ignore: public_member_api_docs
   MessageModel(Map<String, dynamic> payload) {
     applyPayload(payload);
@@ -27,9 +30,6 @@ class MessageModel {
             }
           };
   }
-
-  /// Update data.
-  late final Map<String, dynamic> payload;
 
   /// Message object.
   Map<String, dynamic> get message => payload['message'];
