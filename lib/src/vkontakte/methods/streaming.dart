@@ -12,10 +12,6 @@ class Streaming {
   Future<Object> getServerUrl(Map<String, dynamic> params) =>
       _api.request('streaming.getServerUrl', params);
 
-  /// Allows you to get the threshold value for the Streaming API.
-  Future<Object> getSettings(Map<String, dynamic> params) =>
-      _api.request('streaming.getSettings', params);
-
   /// Allows you to get statistics for prepared and delivered Streaming API events.
   Future<Object> getStats(Map<String, dynamic> params) =>
       _api.request('streaming.getStats', params);
@@ -23,8 +19,4 @@ class Streaming {
   /// Allows you to get the base of the word.
   Future<Object> getStem(Map<String, dynamic> params) =>
       _api.request('streaming.getStem', params);
-
-  /// Allows you to set the threshold value for the Streaming API.
-  Future<Object> setSettings(Map<String, dynamic> params) =>
-      _api.request('streaming.setSettings', params);
 }
