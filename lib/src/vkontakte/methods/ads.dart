@@ -28,10 +28,18 @@ class Ads {
   Future<Object> createClients(Map<String, dynamic> params) =>
       _api.request('ads.createClients', params);
 
+  /// Creates a query to find similar audiences.
+  Future<Object> createLookalikeRequest(Map<String, dynamic> params) =>
+      _api.request('ads.createLookalikeRequest', params);
+
   /// Creates a group to re-target ads for users who visited advertiser's site
   /// (viewed information about the product, registered, etc.).
   Future<Object> createTargetGroup(Map<String, dynamic> params) =>
       _api.request('ads.createTargetGroup', params);
+
+  /// Creates a retargeting pixel.
+  Future<Object> createTargetPixel(Map<String, dynamic> params) =>
+      _api.request('ads.createTargetPixel', params);
 
   /// Archives ads.
   Future<Object> deleteAds(Map<String, dynamic> params) =>
@@ -48,6 +56,10 @@ class Ads {
   /// Deletes a retarget group.
   Future<Object> deleteTargetGroup(Map<String, dynamic> params) =>
       _api.request('ads.deleteTargetGroup', params);
+
+  /// Removes the retargeting pixel.
+  Future<Object> deleteTargetPixel(Map<String, dynamic> params) =>
+      _api.request('ads.deleteTargetPixel', params);
 
   /// Returns a list of advertising accounts.
   Future<Object> getAccounts(Map<String, dynamic> params) =>
