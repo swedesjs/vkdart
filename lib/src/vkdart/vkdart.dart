@@ -68,8 +68,9 @@ class VkDart extends Api {
       _event.onMessageTypingState().map(VkDartMessageTypingStateUpdate.new);
 
   /// Listen for `message_event` event.
-  Stream<VkDartMessageEventUpdate> onMessageEvent() =>
-      _event.onMessageEvent().map(VkDartMessageEventUpdate.new);
+  Stream<VkDartMessageEventUpdate> onMessageEvent() => _event
+      .onMessageEvent()
+      .map((event) => VkDartMessageEventUpdate(this, event));
 
   /// Listen for `message_reaction_event` event.
   Stream<VkDartMessageReactionEventUpdate> onMessageReactionEvent() =>
