@@ -9,23 +9,23 @@ import 'package:vkdart/vkontakte.dart';
 
 /// Longpoll fetcher.
 class Longpoll extends AbstractUpdateFetcher {
-  final Vkontakte _vkontakte;
+  late final Vkontakte _vkontakte;
+
+  set vkontakte(Vkontakte value) {
+    _vkontakte = value;
+  }
 
   /// Group id
   final int groupId;
 
   /// Last event number.
-  int lastEventNumber;
+  int lastEventNumber = 0;
 
   bool _isStart = false;
   String? _serverUrl, _secretKey;
 
   /// Create a new longpoll fetcher.
-  Longpoll(
-    this._vkontakte, {
-    required this.groupId,
-    this.lastEventNumber = 0,
-  });
+  Longpoll(this.groupId);
 
   @override
   Future<void> start() {
