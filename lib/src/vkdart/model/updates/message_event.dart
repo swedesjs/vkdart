@@ -1,6 +1,6 @@
 import 'package:vkdart/model.dart';
 import 'package:vkdart/util.dart';
-import 'package:vkdart/vkontakte.dart' show Api, Messages;
+import 'package:vkdart/vkontakte.dart' show Vkontakte;
 
 /// The message event model.
 ///
@@ -8,10 +8,10 @@ import 'package:vkdart/vkontakte.dart' show Api, Messages;
 class VkDartMessageEventUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
-  final Api _api;
+  final Vkontakte _vkontakte;
 
   // ignore: public_member_api_docs
-  VkDartMessageEventUpdate(this._api, this.update);
+  VkDartMessageEventUpdate(this._vkontakte, this.update);
 
   /// The user ID.
   int get userId => update.object['user_id'];
@@ -31,7 +31,7 @@ class VkDartMessageEventUpdate {
   int? get conversationMessageId => update.object['conversation_message_id'];
 
   /// Sends an event with the action that will occur when the callback button is clicked.
-  /// Calls the [Messages.sendMessageEventAnswer] method, with the properties [eventId], [peerId], [userId].
+  /// Calls the `messages.send` method, with the properties [eventId], [peerId], [userId].
   /// The [type] property accepts only one of these values: `show_snackbar`, `open_link`, `open_app`.
   /// If the type is unknown or the required properties are unknown, an [ArgumentError] will be thrown.
   ///
@@ -70,7 +70,7 @@ class VkDartMessageEventUpdate {
             'only 3 values are possible: show_snackbar, open_link, open_app');
     }
 
-    return _api.messages.sendMessageEventAnswer({
+    return _vkontakte.request('messages.sendMessageEventAnswer', {
       'event_id': eventId,
       'peer_id': peerId,
       'user_id': userId,
