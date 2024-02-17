@@ -2,44 +2,75 @@ import 'package:vkdart/model.dart';
 import 'package:vkdart/vkdart.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// The main class of the library.
-/// It contains methods for working with the VK API.
-/// ```dart
-/// vkdart.users.get({'user_id': 'durov'});
-/// ```
-/// It also contains methods for working with the update fetcher.
+/// The base class of the package.
+/// Allows to create requests to VK API methods using [request] function,
+/// listen to [Longpoll] API and Callback API ([Webhook]) events.
 ///
+/// Sample Example:
 /// ```dart
-/// vkdart.onMessage().listen((event) => print(event.text));
+/// // message_new, message_edit, message_reply events.
+/// vkdart.onMessage().listen((event) {
+///   print('message event!');
+///   print('SenderId: ${event.senderId}');
+///
+///   vkdart.request('messages.send', {
+///      'peer_id': event.peerId,
+///      'message': 'Hello, World!',
+///      'random_id': 0
+///   }); // using API.
+/// });
+///
+/// vkdart.start().then((_) => print('Longpoll/Callback API started'));
 /// ```
-/// `vkdart` - Instance of [VkDart].
-class VkDart extends Api {
+///
+/// `vkdart` - instance of [VkDart].
+class VkDart extends Vkontakte {
   final Event _event;
 
   /// Update fetcher.
   late final AbstractUpdateFetcher fetcher;
 
-  /// Constructor.
-  /// [token] - access token.
-  /// [event] - [Event] instance.
-  /// [fetcher] - [AbstractUpdateFetcher] instance.
-  /// [groupId] - group id.
-  /// [language] - Language.
-  /// [version] - API version
+  /// Basic constructor.
+  ///
+  /// In [token] is required for requests to VK API methods.
+  ///
+  /// In [fetcher] we specify how we want to receive events, for this purpose two classes [Longpoll] and [Webhook] (Callback API) are implemented.
+  /// - `Longpoll API`: event queue is stored on VK side and each time it is necessary to access VK server.
+  /// ```dart
+  /// final GROUP_ID = 123456;
+  /// final fetcher = Longpoll(GROUP_ID);
+  /// ```
+  /// - `Callback API`: event queue comes to your server.
+  /// ```dart
+  /// final fetcher = await Webhook.createHttpServer(
+  ///   confirmationToken: 'token',
+  ///   secretKey: 'key',
+  /// ); // or createHttpsServer.
+  /// ```
+  /// In [event] we specify a class with methods to listen for events.
+  /// Is optional.
+  ///
+  /// In [language] specify the language in which data will be sent when requesting the VK method.
+  /// By default is [LangApi.ru].
+  ///
+  /// In [version] specify the version of VK API.
+  /// By default is 5.131.
+  ///
+  /// Sample Example:
+  /// ```dart
+  /// final vkdart = VkDart('accessToken', fetcher: fetcher, event: Event(sync: false /* optional */));
+  /// ```
   VkDart(
     String token, {
+    required this.fetcher,
     Event? event,
-    AbstractUpdateFetcher? fetcher,
-    int? groupId,
     LangApi language = LangApi.ru,
     String version = '5.131',
   })  : _event = event ?? Event(),
         super(token: token, language: language, version: version) {
-    if ((fetcher is Longpoll && groupId == null) || groupId == null) {
-      throw VkDartException('Longpoll fetcher requires group id');
+    if (fetcher is Longpoll) {
+      (fetcher as Longpoll).vkontakte = this;
     }
-
-    this.fetcher = fetcher ?? Longpoll(this, groupId: groupId);
   }
 
   /// Start fetcher
