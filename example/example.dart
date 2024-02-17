@@ -15,7 +15,7 @@ void main() async {
 
   // message_new, message_edit, message_reply
   vkdart.onMessage().where((event) => event.isUser).listen((event) {
-    vkdart.messages.send({
+    vkdart.request('messages.send', {
       'peer_id': 1,
       'message': 'Hello world!',
       'random_id': 0,
@@ -26,9 +26,5 @@ void main() async {
   await vkdart.start().then((_) => print('Longpoll API run!'));
 
   // use API
-  // await vkdart.users.get({'user_id': 'durov'}); // List<Map<String, dynamic>>
-  // await vkdart.utils.getServerTime({}); // int
-  //
-  // request via native function
   // await vkdart.request('groups.getById', {'group_id': 1}); // List<Map<String, dynamic>>
 }
