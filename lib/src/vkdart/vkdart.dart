@@ -28,7 +28,7 @@ class VkDart extends Vkontakte {
   final Event _event;
 
   /// Update fetcher.
-  late final AbstractUpdateFetcher fetcher;
+  final AbstractUpdateFetcher fetcher;
 
   /// Basic constructor.
   ///
