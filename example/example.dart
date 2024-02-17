@@ -1,9 +1,8 @@
 import 'package:vkdart/vkdart.dart';
 
 void main() async {
-  // Group ID is indicated if Longpoll API is used
-  // if the fetcher parameter is not specified, Longpoll will be used by default
-  final vkdart = VkDart('accessToken', groupId: 123);
+  const groupId = 123456;
+  final vkdart = VkDart('accessToken', fetcher: Longpoll(groupId));
 
   // Use callback API
   // final webhook = await Webhook.createHttpServer(
@@ -11,19 +10,19 @@ void main() async {
   //  confirmation: 'confirmationCode',
   // );
   //
-  // final vkdart = VkDart('accessToken', event: Event(), fetcher: webhook);
+  // final vkdart = VkDart('accessToken', fetcher: webhook);
 
   // message_new, message_edit, message_reply
   vkdart.onMessage().where((event) => event.isUser).listen((event) {
     vkdart.request('messages.send', {
-      'peer_id': 1,
+      'peer_id': event.peerId,
       'message': 'Hello world!',
       'random_id': 0,
     });
   });
 
   // ignore: avoid_print
-  await vkdart.start().then((_) => print('Longpoll API run!'));
+  await vkdart.start().then((_) => print('Longpoll API started!'));
 
   // use API
   // await vkdart.request('groups.getById', {'group_id': 1}); // List<Map<String, dynamic>>
