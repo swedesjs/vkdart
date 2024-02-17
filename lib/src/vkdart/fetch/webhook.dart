@@ -22,7 +22,7 @@ class Webhook extends AbstractUpdateFetcher {
       required io.File certificate,
       int port = 443,
       String? secretKey,
-      String? confirimationToken}) async {
+      String? confirmationToken}) async {
     final server = await io.HttpServer.bindSecure(
         io.InternetAddress.anyIPv4.address,
         port,
@@ -30,16 +30,16 @@ class Webhook extends AbstractUpdateFetcher {
           ..useCertificateChainBytes(certificate.readAsBytesSync())
           ..usePrivateKeyBytes(privateKey.readAsBytesSync()));
 
-    return Webhook(server, confirimationToken, secretKey);
+    return Webhook(server, confirmationToken, secretKey);
   }
 
   /// Create a Http server.
   static Future<Webhook> createHttpServer(
-      {int port = 80, String? secretKey, String? confirimationToken}) async {
+      {int port = 80, String? secretKey, String? confirmationToken}) async {
     final server =
         await io.HttpServer.bind(io.InternetAddress.anyIPv4.address, port);
 
-    return Webhook(server, confirimationToken, secretKey);
+    return Webhook(server, confirmationToken, secretKey);
   }
 
   @override
@@ -68,7 +68,7 @@ class Webhook extends AbstractUpdateFetcher {
         if (isConfirmation) {
           if (_confirmationToken == null) {
             throw WebhookException(
-                'The vk server requested confirimation token, specify this parameter!');
+                'The vk server requested confirmation token, specify this parameter!');
           }
         } else {
           emitUpdate(VkDartUpdate(data));
