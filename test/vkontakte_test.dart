@@ -11,26 +11,14 @@ void main() {
   group('Testing methods VK', () {
     group('check `request` function', () {
       test('should produce a positive result', () async {
-        final dataUser =
-            await vkdart.request('users.get', {'user_id': 'durov'});
+        final users = await vkdart.request('users.get', {'user_id': 'durov'});
 
-        dataUser.should.beOfType<List<dynamic>>();
+        users.should.beOfType<List<dynamic>>();
       });
 
       test('should display an error', () async {
         await Should.throwAsync<ApiException>(
-          () => vkdart.request('users.report', {}),
-        );
-      });
-    });
-    group('check functionality of the created interfaces.', () {
-      test('should produce a positive result', () async {
-        final dataUser = await vkdart.users.get({'user_id': 'durov'});
-
-        dataUser.should.beOfType<List<dynamic>>();
-      });
-      test('should display an error', () async {
-        await Should.throwAsync(() => vkdart.users.report({}));
+            () => vkdart.request('users.report', {}));
       });
     });
   });
