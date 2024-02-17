@@ -9,7 +9,7 @@ import 'package:vkdart/vkontakte.dart';
 
 /// Longpoll fetcher.
 class Longpoll extends AbstractUpdateFetcher {
-  final Api _api;
+  final Vkontakte _vkontakte;
 
   /// Group id
   final int groupId;
@@ -21,15 +21,11 @@ class Longpoll extends AbstractUpdateFetcher {
   String? _serverUrl, _secretKey;
 
   /// Create a new longpoll fetcher.
-  ///
-  /// [api] - instance [Api]
-  /// [groupId] - group ID
-  /// [lastEventNumber] - The last number of the event to start wiretapping from.
   Longpoll(
-    Api api, {
+    this._vkontakte, {
     required this.groupId,
     this.lastEventNumber = 0,
-  }) : _api = api;
+  });
 
   @override
   Future<void> start() {
@@ -39,7 +35,9 @@ class Longpoll extends AbstractUpdateFetcher {
 
     _isStart = true;
 
-    _api.groups.getLongPollServer({'group_id': groupId}).then((data) {
+    final body = {'group_id': groupId};
+
+    _vkontakte.request('groups.getLongPollServer', body).then((data) {
       final lastEventNumber = (data as Map)['ts'];
 
       _serverUrl ??= data['server'] as String;
