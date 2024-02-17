@@ -1,49 +1,66 @@
 import 'dart:async';
 
 import 'package:vkdart/model.dart';
+import 'package:vkdart/vkdart.dart';
 
 /// This class provides methods to subscribe to events.
-/// for example to listen to new messages.
-///
+/// It's used in [VkDart] class.
 class Event {
   // message_new, message_edit, message_reply,
   final StreamController<VkDartUpdate> _messageController;
+
   // message_allow
   final StreamController<VkDartUpdate> _messageAllowController;
+
   // message_deny
   final StreamController<VkDartUpdate> _messageDenyController;
+
   // message_typing_state
   final StreamController<VkDartUpdate> _messageTypingStateController;
+
   // message_event
   final StreamController<VkDartUpdate> _messageEventController;
+
   // message_reaction_event
   final StreamController<VkDartUpdate> _messageReactionController;
+
   // photo_new, audio_new, video_new
   final StreamController<VkDartUpdate> _attachmentNewController;
+
   // photo_comment_new, photo_comment_edit, photo_comment_restore, photo_comment_delete,
   // video_comment_new, video_comment_edit, video_comment_restore, video_comment_delete
   // market_comment_new, market_comment_edit, market_comment_restore, market_comment_delete
   // wall_reply_new, wall_reply_edit, wall_reply_restore, wall_reply_delete
   // board_post_new, board_post_edit, board_post_restore, board_post_delete events
   final StreamController<VkDartUpdate> _commentController;
+
   // wall_post_new, wall_repost
   final StreamController<VkDartUpdate> _wallController;
+
   // like_add, like_remove
   final StreamController<VkDartUpdate> _likeController;
+
   // market_order_new, market_order_edit events
   final StreamController<VkDartUpdate> _marketOrderController;
+
   // group_join, group_leave
   final StreamController<VkDartUpdate> _groupController;
+
   // user_block, user_unblock
   final StreamController<VkDartUpdate> _userController;
+
   // poll_vote_new,
   final StreamController<VkDartUpdate> _pollVoteNewController;
+
   // group_officers_edit, group_change_settings, group_change_photo
   final StreamController<VkDartUpdate> _groupChangeController;
+
   // vk_pay_transaction
   final StreamController<VkDartUpdate> _vkpayTransactionController;
+
   // app_payload
   final StreamController<VkDartUpdate> _appPayloadController;
+
   // donut_subscription_create, donut_subscription_prolonged, donut_subscription_expired,
   // donut_subscription_cancelled, donut_subscription_price_changed donut_money_withdraw, donut_money_withdraw_error
   final StreamController<VkDartUpdate> _donutController;
@@ -71,7 +88,7 @@ class Event {
         _donutController = StreamController.broadcast(sync: sync),
         _unsupportedEventController = StreamController.broadcast(sync: sync);
 
-  /// Emiter update.
+  /// Emitter update.
   void emitUpdate(VkDartUpdate update) {
     switch (update.type) {
       case UpdateType.message_new:
