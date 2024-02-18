@@ -60,13 +60,13 @@ class VkDart extends Vkontakte {
   /// ```dart
   /// final vkdart = VkDart('accessToken', fetcher: fetcher, event: Event(sync: false /* optional */));
   /// ```
-  VkDart(
-    String token, {
+  VkDart(String token, {
     required this.fetcher,
     Event? event,
     LangApi language = LangApi.ru,
     String version = '5.131',
-  })  : _event = event ?? Event(),
+  })
+      : _event = event ?? Event(),
         super(token: token, language: language, version: version) {
     if (fetcher is Longpoll) {
       (fetcher as Longpoll).vkontakte = this;
@@ -84,7 +84,7 @@ class VkDart extends Vkontakte {
 
   /// Listen for `message_new`, `message_edit`, `message_reply` events.
   Stream<VkDartMessageUpdate> onMessage() =>
-      _event.onMessage().map(VkDartMessageUpdate.new);
+      _event.onMessage().map((event) => VkDartMessageUpdate(this, event));
 
   /// Listen for `message_allow` event.
   Stream<VkDartMessageAllowUpdate> onMessageAllow() =>
@@ -99,9 +99,10 @@ class VkDart extends Vkontakte {
       _event.onMessageTypingState().map(VkDartMessageTypingStateUpdate.new);
 
   /// Listen for `message_event` event.
-  Stream<VkDartMessageEventUpdate> onMessageEvent() => _event
-      .onMessageEvent()
-      .map((event) => VkDartMessageEventUpdate(this, event));
+  Stream<VkDartMessageEventUpdate> onMessageEvent() =>
+      _event
+          .onMessageEvent()
+          .map((event) => VkDartMessageEventUpdate(this, event));
 
   /// Listen for `message_reaction_event` event.
   Stream<VkDartMessageReactionEventUpdate> onMessageReactionEvent() =>
