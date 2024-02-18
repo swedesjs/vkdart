@@ -38,9 +38,9 @@ class MessageModel {
   Map<String, dynamic> get clientInfo => payload['client_info'];
 
   /// The ID of the message.
-  int get id => message['id'];
+  int? get id => message['id'];
 
-  /// The time of sending in Unixtime.
+  /// The time of sending in Unix time.
   int? get createdAt => message['date'];
 
   /// The destination ID.
