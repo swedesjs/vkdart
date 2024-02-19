@@ -102,7 +102,44 @@ class MessageModel {
       : null;
 
   /// Information about the service action with the chat.
-  Map<String, dynamic>? get action => message['action'];
+  ///
+  /// If the property returns `null`, then most likely the field type in the payload is [String].
+  /// Try referring to the [actionType] property,
+  /// if this property is also `null`,
+  /// then the **API** has not returned a field.
+  Map<String, dynamic>? get action {
+    final actionPayload = message['action'];
+    if (actionPayload is String) return null;
+
+    return actionPayload;
+  }
+
+  /// Chat action type.
+  String? get actionType => action?['type'] ?? message['action'];
+
+  /// The ID of the user who was invited or excluded from the chat, or who pinned or unpinned the message.
+  int? get actionMemberId => action?['member_id'] ?? message['action_mid'];
+
+  /// New title of the conversation.
+  String? get actionText => action?['text'] ?? message['action_text'];
+
+  /// An old conversation title.
+  String? get actionOldText => action?['old_text'];
+
+  /// Email invited or excluded.
+  String? get actionEmail => action?['email'] ?? message['action_email'];
+
+  /// The URL of the 50 px wide copy of the conversation photo.
+  String? get actionPhoto50 =>
+      action?['photo']?['photo_50'] ?? message['photo_50'];
+
+  /// The URL of the 100 px wide copy of the conversation photo.
+  String? get actionPhoto100 =>
+      action?['photo']?['photo_100'] ?? message['photo_100'];
+
+  /// The URL of the 200 px wide copy of the conversation photo.
+  String? get actionPhoto200 =>
+      action?['photo']?['photo_200'] ?? message['photo_200'];
 
   /// For community messages only. Contains the ID of the user (community administrator) who sent this message.
   int? get adminAuthorId => message['admin_author_id'];
@@ -154,22 +191,4 @@ class MessageModel {
 
   /// ID of the conversation creator.
   int? get adminId => message['admin_id'];
-
-  /// See https://dev.vk.com/ru/reference/objects/message#action_mid
-  int? get actionMid => message['action_mid'];
-
-  /// See https://dev.vk.com/ru/reference/objects/message#action_email
-  String? get actionEmail => message['action_email'];
-
-  /// See https://dev.vk.com/ru/reference/objects/message#action_text
-  String? get actionText => message['action_text'];
-
-  /// The URL of the 50 px wide copy of the conversation photo.
-  String? get photo50 => message['photo_50'];
-
-  /// The URL of the 100 px wide copy of the conversation photo.
-  String? get photo100 => message['photo_100'];
-
-  /// The URL of the 200 px wide copy of the conversation photo.
-  String? get photo200 => message['photo_200'];
 }
