@@ -1,3 +1,4 @@
+<!-- @formatter:off -->
 # VkDart
 
 [![Pub Version](https://img.shields.io/pub/v/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
@@ -9,12 +10,11 @@
 > A chat room to discuss how the package works - https://t.me/vk_dart
 
 ## Features
-1. **Supports all methods.** Has a description of all public VK methods.
-2. **Reliability.** Package functionality is wrapped in unit tests. 
-3. **Supports events.** Supports Callback API, Longpoll API
-4. **Development.** Functionality is becoming more and more every day!
-5. **Easy to use.** Very easy to use!
-6. **Model support.** There is a description of event, attachment and object models.
+1. **Reliability.** Package functionality is wrapped in unit tests. 
+2. **Supports events.** Supports Callback API, Longpoll API
+3. **Development.** Functionality is becoming more and more every day!
+4. **Easy to use.** Very easy to use!
+5. **Model support.** There is a description of event, attachment and object models.
 
 ## Usage
 
@@ -24,9 +24,10 @@ import 'package:vkdart/vkdart.dart';
 
 void main() async {
   final TOKEN = '';
-  final GROUP_ID = 123;
+  final GROUP_ID = 1;
 
-  final vkdart = VkDart(TOKEN, groupId: GROUP_ID);
+  final myFetcher = Longpoll(GROUP_ID); // or Webhook (CallbackAPI).
+  final vkdart = VkDart(TOKEN, fetcher: myFetcher);
 
   vkdart.start();
 }
@@ -34,10 +35,6 @@ void main() async {
 
 Using API:
 ```dart
-await vkdart.users.get({'user_id': 'durov'}); // List<Map<String, dynamic>>
-await vkdart.utils.getServerTime({}); // int
-
-// request via native function
 await vkdart.request('groups.getById', {'group_id': 1}); // List<Map<String, dynamic>>
 ```
 
@@ -52,7 +49,10 @@ vkdart.onMessage().listen((event) { ... });
 In this case the events message_new, message_reply, message_edit will be processed in this listen. 
 In order to filter the necessary events, you can modify [Stream](https://www.dartlang.org/tutorials/language/streams#methods-that-modify-a-stream): 
 ```dart
-vkdart.onMessage().where((event) => event.isNew && event.isChat).listen((event) { ... });
+vkdart
+        .onMessage()
+        .where((event) => event.isNew && event.isChat)
+        .listen((event) { ... });
 ```
 
 Due to the fact that VK API is also updated, new events are added, there is a handler [onUnsupportedEvent](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onUnsupportedEvent.html).
@@ -201,7 +201,7 @@ CustomAttachment.fromString('photo1_2'); // PhotoAttachmentModel
 ## Future plans
 - Release models of VK API objects. ✔
 - Release a class that makes keyboarding easier. ✔
-- Release features, for chat bot commands.
+- Release features, for chatbot commands.
 
 ## Bugs and feature requests
 
