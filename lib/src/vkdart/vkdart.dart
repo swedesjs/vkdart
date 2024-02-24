@@ -1,6 +1,17 @@
 import 'package:vkdart/model.dart';
+import 'package:vkdart/src/vkdart/model/updates/sub_updates/chat_create.dart';
 import 'package:vkdart/vkdart.dart';
 import 'package:vkdart/vkontakte.dart';
+
+const _$chatPhotoEvents = ['chat_photo_update', 'chat_photo_remove'];
+const _$chatPinEvents = ['chat_pin_message', 'chat_unpin_message'];
+const _$chatUserEvents = [
+  'chat_invite_user',
+  'chat_kick_user',
+  'chat_invite_user_by_link'
+];
+const _$chatCreateEvent = ['chat_create'];
+const _$chatTitleUpdateEvent = ['chat_title_update'];
 
 /// The base class of the package.
 /// Allows to create requests to VK API methods using [request] function,
@@ -60,13 +71,13 @@ class VkDart extends Vkontakte {
   /// ```dart
   /// final vkdart = VkDart('accessToken', fetcher: fetcher, event: Event(sync: false /* optional */));
   /// ```
-  VkDart(String token, {
+  VkDart(
+    String token, {
     required this.fetcher,
     Event? event,
     LangApi language = LangApi.ru,
     String version = '5.131',
-  })
-      : _event = event ?? Event(),
+  })  : _event = event ?? Event(),
         super(token: token, language: language, version: version) {
     if (fetcher is Longpoll) {
       (fetcher as Longpoll).vkontakte = this;
@@ -86,6 +97,97 @@ class VkDart extends Vkontakte {
   Stream<VkDartMessageUpdate> onMessage() =>
       _event.onMessage().map((event) => VkDartMessageUpdate(this, event));
 
+  Stream<VkDartMessageUpdate> _onChat(List<String> subTypes) =>
+      onMessage().where((event) => subTypes.contains(event.actionType));
+
+  /// Listens to chat action messages `chat_create`.
+  /// Returns [Stream] with an instance of [VkDartChatCreateUpdate] (inherited from [VkDartMessageUpdate]).
+  /// With additional properties:
+  /// - [VkDartChatCreateUpdate.title].
+  ///
+  /// Sample Example:
+  /// ```dart
+  /// vkdart.onChatCreate().listen((event) =>
+  ///       event.sendMessage(message: 'Hello ${event.title} chat members!'));
+  /// ```
+  Stream<VkDartChatCreateUpdate> onChatCreate() => _onChat(_$chatCreateEvent)
+      .map((event) => VkDartChatCreateUpdate(this, event.update));
+
+  /// Listens to chat action messages `chat_title_update`.
+  /// Returns [Stream] with an instance of [VkDartChatTitleUpdate] (inherited from [VkDartMessageUpdate]).
+  /// With additional properties:
+  /// - [VkDartChatTitleUpdate.newTitle]
+  /// - [VkDartChatTitleUpdate.oldTitle]
+  ///
+  /// Sample example:
+  /// ```dart
+  /// vkdart.onChatTitle().listen((event) => event.sendMessage(
+  ///       message: 'User @id${event.senderId} updated the chat title from "${event.oldTitle}" to "${event.newTitle}"!'));
+  /// ```
+  Stream<VkDartChatTitleUpdate> onChatTitle() => _onChat(_$chatTitleUpdateEvent)
+      .map((event) => VkDartChatTitleUpdate(this, event.update));
+
+  /// Listens to chat action messages `chat_photo_update`, `chat_photo_remove`.
+  /// Returns a [Stream] with an instance of [VkDartChatPhotoUpdate] (inherited from [VkDartMessageUpdate]).
+  /// With additional properties:
+  /// - [VkDartChatPhotoUpdate.isUpdate]
+  /// - [VkDartChatPhotoUpdate.isRemove]
+  ///
+  /// Sample example:
+  /// ```dart
+  /// vkdart.onChatPhoto().listen((event) {
+  ///   final textRemoveOrUpdated = event.isRemove ? 'removed' : 'updated';
+  ///
+  ///   event.sendMessage(
+  ///       message:
+  ///           'User @id${event.senderId} $textRemoveOrUpdated photo in chat!');
+  /// });
+  /// ```
+  Stream<VkDartChatPhotoUpdate> onChatPhoto() => _onChat(_$chatPhotoEvents)
+      .map((event) => VkDartChatPhotoUpdate(this, event.update));
+
+  /// Listens to chat action messages `chat_pin_message`, `chat_unpin_message`.
+  /// Returns a [Stream] with an instance of [VkDartChatPinUpdate] (inherited from [VkDartMessageUpdate]).
+  /// With additional properties:
+  /// - [VkDartChatPinUpdate.isPin]
+  /// - [VkDartChatPinUpdate.isUnpin]
+  /// - [VkDartChatPinUpdate.memberId]
+  /// - [VkDartChatPinUpdate.pinConversationMessageId]
+  ///
+  /// Sample example:
+  /// ```dart
+  /// vkdart.onChatPin().listen((event) {
+  ///   final textUnpinOrPin = event.isUnpin ? 'unpinned' : 'pinned';
+  ///
+  ///   event.sendMessage(
+  ///       message:
+  ///           'User @id${event.memberId} $textUnpinOrPin message with ID "${event.pinConversationMessageId}" in chat');
+  /// });
+  /// ```
+  Stream<VkDartChatPinUpdate> onChatPin() => _onChat(_$chatPinEvents)
+      .map((event) => VkDartChatPinUpdate(this, event.update));
+
+  /// Listens to chat action messages `chat_invite_user`, `chat_kick_user`, `chat_invite_user_by_link`.
+  /// Returns a [Stream] with an instance of [VkDartChatUserUpdate] (inherited from [VkDartMessageUpdate]).
+  /// With additional properties:
+  /// - [VkDartChatUserUpdate.isInviteByLink]
+  /// - [VkDartChatUserUpdate.isInviteNoLink]
+  /// - [VkDartChatUserUpdate.isKick]
+  /// - [VkDartChatUserUpdate.isInvite]
+  /// - [VkDartChatUserUpdate.memberId]
+  /// - [VkDartChatUserUpdate.email]
+  ///
+  /// Sample example:
+  /// ```dart
+  /// vkdart.onChatUser().listen((event) {
+  ///   final sayHelloOrGoodbye = event.isKick ? 'Bye' : 'Hello';
+  ///
+  ///   event.sendMessage(message: '$sayHelloOrGoodbye,  @id${event.memberId}!');
+  /// });
+  /// ```
+  Stream<VkDartChatUserUpdate> onChatUser() => _onChat(_$chatUserEvents)
+      .map((event) => VkDartChatUserUpdate(this, event.update));
+
   /// Listen for `message_allow` event.
   Stream<VkDartMessageAllowUpdate> onMessageAllow() =>
       _event.onMessageAllow().map(VkDartMessageAllowUpdate.new);
@@ -99,10 +201,9 @@ class VkDart extends Vkontakte {
       _event.onMessageTypingState().map(VkDartMessageTypingStateUpdate.new);
 
   /// Listen for `message_event` event.
-  Stream<VkDartMessageEventUpdate> onMessageEvent() =>
-      _event
-          .onMessageEvent()
-          .map((event) => VkDartMessageEventUpdate(this, event));
+  Stream<VkDartMessageEventUpdate> onMessageEvent() => _event
+      .onMessageEvent()
+      .map((event) => VkDartMessageEventUpdate(this, event));
 
   /// Listen for `message_reaction_event` event.
   Stream<VkDartMessageReactionEventUpdate> onMessageReactionEvent() =>
