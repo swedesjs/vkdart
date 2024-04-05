@@ -86,12 +86,15 @@ class VkDart extends Vkontakte {
 
   /// Start fetcher
   Future<void> start() async {
-    fetcher.onUpdate().listen(_event.emitUpdate);
+    onUpdate().listen(_event.emitUpdate);
     return fetcher.start();
   }
 
   /// Stop fetcher
   Future<void> stop() => fetcher.stop();
+
+  /// Listen for events.
+  Stream<VkDartUpdate> onUpdate() => fetcher.onUpdate();
 
   /// Listen for `message_new`, `message_edit`, `message_reply` events.
   Stream<VkDartMessageUpdate> onMessage() =>

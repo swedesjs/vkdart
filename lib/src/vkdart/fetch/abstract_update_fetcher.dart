@@ -7,7 +7,7 @@ abstract class AbstractUpdateFetcher {
   final StreamController<VkDartUpdate> _updatesController;
 
   /// constructor
-  AbstractUpdateFetcher() : _updatesController = StreamController();
+  AbstractUpdateFetcher() : _updatesController = StreamController.broadcast();
 
   /// add [update] to updates stream.
   void emitUpdate(VkDartUpdate update) => _updatesController.add(update);
