@@ -1,3 +1,9 @@
+## 2.3.1
+
+Changes:
+
+- Added the ability to subscribe to the main thread twice or more times.
+
 ## 2.3.0
 
 Changes:
