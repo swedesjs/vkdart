@@ -1,3 +1,4 @@
+import 'package:http/http.dart' as http;
 import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
@@ -32,6 +33,7 @@ class Vkontakte {
   final String _token;
   final LangApi _language;
   final String _version;
+  final http.Client? _client;
 
   /// Создаёт базовый экземпляр класса [Vkontakte].
   ///
@@ -39,13 +41,17 @@ class Vkontakte {
   /// [language] — язык, на котором будут возвращаться данные,
   /// например названия стран и городов.
   /// [version] — используемая версия API.
+  /// [client] — необязательный HTTP-клиент, закрытие которого остаётся
+  /// ответственностью вызывающего кода.
   Vkontakte({
     required String token,
     required LangApi language,
     required String version,
+    http.Client? client,
   })  : _token = token,
         _language = language,
-        _version = version;
+        _version = version,
+        _client = client;
 
   /// Позволяет отправлять запросы к VK API.
   Future<Object> request(String methodName,
@@ -62,6 +68,7 @@ class Vkontakte {
       _baseUrl + methodName,
       body: requestBody,
       headers: headers,
+      client: _client,
     ).then((data) {
       final error = (data['error'] as Map?)?.cast<String, dynamic>();
       final response = data['response'] as Object?;
