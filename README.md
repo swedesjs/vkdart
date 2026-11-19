@@ -33,7 +33,7 @@ dart pub add vkdart
 
 ```yaml
 dependencies:
-  vkdart: ^2.3.1
+  vkdart: ^2.3.2
 ```
 
 ```shell
