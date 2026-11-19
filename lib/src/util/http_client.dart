@@ -14,19 +14,23 @@ class HttpClient {
     return jsonBody;
   }
 
-  static Object _customValue(Object value) =>
-      value is List || value is Map ? jsonEncode(value) : value;
+  static String _customValue(Object? value) =>
+      value is List || value is Map ? jsonEncode(value) : value.toString();
 
-  static String? _transformBody(Map<String, dynamic>? body) =>
-      body?.entries.map((e) => '${e.key}=${_customValue(e.value)}').join('&');
+  static Map<String, String>? _transformBody(Map<String, dynamic>? body) =>
+      body?.map((key, value) => MapEntry(key, _customValue(value)));
 
   /// Создаёт POST-запрос.
-  static Future<dynamic> httpPost(String url,
-          {Map<String, dynamic>? body, Map<String, dynamic>? headers}) =>
-      http
-          .post(Uri.parse(url),
-              body: _transformBody(body), headers: {...?headers, ..._headers})
-          .then(_responseParsedBody)
-          // ignore: unnecessary_lambdas
-          .catchError((error) => Future.error(error));
+  static Future<dynamic> httpPost(
+    String url, {
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? headers,
+  }) async {
+    final response = await http.post(
+      Uri.parse(url),
+      body: _transformBody(body),
+      headers: {...?headers, ..._headers},
+    );
+    return _responseParsedBody(response);
+  }
 }
