@@ -1,7 +1,7 @@
 name: vkdart
 description: Пакет упрощает работу с VK API.
   Предоставляет удобный доступ к методам VK, поддерживает события и многое другое.
-version: 2.3.2
+version: 2.3.3
 repository: https://github.com/swedests/vkdart
 issue_tracker: https://github.com/swedests/vkdart/issues
 
