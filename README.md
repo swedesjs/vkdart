@@ -5,7 +5,7 @@
 # VkDart 🚀
 
 [![Pub Version](https://img.shields.io/pub/v/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
-[![Pub Popularity](https://img.shields.io/pub/popularity/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
+[![Pub Likes](https://img.shields.io/pub/likes/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 [![Pub Points](https://img.shields.io/pub/points/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 
 Удобный Dart-клиент для VK API: запросы к методам, события Long Poll и Callback API, клавиатуры и модели вложений. Чтобы вы писали бота, а не вели переговоры с JSON.
