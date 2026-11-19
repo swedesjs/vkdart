@@ -13,7 +13,6 @@ class Webhook extends AbstractUpdateFetcher {
 
   bool _isStart = false;
   Future<void>? _stopFuture;
-  Future<void>? _disposeFuture;
 
   // ignore: public_member_api_docs
   Webhook(this._server, [this._confirmationToken, this._secretKey]);
@@ -99,9 +98,7 @@ class Webhook extends AbstractUpdateFetcher {
   }
 
   @override
-  Future<void> dispose() => _disposeFuture ??= _dispose();
-
-  Future<void> _dispose() async {
+  Future<void> dispose() async {
     try {
       await stop();
     } finally {
