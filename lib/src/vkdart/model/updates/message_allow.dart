@@ -1,8 +1,8 @@
 import 'package:vkdart/model.dart';
 
-/// The message allow model.
+/// Модель разрешения на сообщения.
 ///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#message_allow
+/// См. https://dev.vk.com/ru/api/community-events/json-schema#message_allow
 class VkDartMessageAllowUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -10,9 +10,9 @@ class VkDartMessageAllowUpdate {
   // ignore: public_member_api_docs
   VkDartMessageAllowUpdate(this.update);
 
-  /// The user ID.
+  /// ID пользователя.
   int get userId => update.object['user_id'];
 
-  /// The parameter passed in the messages.allowMessagesFromGroup method.
+  /// Параметр, переданный в метод messages.allowMessagesFromGroup.
   String get key => update.object['key'];
 }

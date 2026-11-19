@@ -1,31 +1,31 @@
 import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// Listing of languages supported by VK API.
+/// Список языков, поддерживаемых VK API.
 enum LangApi {
-  /// Russian.
+  /// Русский.
   ru,
 
-  /// Ukrainian
+  /// Украинский.
   uk,
 
-  /// Belarusian
+  /// Белорусский.
   be,
 
-  /// English
+  /// Английский.
   en,
 
-  /// Finnish
+  /// Финский.
   fi,
 
-  /// German
+  /// Немецкий.
   de,
 
-  /// Italian
+  /// Итальянский.
   it
 }
 
-/// The class of interaction with the VK API.
+/// Класс для взаимодействия с VK API.
 class Vkontakte {
   static const _baseUrl = 'https://api.vk.com/method/';
 
@@ -33,12 +33,12 @@ class Vkontakte {
   final LangApi _language;
   final String _version;
 
-  /// Creating a base instance of the [Api] class.
+  /// Создаёт базовый экземпляр класса [Vkontakte].
   ///
-  /// [token] - access key.
-  /// [language] - defines the language in which various data will be returned,
-  /// such as the names of countries and cities.
-  /// [version] - API version used.
+  /// [token] — ключ доступа.
+  /// [language] — язык, на котором будут возвращаться данные,
+  /// например названия стран и городов.
+  /// [version] — используемая версия API.
   Vkontakte({
     required String token,
     required LangApi language,
@@ -47,7 +47,7 @@ class Vkontakte {
         _language = language,
         _version = version;
 
-  /// Allows you to create requests to the VK Api.
+  /// Позволяет отправлять запросы к VK API.
   Future<Object> request(String methodName,
       [Map<String, dynamic> body = const {}]) async {
     final requestBody = {

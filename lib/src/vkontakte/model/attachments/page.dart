@@ -1,65 +1,65 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Wiki Page.
+/// Модель страницы Wiki.
 ///
-/// See https://dev.vk.com/ru/reference/objects/wiki-page
+/// См. https://dev.vk.com/ru/reference/objects/wiki-page
 class WikiPageAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   WikiPageAttachmentModel(super.payload) : super(attachType: 'page');
 
-  /// The ID of the creator of the page.
+  /// Идентификатор создателя страницы.
   @override
   int get ownerId => payload['creator_id'];
 
-  /// The community ID.
+  /// ID сообщества.
   int? get groupId => payload['group_id'];
 
-  /// The name of the wiki page.
+  /// Название Wiki-страницы.
   String? get title => payload['title'];
 
-  /// Can a user edit the text of a wiki page
+  /// Может ли пользователь редактировать текст Wiki-страницы.
   bool? get isCanEdit => checkBoolInProperty('current_user_can_edit');
 
-  /// Can a user change the access rights of a wiki page
+  /// Может ли пользователь изменять права доступа к Wiki-странице.
   bool? get isCanEditAccess =>
       checkBoolInProperty('current_user_can_edit_access');
 
-  /// Information about who can view the wiki page:
-  /// - 2 — everyone can view the page;
-  /// - 1 — community members only;
-  /// - 0 — community leaders only.
+  /// Информация о том, кому доступен просмотр Wiki-страницы:
+  /// - 2 — страница доступна всем;
+  /// - 1 — только участники сообщества;
+  /// - 0 — только руководители сообщества.
   int? get whoCanView => payload['who_can_view'];
 
-  /// Specifies who can edit the wiki page:
-  /// - 2 — everyone can edit the page;
-  /// - 1 — community members only;
-  /// - 0 — community leaders only.
+  /// Указывает, кому доступно редактирование Wiki-страницы:
+  /// - 2 — страницу могут редактировать все;
+  /// - 1 — только участники сообщества;
+  /// - 0 — только руководители сообщества.
   int? get whoCanEdit => payload['who_can_edit'];
 
-  /// The date the wiki page was last modified in Unixtime format.
+  /// Дата последнего изменения Wiki-страницы в формате Unix.
   int? get edited => payload['edited'];
 
-  /// The date the wiki page was created in Unixtime format.
+  /// Дата создания Wiki-страницы в формате Unix.
   int? get createdAt => payload['created'];
 
-  /// The ID of the user who edited the wiki page last.
+  /// ID пользователя, последним редактировавшего Wiki-страницу.
   int? get editorId => payload['editor_id'];
 
-  /// The number of views of the wiki page.
+  /// Количество просмотров Wiki-страницы.
   int? get viewsCount => payload['views'];
 
-  /// The title of the parent page for navigation, if any.
+  /// Название родительской страницы для перехода (если есть).
   String? get parent => payload['parent'];
 
-  /// The title of the second parent page for navigation, if any
+  /// Название второй родительской страницы для перехода (если есть).
   String? get parent2 => payload['parent2'];
 
-  /// The text of the page in wiki format, if requested.
+  /// Текст страницы в формате Wiki, если он запрошен.
   String? get source => payload['source'];
 
-  /// The text of the page in html format, if requested.
+  /// Текст страницы в формате HTML, если он запрошен.
   String? get html => payload['html'];
 
-  /// The address of the page to display the wiki page.
+  /// Адрес страницы для отображения Wiki-страницы.
   String? get viewUrl => payload['view_url'];
 }

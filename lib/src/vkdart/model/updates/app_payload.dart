@@ -1,8 +1,8 @@
 import 'package:vkdart/model.dart';
 
-/// The model `app payload` update.
+/// Модель обновления `app payload`.
 ///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#app_payload
+/// См. https://dev.vk.com/ru/api/community-events/json-schema#app_payload
 class VkDartAppPayloadUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -10,15 +10,15 @@ class VkDartAppPayloadUpdate {
   // ignore: public_member_api_docs
   VkDartAppPayloadUpdate(this.update);
 
-  /// the ID of the user whose action sent the event in the application.
+  /// ID пользователя, чьё действие в приложении вызвало событие.
   int get userId => update.object['user_id'];
 
-  /// The ID of the application from which the event was sent.
+  /// ID приложения, из которого отправлено событие.
   int get appId => update.object['app_id'];
 
-  /// transmitted useful data.
+  /// Переданные полезные данные.
   Object? get appPayload => update.object['payload'];
 
-  /// the ID of the community to which the notification was sent.
+  /// ID сообщества, которому отправлено уведомление.
   int get groupId => update.object['group_id'];
 }

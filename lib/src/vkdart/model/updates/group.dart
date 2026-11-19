@@ -1,8 +1,8 @@
 import 'package:vkdart/model.dart';
 
-/// The model `group` update.
+/// Модель обновления `group`.
 ///
-/// See:
+/// См.:
 /// - https://dev.vk.com/ru/api/community-events/json-schema#group_leave
 /// - https://dev.vk.com/ru/api/community-events/json-schema#group_join
 class VkDartGroupUpdate {
@@ -12,18 +12,18 @@ class VkDartGroupUpdate {
   // ignore: public_member_api_docs
   VkDartGroupUpdate(this.update);
 
-  /// Check is user leave.
+  /// Проверяет, вышел ли пользователь.
   bool get isLeave => update.type == UpdateType.group_leave;
 
-  /// Check is user join.
+  /// Проверяет, присоединился ли пользователь.
   bool get isJoin => update.type == UpdateType.group_join;
 
-  /// User ID.
+  /// ID пользователя.
   int get userId => update.object['user_id'];
 
-  /// A value indicating whether the user was deleted or logged out on their own.
+  /// Указывает, был ли пользователь удалён или вышел самостоятельно.
   int? get self => update.object['self'];
 
-  /// Specifies exactly how the participant was added.
+  /// Указывает, каким именно способом был добавлен участник.
   String? get joinType => update.object['join_type'];
 }

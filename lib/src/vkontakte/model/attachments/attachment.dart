@@ -2,22 +2,22 @@ import 'package:vkdart/util.dart';
 import 'package:vkdart/vkdart.dart' show VkDartException;
 import 'package:vkdart/vkontakte.dart';
 
-/// Base class Attachment
+/// Базовый класс вложения
 ///
-/// See https://dev.vk.com/ru/docs/attachments
+/// См. https://dev.vk.com/ru/docs/attachments
 abstract class AttachmentModel {
-  /// Payload.
+  /// Данные.
   final Map<String, dynamic> payload;
 
-  /// Attachment type.
+  /// Тип вложения.
   final String attachType;
 
   // ignore: public_member_api_docs
   AttachmentModel(this.payload, {required this.attachType});
 
-  /// Transforms the attachment object into a specific model, depending on its type.
-  /// There may be exceptions [VkDartException] in the case of a non-correct object,
-  /// or if the type is not supported
+  /// Преобразует объект вложения в соответствующую модель в зависимости от его типа.
+  /// Для некорректного объекта может быть выброшено исключение [VkDartException],
+  /// или если тип не поддерживается.
   factory AttachmentModel.fromSpecificModel(
           Map<String, dynamic> payload, String attachType) =>
       switch (attachType) {
@@ -43,13 +43,13 @@ abstract class AttachmentModel {
   bool? checkBoolInProperty(String key) => checkBoolUtil(payload[key]);
 }
 
-/// Model Custom Attachment.
+/// Модель пользовательского вложения.
 class CustomAttachmentModel extends AttachmentModel {
   // ignore: public_member_api_docs
   CustomAttachmentModel(super.payload, {required super.attachType});
 
-  /// Parses an attachment from a string.
-  /// Example:
+  /// Разбирает строку вложения.
+  /// Пример:
   /// ```dart
   /// CustomAttachmentModel.fromString('photo-1_2_ACCESS_KEY');
   /// ```
@@ -74,13 +74,13 @@ class CustomAttachmentModel extends AttachmentModel {
         as CustomAttachmentModel;
   }
 
-  /// Attachment owner identifier.
+  /// Идентификатор владельца вложения.
   int get ownerId => payload['owner_id'];
 
-  /// Attachment ID.
+  /// Идентификатор вложения.
   int get id => payload['id'];
 
-  /// Attachment access key.
+  /// Ключ доступа к вложению.
   String? get accessKey => payload['access_key'];
 
   @override
@@ -88,36 +88,36 @@ class CustomAttachmentModel extends AttachmentModel {
       '$attachType${ownerId}_$id${accessKey != null ? '_$accessKey' : ''}';
 }
 
-/// Mixin for attachment likes.
+/// Миксин для отметок «Нравится» у вложений.
 mixin AttachmentLikesMixin on AttachmentModel {
   Map<String, dynamic>? get _likes => payload['likes'];
 
-  /// the number of users who liked the post;
+  /// количество пользователей, отметивших запись отметкой «Нравится»;
   int? get likesCount => _likes?['count'];
 
-  /// the presence of a "like" mark from the current user ;
+  /// наличие отметки «Нравится» от текущего пользователя;
   bool? get isUserLikes => checkBoolUtil(_likes?['user_likes']);
 
-  /// information about whether the current user can mark "Like";
+  /// информация о том, может ли текущий пользователь поставить отметку «Нравится»;
   bool? get isLikesCanLike => checkBoolUtil(_likes?['can_like']);
 
-  /// information about whether the current user can repost the post;
+  /// информация о том, может ли текущий пользователь сделать репост записи;
   bool? get isLikesCanPublish => checkBoolUtil(_likes?['can_publish']);
 }
 
-/// Mixin for attachment reposts.
+/// Миксин для репостов вложений.
 mixin AttachmentRepostsMixin on AttachmentModel {
   Map<String, dynamic>? get _reposts => payload['reposts'];
 
-  /// the number of reposts;
+  /// количество репостов;
   int? get repostsCount => _reposts?['count'];
 
-  /// Indicates whether the current user has reposted the attachment.
+  /// Указывает, сделал ли текущий пользователь репост вложения.
   bool? get isUserReposted => checkBoolUtil(_reposts?['user_reposted']);
 
-  /// repost counter on the wall.
+  /// счётчик репостов на стене.
   int? get repostsWallCount => _reposts?['wall_count'];
 
-  /// counter of reposts in personal messages.
+  /// счётчик репостов в личных сообщениях.
   int? get repostsMailCount => _reposts?['mail_count'];
 }

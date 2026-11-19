@@ -1,17 +1,17 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Market
+/// Модель товара
 ///
-/// See https://dev.vk.com/ru/reference/objects/market-item
+/// См. https://dev.vk.com/ru/reference/objects/market-item
 class MarketAttachmentModel extends CustomAttachmentModel
     with AttachmentLikesMixin {
   // ignore: public_member_api_docs
   MarketAttachmentModel(super.payload) : super(attachType: 'market');
 
-  /// Product Name.
+  /// Название товара.
   String? get title => payload['title'];
 
-  /// Product description text.
+  /// Описание товара.
   String? get description => payload['description'];
 
   Map<String, dynamic>? get _price => payload['price'];
@@ -19,95 +19,95 @@ class MarketAttachmentModel extends CustomAttachmentModel
   Map<String, dynamic>? get _category => payload['category'];
   Map<String, dynamic>? get _rejectInfo => payload['reject_info'];
 
-  /// the price of a product in hundredths of a currency unit.
+  /// Цена товара в сотых долях денежной единицы.
   int? get priceAmount => _price?['amount'];
 
-  /// currency identifier.
+  /// ID валюты.
   int? get priceCurrencyId => _price?['currency']?['id'];
 
-  /// currency name.
+  /// Название валюты.
   String? get priceCurrencyName => _price?['currency']?['name'];
 
-  /// the old price of a product in hundredths of a currency unit.
+  /// Старая цена товара в сотых долях денежной единицы.
   int? get priceOldAmount => _price?['old_amount'];
 
-  /// string representation of price.
+  /// Строковое представление цены.
   String? get priceText => _price?['text'];
 
-  /// width in millimeters.
+  /// Ширина в миллиметрах.
   int? get dimensionsWidth => _dimensions?['width'];
 
-  /// height in millimeters.
+  /// Высота в миллиметрах.
   int? get dimensionsHeight => _dimensions?['height'];
 
-  /// length in millimeters.
+  /// Длина в миллиметрах.
   int? get dimensionsLength => _dimensions?['length'];
 
-  /// category ID.
+  /// ID категории.
   int? get categoryId => _category?['id'];
 
-  /// name of category.
+  /// Название категории.
   String? get categoryName => _category?['name'];
 
-  /// section identifier.
+  /// ID раздела.
   int? get categorySectionId => _category?['section']?['id'];
 
-  /// section name.
+  /// Название раздела.
   String? get categorySectionName => _category?['section']?['name'];
 
-  /// name of the reason for rejecting the goods.
+  /// Причина отклонения товара.
   String? get rejectTitle => _rejectInfo?['title'];
 
-  /// description of the reason for blocking.
+  /// Описание причины блокировки.
   String? get rejectDescription => _rejectInfo?['description'];
 
-  /// “Delete” and “Write to support” buttons.
+  /// Кнопки «Удалить» и «Написать в поддержку».
   Map<String, dynamic>? get rejectButtons => _rejectInfo?['buttons'];
 
-  /// numerical representation of moderation status.
+  /// Числовое представление статуса модерации.
   String? get rejectModerationStatus => _rejectInfo?['moderation_status'];
 
-  /// link to moderation rules.
+  /// Ссылка на правила модерации.
   String? get rejectLink => _rejectInfo?['info_link'];
 
-  /// support link.
+  /// Ссылка на поддержку.
   String? get rejectWhiteToSupportLink => _rejectInfo?['white_to_support_link'];
 
-  /// Weight in grams.
+  /// Вес в граммах.
   int? get weight => payload['weight'];
 
-  /// Product cover image URL.
+  /// URL обложки товара.
   String? get thumbPhoto => payload['thumb_photo'];
 
-  /// Product creation date in Unixtime format.
+  /// Дата создания товара в формате Unix.
   int? get createdAt => payload['date'];
 
-  /// Product availability status. Possible values:s
-  /// `0` — product available.
-  /// `1` - product removed.
-  /// `2` - product is unavailable.
+  /// Статус доступности товара. Возможные значения:
+  /// `0` — товар доступен.
+  /// `1` — товар удалён.
+  /// `2` — товар недоступен.
   int? get availability => payload['availability'];
 
-  /// true if the item has been bookmarked by the current user.
+  /// true, если текущий пользователь добавил объект в закладки.
   bool? get isFavorite => payload['is_favorite'];
 
-  /// Product article, arbitrary string up to 50 characters long.
+  /// Артикул товара — произвольная строка длиной до 50 символов.
   String? get sku => payload['sku'];
 
-  /// Product images.
+  /// Изображения товара.
   List<PhotoAttachmentModel>? get photos => (payload['photos'] as List?)
       ?.map((e) => PhotoAttachmentModel((e as Map).cast<String, dynamic>()))
       .toList();
 
-  /// Ability to comment on a product for the current user.
+  /// Может ли текущий пользователь комментировать товар.
   bool? get isCanComment => checkBoolInProperty('can_comment');
 
-  /// Ability to repost a product for the current user.
+  /// Может ли текущий пользователь сделать репост товара.
   bool? get isCanRepost => checkBoolInProperty('can_repost');
 
-  /// Link to product in external resources.
+  /// Ссылка на товар во внешних ресурсах.
   String? get url => payload['url'];
 
-  /// Text on the product button.
+  /// Текст на кнопке товара.
   String? get buttonTitle => payload['button_title'];
 }

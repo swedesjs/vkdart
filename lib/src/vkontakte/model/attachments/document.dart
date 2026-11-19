@@ -1,59 +1,59 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Document.
+/// Модель документа.
 ///
-/// See https://dev.vk.com/ru/reference/objects/doc
+/// См. https://dev.vk.com/ru/reference/objects/doc
 class DocumentAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   DocumentAttachmentModel(super.payload) : super(attachType: 'doc');
 
-  /// Title of the document.
+  /// Название документа.
   String? get title => payload['title'];
 
-  /// Size of the document in bytes.
+  /// Размер документа в байтах.
   int? get size => payload['size'];
 
-  /// MIME type of the document.
+  /// MIME-тип документа.
   String? get ext => payload['ext'];
 
-  /// URL of the document.
+  /// URL документа.
   String? get url => payload['url'];
 
-  /// Date when the document has been uploaded in Unixtime.
+  /// Дата загрузки документа в формате Unix.
   int? get createdAt => payload['date'];
 
-  /// Document type.
+  /// Тип документа.
   int? get documentType => payload['type'];
 
   Map<String, dynamic>? get _preview => payload['preview'];
   Map<String, dynamic>? get _previewGraffiti => _preview?['graffiti'];
   Map<String, dynamic>? get _previewAudioMessage => _preview?['audio_message'];
 
-  /// an array of image copies in different sizes.
+  /// массив копий изображения разных размеров.
   List<PhotoCopyModel>? get previewPhotoSizes =>
       (_preview?['photo']?['sizes'] as List?)
           ?.map((e) => PhotoCopyModel((e as Map).cast<String, dynamic>()))
           .toList();
 
-  /// Graffiti file URL;
+  /// URL файла граффити;
   String? get previewGraffitiSrc => _previewGraffiti?['src'];
 
-  /// graffiti width in px;
+  /// ширина граффити в пикселях;
   int? get previewGraffitiWidth => _previewGraffiti?['width'];
 
-  /// graffiti height in px;
+  /// высота граффити в пикселях;
   int? get previewGraffitiHeight => _previewGraffiti?['height'];
 
-  /// Audio message duration in seconds.
+  /// Продолжительность голосового сообщения в секундах.
   int? get previewAudioMessageDuration => _previewAudioMessage?['duration'];
 
-  /// Audio message waveform.
+  /// Форма звуковой волны голосового сообщения.
   List<int>? get previewAudioMessageWaveform =>
       (_previewAudioMessage?['waveform'] as List?)?.cast<int>();
 
-  /// Audio message ling ogg.
+  /// Ссылка на голосовое сообщение в формате OGG.
   String? get previewAudioMessageLinkOgg => _previewAudioMessage?['link_ogg'];
 
-  /// Audio message ling mp3.
+  /// Ссылка на голосовое сообщение в формате MP3.
   String? get previewAudioMessageLinkMp3 => _previewAudioMessage?['link_mp3'];
 }

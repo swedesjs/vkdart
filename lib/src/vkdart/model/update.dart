@@ -1,191 +1,191 @@
 // ignore_for_file: constant_identifier_names
 
-/// [UpdateType] is an enumeration of possible event types.
+/// [UpdateType] — перечисление возможных типов событий.
 enum UpdateType {
-  /// Represents a new message event.
+  /// Представляет событие нового сообщения.
   message_new,
 
-  /// Represents a reply to a message event.
+  /// Представляет событие ответа на сообщение.
   message_reply,
 
-  /// Represents an edited message event.
+  /// Представляет событие изменения сообщения.
   message_edit,
 
-  /// Subscribe to messages from the community. The user clicked the Allow messages button or wrote the first message to the community.
+  /// Подписка на сообщения сообщества. Пользователь нажал кнопку «Разрешить сообщения» или написал сообществу первое сообщение.
   message_allow,
 
-  /// New ban on messages from the community. The user clicked the Block messages button.
+  /// Новый запрет на сообщения сообщества. Пользователь нажал кнопку «Запретить сообщения».
   message_deny,
 
-  /// Typing status. The user types a message in a conversation or downloads an audio message.
+  /// Статус набора текста. Пользователь набирает сообщение в беседе или записывает голосовое сообщение.
   message_typing_state,
 
-  /// Action with message. The user clicked the [Callback button](https://dev.vk.com/ru/api/bots/development/keyboard#Callback-%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B8).
+  /// Действие с сообщением. Пользователь нажал [кнопку Callback](https://dev.vk.com/ru/api/bots/development/keyboard#Callback-%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B8).
   message_event,
 
-  /// Reaction event.
+  /// Событие реакции.
   message_reaction_event,
 
-  /// Adding a photo.
+  /// Добавление фотографии.
   photo_new,
 
-  /// Adding a comment to a photo.
+  /// Добавление комментария к фотографии.
   photo_comment_new,
 
-  /// Editing a comment on a photo.
+  /// Изменение комментария к фотографии.
   photo_comment_edit,
 
-  /// Restoring a comment on a photo.
+  /// Восстановление комментария к фотографии.
   photo_comment_restore,
 
-  /// Deleting a comment on a photo.
+  /// Удаление комментария к фотографии.
   photo_comment_delete,
 
-  /// Audio added.
+  /// Добавление аудиозаписи.
   audio_new,
 
-  /// Video added.
+  /// Добавление видео.
   video_new,
 
-  /// Adding a comment to a video.
+  /// Добавление комментария к видео.
   video_comment_new,
 
-  /// Editing a comment on a video.
+  /// Изменение комментария к видео.
   video_comment_edit,
 
-  /// Restoring a comment on a video.
+  /// Восстановление комментария к видео.
   video_comment_restore,
 
-  /// Deleting a comment on a video.
+  /// Удаление комментария к видео.
   video_comment_delete,
 
-  /// Post added.
+  /// Добавление записи.
   wall_post_new,
 
-  /// Post reposted.
+  /// Репост записи.
   wall_repost,
 
-  /// Restoring a comment on the wall.
+  /// Восстановление комментария на стене.
   wall_reply_new,
 
-  /// Editing a comment on the wall.
+  /// Изменение комментария на стене.
   wall_reply_edit,
 
-  ///  Restoring a comment on the wall.
+  /// Восстановление комментария на стене.
   wall_reply_restore,
 
-  /// Deleting a comment on the wall.
+  /// Удаление комментария на стене.
   wall_reply_delete,
 
-  /// New mark event I like it.
+  /// Событие добавления отметки «Нравится».
   like_add,
 
-  /// Removing mark event I like it.
+  /// Событие удаления отметки «Нравится».
   like_remove,
 
-  /// Create a comment in a discussion.
+  /// Создание комментария в обсуждении.
   board_post_new,
 
-  /// Edit a comment in a discussion.
+  /// Изменение комментария в обсуждении.
   board_post_edit,
 
-  /// Restoring a comment on the wall.
+  /// Восстановление комментария на стене.
   board_post_restore,
 
-  /// Deleting a comment on the wall.
+  /// Удаление комментария на стене.
   board_post_delete,
 
-  /// New comment on the product.
+  /// Новый комментарий к товару.
   market_comment_new,
 
-  /// Editing a comment on the product.
+  /// Изменение комментария к товару.
   market_comment_edit,
 
-  /// Restoring a comment on the product.
+  /// Восстановление комментария к товару.
   market_comment_restore,
 
-  /// Deleting a comment on the product.
+  /// Удаление комментария к товару.
   market_comment_delete,
 
-  /// New order. To enable the event, you must enable advanced products in your community settings.
+  /// Новый заказ. Чтобы включить событие, активируйте расширенные товары в настройках сообщества.
   market_order_new,
 
-  /// Editing an order.
+  /// Изменение заказа.
   market_order_edit,
 
-  /// Adding a member or application to join the community.
+  /// Добавление пользователя или приложения в сообщество.
   group_join,
 
-  /// Removing a member or application from the community.
+  /// Удаление пользователя или приложения из сообщества.
   group_leave,
 
-  /// Adding a user to the blacklist.
+  /// Добавление пользователя в чёрный список.
   user_block,
 
-  /// Removing a user from the blacklist.
+  /// Удаление пользователя из чёрного списка.
   user_unblock,
 
-  /// Adding a voice to a public poll.
+  /// Добавление голоса в публичный опрос.
   poll_vote_new,
 
-  /// Editing the list of managers.
+  /// Изменение списка руководителей.
   group_officers_edit,
 
-  /// Change community settings.
+  /// Изменение настроек сообщества.
   group_change_settings,
 
-  /// Change group photo.
+  /// Изменение фотографии сообщества.
   group_change_photo,
 
-  /// Payment via VK Pay.
+  /// Оплата через VK Pay.
   vkpay_transaction,
 
-  /// Event from VK Mini Apps added to the community.
+  /// Событие из VK Mini Apps добавлено в сообщество.
   app_payload,
 
-  /// Creating a VK Donut subscription.
+  /// Создание подписки VK Donut.
   donut_subscription_create,
 
-  /// Prolonging a VK Donut subscription.
+  /// Продление подписки VK Donut.
   donut_subscription_prolonged,
 
-  /// Subscription has expired.
+  /// Срок действия подписки истёк.
   donut_subscription_expired,
 
-  /// Subscription has been cancelled.
+  /// Подписка отменена.
   donut_subscription_cancelled,
 
-  /// Subscription price changed.
+  /// Стоимость подписки изменилась.
   donut_subscription_price_changed,
 
-  /// Withdrawal from VK Donut.
+  /// Вывод средств из VK Donut.
   donut_money_withdraw,
 
-  /// Withdrawal error from VK Donut.
+  /// Ошибка вывода средств из VK Donut.
   donut_money_withdraw_error,
 
-  /// An unknown event.
+  /// Неизвестное событие.
   unknown_event;
 }
 
-/// The [VkDartUpdate] class is used to represent an update event.
+/// Класс [VkDartUpdate] представляет событие обновления.
 ///
-/// It contains the event data and provides methods to get the type
-/// of the event and the object related to the event.
+/// Он содержит данные события и предоставляет методы для получения его типа
+/// и связанного с ним объекта.
 class VkDartUpdate {
-  /// The event data for this update.
+  /// Данные этого обновления.
   final Map<String, dynamic> data;
 
-  /// Creates an instance of [VkDartUpdate] with the specified event data.
+  /// Создаёт экземпляр [VkDartUpdate] с указанными данными события.
   VkDartUpdate(this.data);
 
-  /// Gets the type of the update event.
+  /// Возвращает тип события обновления.
   UpdateType get type => UpdateType.values.firstWhere(
         (element) => element.name == data['type'],
         // ignore: missing_whitespace_between_adjacent_strings
         orElse: () => UpdateType.unknown_event,
       );
 
-  /// Gets the object related to the update event.
+  /// Возвращает объект, связанный с событием обновления.
   Map<String, dynamic> get object => data['object'];
 }

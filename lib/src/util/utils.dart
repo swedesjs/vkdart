@@ -1,13 +1,13 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Offset Chat ID.
+/// Смещение ID чата.
 const peerChatIdOffset = 2000000000;
 
-/// Transforms a list of attachment objects in the format:
+/// Преобразует список объектов вложений следующего формата:
 /// ```dart
 /// [{'type': 'photo', 'photo': {...}}, {'type': 'audio', 'audio': {...}}, ...]
 /// ```
-/// in the attachment model.
+/// в модель вложения.
 List<AttachmentModel> transformAttachments(
         List<Map<String, dynamic>> attachments) =>
     attachments.map((e) {
@@ -15,23 +15,23 @@ List<AttachmentModel> transformAttachments(
       return AttachmentModel.fromSpecificModel(e[attachType], attachType);
     }).toList();
 
-/// Message Source
+/// Источник сообщения.
 enum MessageSource {
-  /// User.
+  /// Пользователь.
   user,
 
-  /// Group.
+  /// Сообщество.
   group,
 
-  /// Chat.
+  /// Чат.
   chat
 }
 
-/// Returns the dialog type.
-/// Accepts the [id] parameter as input,
-/// if [id] is less than [peerChatIdOffset], [MessageSource.chat] is returned,
-/// if [id] is less than zero, returned [MessageSource.group],
-/// in all other cases [MessageSource.user]
+/// Возвращает тип диалога.
+/// Принимает параметр [id].
+/// Если [id] меньше [peerChatIdOffset], возвращается [MessageSource.chat].
+/// Если [id] меньше нуля, возвращается [MessageSource.group].
+/// Во всех остальных случаях возвращается [MessageSource.user].
 MessageSource getPeerType(int id) {
   if (peerChatIdOffset < id) {
     return MessageSource.chat;
@@ -44,8 +44,8 @@ MessageSource getPeerType(int id) {
   return MessageSource.user;
 }
 
-/// Checks the [value] for an integer, then checks for one.
-/// If the value is not an integer, null is returned,
+/// Проверяет, является ли [value] целым числом.
+/// Если значение не является целым числом, возвращается null.
 bool? checkBoolUtil(Object? value) {
   if (value is! int) {
     return null;

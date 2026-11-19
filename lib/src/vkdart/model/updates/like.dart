@@ -1,8 +1,8 @@
 import 'package:vkdart/model.dart';
 
-/// The model `like` update.
+/// Модель обновления `like`.
 ///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#Отметки%20Мне%20нравится
+/// См. https://dev.vk.com/ru/api/community-events/json-schema#Отметки%20Мне%20нравится
 class VkDartLikeUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -10,27 +10,27 @@ class VkDartLikeUpdate {
   // ignore: public_member_api_docs
   VkDartLikeUpdate(this.update);
 
-  /// Check is like add
+  /// Проверяет, добавлена ли отметка «Нравится».
   bool get isAdd => update.type == UpdateType.like_add;
 
-  /// Check is like remove.
+  /// Проверяет, удалена ли отметка «Нравится».
   bool get isRemove => update.type == UpdateType.like_remove;
 
-  /// The ID of the user who checked the box.
+  /// ID пользователя, поставившего отметку.
   int get likerId => update.object['liker_id'];
 
-  /// The type of material.
+  /// Тип материала.
   String get objectType => update.object['object_type'];
 
-  /// The ID of the owner of the material.
+  /// ID владельца материала.
   int get objectOwnerId => update.object['object_owner_id'];
 
-  /// The ID of the material.
+  /// ID материала.
   int get objectId => update.object['object_id'];
 
-  /// ID of the parent comment or entry.
+  /// ID родительского комментария или записи.
   int get threadReplyId => update.object['thread_reply_id'];
 
-  /// The ID of the record (returned for the comment left under the record).
+  /// ID записи (возвращается для комментария к записи).
   int get postId => update.object['post_id'];
 }

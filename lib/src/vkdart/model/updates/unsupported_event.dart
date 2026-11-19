@@ -1,6 +1,6 @@
 import 'package:vkdart/model.dart';
 
-/// A model of an unknown event.
+/// Модель неизвестного события.
 class VkDartUnsupportedEventUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -8,9 +8,9 @@ class VkDartUnsupportedEventUpdate {
   // ignore: public_member_api_docs
   VkDartUnsupportedEventUpdate(this.update);
 
-  /// The type of event from the VK side.
+  /// Тип события со стороны VK.
   String get eventType => update.data['type'];
 
-  /// Object.
+  /// Объект.
   Map<String, dynamic> get object => update.object;
 }

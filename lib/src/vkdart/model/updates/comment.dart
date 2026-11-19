@@ -44,9 +44,9 @@ const _boardPostEvents = [
   UpdateType.board_post_restore
 ];
 
-/// Event model `comment`.
+/// Модель события `comment`.
 ///
-/// See:
+/// См.:
 /// - PhotoCommentNew: https://dev.vk.com/ru/api/community-events/json-schema#photo_comment_new
 /// - PhotoCommentNew: https://dev.vk.com/ru/api/community-events/json-schema#photo_comment_new
 /// - PhotoCommentEdit: https://dev.vk.com/ru/api/community-events/json-schema#photo_comment_edit
@@ -75,34 +75,34 @@ class VkDartCommentUpdate extends WallReplyAttachmentModel {
   // ignore: public_member_api_docs
   VkDartCommentUpdate(this.update) : super(update.object);
 
-  /// Check is new comment
+  /// Проверяет, является ли комментарий новым.
   bool get isNew => _newEvents.contains(update.type);
 
-  /// Check is photo comment.
+  /// Проверяет, относится ли комментарий к фотографии.
   bool get isPhotoComment => _photoCommentEvents.contains(update.type);
 
-  /// Check is video comment.
+  /// Проверяет, относится ли комментарий к видео.
   bool get isVideoComment => _videoCommentEvents.contains(update.type);
 
-  /// Check is market comment.
+  /// Проверяет, относится ли комментарий к товару.
   bool get isMarketComment => _marketCommentEvents.contains(update.type);
 
-  /// Check is wall comment.
+  /// Проверяет, относится ли комментарий к записи на стене.
   bool get isWallComment => _wallReplyEvents.contains(update.type);
 
-  /// Check is board comment.
+  /// Проверяет, относится ли комментарий к обсуждению.
   bool get isBoardComment => _boardPostEvents.contains(update.type);
 
-  /// Is the sender a user.
+  /// Отправитель — пользователь.
   bool get isUser => fromId > 0;
 
-  /// Is the sender a group
+  /// Отправитель — сообщество.
   bool get isGroup => fromId < 0;
 
-  /// The ID of the user who deleted the comment.
+  /// ID пользователя, удалившего комментарий.
   int? get deleterId => update.object['deleter_id'];
 
-  /// Owner Id
+  /// ID владельца.
   @override
   int get ownerId =>
       update.object['owner_id'] ??
@@ -112,7 +112,7 @@ class VkDartCommentUpdate extends WallReplyAttachmentModel {
       update.object['market_owner_id'] ??
       update.object['topic_owner_id'];
 
-  /// Object ID.
+  /// ID объекта.
   int get objectId =>
       update.object['photo_id'] ??
       update.object['video_id'] ??

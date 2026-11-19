@@ -2,23 +2,23 @@ import 'dart:async';
 
 import 'package:vkdart/model.dart';
 
-/// Base class for update fetcher.
+/// Базовый класс получателя обновлений.
 abstract class AbstractUpdateFetcher {
   final StreamController<VkDartUpdate> _updatesController;
 
-  /// constructor
+  /// Конструктор.
   AbstractUpdateFetcher() : _updatesController = StreamController.broadcast();
 
-  /// add [update] to updates stream.
+  /// Добавляет [update] в поток обновлений.
   void emitUpdate(VkDartUpdate update) => _updatesController.add(update);
 
-  /// Returns a stream of [VkDartUpdate] events.
-  /// Listeners on this stream will receive an [VkDartUpdate] event whenever [emitUpdate] is called.
+  /// Возвращает поток событий [VkDartUpdate].
+  /// Подписчики этого потока получают событие [VkDartUpdate] при каждом вызове [emitUpdate].
   Stream<VkDartUpdate> onUpdate() => _updatesController.stream;
 
-  /// Starts the update fetcher.
+  /// Запускает получатель обновлений.
   Future<void> start();
 
-  /// Stops the update fetcher.
+  /// Останавливает получатель обновлений.
   Future<void> stop();
 }

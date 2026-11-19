@@ -2,9 +2,9 @@ import 'package:vkdart/model.dart';
 import 'package:vkdart/vkdart.dart' show VkDartException;
 import 'package:vkdart/vkontakte.dart';
 
-/// Event Model `new attachment`.
+/// Модель события `new attachment`.
 ///
-/// See:
+/// См.:
 /// - PhotoNew: https://dev.vk.com/ru/api/community-events/json-schema#photo_new
 /// - VideoNew: https://dev.vk.com/ru/api/community-events/json-schema#video_new
 /// - AudioNew: https://dev.vk.com/ru/api/community-events/json-schema#audio_new
@@ -15,16 +15,16 @@ class VkDartNewAttachmentUpdate {
   // ignore: public_member_api_docs
   VkDartNewAttachmentUpdate(this.update);
 
-  /// Check attachment is photo
+  /// Проверяет, является ли вложение фотографией.
   bool get isPhoto => update.type == UpdateType.photo_new;
 
-  /// Check attachment is video
+  /// Проверяет, является ли вложение видео.
   bool get isVideo => update.type == UpdateType.video_new;
 
-  /// Check attachment is audio
+  /// Проверяет, является ли вложение аудиозаписью.
   bool get isAudio => update.type == UpdateType.audio_new;
 
-  /// Attachment.
+  /// Вложение.
   AttachmentModel get attachment {
     final attachmentPayload = update.object;
 

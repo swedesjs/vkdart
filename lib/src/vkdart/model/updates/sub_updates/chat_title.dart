@@ -1,12 +1,12 @@
 import 'package:vkdart/model.dart';
 
 mixin _VkDartChatTitleMixin on VkDartMessageUpdate {
-  /// New title of the conversation.
+  /// Новое название беседы.
   String get newTitle => actionText!;
 
-  /// An old conversation title.
+  /// Прежнее название беседы.
   String? get oldTitle => actionOldText;
 }
 
-/// Sub-update model: `chat_title_update`.
+/// Модель подтипа обновления: `chat_title_update`.
 class VkDartChatTitleUpdate = VkDartMessageUpdate with _VkDartChatTitleMixin;

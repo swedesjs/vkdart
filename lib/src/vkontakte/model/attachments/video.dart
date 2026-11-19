@@ -1,172 +1,172 @@
 import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Video
+/// Модель видео
 ///
-/// See https://dev.vk.com/ru/reference/objects/video
+/// См. https://dev.vk.com/ru/reference/objects/video
 class VideoAttachmentModel extends CustomAttachmentModel
     with AttachmentLikesMixin, AttachmentRepostsMixin {
   // ignore: public_member_api_docs
   VideoAttachmentModel(super.payload) : super(attachType: 'video');
 
-  /// Title of the video.
+  /// Название видео.
   String? get title => payload['title'];
 
-  /// Video description text.
+  /// Описание видео.
   String? get description => payload['description'];
 
-  /// The duration of the video in seconds.
+  /// Продолжительность видео в секундах.
   int? get duration => payload['duration'];
 
-  /// Cover image.
-  /// See https://dev.vk.com/ru/reference/objects/video#image
+  /// Изображение обложки.
+  /// См. https://dev.vk.com/ru/reference/objects/video#image
   List<VideoCoverImageModel> get image => (payload['image'] as List)
       .map((e) => VideoCoverImageModel((e as Map).cast<String, dynamic>()))
       .toList();
 
-  /// First frame image.
-  /// See https://vk.com/dev/objects/video#first_frame
+  /// Изображение первого кадра.
+  /// См. https://vk.com/dev/objects/video#first_frame
   List<VideoFirstFrameImageModel> get firstFrame => (payload['first_frame']
           as List)
       .map((e) => VideoFirstFrameImageModel((e as Map).cast<String, dynamic>()))
       .toList();
 
-  /// The date the video was created in Unixtime format.
+  /// Дата создания видео в формате Unix.
   int? get createdAt => payload['date'];
 
-  /// The date the video was added by the user or group in Unixtime format.
+  /// Дата добавления видео пользователем или сообществом в формате Unix.
   int? get addedAt => payload['adding_date'];
 
-  /// Number of video views.
+  /// Количество просмотров видео.
   int? get viewsCount => payload['views'];
 
-  ///  If the video is external, the number of views on VKontakte.
+  /// Количество просмотров видео во ВКонтакте, если оно размещено на внешнем ресурсе.
   int? get localViews => payload['local_views'];
 
-  /// Number of comments on the video. The field is not returned if comments are not available.
+  /// Количество комментариев к видео. Поле не возвращается, если комментирование недоступно.
   int? get commentsCount => payload['comments'];
 
-  /// URL of a page with a player that can be used to play the video in the browser.
-  /// Flash and HTML5 are supported, the player is always scaled to fit the window.
+  /// URL страницы с проигрывателем для просмотра видео в браузере.
+  /// Поддерживаются Flash и HTML5; проигрыватель всегда подстраивается под размер окна.
   String? get player => payload['player'];
 
-  /// Platform name (for videos added from external sites).
+  /// Название платформы (для видео, добавленных с внешних сайтов).
   String? get platformName => payload['platform'];
 
-  /// Can a user add a video to himself?
+  /// Может ли пользователь добавить видео себе?
   bool? get isCanAdd => checkBoolInProperty('can_add');
 
-  /// The field is returned if the video is private (for example, it was uploaded to a private message), always contains 1.
+  /// Поле возвращается для приватного видео (например, загруженного в личное сообщение) и всегда содержит 1.
   bool? get isPrivate => checkBoolInProperty('is_private');
 
-  /// The field is returned if the video is in the process of processing, always contains 1.
+  /// Поле возвращается во время обработки видео и всегда содержит 1.
   bool? get isProcessing => checkBoolInProperty('processing');
 
-  /// true if the item has been bookmarked by the current user.
+  /// true, если текущий пользователь добавил объект в закладки.
   bool? get isFavorite => payload['is_favorite'];
 
-  /// Can a user comment on a video?
+  /// Может ли пользователь комментировать видео?
   bool? get isCanComment => checkBoolInProperty('can_comment');
 
-  /// Can the user edit the video?
+  /// Может ли пользователь редактировать видео?
   bool? get isCanEdit => checkBoolInProperty('can_edit');
 
-  /// Can a user add a video to their "Like" list.
+  /// Может ли пользователь добавить видео в список «Нравится».
   bool? get isCanLike => checkBoolInProperty('can_like');
 
-  /// Can a user repost a video?
+  /// Может ли пользователь сделать репост видео?
   bool? get isCanRepost => checkBoolInProperty('can_repost');
 
-  /// Can a user subscribe to the author of a video?
+  /// Может ли пользователь подписаться на автора видео?
   bool? get isCanSubscribe => checkBoolInProperty('can_subscribe');
 
-  /// Whether the user can add a video to favorites.
+  /// Может ли пользователь добавить видео в избранное.
   bool? get isCanAddToFaves => checkBoolInProperty('can_add_to_faves');
 
-  /// Can a user attach an action button to a video.
+  /// Может ли пользователь прикрепить к видео кнопку действия.
   bool? get isCanAttachLink => checkBoolInProperty('can_attach_link');
 
-  /// Video width.
+  /// Ширина видео.
   int? get width => payload['width'];
 
-  /// Video height.
+  /// Высота видео.
   int? get height => payload['height'];
 
-  /// ID of the user who uploaded the video, if it was uploaded to the group by one of the participants.
+  /// ID пользователя, загрузившего видео в сообщество от имени одного из участников.
   int? get userId => payload['user_id'];
 
-  /// Does the video convert?
+  /// Конвертируется ли видео?
   bool? get isConverting => checkBoolInProperty('converting');
 
-  /// Whether the video has been added to the user's albums.
+  /// Добавлено ли видео в альбомы пользователя.
   bool? get isAdded => checkBoolInProperty('added');
 
-  /// Whether the user is subscribed to the author of the video.
+  /// Подписан ли пользователь на автора видео.
   bool? get isSubscribed => checkBoolInProperty('is_subscribed');
 
-  /// Field returned if the video is looped, always contains 1
+  /// Поле возвращается, если видео воспроизводится по кругу; всегда содержит 1.
   bool? get isRepeat => checkBoolInProperty('repeat');
 
-  /// Video type.
-  /// Can take values: video, music_video, movie
+  /// Тип видео.
+  /// Возможные значения: video, music_video, movie
   String? get videoType => payload['type'];
 
-  /// Donation balance in live broadcast.
+  /// Баланс пожертвований в прямом эфире.
   int? get balance => payload['balance'];
 
-  /// Live broadcast status.
-  /// Can take the following values: waiting, started, finished, failed, upcoming.
+  /// Статус прямой трансляции.
+  /// Возможные значения: waiting, started, finished, failed, upcoming.
   String? get liveStatus => payload['live_status'];
 
-  /// The field returned if the video is a live broadcast always contains 1. Note that in this case the duration field contains the value 0.
+  /// Поле возвращается для видео с прямой трансляцией и всегда содержит 1. В этом случае поле продолжительности содержит 0.
   bool? get isBroadcast => checkBoolInProperty('live');
 
-  /// The field indicates that the broadcast will begin soon. For live =1.
+  /// Поле указывает, что трансляция скоро начнётся. Для live = 1.
   bool? get isUpcoming => checkBoolInProperty('upcoming');
 
-  /// Number of viewers of the live broadcast.
+  /// Количество зрителей трансляции.
   int? get spectatorsCount => payload['spectators'];
 }
 
-/// Model Video Cover Image.
+/// Модель изображения обложки видео.
 ///
-/// See https://dev.vk.com/ru/reference/objects/video#image
+/// См. https://dev.vk.com/ru/reference/objects/video#image
 final class VideoCoverImageModel {
   // ignore: public_member_api_docs
   VideoCoverImageModel(this.videoCoverImageObject);
 
-  /// Payload.
+  /// Данные.
   final Map<String, dynamic> videoCoverImageObject;
 
-  /// Cover image url.
+  /// URL обложки.
   String get url => videoCoverImageObject['url'];
 
-  /// Cover image width.
+  /// Ширина обложки.
   int get width => videoCoverImageObject['width'];
 
-  /// Cover image height.
+  /// Высота обложки.
   int get height => videoCoverImageObject['height'];
 
-  /// The field returned if the image is padded, always contains 1.
+  /// Поле возвращается, если изображение дополнено полями; всегда содержит 1.
   bool? get withPadding => checkBoolUtil(videoCoverImageObject['with_padding']);
 }
 
-/// Model Video First Frame Image.
+/// Модель изображения первого кадра видео.
 ///
-/// See https://dev.vk.com/ru/reference/objects/video#first_frame
+/// См. https://dev.vk.com/ru/reference/objects/video#first_frame
 final class VideoFirstFrameImageModel {
   // ignore: public_member_api_docs
   VideoFirstFrameImageModel(this.firstFrameObject);
 
-  /// Payload.
+  /// Данные.
   final Map<String, dynamic> firstFrameObject;
 
-  /// First frame image url.
+  /// URL первого кадра.
   String get url => firstFrameObject['url'];
 
-  /// First frame image width.
+  /// Ширина первого кадра.
   int get width => firstFrameObject['width'];
 
-  /// First frame image height.
+  /// Высота первого кадра.
   int get height => firstFrameObject['height'];
 }
