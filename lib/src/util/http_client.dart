@@ -25,12 +25,17 @@ class HttpClient {
     String url, {
     Map<String, dynamic>? body,
     Map<String, dynamic>? headers,
+    http.Client? client,
   }) async {
-    final response = await http.post(
-      Uri.parse(url),
-      body: _transformBody(body),
-      headers: {...?headers, ..._headers},
-    );
+    final uri = Uri.parse(url);
+    final requestBody = _transformBody(body);
+    final requestHeaders = <String, String>{
+      ...?headers?.map((key, value) => MapEntry(key, value.toString())),
+      ..._headers,
+    };
+    final response = client == null
+        ? await http.post(uri, body: requestBody, headers: requestHeaders)
+        : await client.post(uri, body: requestBody, headers: requestHeaders);
     return _responseParsedBody(response);
   }
 }
