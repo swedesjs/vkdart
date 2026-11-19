@@ -12,6 +12,8 @@ class Webhook extends AbstractUpdateFetcher {
   final String? _confirmationToken;
 
   bool _isStart = false;
+  Future<void>? _stopFuture;
+  Future<void>? _disposeFuture;
 
   // ignore: public_member_api_docs
   Webhook(this._server, [this._confirmationToken, this._secretKey]);
@@ -23,12 +25,16 @@ class Webhook extends AbstractUpdateFetcher {
       int port = 443,
       String? secretKey,
       String? confirmationToken}) async {
+    final certificateBytes = await Future.wait([
+      certificate.readAsBytes(),
+      privateKey.readAsBytes(),
+    ]);
     final server = await io.HttpServer.bindSecure(
         io.InternetAddress.anyIPv4.address,
         port,
         io.SecurityContext()
-          ..useCertificateChainBytes(certificate.readAsBytesSync())
-          ..usePrivateKeyBytes(privateKey.readAsBytesSync()));
+          ..useCertificateChainBytes(certificateBytes[0])
+          ..usePrivateKeyBytes(certificateBytes[1]));
 
     return Webhook(server, confirmationToken, secretKey);
   }
@@ -44,6 +50,9 @@ class Webhook extends AbstractUpdateFetcher {
 
   @override
   Future<void> start() async {
+    if (_stopFuture != null) {
+      throw WebhookException('Webhook has been closed');
+    }
     if (isStart) {
       throw WebhookException('Webhook is running');
     }
@@ -82,11 +91,22 @@ class Webhook extends AbstractUpdateFetcher {
   }
 
   @override
-  Future<void> stop() {
-    _server.close();
-    _isStart = false;
+  Future<void> stop() => _stopFuture ??= _stop();
 
-    return Future.value();
+  Future<void> _stop() async {
+    _isStart = false;
+    await _server.close();
+  }
+
+  @override
+  Future<void> dispose() => _disposeFuture ??= _dispose();
+
+  Future<void> _dispose() async {
+    try {
+      await stop();
+    } finally {
+      await super.dispose();
+    }
   }
 
   /// Возвращает состояние Callback API.
