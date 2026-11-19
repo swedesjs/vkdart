@@ -35,6 +35,7 @@ class VkDartKeyboard {
 
   /// Переходит к следующей строке таблицы.
   void nextRow() {
+    // VK не принимает клавиатуры с пустыми строками.
     if (_index != -1 && (buttons.elementAtOrNull(_index)?.isEmpty ?? false)) {
       throw VkDartKeyboardException(
           'To move to the next line, fill in the previous one by the index $_index');
@@ -53,6 +54,7 @@ class VkDartKeyboard {
     final object = {'action': action, if (color != null) 'color': color.name};
 
     if (payload != null) {
+      // VK ожидает payload внутри action, а не рядом с ним.
       (object['action']! as Map).cast<String, dynamic>()['payload'] = payload;
     }
 

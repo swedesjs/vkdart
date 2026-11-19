@@ -12,6 +12,7 @@ class Webhook extends AbstractUpdateFetcher {
   final String? _confirmationToken;
 
   bool _isStart = false;
+  // Обе операции ожидают одно закрытие: HttpServer нельзя запустить снова.
   Future<void>? _stopFuture;
 
   // ignore: public_member_api_docs
@@ -24,6 +25,7 @@ class Webhook extends AbstractUpdateFetcher {
       int port = 443,
       String? secretKey,
       String? confirmationToken}) async {
+    // Читаем файлы асинхронно и параллельно, не блокируя event loop.
     final certificateBytes = await Future.wait([
       certificate.readAsBytes(),
       privateKey.readAsBytes(),

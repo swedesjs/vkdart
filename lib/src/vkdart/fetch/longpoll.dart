@@ -33,6 +33,7 @@ class Longpoll extends AbstractUpdateFetcher {
 
   bool _isStart = false;
   bool _isDisposed = false;
+  // Игнорирует ответы запросов, завершившихся после остановки.
   int _generation = 0;
   late String _serverUrl;
   late String _secretKey;
@@ -153,6 +154,7 @@ class Longpoll extends AbstractUpdateFetcher {
             retries = 0;
             continue;
           }
+          // После ошибок 2 и 3 нужен новый сервер; при ошибке 3 сбрасываем ts.
           if (code == 2 || code == 3) {
             if (code == 3) _applyLastEventNumber(0);
             if (retries >= _maxRetries) {

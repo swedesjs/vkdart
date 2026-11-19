@@ -128,6 +128,8 @@ class Event {
 
   /// Отправляет обновление.
   void emitUpdate(VkDartUpdate update) {
+    // События одного типа объединяются в потоки высокого уровня:
+    // например, все варианты сообщений попадают в onMessage().
     switch (update.type) {
       case UpdateType.message_new:
       case UpdateType.message_reply:
