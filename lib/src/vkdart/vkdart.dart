@@ -96,7 +96,10 @@ class VkDart extends Vkontakte {
     }
 
     if (_updateSubscription == null) {
-      final subscription = onUpdate().listen(_event.emitUpdate);
+      final subscription = onUpdate().listen(
+        _event.emitUpdate,
+        onError: _event.emitError,
+      );
       _updateSubscription = subscription;
 
       try {

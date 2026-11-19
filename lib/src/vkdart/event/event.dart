@@ -90,31 +90,40 @@ class Event {
 
   Future<void>? _disposeFuture;
 
+  List<StreamController<VkDartUpdate>> get _controllers => [
+        _messageController,
+        _messageAllowController,
+        _messageDenyController,
+        _messageTypingStateController,
+        _messageEventController,
+        _messageReactionController,
+        _attachmentNewController,
+        _commentController,
+        _wallController,
+        _likeController,
+        _marketOrderController,
+        _groupController,
+        _userController,
+        _pollVoteNewController,
+        _groupChangeController,
+        _vkpayTransactionController,
+        _appPayloadController,
+        _donutController,
+        _unsupportedEventController,
+      ];
+
   /// Закрывает все потоки событий.
   Future<void> dispose() => _disposeFuture ??= _close();
 
   Future<void> _close() async {
-    await Future.wait([
-      _messageController.close(),
-      _messageAllowController.close(),
-      _messageDenyController.close(),
-      _messageTypingStateController.close(),
-      _messageEventController.close(),
-      _messageReactionController.close(),
-      _attachmentNewController.close(),
-      _commentController.close(),
-      _wallController.close(),
-      _likeController.close(),
-      _marketOrderController.close(),
-      _groupController.close(),
-      _userController.close(),
-      _pollVoteNewController.close(),
-      _groupChangeController.close(),
-      _vkpayTransactionController.close(),
-      _appPayloadController.close(),
-      _donutController.close(),
-      _unsupportedEventController.close(),
-    ]);
+    await Future.wait(_controllers.map((controller) => controller.close()));
+  }
+
+  /// Передаёт ошибку всем потокам событий.
+  void emitError(Object error, StackTrace stackTrace) {
+    for (final controller in _controllers) {
+      controller.addError(error, stackTrace);
+    }
   }
 
   /// Отправляет обновление.
