@@ -54,6 +54,7 @@ class CustomAttachmentModel extends AttachmentModel {
   /// CustomAttachmentModel.fromString('photo-1_2_ACCESS_KEY');
   /// ```
   factory CustomAttachmentModel.fromString(String attachment) {
+    // Формат: тип + owner_id + "_" + id + необязательный access_key.
     final parseAttachmentRe =
         RegExp(r'([a-z_]+)(-?\d+)_(\d+)_?(\w+)?', multiLine: true);
 

@@ -28,6 +28,8 @@ abstract class AbstractUpdateFetcher {
   Future<void> stop();
 
   /// Закрывает поток обновлений.
+  ///
+  /// Повторные вызовы ожидают одну и ту же операцию закрытия.
   Future<void> dispose() =>
       _disposeFuture ??= _updatesController.close().then<void>((_) {});
 }

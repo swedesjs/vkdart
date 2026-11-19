@@ -96,6 +96,7 @@ class VkDart extends Vkontakte {
     }
 
     if (_updateSubscription == null) {
+      // Подписываемся до запуска: получатель может отправить событие сразу.
       final subscription = onUpdate().listen(
         _event.emitUpdate,
         onError: _event.emitError,
@@ -105,6 +106,7 @@ class VkDart extends Vkontakte {
       try {
         await fetcher.start();
       } catch (_) {
+        // При ошибке запуска удаляем подписку, чтобы не оставить обработчик.
         if (identical(_updateSubscription, subscription)) {
           _updateSubscription = null;
         }

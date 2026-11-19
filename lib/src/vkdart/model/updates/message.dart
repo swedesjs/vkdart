@@ -114,6 +114,7 @@ class VkDartMessageUpdate extends MessageModel {
       'subscribe_id': subscribeId
     }..removeWhere((key, value) => value == null);
 
+    // VK возвращает список сообщений; каждому добавляем контекст клиента.
     return _vkontakte
         .request('messages.send', body)
         .then((value) => (value as List).map((element) {

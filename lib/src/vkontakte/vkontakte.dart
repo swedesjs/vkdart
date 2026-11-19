@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
-import 'package:vkdart/util.dart';
-import 'package:vkdart/vkontakte.dart';
+import 'package:vkdart/src/util/http_client.dart';
+import 'package:vkdart/src/vkontakte/model/api_error.dart';
 
 /// Список языков, поддерживаемых VK API.
 enum LangApi {
@@ -64,19 +64,18 @@ class Vkontakte {
 
     final headers = {'Authorization': 'Bearer $_token'};
 
-    return HttpClient.httpPost(
+    final data = await HttpClient.httpPost(
       _baseUrl + methodName,
       body: requestBody,
       headers: headers,
       client: _client,
-    ).then((data) {
-      final error = (data['error'] as Map?)?.cast<String, dynamic>();
-      final response = data['response'] as Object?;
+    );
 
-      if (error != null) return Future.error(ApiException(error));
+    // VK может вернуть ошибку в JSON даже при успешно выполненном HTTP-запросе.
+    final error = (data['error'] as Map?)?.cast<String, dynamic>();
+    if (error != null) throw ApiException(error);
 
-      return response!;
-    });
+    return data['response'] as Object;
   }
 }
 

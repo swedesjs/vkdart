@@ -8,12 +8,8 @@ import 'package:http/http.dart' as http;
 class HttpClient {
   static const _headers = {'Content-Type': 'application/x-www-form-urlencoded'};
 
-  static Future<dynamic> _responseParsedBody(http.Response response) async {
-    final jsonBody = jsonDecode(utf8.decode(response.bodyBytes));
-
-    return jsonBody;
-  }
-
+  // Сложные параметры VK ожидает как JSON; http-клиент отдельно кодирует
+  // значения полей формы.
   static String _customValue(Object? value) =>
       value is List || value is Map ? jsonEncode(value) : value.toString();
 
@@ -36,6 +32,6 @@ class HttpClient {
     final response = client == null
         ? await http.post(uri, body: requestBody, headers: requestHeaders)
         : await client.post(uri, body: requestBody, headers: requestHeaders);
-    return _responseParsedBody(response);
+    return jsonDecode(utf8.decode(response.bodyBytes));
   }
 }
