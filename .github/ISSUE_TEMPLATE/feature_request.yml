@@ -1,0 +1,41 @@
+name: 💡 Предложить нововведение
+description: Поделитесь сценарием или идеей для развития vkdart
+title: "[Идея] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Опишите задачу, которую хотите решить. Идея может быть небольшой — не обязательно сразу знать точное техническое решение.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Какую задачу или проблему нужно решить?
+      description: Расскажите, в каком сценарии вам не хватает возможностей пакета.
+      placeholder: Например, хочу сохранять позицию Long Poll между перезапусками.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Какое поведение или улучшение вы предлагаете?
+      description: Можно описать ожидаемый результат или привести короткий пример API.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Какие обходные решения вы уже пробовали?
+      description: Необязательное поле — можно оставить пустым.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Дополнительный контекст
+      description: Ссылки, примеры кода или другие детали, которые помогут понять идею.
+    validations:
+      required: false

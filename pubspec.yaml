@@ -6,11 +6,11 @@ repository: https://github.com/swedests/vkdart
 issue_tracker: https://github.com/swedests/vkdart/issues
 
 topics:
+  - dart
   - vkontakte
-  - vk
-  - api
   - vk-api
-  - http
+  - long-poll
+  - callback-api
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
