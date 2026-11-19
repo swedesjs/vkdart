@@ -13,6 +13,10 @@ abstract class AbstractUpdateFetcher {
   /// Добавляет [update] в поток обновлений.
   void emitUpdate(VkDartUpdate update) => _updatesController.add(update);
 
+  /// Передаёт ошибку получателя подписчикам потока обновлений.
+  void emitError(Object error, StackTrace stackTrace) =>
+      _updatesController.addError(error, stackTrace);
+
   /// Возвращает поток событий [VkDartUpdate].
   /// Подписчики этого потока получают событие [VkDartUpdate] при каждом вызове [emitUpdate].
   Stream<VkDartUpdate> onUpdate() => _updatesController.stream;
