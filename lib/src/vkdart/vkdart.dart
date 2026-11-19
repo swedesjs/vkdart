@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:vkdart/model.dart';
 import 'package:vkdart/src/vkdart/model/updates/sub_updates/chat_create.dart';
 import 'package:vkdart/vkdart.dart';
@@ -37,6 +39,9 @@ const _$chatTitleUpdateEvent = ['chat_title_update'];
 /// `vkdart` — экземпляр [VkDart].
 class VkDart extends Vkontakte {
   final Event _event;
+
+  StreamSubscription<VkDartUpdate>? _updateSubscription;
+  Future<void>? _disposeFuture;
 
   /// Получатель обновлений.
   final AbstractUpdateFetcher fetcher;
@@ -86,12 +91,57 @@ class VkDart extends Vkontakte {
 
   /// Запускает получатель обновлений
   Future<void> start() async {
-    onUpdate().listen(_event.emitUpdate);
-    return fetcher.start();
+    if (_disposeFuture != null) {
+      throw StateError('VkDart has been disposed');
+    }
+
+    if (_updateSubscription == null) {
+      final subscription = onUpdate().listen(_event.emitUpdate);
+      _updateSubscription = subscription;
+
+      try {
+        await fetcher.start();
+      } catch (_) {
+        if (identical(_updateSubscription, subscription)) {
+          _updateSubscription = null;
+        }
+        await subscription.cancel();
+        rethrow;
+      }
+
+      return;
+    }
+
+    await fetcher.start();
   }
 
   /// Останавливает получатель обновлений
-  Future<void> stop() => fetcher.stop();
+  Future<void> stop() =>
+      _disposeFuture == null ? _stop() : Future<void>.value();
+
+  Future<void> _stop() async {
+    final subscription = _updateSubscription;
+    _updateSubscription = null;
+
+    try {
+      await fetcher.stop();
+    } finally {
+      await subscription?.cancel();
+    }
+  }
+
+  /// Останавливает получатель и закрывает внутренние потоки.
+  ///
+  /// После вызова этого метода экземпляр нельзя запустить повторно.
+  Future<void> dispose() => _disposeFuture ??= _dispose();
+
+  Future<void> _dispose() async {
+    try {
+      await _stop();
+    } finally {
+      await Future.wait([fetcher.dispose(), _event.dispose()]);
+    }
+  }
 
   /// Прослушивает события.
   Stream<VkDartUpdate> onUpdate() => fetcher.onUpdate();

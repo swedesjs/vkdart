@@ -5,6 +5,7 @@ import 'package:vkdart/model.dart';
 /// Базовый класс получателя обновлений.
 abstract class AbstractUpdateFetcher {
   final StreamController<VkDartUpdate> _updatesController;
+  Future<void>? _disposeFuture;
 
   /// Конструктор.
   AbstractUpdateFetcher() : _updatesController = StreamController.broadcast();
@@ -21,4 +22,8 @@ abstract class AbstractUpdateFetcher {
 
   /// Останавливает получатель обновлений.
   Future<void> stop();
+
+  /// Закрывает поток обновлений.
+  Future<void> dispose() =>
+      _disposeFuture ??= _updatesController.close().then<void>((_) {});
 }

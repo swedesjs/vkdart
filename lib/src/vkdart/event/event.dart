@@ -88,6 +88,35 @@ class Event {
         _donutController = StreamController.broadcast(sync: sync),
         _unsupportedEventController = StreamController.broadcast(sync: sync);
 
+  Future<void>? _disposeFuture;
+
+  /// Закрывает все потоки событий.
+  Future<void> dispose() => _disposeFuture ??= _close();
+
+  Future<void> _close() async {
+    await Future.wait([
+      _messageController.close(),
+      _messageAllowController.close(),
+      _messageDenyController.close(),
+      _messageTypingStateController.close(),
+      _messageEventController.close(),
+      _messageReactionController.close(),
+      _attachmentNewController.close(),
+      _commentController.close(),
+      _wallController.close(),
+      _likeController.close(),
+      _marketOrderController.close(),
+      _groupController.close(),
+      _userController.close(),
+      _pollVoteNewController.close(),
+      _groupChangeController.close(),
+      _vkpayTransactionController.close(),
+      _appPayloadController.close(),
+      _donutController.close(),
+      _unsupportedEventController.close(),
+    ]);
+  }
+
   /// Отправляет обновление.
   void emitUpdate(VkDartUpdate update) {
     switch (update.type) {
