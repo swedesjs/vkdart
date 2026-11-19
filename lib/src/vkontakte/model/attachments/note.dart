@@ -1,36 +1,36 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Note
+/// Модель заметки
 ///
-/// See https://dev.vk.com/ru/reference/objects/note
+/// См. https://dev.vk.com/ru/reference/objects/note
 class NoteAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   NoteAttachmentModel(super.payload) : super(attachType: 'note');
 
-  /// The title of the note.
+  /// Заголовок заметки.
   String? get title => payload['title'];
 
-  /// The text of the note.
+  /// Текст заметки.
   String? get text => payload['text'];
 
-  /// The date the note was created in Unixtime format.
+  /// Дата создания заметки в формате Unix.
   int? get createdAt => payload['date'];
 
-  /// The number of comments.
+  /// Количество комментариев.
   int? get commentsCount => payload['comments'];
 
-  /// The number of comments read (only when requesting information about the current user's note).
+  /// Количество прочитанных комментариев (только при запросе данных о заметке текущего пользователя).
   int? get readCommentsCount => payload['read_comments'];
 
-  /// The URL of the page to display the note.
+  /// URL страницы для отображения заметки.
   String? get viewUrl => payload['view_url'];
 
-  /// Privacy settings for commenting on a note
+  /// Настройки приватности комментирования заметки.
   String? get privacyView => payload['privacy_view'];
 
-  /// Is it possible to leave comments
+  /// Можно ли оставлять комментарии.
   bool? get isCanComment => checkBoolInProperty('can_comment');
 
-  /// Wiki link tags.
+  /// Теги Wiki-ссылок.
   String? get textWiki => payload['text_wiki'];
 }

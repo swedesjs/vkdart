@@ -1,4 +1,4 @@
-/// The library contains interfaces for interacting with API VC methods, object models, and attachments.
+/// Библиотека содержит интерфейсы для взаимодействия с методами VK API, модели объектов и вложений.
 library vkdart.vkontakte;
 
 export 'src/vkontakte/model/api_error.dart';

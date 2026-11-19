@@ -1,5 +1,5 @@
-/// The package contains convenient functionality for interacting with the
-/// Longpoll API, Callback API, and the VK Api itself
+/// Пакет содержит удобные средства для взаимодействия с
+/// Longpoll API, Callback API и самим VK API.
 library vkdart;
 
 export 'src/vkdart/event/event.dart';

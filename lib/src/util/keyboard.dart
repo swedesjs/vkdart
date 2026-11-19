@@ -1,23 +1,23 @@
-/// Model Keyboard.
-/// Create a button:
+/// Модель клавиатуры.
+/// Создание кнопки:
 /// ```
-/// VkDartKeyboard()..addButtonText('Hello world!');
+/// VkDartKeyboard()..addButtonText('Привет, мир!');
 /// ```
 ///
-/// Using Keyboard:
+/// Использование клавиатуры:
 /// ```dart
 /// vkdart.messages.send({
 ///   ...,
 ///   'keyboard': keyboard.toJson()
 /// });
 /// ```
-/// keyboard - instance [VkDartKeyboard]
+/// keyboard — экземпляр [VkDartKeyboard].
 class VkDartKeyboard {
-  /// Whether to hide the keyboard after pressing the key that sends the message.
+  /// Скрывать ли клавиатуру после нажатия кнопки, отправляющей сообщение.
   final bool oneTime;
 
-  /// true — the keyboard is displayed inside the message.
-  /// false — shows the keyboard in the dialog, under the message input field.
+  /// true — клавиатура отображается внутри сообщения.
+  /// false — клавиатура отображается в диалоге под полем ввода сообщения.
   final bool inline;
 
   // ignore: public_member_api_docs
@@ -33,7 +33,7 @@ class VkDartKeyboard {
     this.buttons = buttons ?? [];
   }
 
-  /// Moves to the next row of the table.
+  /// Переходит к следующей строке таблицы.
   void nextRow() {
     if (_index != -1 && (buttons.elementAtOrNull(_index)?.isEmpty ?? false)) {
       throw VkDartKeyboardException(
@@ -59,31 +59,31 @@ class VkDartKeyboard {
     buttons[_index].add(object);
   }
 
-  /// Adds a text button.
+  /// Добавляет текстовую кнопку.
   void addButtonText(String text,
       {VkDartKeyboardColor color = VkDartKeyboardColor.secondary,
       Map<String, dynamic>? payload}) {
     _addButton({'type': 'text', 'label': text}, color, payload);
   }
 
-  /// Adds a link key.
+  /// Добавляет кнопку-ссылку.
   void addButtonLink(String link, String text,
       {Map<String, dynamic>? payload}) {
     _addButton(
         {'type': 'open_link', 'link': link, 'label': text}, null, payload);
   }
 
-  /// Adds a localized button.
+  /// Добавляет кнопку отправки местоположения.
   void addButtonLocation({Map<String, dynamic>? payload}) {
     _addButton({'type': 'location'}, null, payload);
   }
 
-  /// Adds a VK Pay button.
+  /// Добавляет кнопку VK Pay.
   void addButtonVkPay(String hash, {Map<String, dynamic>? payload}) {
     _addButton({'type': 'vkpay', 'hash': hash}, null, payload);
   }
 
-  /// Adds an open app button.
+  /// Добавляет кнопку открытия приложения.
   void addButtonApp(int appId, int ownerId,
       {String? hash, String? appName, Map<String, dynamic>? payload}) {
     _addButton({
@@ -95,34 +95,34 @@ class VkDartKeyboard {
     }, null, payload);
   }
 
-  /// Adds a callback button.
+  /// Добавляет кнопку Callback.
   void addButtonCallback(String text,
       {VkDartKeyboardColor color = VkDartKeyboardColor.secondary,
       Map<String, dynamic>? payload}) {
     _addButton({'type': 'callback', 'label': text}, color, payload);
   }
 
-  /// Converts an object of the class to Json.
+  /// Преобразует объект класса в JSON.
   Map<String, dynamic> toJson() =>
       {'one_time': oneTime, 'buttons': buttons, 'inline': inline};
 }
 
-/// The enum of colors supported by the VK keyboard.
+/// Перечисление цветов, поддерживаемых клавиатурой VK.
 enum VkDartKeyboardColor {
-  /// Main action.
-  /// Blue button.
+  /// Основное действие.
+  /// Синяя кнопка.
   primary,
 
-  /// Usual button.
-  /// White button.
+  /// Обычная кнопка.
+  /// Белая кнопка.
   secondary,
 
-  /// A dangerous action or refusal, such as "Delete" or "Reject".
-  /// Red button.
+  /// Опасное действие или отказ, например «Удалить» или «Отклонить».
+  /// Красная кнопка.
   negative,
 
-  /// "Agree", "Confirm".
-  /// Green button.
+  /// «Согласиться», «Подтвердить».
+  /// Зелёная кнопка.
   positive
 }
 
@@ -131,7 +131,7 @@ class VkDartKeyboardException implements Exception {
   // ignore: public_member_api_docs
   VkDartKeyboardException(this.message);
 
-  /// Message exception.
+  /// Сообщение исключения.
   final String message;
 
   @override

@@ -1,9 +1,9 @@
 import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Wall Reply.
+/// Модель комментария на стене.
 ///
-/// See https://dev.vk.com/ru/reference/objects/comment
+/// См. https://dev.vk.com/ru/reference/objects/comment
 class WallReplyAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   WallReplyAttachmentModel(super.payload) : super(attachType: 'wall_reply');
@@ -11,52 +11,52 @@ class WallReplyAttachmentModel extends CustomAttachmentModel {
   @override
   int get id => payload['id'] ?? payload['cid'];
 
-  /// The ID of the comment author.
+  /// ID автора комментария.
   int get fromId => payload['from_id'];
 
-  /// The date the comment was created in Unixtime format.
+  /// Дата создания комментария в формате Unix.
   int get createdAt => payload['date'];
 
-  /// The text of the comment.
+  /// Текст комментария.
   String? get text => payload['text'];
 
-  /// is the commentator a VK Donut subscriber.
+  /// является ли автор комментария подписчиком VK Donut.
   bool? get isDon => payload['donut']?['is_don'];
 
-  /// a stub for users who have not subscribed to VK Donut.
+  /// заглушка для пользователей, не оформивших подписку VK Donut.
   String? get donutPlacholder => payload['donut']?['placeholder'];
 
-  /// The ID of the user or community to whom the current comment was left in response (if applicable).
+  /// ID пользователя или сообщества, которому адресован текущий комментарий (если применимо).
   bool? get isReplyToUser => checkBoolInProperty('reply_to_user');
 
-  /// The ID of the comment that the current one was left in response to (if applicable).
+  /// ID комментария, на который отвечает текущий комментарий (если применимо).
   bool? get isReplyToComment => checkBoolInProperty('reply_to_comment');
 
-  /// Media commentary attachments (photos, links, etc.).
-  /// See https://dev.vk.com/ru/reference/objects/comment#attachments
+  /// Медиа-вложения комментария (фотографии, ссылки и т. п.).
+  /// См. https://dev.vk.com/ru/reference/objects/comment#attachments
   List<AttachmentModel> get attachments =>
       transformAttachments((payload['attachments'] as List?)
               ?.map((e) => (e as Map).cast<String, dynamic>())
               .toList() ??
           const []);
 
-  /// An array of IDs of parent comments.
+  /// Массив ID родительских комментариев.
   List<int>? get parentsStack => payload['parents_stack'];
 
-  /// the number of comments in the thread.
+  /// количество комментариев в ветке.
   int? get threadCount => payload['thread']?['count'];
 
-  /// an array of objects for comments on a record (only for the wall.getComments method).
+  /// массив объектов комментариев к записи (только для метода wall.getComments).
   List<WallReplyAttachmentModel>? get threadItems => payload['thread']?['items']
       ?.map((e) => WallReplyAttachmentModel((e as Map).cast<String, dynamic>()))
       .toList();
 
-  /// can the current user leave comments in this thread.
+  /// может ли текущий пользователь оставлять комментарии в этой ветке.
   bool? get isThreadCanPost => payload['thread']?['can_post'];
 
-  /// do I need to display the reply button in the branch
+  /// нужно ли показывать кнопку ответа в ветке
   bool? get isThreadShowReplyButton => payload['thread']?['show_reply_button'];
 
-  /// can communities leave comments in the thread?
+  /// могут ли сообщества оставлять комментарии в ветке?
   bool? get isThreadGroupsCanPost => payload['thread']?['groups_can_post'];
 }

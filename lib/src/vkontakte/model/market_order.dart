@@ -1,127 +1,127 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Market Order model.
+/// Модель заказа товара.
 ///
-/// See https://dev.vk.com/ru/reference/objects/market-order
+/// См. https://dev.vk.com/ru/reference/objects/market-order
 class MarketOrderModel {
-  /// Payload.
+  /// Данные.
   final Map<String, dynamic> payload;
 
   // ignore: public_member_api_docs
   MarketOrderModel(this.payload);
 
-  /// The order ID.
+  /// ID заказа.
   int? get id => payload['id'];
 
-  /// The community ID.
+  /// ID сообщества.
   int? get groupId => payload['group_id'];
 
-  /// The buyer's ID.
+  /// ID покупателя.
   int? get userId => payload['user_id'];
 
-  /// The date the order was created in Unixtime format.
+  /// Дата создания заказа в формате Unix.
   int? get createdAt => payload['date'];
 
-  /// ID of the option group.
+  /// ID группы свойств.
   int? get variantsGroupingId => payload['variants_grouping_id'];
 
-  /// Whether the option is the main one.
+  /// Является ли свойство основным.
   bool? get isMainVariant => payload['is_main_variant'];
 
-  /// Variants.
+  /// Варианты.
   List<MarketOrderPropertyValuesModel>? get propertyValues =>
       (payload['property_values'] as List?)
           ?.map((e) => MarketOrderPropertyValuesModel(
               (e as Map).cast<String, dynamic>()))
           .toList();
 
-  /// The quantity of the product in the cart.
+  /// Количество товара в корзине.
   int? get cartQuantity => payload['cart_quantity'];
 
-  /// Order status.
+  /// Статус заказа.
   int? get status => payload['status'];
 
-  /// The number of items in the order.
+  /// Количество товаров в заказе.
   int? get itemsCount => payload['items_count'];
 
-  /// The total cost of the order.
+  /// Общая стоимость заказа.
   Map<String, dynamic>? get totalPrice => payload['total_price'];
 
-  /// the cost in hundredths of a unit of currency.
+  /// стоимость в сотых долях денежной единицы.
   int? get totalPriceAmount => totalPrice?['amount'];
 
-  /// currency identifier
+  /// ID валюты.
   int? get totalPriceCurrencyId => totalPrice?['currency']?['id'];
 
-  /// currency designation;
+  /// Обозначение валюты;
   String? get totalPriceCurrencyName => totalPrice?['currency']?['name'];
 
-  /// a string representation of the order value.
+  /// строковое представление стоимости заказа.
   String? get totalPriceText => totalPrice?['text'];
 
-  /// The order number, consisting of the customer ID and the order ID.
+  /// Номер заказа, состоящий из ID покупателя и ID заказа.
   int? get displayOrderId => payload['display_order_id'];
 
-  /// Comment on the order.
+  /// Комментарий к заказу.
   String? get comment => payload['comment'];
 
-  /// See https://dev.vk.com/ru/reference/objects/market-order#preview_order_items
+  /// См. https://dev.vk.com/ru/reference/objects/market-order#preview_order_items
   List<MarketAttachmentModel>? get previewOrderItems =>
       (payload['preview_order_items'] as List)
           .map((e) => MarketAttachmentModel((e as Map).cast<String, dynamic>()))
           .toList();
 
-  /// Delivery information.
+  /// Информация о доставке.
   ///
-  /// See https://dev.vk.com/ru/reference/objects/market-order#delivery
+  /// См. https://dev.vk.com/ru/reference/objects/market-order#delivery
   Map<String, dynamic>? get delivery => payload['delivery'];
 
-  /// Delivery address.
+  /// Адрес доставки.
   String? get deliveryAddress => delivery?['address'];
 
-  /// Delivery type.
+  /// Тип доставки.
   String? get deliveryType => delivery?['type'];
 
-  /// the track number for tracking the order.
+  /// номер отправления для отслеживания заказа.
   String? get deliveryTrackNumber => delivery?['track_number'];
 
-  /// a link to track the order by track number.
+  /// ссылка для отслеживания заказа по номеру отправления.
   String? get deliveryTrackLink => delivery?['track_link'];
 
-  /// information about the pick-up point.
+  /// информация о пункте выдачи.
   Object? get deliveryPoint => delivery?['delivery_point'];
 
-  /// Information about the buyer.
+  /// Информация о покупателе.
   ///
-  /// See https://dev.vk.com/ru/reference/objects/market-order#recipient
+  /// См. https://dev.vk.com/ru/reference/objects/market-order#recipient
   Map<String, dynamic>? get recipient => payload['recipient'];
 
-  /// the buyer's name.
+  /// Имя покупателя.
   String? get recipientName => recipient?['name'];
 
-  /// The buyer's number.
+  /// Номер покупателя.
   String? get recipientPhone => recipient?['phone'];
 
-  /// String representation of customer information.
+  /// Строковое представление данных покупателя.
   String? get recipientDisplayText => recipient?['display_text'];
 }
 
-/// Market Order Property Values model.
+/// Модель значений свойств заказа товара.
 ///
-/// See https://dev.vk.com/ru/reference/objects/market-order#property_values
+/// См. https://dev.vk.com/ru/reference/objects/market-order#property_values
 class MarketOrderPropertyValuesModel {
   // ignore: public_member_api_docs
   MarketOrderPropertyValuesModel(this.payload);
 
-  /// Payload.
+  /// Данные.
   final Map<String, dynamic> payload;
 
-  /// Id variant.
+  /// ID варианта.
   int get variantId => payload['variant_id'];
 
-  /// Variant name.
+  /// Название варианта.
   String get variantName => payload['variant_name'];
 
-  /// Property name.
+  /// Название свойства.
   String get propertyName => payload['property_name'];
 }

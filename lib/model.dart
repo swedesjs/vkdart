@@ -1,4 +1,4 @@
-/// Various models used by VKDart
+/// Различные модели, используемые в VKDart.
 library vkdart.model;
 
 export 'src/vkdart/model/update.dart';

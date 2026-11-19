@@ -1,27 +1,27 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Market Album.
+/// Модель подборки товаров.
 ///
-/// See https://dev.vk.com/ru/reference/objects/market-album
+/// См. https://dev.vk.com/ru/reference/objects/market-album
 class MarketAlbumAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   MarketAlbumAttachmentModel(super.payload) : super(attachType: 'market_album');
 
-  /// The name of the collection.
+  /// Название подборки.
   String? get title => payload['title'];
 
-  /// Whether the selection is the main one.
+  /// Является ли подборка основной.
   bool? get isMain => payload['is_main'];
 
-  /// Whether the selection is hidden.
+  /// Скрыта ли подборка.
   bool? get isHidden => payload['is_hidden'];
 
-  /// The cover of the collection
+  /// Обложка подборки.
   ///
-  /// See https://dev.vk.com/objects/market-album#photo
+  /// См. https://dev.vk.com/objects/market-album#photo
   PhotoAttachmentModel? get photo =>
       payload['photo'] != null ? PhotoAttachmentModel(payload['photo']) : null;
 
-  /// The number of products in the selection.
+  /// Количество товаров в подборке.
   int? get count => payload['count'];
 }

@@ -1,34 +1,34 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Link.
+/// Модель ссылки.
 ///
-/// See https://dev.vk.com/ru/reference/objects/link
+/// См. https://dev.vk.com/ru/reference/objects/link
 class LinkAttachmentModel extends AttachmentModel {
   // ignore: public_member_api_docs
   LinkAttachmentModel(super.payload) : super(attachType: 'link');
 
-  /// Link URL.
+  /// URL ссылки.
   String get url => payload['url'];
 
-  /// Link title.
+  /// Название ссылки.
   String get title => payload['title'];
 
-  /// Link description.
+  /// Описание ссылки.
   String? get description => payload['description'];
 
-  /// Preview image. (if available)
+  /// Изображение предпросмотра (если доступно).
   PhotoAttachmentModel? get photo =>
       payload['photo'] != null ? PhotoAttachmentModel(payload['photo']) : null;
 
-  /// Product information (if available).
+  /// Информация о товаре (если доступна).
   Map<String, dynamic>? get product => payload['product'];
 
-  /// Information about the button to navigate (if available).
+  /// Информация о кнопке перехода (если доступна).
   Map<String, dynamic>? get button => payload['button'];
 
-  /// ID of the content wiki page to preview the content of the page. Returned in the format `owner_id_page_ids`.
+  /// ID Wiki-страницы для предварительного просмотра содержимого. Возвращается в формате `owner_id_page_ids`.
   String? get previewPage => payload['preview_page'];
 
-  /// Content page URL to preview the page content.
+  /// URL страницы с предварительным просмотром её содержимого.
   String? get previewUrl => payload['preview_url'];
 }

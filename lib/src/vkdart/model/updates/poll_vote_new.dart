@@ -1,8 +1,8 @@
 import 'package:vkdart/model.dart';
 
-/// The model `poll vote new` update.
+/// Модель обновления `poll vote new`.
 ///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#poll_vote_new
+/// См. https://dev.vk.com/ru/api/community-events/json-schema#poll_vote_new
 class VkDartPollVoteNewUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -10,15 +10,15 @@ class VkDartPollVoteNewUpdate {
   // ignore: public_member_api_docs
   VkDartPollVoteNewUpdate(this.update);
 
-  /// The ID of the poll owner.
+  /// ID владельца опроса.
   int get ownerId => update.object['owner_id'];
 
-  /// The ID of the poll.
+  /// ID опроса.
   int get pollId => update.object['poll_id'];
 
-  /// The ID of the answer option.
+  /// ID варианта ответа.
   int get optionId => update.object['option_id'];
 
-  /// The user ID.
+  /// ID пользователя.
   int get userId => update.object['user_id'];
 }

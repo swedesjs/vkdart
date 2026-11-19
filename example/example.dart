@@ -4,7 +4,7 @@ void main() async {
   const groupId = 123456;
   final myFetcher = Longpoll(groupId);
 
-  // Use callback API
+  // Использование Callback API
   // final myFetcher = await Webhook.createHttpServer(
   //  secretKey: 'mySecretKey',
   //  confirmation: 'confirmationCode',
@@ -19,8 +19,8 @@ void main() async {
       .listen((event) => event.sendMessage(message: 'hello world!'));
 
   // ignore: avoid_print
-  await vkdart.start().then((_) => print('Longpoll API started!'));
+  await vkdart.start().then((_) => print('Longpoll API запущен!'));
 
-  // use API
+  // Использование API
   // await vkdart.request('groups.getById', {'group_id': 1}); // List<Map<String, dynamic>>
 }

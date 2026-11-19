@@ -1,208 +1,380 @@
 <!-- @formatter:off -->
+
+<div align="center">
+
 # VkDart
 
 [![Pub Version](https://img.shields.io/pub/v/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 [![Pub Popularity](https://img.shields.io/pub/popularity/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 [![Pub Points](https://img.shields.io/pub/points/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 
-> The package helps to simplify the work with [VK API](https://dev.vk.com/).
->
-> A chat room to discuss how the package works - https://t.me/vk_dart
+Удобный Dart-клиент для VK API: запросы к методам, события Long Poll и Callback API, клавиатуры и модели вложений.
 
-## Features
-1. **Reliability.** Package functionality is wrapped in unit tests. 
-2. **Supports events.** Supports Callback API, Longpoll API
-3. **Development.** Functionality is becoming more and more every day!
-4. **Easy to use.** Very easy to use!
-5. **Model support.** There is a description of event, attachment and object models.
+</div>
 
-## Usage
+---
 
-Initialization:
+## Возможности
+
+- **Два способа получения событий** — Long Poll для сообществ и Callback API для собственного сервера.
+- **Типизированные потоки событий** — сообщения, реакции, комментарии, записи, оплаты и другие обновления.
+- **Прямые запросы к VK API** — единый метод `request` для всех доступных методов.
+- **Модели VK** — сообщения, вложения, заказы и другие объекты с удобными свойствами.
+- **Конструктор клавиатур** — обычные и встроенные клавиатуры с разными типами кнопок.
+- **Обработка новых типов событий** — поток `onUnsupportedEvent` для неизвестных обновлений.
+
+## Установка
+
+```shell
+dart pub add vkdart
+```
+
+Или добавьте пакет вручную в `pubspec.yaml`:
+
+```yaml
+dependencies:
+  vkdart: ^2.3.1
+```
+
+```shell
+dart pub get
+```
+
+## Быстрый старт
+
 ```dart
 import 'package:vkdart/vkdart.dart';
 
-void main() async {
-  final TOKEN = '';
-  final GROUP_ID = 1;
+Future<void> main() async {
+  const token = 'ВАШ_КЛЮЧ_ДОСТУПА';
+  const groupId = 123456;
 
-  final myFetcher = Longpoll(GROUP_ID); // or Webhook (CallbackAPI).
-  final vkdart = VkDart(TOKEN, fetcher: myFetcher);
+  final vkdart = VkDart(
+    token,
+    fetcher: Longpoll(groupId),
+  );
 
-  vkdart.start();
+  vkdart
+      .onMessage()
+      .where((event) => event.isInbox)
+      .listen((event) async {
+        await event.replySendMessage(message: 'Привет!');
+      });
+
+  await vkdart.start();
+  print('VkDart запущен');
 }
 ```
 
-Using API:
+Действуйте в разных местах программы через один экземпляр `VkDart`:
+
 ```dart
-await vkdart.request('groups.getById', {'group_id': 1}); // List<Map<String, dynamic>>
+await vkdart.request(
+  'groups.getById',
+  {'group_id': 123456},
+);
 ```
 
-## Events
-[VkDart](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html) base class contains functions for processing VK API events.
-Some events are combined into a single handler, consider this example: 
+Метод `request` возвращает поле `response` ответа VK API. Формат ответа зависит от вызываемого метода.
+
+## Получение событий
+
+Пакет поддерживает оба варианта получения обновлений сообщества.
+
+### Long Poll
+
+`Longpoll` запрашивает события через сервер событий VK. Для запуска нужен только `groupId`.
+
 ```dart
-/// message_new, message_reply, message_reply.
-vkdart.onMessage().listen((event) { ... });
+final vkdart = VkDart(
+  token,
+  fetcher: Longpoll(groupId),
+);
+
+await vkdart.start();
 ```
 
-In this case the events message_new, message_reply, message_edit will be processed in this listen. 
-In order to filter the necessary events, you can modify [Stream](https://www.dartlang.org/tutorials/language/streams#methods-that-modify-a-stream): 
+Остановить получатель можно методом `stop`:
+
+```dart
+await vkdart.stop();
+```
+
+### Callback API
+
+`Webhook` запускает HTTP или HTTPS-сервер и принимает POST-запросы от VK:
+
+```dart
+final webhook = await Webhook.createHttpServer(
+  port: 80,
+  confirmationToken: 'СТРОКА_ПОДТВЕРЖДЕНИЯ',
+  secretKey: 'СЕКРЕТНЫЙ_КЛЮЧ',
+);
+
+final vkdart = VkDart(token, fetcher: webhook);
+await vkdart.start();
+```
+
+Для HTTPS можно передать файлы сертификата и приватного ключа:
+
+```dart
+final webhook = await Webhook.createHttpsServer(
+  port: 443,
+  privateKey: File('private.key'),
+  certificate: File('certificate.pem'),
+  confirmationToken: 'СТРОКА_ПОДТВЕРЖДЕНИЯ',
+  secretKey: 'СЕКРЕТНЫЙ_КЛЮЧ',
+);
+```
+
+> Callback-сервер должен быть доступен из сети и отвечать на запросы VK.
+
+## События
+
+Все обработчики в `VkDart` возвращают `Stream`. Подписаться на несколько обработчиков можно одновременно.
+
+```dart
+vkdart.onMessage().listen((event) {
+  print('Сообщение от ${event.senderId}: ${event.text}');
+});
+
+vkdart.onComment().listen((event) {
+  print('Новое событие комментария: ${event.update.type.name}');
+});
+
+vkdart.onUnsupportedEvent().listen((event) {
+  print('Неподдерживаемое событие: ${event.eventType}');
+  print(event.object);
+});
+```
+
+Поток сообщений объединяет `message_new`, `message_edit` и `message_reply`. Конкретный тип проверяется свойствами модели:
+
+```dart
+vkdart.onMessage().listen((event) {
+  if (event.isNew) {
+    // Новое сообщение.
+  } else if (event.isEdit) {
+    // Сообщение изменено.
+  } else if (event.isReply) {
+    // Ответ сообщества.
+  }
+
+  if (event.isChat) {
+    // Сообщение получено в беседе.
+  }
+});
+```
+
+Используйте стандартные методы Dart Streams для фильтрации:
+
 ```dart
 vkdart
-        .onMessage()
-        .where((event) => event.isNew && event.isChat)
-        .listen((event) { ... });
+    .onMessage()
+    .where((event) => event.isInbox && event.isChat)
+    .listen((event) {
+      // Входящее сообщение из беседы.
+    });
 ```
 
-Due to the fact that VK API is also updated, new events are added, there is a handler [onUnsupportedEvent](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onUnsupportedEvent.html).
-If you have caught such an event, please report it to our [chat](https://t.me/vk_dart).
+Основные обработчики:
+
+| Обработчик | События |
+| --- | --- |
+| `onMessage()` | Новое, изменённое или исходящее сообщение |
+| `onMessageEvent()` | Нажатие кнопки Callback |
+| `onMessageAllow()` / `onMessageDeny()` | Разрешение или запрет сообщений |
+| `onMessageTypingState()` | Состояние набора текста |
+| `onChatCreate()` / `onChatTitle()` | Создание беседы и изменение названия |
+| `onChatPhoto()` / `onChatPin()` / `onChatUser()` | Фото, закрепление и участники беседы |
+| `onAttachmentNew()` | Новая фотография, видео или аудиозапись |
+| `onComment()` | Комментарии к объектам сообщества |
+| `onWall()` | Новая запись или репост |
+| `onLike()` | Добавление и удаление отметки «Нравится» |
+| `onMarketOrder()` | Новый или изменённый заказ |
+| `onGroup()` / `onUser()` | Вступление и выход или блокировка пользователя |
+| `onPollVoteNew()` | Голос в опросе |
+| `onGroupChange()` | Изменение сообщества |
+| `onVkpayTransaction()` | Транзакция VK Pay |
+| `onAppPayload()` | Payload приложения |
+| `onDonut()` | События VK Donut |
+| `onUnsupportedEvent()` | События без специальной модели |
+
+Полный список доступен в документации [`VkDart`](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html).
+
+## Ответы на сообщения
+
+Модель `VkDartMessageUpdate` умеет отправлять сообщение в исходный диалог:
+
 ```dart
-vkdart.onUnsupportedEvent().listen((event) {
-    print(
-      'An unsupported event has arrived!\n'
-      'It is necessary to inform the chat https://t.me/vk_dart\n\n'
-      'Type of event ${event.eventType}\n'
-      'Event Object: ${event.object}',
-    );
+vkdart.onMessage().listen((event) async {
+  await event.sendMessage(message: 'Получил ваше сообщение');
 });
 ```
 
-> Each event handler, has its own functions, fields and other useful features. All update models can be found on this [page](https://pub.dev/documentation/vkdart/latest/vkdart.model/vkdart.model-library.html). 
-> 
-> All event handlers can be found on this [page](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html). 
+Для ответа с ссылкой на исходное сообщение используйте `replySendMessage`:
 
-## Keyboard
-The package includes a [keyboard builder](https://pub.dev/documentation/vkdart/latest/vkdart.util/VkDartKeyboard-class.html):
 ```dart
-import 'package:vkdart/util.dart' show VkDartKeyboard, VkDartKeyboardColor;
+vkdart.onMessage().listen((event) async {
+  await event.replySendMessage(
+    message: 'Ответ на сообщение',
+  );
+});
+```
+
+Сообщение можно отправить в несколько диалогов:
+
+```dart
+await event.sendMessage(
+  peerIds: [123456, 654321],
+  message: 'Рассылка',
+);
+```
+
+Для обратной связи с Callback-кнопкой используйте `onMessageEvent`:
+
+```dart
+vkdart.onMessageEvent().listen((event) async {
+  await event.answer(
+    type: 'show_snackbar',
+    text: 'Готово',
+  );
+});
+```
+
+Поддерживаемые действия: `show_snackbar`, `open_link` и `open_app`.
+
+## Клавиатуры
+
+Создайте клавиатуру и добавьте нужные кнопки:
+
+```dart
+import 'package:vkdart/util.dart';
 
 final keyboard = VkDartKeyboard(
-    oneTime: true, // default value
-    inline: false // default value
+  oneTime: true,
+  inline: false,
 );
-```
 
-> Warning!
-> The keyboard grid has limitations:
-> - For conventional keyboard size: 5 × 10, maximum number of keys: 40
-> - For inline keyboard size: 5 × 6, maximum number of keys: 10
-
-Text button:
-```dart
-keyboard.addButtonText('Hello world!', color: VkDartKeyboardColor.primary, payload: {'button': 'text'});
-```
-> The payload will be available in [message_new](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onMessage.html) event, in the [messagePayload](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MessageModel/messagePayload.html) property. 
-
-URL button:
-```dart
-keyboard.addButtonLink('mysite.com', 'My Site');
-```
-
-Location button:
-```dart
-keyboard.addButtonLocation(payload: {'button': 'location'});
-```
-> The payload will be available in [message_new](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onMessage.html) event, in the [messagePayload](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MessageModel/messagePayload.html) property. 
-
-Vk Pay button: 
-```dart
-keyboard.addButtonVkPay("action=transfer-to-group&group_id=1&aid=10");
-```
-
-Open APP button:
-```dart
-keyboard.addButtonApp(6232540, -157525928, hash: "123", appName: 'LiveWidget');
-```
-
-Callback button:
-```dart
-keyboard.addButtonCallback(
-    'Hello world!', 
-    color: VkDartKeyboard.secondary, // default value
-    payload: {'button': 'callback'}
-);
-```
-> The payload will be available in the [message_event](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart/onMessageEvent.html) event, in the [eventPayload](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartMessageEventUpdate/eventPayload.html) property. 
-
-Move on to the next row:
-```dart
 keyboard
-  ..addButtonText('1 row: Hello world!')
+  ..addButtonText(
+    'Подтвердить',
+    color: VkDartKeyboardColor.positive,
+    payload: {'action': 'confirm'},
+  )
   ..nextRow()
-  ..addButtonText('2 row: Hello world!');
+  ..addButtonText(
+    'Отменить',
+    color: VkDartKeyboardColor.negative,
+  );
 ```
 
-Usage in the [messages.send](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/Messages/send.html) method:
-```dart
-vkdart.messages.send({
-    'peer_id': PEER_ID,
-    'message': 'Hello world!',
-    'random_id': RANDOM_ID,
-    'keyboard': keyboard.toJson()
-});
-```
-
-Button Colors:
-| Field                         | Description                  | Color |
-| ----------------------------- | ---------------------------- | ----- |
-| VkDartKeyboardColor.primary   | Main Action                  | Blue  |
-| VkDartKeyboardColor.secondary | It's just a button           | White |
-| VkDartKeyboardColor.negative  | Dangerous Action or Failure  | Red   |
-| VkDartKeyboardColor.positive  | "Agree," "Confirm."          | Green |
-
-## Attachments
-There are two types of class:
-- [AttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/CustomAttachmentModel-class.html) - A base class on which all attachments (and those that can be attached) depend, which cannot be attached.
-  - [GiftAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/GiftAttachmentModel-class.html)
-  - [LinkAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/LinkAttachmentModel-class.html)
-  - [StickerAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/StickerAttachmentModel-class.html)
-- [CustomAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/CustomAttachmentModel-class.html) - Attachment class that can be attached `{attachment_type}{owner_id}_{attach_id}_{?access_key?}`.
-  - [PhotoAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/PhotoAttachmentModel-class.html)
-  - [AudioAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/AudioAttachmentModel-class.html)
-  - [DocumentAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/DocumentAttachmentModel-class.html)
-  - [GraffitiAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/GraffitiAttachmentModel-class.html)
-  - [MarketAlbumAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MarketAlbumAttachmentModel-class.html)
-  - [MarketAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/MarketAttachmentModel-class.html)
-  - [NoteAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/NoteAttachmentModel-class.html)
-  - [PollAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/PollAttachmentModel-class.html)
-  - [VideoAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/VideoAttachmentModel-class.html)
-  - [WallAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/WallAttachmentModel-class.html)
-  - [WallReplyAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/WallReplyAttachmentModel-class.html)
-  - [WikiPageAttachmentModel](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/WikiPageAttachmentModel-class.html)
+Отправьте клавиатуру вместе с сообщением:
 
 ```dart
-final customAttachment = CustomAttachmentModel({
-    'owner_id': 1,
-    'id': 2,
-    // 'access_key': 'ACCESS_KEY'
-}, attachType: 'photo'); 
+await event.sendMessage(
+  message: 'Выберите действие',
+  keyboard: keyboard,
+);
 ```
 
-In VK there is a format of attachments, let's say to send it in private messages, for convenience the `CustomAttachmentModel` class has an overridden function `toString()`, which will return this format.
+Другие типы кнопок:
+
 ```dart
-customAttachment.toString(); // photo1_2 and photo1_2_ACCESS_KEY (if access != null)
-[customAttachment, customAttachment].join(',') // photo1_2,photo1_2
+keyboard.addButtonLink('https://example.com', 'Открыть сайт');
+keyboard.addButtonLocation(payload: {'action': 'location'});
+keyboard.addButtonVkPay('action=transfer-to-group&group_id=123456');
+keyboard.addButtonApp(
+  6232540,
+  -157525928,
+  hash: '123',
+  appName: 'Приложение',
+);
+keyboard.addButtonCallback(
+  'Callback',
+  color: VkDartKeyboardColor.primary,
+  payload: {'action': 'callback'},
+);
 ```
 
-Suppose we have an attachment object in Map format, in order to convert it into the necessary model, we will use the [`fromSpecificModel`](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/AttachmentModel/AttachmentModel.fromSpecificModel.html) constructor:
+Ограничения сетки VK:
+
+- обычная клавиатура: максимум 10 строк по 5 кнопок, всего 40 кнопок;
+- встроенная клавиатура: максимум 6 строк по 5 кнопок, всего 10 кнопок.
+
+Цвета кнопок:
+
+| Значение | Назначение | Цвет |
+| --- | --- | --- |
+| `VkDartKeyboardColor.primary` | Основное действие | Синий |
+| `VkDartKeyboardColor.secondary` | Обычное действие | Белый |
+| `VkDartKeyboardColor.negative` | Отказ или опасное действие | Красный |
+| `VkDartKeyboardColor.positive` | Подтверждение | Зелёный |
+
+## Вложения
+
+Вложение можно преобразовать из строки формата VK:
+
 ```dart
-AttachmentModel.fromSpecificModel({
-    'owner_id': 1,
-    'id': 2
-}, attachType: 'photo'); // PhotoAttachmentModel
+final attachment = CustomAttachmentModel.fromString('photo-123456_789');
+
+print(attachment.attachType); // photo
+print(attachment.ownerId); // -123456
+print(attachment.id); // 789
+print(attachment.toString()); // photo-123456_789
 ```
 
-Convert the attachment string to a model: 
+Создать вложение из объекта карты можно через `AttachmentModel.fromSpecificModel`:
+
 ```dart
-CustomAttachment.fromString('photo1_2'); // PhotoAttachmentModel
+final attachment = AttachmentModel.fromSpecificModel(
+  {
+    'owner_id': 123456,
+    'id': 789,
+  },
+  'photo',
+);
 ```
 
-## Future plans
-- Release models of VK API objects. ✔
-- Release a class that makes keyboarding easier. ✔
-- Release features, for chatbot commands.
+Поддерживаемые вложения представлены в библиотеке [`vkdart.vkontakte`](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/vkdart.vkontakte-library.html): фотографии, видео, аудио, документы, опросы, товары, записи и другие объекты.
 
-## Bugs and feature requests
+Для отправки вложений передайте их строковое представление:
 
-Please send a bug report to [issue tracker](https://github.com/swedesjs/vkdart/issues)
+```dart
+await event.sendMessage(
+  attachment: [attachment.toString()],
+);
+```
+
+## Обработка ошибок
+
+Ошибки VK API выбрасываются в виде `ApiException`:
+
+```dart
+import 'package:vkdart/vkontakte.dart';
+
+try {
+  await vkdart.request('users.get', {'user_ids': 'durov'});
+} on ApiException catch (error) {
+  print('VK API ${error.code}: ${error.message}');
+}
+```
+
+Для неподдерживаемых вложений и некорректных настроек доступны `VkDartException`, `VkDartKeyboardException`, `LongpollException` и `WebhookException`.
+
+## Документация API
+
+- [`VkDart`](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html) — получение событий и запросы к API.
+- [`Модели событий`](https://pub.dev/documentation/vkdart/latest/vkdart.model/vkdart.model-library.html) — типы обновлений и их свойства.
+- [`Модели VK`](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/vkdart.vkontakte-library.html) — сообщения, вложения и объекты API.
+- [`Клавиатуры`](https://pub.dev/documentation/vkdart/latest/vkdart.util/VkDartKeyboard-class.html) — конструктор интерактивных кнопок.
+
+## Сообщество и обратная связь
+
+- Telegram: https://t.me/vk_dart
+- Репозиторий: https://github.com/swedests/vkdart
+- Сообщить о проблеме: https://github.com/swedests/vkdart/issues
+
+## Лицензия
+
+Проект распространяется по лицензии [MIT](LICENSE).

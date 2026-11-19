@@ -1,8 +1,8 @@
 import 'package:vkdart/model.dart';
 
-/// The message typing state model.
+/// Модель состояния набора текста.
 ///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#message_typing_state
+/// См. https://dev.vk.com/ru/api/community-events/json-schema#message_typing_state
 class VkDartMessageTypingStateUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -10,12 +10,12 @@ class VkDartMessageTypingStateUpdate {
   // ignore: public_member_api_docs
   VkDartMessageTypingStateUpdate(this.update);
 
-  /// The status of the typing status.
+  /// Статус набора текста.
   String get state => update.object['state'];
 
-  /// The ID of the user who is typing the text.
+  /// ID пользователя, набирающего текст.
   int get fromId => update.object['from_id'];
 
-  /// The ID of the community to which the user is writing the message.
+  /// ID сообщества, которому пользователь пишет сообщение.
   int get toId => update.object['to_id'];
 }

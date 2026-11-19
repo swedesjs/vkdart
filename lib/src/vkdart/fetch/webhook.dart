@@ -5,7 +5,7 @@ import 'dart:io' as io;
 import 'package:vkdart/model.dart';
 import 'package:vkdart/vkdart.dart';
 
-/// Webhook (Callback API) fetcher.
+/// Получатель обновлений Webhook (Callback API).
 class Webhook extends AbstractUpdateFetcher {
   final io.HttpServer _server;
   final String? _secretKey;
@@ -16,7 +16,7 @@ class Webhook extends AbstractUpdateFetcher {
   // ignore: public_member_api_docs
   Webhook(this._server, [this._confirmationToken, this._secretKey]);
 
-  /// Create a Https server.
+  /// Создаёт HTTPS-сервер.
   static Future<Webhook> createHttpsServer(
       {required io.File privateKey,
       required io.File certificate,
@@ -33,7 +33,7 @@ class Webhook extends AbstractUpdateFetcher {
     return Webhook(server, confirmationToken, secretKey);
   }
 
-  /// Create a Http server.
+  /// Создаёт HTTP-сервер.
   static Future<Webhook> createHttpServer(
       {int port = 80, String? secretKey, String? confirmationToken}) async {
     final server =
@@ -60,7 +60,7 @@ class Webhook extends AbstractUpdateFetcher {
       request.cast<List<int>>().transform(utf8.decoder).join().then((value) {
         final data = jsonDecode(value) as Map<String, dynamic>;
 
-        // Checking for similarity of secret keys
+        // Проверка совпадения секретных ключей
         if (_secretKey != null && _secretKey != data['secret']) return failed();
 
         final isConfirmation = data['type'] == 'confirmation';
@@ -89,15 +89,15 @@ class Webhook extends AbstractUpdateFetcher {
     return Future.value();
   }
 
-  /// Returns the state of the Callback API.
-  /// If the Callback API has started, it will return true.
-  /// Otherwise, it will return false.
+  /// Возвращает состояние Callback API.
+  /// Если Callback API запущен, возвращает true.
+  /// В противном случае возвращает false.
   bool get isStart => _isStart;
 }
 
 // ignore: public_member_api_docs
 class WebhookException implements Exception {
-  /// The message of the exception.
+  /// Сообщение исключения.
   final String message;
 
   // ignore: public_member_api_docs

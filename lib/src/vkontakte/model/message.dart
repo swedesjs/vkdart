@@ -1,11 +1,11 @@
 import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Message.
+/// Модель сообщения.
 ///
-/// See https://dev.vk.com/ru/reference/objects/message
+/// См. https://dev.vk.com/ru/reference/objects/message
 class MessageModel {
-  /// Update data.
+  /// Данные обновления.
   late final Map<String, dynamic> payload;
 
   // ignore: public_member_api_docs
@@ -13,7 +13,7 @@ class MessageModel {
     applyPayload(payload);
   }
 
-  /// Apply payload.
+  /// Применяет данные.
   void applyPayload(Map<String, dynamic> payload) {
     final checkClientInfo = payload['client_info'] != null;
 
@@ -31,82 +31,82 @@ class MessageModel {
           };
   }
 
-  /// Message object.
+  /// Объект сообщения.
   Map<String, dynamic> get message => payload['message'];
 
-  /// Client info.
+  /// Информация о клиенте.
   Map<String, dynamic> get clientInfo => payload['client_info'];
 
-  /// The ID of the message.
+  /// Идентификатор сообщения.
   int? get id => message['id'];
 
-  /// The time of sending in Unix time.
+  /// Время отправки в формате Unix.
   int? get createdAt => message['date'];
 
-  /// The destination ID.
+  /// Идентификатор получателя.
   int get peerId => message['peer_id'];
 
-  /// The type of destination.
+  /// Тип получателя.
   MessageSource get peerType => getPeerType(peerId);
 
-  /// The sender's ID.
+  /// Идентификатор отправителя.
   int get senderId => message['from_id'];
 
-  /// The sender's type.
+  /// Тип отправителя.
   MessageSource get senderType => getPeerType(senderId);
 
-  /// The text of the message.
+  /// Текст сообщения.
   String get text => message['text'];
 
-  /// The ID used when sending the message.
-  /// It is returned only for outgoing messages.
+  /// Идентификатор, используемый при отправке сообщения.
+  /// Возвращается только для исходящих сообщений.
   int? get randomId => message['random_id'];
 
-  /// An arbitrary parameter for working with transition
+  /// Произвольный параметр для работы с источниками перехода
   /// [sources](https://dev.vk.com/ru/api/community-messages/getting-started).
   String? get ref => message['ref'];
 
-  /// An arbitrary parameter for working with transition
+  /// Произвольный параметр для работы с источниками перехода
   /// [sources](https://dev.vk.com/ru/api/community-messages/getting-started).
   String? get refSource => message['ref_source'];
 
-  /// Media attachments of the message (photos, links, etc.).
+  /// Медиа-вложения сообщения (фотографии, ссылки и т. п.).
   List<AttachmentModel> get attachments =>
       transformAttachments((message['attachments'] as List?)
               ?.map((e) => (e as Map).cast<String, dynamic>())
               .toList() ??
           const []);
 
-  /// true if the message is marked as important.
+  /// true, если сообщение помечено как важное.
   bool? get isImportant => message['important'];
 
-  /// Location Information.
+  /// Информация о местоположении.
   Map<String, dynamic>? get geo => message['geo'];
 
-  /// A service field for messages to bots (payload).
+  /// Служебное поле для сообщений ботам (payload).
   String? get messagePayload => message['payload'];
 
-  /// A keyboard object for bots.
+  /// Объект клавиатуры для ботов.
   Map<String, dynamic>? get keyboard => message['keyboard'];
 
-  /// the archive of forwarded messages (if any).
-  /// The maximum number of elements is 100.
-  /// The maximum nesting depth for forwarded messages is 45, the total maximum number in the chain, taking into account nesting, is 500.
+  /// Список пересланных сообщений (если есть).
+  /// Максимальное количество элементов — 100.
+  /// Максимальная глубина вложенности пересланных сообщений — 45, а максимальное общее количество в цепочке с учётом вложенности — 500.
   List<MessageModel>? get forwards => (message['fwd_messages'] as List?)
       ?.map((e) => MessageModel((e as Map).cast<String, dynamic>()))
       .toList();
 
-  /// The message that the current one was sent in response to.
+  /// Сообщение, на которое отправлено текущее сообщение.
   MessageModel? get replyMessage => message['reply_message'] != null
       ? MessageModel(message['reply_message'])
       : null;
 
-  /// Information about the service action with the chat.
+  /// Информация о служебном действии в чате.
   ///
-  /// If the property returns `null`, then most likely the field type in the payload is [String].
-  /// Try referring to the [actionType] property,
-  /// if this property is also `null`,
-  /// then the **API** has not returned a field.
+  /// Если свойство возвращает `null`, вероятно, тип поля в payload — [String].
+  /// Попробуйте обратиться к свойству [actionType].
+  /// Если и это свойство равно `null`,
+  /// значит, **API** не вернуло поле.
   Map<String, dynamic>? get action {
     final actionPayload = message['action'];
     if (actionPayload is String) return null;
@@ -114,64 +114,64 @@ class MessageModel {
     return actionPayload;
   }
 
-  /// Chat action type.
+  /// Тип действия в чате.
   String? get actionType => action?['type'] ?? message['action'];
 
-  /// The ID of the user who was invited or excluded from the chat, or who pinned or unpinned the message.
+  /// ID пользователя, приглашённого в чат или исключённого из него либо закрепившего или открепившего сообщение.
   int? get actionMemberId => action?['member_id'] ?? message['action_mid'];
 
-  /// New title of the conversation.
+  /// Новое название беседы.
   String? get actionText => action?['text'] ?? message['action_text'];
 
-  /// An old conversation title.
+  /// Прежнее название беседы.
   String? get actionOldText => action?['old_text'];
 
-  /// Email invited or excluded.
+  /// Электронная почта приглашённого или исключённого пользователя.
   String? get actionEmail => action?['email'] ?? message['action_email'];
 
-  /// The URL of the 50 px wide copy of the conversation photo.
+  /// URL копии фотографии беседы шириной 50 пикселей.
   String? get actionPhoto50 =>
       action?['photo']?['photo_50'] ?? message['photo_50'];
 
-  /// The URL of the 100 px wide copy of the conversation photo.
+  /// URL копии фотографии беседы шириной 100 пикселей.
   String? get actionPhoto100 =>
       action?['photo']?['photo_100'] ?? message['photo_100'];
 
-  /// The URL of the 200 px wide copy of the conversation photo.
+  /// URL копии фотографии беседы шириной 200 пикселей.
   String? get actionPhoto200 =>
       action?['photo']?['photo_200'] ?? message['photo_200'];
 
-  /// For community messages only. Contains the ID of the user (community administrator) who sent this message.
+  /// Только для сообщений сообщества. Содержит ID пользователя (администратора сообщества), отправившего сообщение.
   int? get adminAuthorId => message['admin_author_id'];
 
-  /// A unique automatically incrementing number for all messages with this peer.
+  /// Уникальный автоматически увеличивающийся номер всех сообщений с этим собеседником.
   int? get conversationMessageId => message['conversation_message_id'];
 
-  /// This message is cropped for the bot.
+  /// Это сообщение обрезано для бота.
   bool? get isCropped => message['is_cropped'];
 
-  /// The number of participants.
+  /// Количество участников.
   int? get membersCount => message['members_count'];
 
-  /// The date when the message was updated in Unixtime.
+  /// Дата обновления сообщения в формате Unix.
   int? get updateTime => message['update_time'];
 
-  /// Whether the attached audio message has already been listened to by you.
+  /// Прослушали ли вы прикреплённое голосовое сообщение.
   bool? get isWasListened => message['was_listened'];
 
-  /// The date when the message was pinned to Unixtime.
+  /// Дата закрепления сообщения в формате Unix.
   int? get pinnedAt => message['pinned_at'];
 
-  /// A string for matching the Notify user and VKontakte.
+  /// Строка для сопоставления пользователя Notify и ВКонтакте.
   ///
-  /// See https://dev.vk.com/ru/reference/objects/message#message_tag
+  /// См. https://dev.vk.com/ru/reference/objects/message#message_tag
   String? get messageTag => message['message_tag'];
 
-  /// The flag indicates whether the user is mentioned in this message.
-  /// Added since version 5.217
+  /// Флаг указывает, упомянут ли пользователь в этом сообщении.
+  /// Добавлено в версии 5.217.
   bool? get isMentionedUser => message['is_mentioned_user'];
 
-  /// The ID of the conversation.
+  /// Идентификатор беседы.
   int? get chatId {
     if (peerType != MessageSource.chat) {
       return null;
@@ -180,15 +180,15 @@ class MessageModel {
     return peerId - peerChatIdOffset;
   }
 
-  /// IDs of the authors of the last messages of the conversation.
+  /// ID авторов последних сообщений беседы.
   List<int>? get chatActive => (message['chat_active'] as List?)?.cast<int>();
 
-  /// Notification settings for the conversation, if any.
+  /// Настройки уведомлений беседы (если заданы).
   Map<String, dynamic>? get pushSettings => message['push_settings'];
 
-  /// The number of participants in the conversation.
+  /// Количество участников беседы.
   int? get usersCount => message['users_count'];
 
-  /// ID of the conversation creator.
+  /// ID создателя беседы.
   int? get adminId => message['admin_id'];
 }

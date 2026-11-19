@@ -4,9 +4,9 @@ import 'package:vkdart/model.dart';
 import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// The message model (for events `message_new`, `message_edit`, `message_reply`).
+/// Модель сообщения (для событий `message_new`, `message_edit`, `message_reply`).
 ///
-/// See:
+/// См.:
 /// - https://dev.vk.com/ru/api/community-events/json-schema#message_new
 /// - https://dev.vk.com/ru/api/community-events/json-schema#message_reply
 /// - https://dev.vk.com/ru/api/community-events/json-schema#message_edit
@@ -18,51 +18,51 @@ class VkDartMessageUpdate extends MessageModel {
   // ignore: public_member_api_docs
   VkDartMessageUpdate(this._vkontakte, this.update) : super(update.object);
 
-  /// Check is message new.
+  /// Проверяет, является ли сообщение новым.
   bool get isNew => update.type == UpdateType.message_new;
 
-  /// Check is message edit.
+  /// Проверяет, изменено ли сообщение.
   bool get isEdit => update.type == UpdateType.message_edit;
 
-  /// Check is message reply.
+  /// Проверяет, является ли сообщение ответом.
   bool get isReply => update.type == UpdateType.message_reply;
 
-  /// Is this a dialog with the user.
+  /// Является ли это диалогом с пользователем.
   bool get isUser => peerType == MessageSource.user;
 
-  /// Is this a dialogue with the group.
+  /// Является ли это диалогом с сообществом.
   bool get isGroup => peerType == MessageSource.group;
 
-  /// Whether this dialog is in a chat.
+  /// Находится ли этот диалог в чате.
   bool get isChat => peerType == MessageSource.chat;
 
-  /// Whether the sender is a user.
+  /// Является ли отправитель пользователем.
   bool get isFromUser => senderType == MessageSource.user;
 
-  /// Whether the sender is a group.
+  /// Является ли отправитель сообществом.
   bool get isFromGroup => senderType == MessageSource.group;
 
-  /// Whether the message is out.
+  /// Является ли сообщение исходящим.
   bool get isOutbox => checkBoolUtil(message['out'] as int)!;
 
-  /// Whether the message is inboxed.
+  /// Является ли сообщение входящим.
   bool get isInbox => !isOutbox;
 
-  /// Sends a message to the dialog from which the event came.
-  /// If you want to send to multiple dialogs, specify the [peerIds] argument.
+  /// Отправляет сообщение в диалог, из которого пришло событие.
+  /// Чтобы отправить сообщение в несколько диалогов, укажите аргумент [peerIds].
   ///
-  /// One of the [message] or [attachment] arguments must be specified,
-  /// otherwise an [ArgumentError] error will be thrown.
+  /// Необходимо указать один из аргументов [message] или [attachment],
+  /// иначе будет выброшено исключение [ArgumentError].
   ///
-  /// If the [randomId] argument is not specified,
-  /// the function itself will send this parameter to the request (any number in the range 2 ^ 31).
+  /// Если аргумент [randomId] не указан,
+  /// функция сама добавит этот параметр в запрос (любое число в диапазоне 2 ^ 31).
   ///
-  /// Sample example:
+  /// Пример:
   /// ```
   /// vkdart
   ///   .onMessage()
   ///   .where((event) => event.isInbox)
-  ///   .listen((event) => event.sendMessage(message: 'Hello world!'));
+  ///   .listen((event) => event.sendMessage(message: 'Привет, мир!'));
   /// ```
   Future<List<MessageModel>> sendMessage(
       {List<int>? peerIds,
@@ -125,15 +125,15 @@ class VkDartMessageUpdate extends MessageModel {
             }).toList());
   }
 
-  /// Responds to a message in the dialog from which the event came.
-  /// More detailed documentation: [sendMessage]
+  /// Отвечает на сообщение в диалоге, из которого пришло событие.
+  /// Подробнее см. [sendMessage].
   ///
-  /// Sample example:
+  /// Пример:
   /// ```dart
   /// vkdart
   ///   .onMessage()
   ///   .where((event) => event.isInbox)
-  ///   .listen((event) => event.replySendMessage(message: 'Hello, @id${event.senderId!}'));
+  ///   .listen((event) => event.replySendMessage(message: 'Привет, @id${event.senderId!}'));
   /// ```
   Future<List<MessageModel>> replySendMessage(
       {String? message,
@@ -183,7 +183,7 @@ class VkDartMessageUpdate extends MessageModel {
     );
   }
 
-  /// Changes the status of the dialog - the user has started typing.
+  /// Изменяет статус диалога: пользователь начал набирать текст.
   Future<bool> setActivity() {
     final body = {'peer_id': peerId, 'type': 'typing'};
     return _vkontakte

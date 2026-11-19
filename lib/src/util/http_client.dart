@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-/// Http client.
+/// HTTP-клиент.
 class HttpClient {
   static const _headers = {'Content-Type': 'application/x-www-form-urlencoded'};
 
@@ -20,7 +20,7 @@ class HttpClient {
   static String? _transformBody(Map<String, dynamic>? body) =>
       body?.entries.map((e) => '${e.key}=${_customValue(e.value)}').join('&');
 
-  /// Create a post request.
+  /// Создаёт POST-запрос.
   static Future<dynamic> httpPost(String url,
           {Map<String, dynamic>? body, Map<String, dynamic>? headers}) =>
       http

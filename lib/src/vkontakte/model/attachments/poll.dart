@@ -1,117 +1,117 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Poll
+/// Модель опроса
 ///
-/// See https://dev.vk.com/ru/reference/objects/poll
+/// См. https://dev.vk.com/ru/reference/objects/poll
 class PollAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   PollAttachmentModel(super.payload) : super(attachType: 'poll');
 
-  /// Date of creation in Unixtime format.
+  /// Дата создания в формате Unix.
   int? get createdAt => payload['created'];
 
-  /// Question text.
+  /// Текст вопроса.
   String? get question => payload['question'];
 
-  /// The number of votes.
+  /// Количество голосов.
   int? get votesCount => payload['votes'];
 
-  /// An array of objects that contain information about answer options.
+  /// Массив объектов с информацией о вариантах ответа.
   List<PollAttachmentAnswerModel>? get answers => (payload['answers'] as List?)
       ?.map(
           (e) => PollAttachmentAnswerModel((e as Map).cast<String, dynamic>()))
       .toList();
 
-  /// Whether the survey is anonymous.
+  /// Является ли опрос анонимным.
   bool? get isAnonymous => payload['anonymous'];
 
-  /// Does the survey allow for multiple answer options.
+  /// Допускает ли опрос выбор нескольких вариантов ответа.
   bool? get isMultiple => payload['multiple'];
 
-  /// IDs of the answer options selected by the current user.
+  /// ID вариантов ответа, выбранных текущим пользователем.
   List<int>? get answerIds => (payload['answer_ids'] as List?)?.cast<int>();
 
-  /// The date when the survey was completed in Unixtime. 0 if the survey is open-ended.
+  /// Дата завершения опроса в формате Unix. Значение 0 означает, что срок не ограничен.
   int? get endDate => payload['end_date'];
 
-  /// Whether the survey is completed.
+  /// Завершён ли опрос.
   bool? get isClosed => payload['closed'];
 
-  /// Whether the survey is attached to the discussion.
+  /// Прикреплён ли опрос к обсуждению.
   bool? get isBoard => payload['is_board'];
 
-  /// Is it possible to edit the survey?
+  /// Можно ли редактировать опрос?
   bool? get isCanEdit => payload['can_edit'];
 
-  /// Is it possible to vote in the poll.
+  /// Можно ли голосовать в опросе.
   bool? get isCanVote => payload['can_vote'];
 
-  /// Is it possible to complain about the survey.
+  /// Можно ли пожаловаться на опрос.
   bool? get isCanReport => payload['can_report'];
 
-  /// Is it possible to share the survey?
+  /// Можно ли поделиться опросом?
   bool? get isCanShare => payload['can_share'];
 
-  /// The ID of the survey author.
+  /// ID автора опроса.
   int? get authorId => payload['author_id'];
 
-  /// The photo is the background of the survey snippet.
+  /// Фотография используется в качестве фона карточки опроса.
   PhotoAttachmentModel? get photo =>
       payload['photo'] != null ? PhotoAttachmentModel(payload['photo']) : null;
 
   Map<String, dynamic>? get _background => payload['background'];
 
-  /// background ID.
+  /// ID фона.
   int? get backgroundId => _background?['id'];
 
-  /// the type of background. Possible values: `gradient`, `tile`.
+  /// тип фона. Возможные значения: `gradient`, `tile`.
   String? get backgroundType => _background?['type'];
 
-  /// (for type = gradient) the angle of the gradient along the X-axis.
+  /// (для type = gradient) угол градиента вдоль оси X.
   int? get backgroundAngle => _background?['angle'];
 
-  /// The HEX code of the replacement color (without #).
+  /// HEX-код цвета заливки (без #).
   String? get backgroundColor => _background?['color'];
 
-  /// (for type = tile) the width of the pattern tile.
+  /// (для type = tile) ширина элемента узора.
   int? get backgroundWidth => _background?['width'];
 
-  /// (for type = tile) the height of the pattern tile.
+  /// (для type = tile) высота элемента узора.
   int? get backgroundHeight => _background?['height'];
 
-  /// (for type = tile) the image of the pattern tile.
+  /// (для type = tile) изображение элемента узора.
   List<Map<String, dynamic>>? get backgroundImages =>
       (_background?['images'] as List?)?.cast<Map<String, dynamic>>();
 
-  /// (for type = gradient) gradient points.
+  /// (для type = gradient) точки градиента.
   List<(int position, String color)>? get backgroundPoints =>
       (_background?['points'] as List?)
           ?.map((e) => ((e as Map)['position'] as int, e['color'] as String))
           .toList();
 
-  /// The IDs of the 3 friends who voted in the poll.
+  /// ID трёх друзей, проголосовавших в опросе.
   List<int>? get friends => (payload['friends'] as List?)?.cast<int>();
 }
 
-/// Model Poll Answer
+/// Модель ответа опроса
 ///
-/// See https://dev.vk.com/ru/reference/objects/poll#answers
+/// См. https://dev.vk.com/ru/reference/objects/poll#answers
 final class PollAttachmentAnswerModel {
   // ignore: public_member_api_docs
   PollAttachmentAnswerModel(this.answerObject);
 
-  /// Payload.
+  /// Данные.
   final Map<String, dynamic> answerObject;
 
-  /// Id answer.
+  /// ID ответа.
   int get id => answerObject['id'];
 
-  /// Text answer.
+  /// Текст ответа.
   String get text => answerObject['text'];
 
-  /// Number of people who voted for this answer.
+  /// Количество пользователей, выбравших этот ответ.
   int get votes => answerObject['votes'];
 
-  /// Answer rating.
+  /// Рейтинг ответа.
   int? get rate => answerObject['rate'];
 }

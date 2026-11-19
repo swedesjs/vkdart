@@ -1,180 +1,165 @@
 ## 2.3.1
 
-Changes:
+Изменения:
 
-- Added the ability to subscribe to the main thread twice or more times.
+- Добавлена возможность подписываться на основной поток несколько раз.
 
 ## 2.3.0
 
-Changes:
+Изменения:
 
-- The Api class has been renamed to Vkontakte.
-- Interfaces of VK sections have been removed; now it is necessary to access methods through the `request` function.
-- The `fetcher` parameter to the `VkDart` class is required.
+- Класс Api переименован в Vkontakte.
+- Интерфейсы разделов VK удалены; теперь к методам необходимо обращаться через функцию `request`.
+- Параметр `fetcher` класса `VkDart` стал обязательным.
 
-News:
+Новое:
 
-- The `answer` function has been added to the `VkDartMessageEventUpdate` model, which will send an event with an action
-  to the user,
-  which
-  clicked the callback button.
-- The following functions have been added to the `VkDartMessageUpdate` model:
-    - `sendMessage`: sends a message to the user in the dialog from which the event came. If you specify
-      the `peerIds` parameter will be sent to the necessary dialogs.
-    - `replyMessage`: does the same thing as `sendMessage`, but replies to the message.
-    - `setActivity`: changes the typing status in the dialog.
-- Added properties to the `MessageModel` model:
-    - `actionType`: type of service action with chat.
-    - `actionMemberId`: ID of the user who pinned/unpinned/joined, etc.
-    - `actionText`: title of the conversation.
-    - `actionOldText`: old name of the conversation.
-    - `actionEmail`: user email.
-    - `actionPhoto50`: used instead of `photo50`.
-    - `actionPhoto100`: used instead of `photo100`.
-    - `actionPhoto200`: used instead of `photo200`.
+- В модель `VkDartMessageEventUpdate` добавлена функция `answer`, отправляющая событие с действием пользователю, нажавшему кнопку Callback.
+- В модель `VkDartMessageUpdate` добавлены функции:
+    - `sendMessage`: отправляет сообщение в диалог, из которого пришло событие. Если указать параметр `peerIds`, сообщение будет отправлено в нужные диалоги.
+    - `replyMessage`: выполняет то же, что и `sendMessage`, но отвечает на сообщение.
+    - `setActivity`: изменяет статус набора текста в диалоге.
+- В модель `MessageModel` добавлены свойства:
+    - `actionType`: тип служебного действия в чате.
+    - `actionMemberId`: ID пользователя, который закрепил или открепил сообщение, присоединился к чату и т. п.
+    - `actionText`: название беседы.
+    - `actionOldText`: прежнее название беседы.
+    - `actionEmail`: адрес электронной почты пользователя.
+    - `actionPhoto50`: используется вместо `photo50`.
+    - `actionPhoto100`: используется вместо `photo100`.
+    - `actionPhoto200`: используется вместо `photo200`.
 
-  The following properties have been removed: `actionMid`, `photo50`, `photo100`, `photo200`.
-- New threads that produce messages with a service action
-  chat `onChatUser`, `onChatPin`, `onChatCreate`, `onChatPhoto`, `onChatTitle`.
+  Удалены свойства: `actionMid`, `photo50`, `photo100`, `photo200`.
+- Добавлены потоки для получения сообщений со служебными действиями в чате: `onChatUser`, `onChatPin`, `onChatCreate`, `onChatPhoto`, `onChatTitle`.
 
 ## 2.2.0
 
-Change:
+Изменения:
 
-- Remove class `ApiResponse`.
-- The `VkDartUpdate` class-mixin was removed, the `Update` class was renamed
-  to `VkDartUpdate`. ([Commit](https://github.com/swedesjs/vkdart/commit/215637989b6b3e9758ab0340006641db4eaeb7b3#diff-d57374fc48bdddbb8ba6e673b90a428de20bce6e128f5435b36d5c662f3be063))
-    - The `eventData` property has been renamed to `data`.
-- [Api.request](https://pub.dev/documentation/vkdart/2.2.0/vkdart.vkontakte/Api/request.html): implementation of API
-  invocation, function return type and input parameters
-  type. ([Commit](https://github.com/swedesjs/vkdart/commit/4af4bd67a6767162e40beed3344d96fbf0978d1d))
+- Удалён класс `ApiResponse`.
+- Удалён миксин класса `VkDartUpdate`, а класс `Update` переименован в `VkDartUpdate`. ([Коммит](https://github.com/swedests/vkdart/commit/215637989b6b3e9758ab0340006641db4eaeb7b3#diff-d57374fc48bdddbb8ba6e673b90a428de20bce6e128f5435b36d5c662f3be063))
+    - Свойство `eventData` переименовано в `data`.
+- [Api.request](https://pub.dev/documentation/vkdart/2.2.0/vkdart.vkontakte/Api/request.html): изменены реализация вызова API, тип возвращаемого функцией значения и тип входных параметров. ([Коммит](https://github.com/swedests/vkdart/commit/4af4bd67a6767162e40beed3344d96fbf0978d1d))
 
-New:
+Новое:
 
-- [VkDartLikeUpdate](https://pub.dev/documentation/vkdart/2.2.0/vkdart.model/VkDartLikeUpdate-class.html), [VkDartMarketOrderUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartMarketOrderUpdate-class.html), [VkDartWallUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartWallUpdate-class.html):
-  new [modifiers](https://github.com/swedesjs/vkdart/commit/599d169782a82190e4ebff20624baf40c52c1321).
+- Для [VkDartLikeUpdate](https://pub.dev/documentation/vkdart/2.2.0/vkdart.model/VkDartLikeUpdate-class.html), [VkDartMarketOrderUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartMarketOrderUpdate-class.html) и [VkDartWallUpdate](https://pub.dev/documentation/vkdart/latest/vkdart.model/VkDartWallUpdate-class.html) добавлены новые [модификаторы](https://github.com/swedests/vkdart/commit/599d169782a82190e4ebff20624baf40c52c1321).
 
 ## 2.1.0
 
-Change:
+Изменения:
 
-- The documentation has become more correct and clearer.
-- Got rid of the `dia`, `dia_body`, `dio` dependencies. `Dio` was replaced by the `http` package and `dia` by `dart:io`.
-- [VkDartUpdate](https://pub.dev/documentation/vkdart/2.1.0/vkdart.model/VkDartUpdate-class.html): payload property
-  renamed to updateObject.
+- Документация стала точнее и понятнее.
+- Удалены зависимости `dia`, `dia_body`, `dio`. `Dio` заменён пакетом `http`, а `dia` — библиотекой `dart:io`.
+- В [VkDartUpdate](https://pub.dev/documentation/vkdart/2.1.0/vkdart.model/VkDartUpdate-class.html) свойство payload переименовано в updateObject.
 
-New:
+Новое:
 
-- [MessageModel](https://pub.dev/documentation/vkdart/2.1.0/vkdart.vkontakte/MessageModel-class.html):
-  function [applyPayload](https://pub.dev/documentation/vkdart/2.1.0/vkdart.vkontakte/MessageModel/applyPayload.html) is
-  implemented, which overloads the payload correctly.
-- [HttpClient](https://pub.dev/documentation/vkdart/2.1.0/vkdart.util/HttpClient-class.html): for convenient use of
-  requests to the VK server.
-- [VkDartMessageUpdate](https://pub.dev/documentation/vkdart/2.1.0/vkdart.model/VkDartMessageUpdate-class.html):
-  new [modifiers](https://github.com/swedesjs/vkdart/commit/a0b2c137d6202a48173c792aa125e53c42ff01d2).
-- [VkDartKeyboard](https://pub.dev/documentation/vkdart/2.1.0/vkdart.util/VkDartKeyboard-class.html): for convenient use
-  of VK keyboards.
+- В [MessageModel](https://pub.dev/documentation/vkdart/2.1.0/vkdart.vkontakte/MessageModel-class.html) реализована функция [applyPayload](https://pub.dev/documentation/vkdart/2.1.0/vkdart.vkontakte/MessageModel/applyPayload.html), корректно обрабатывающая payload.
+- Добавлен [HttpClient](https://pub.dev/documentation/vkdart/2.1.0/vkdart.util/HttpClient-class.html) для удобной отправки запросов к серверу VK.
+- Для [VkDartMessageUpdate](https://pub.dev/documentation/vkdart/2.1.0/vkdart.model/VkDartMessageUpdate-class.html) добавлены новые [модификаторы](https://github.com/swedests/vkdart/commit/a0b2c137d6202a48173c792aa125e53c42ff01d2).
+- Добавлен [VkDartKeyboard](https://pub.dev/documentation/vkdart/2.1.0/vkdart.util/VkDartKeyboard-class.html) для удобной работы с клавиатурами VK.
 
 ## 2.0.0
 
-Change:
+Изменения:
 
-- A census of the API package documentation.
-- Refactoring code.
-- Got rid of the dependency json_annotation, json_serializable, build_runner
+- Переработана документация API пакета.
+- Выполнен рефакторинг кода.
+- Удалены зависимости json_annotation, json_serializable и build_runner.
 
-New:
+Новое:
 
-- Of attachment models, messages, and events.
-- Of an unsupported event handler.
-- The util library, which contains useful functions for working correctly with the package.
+- Добавлены модели вложений, сообщений и событий.
+- Добавлен обработчик неподдерживаемых событий.
+- Добавлена библиотека util с полезными функциями для работы с пакетом.
 
 ## 1.3.6
 
-Change: two `donut` handlers are combined into one (`onDonut()`)
+Изменение: два обработчика `donut` объединены в один (`onDonut()`).
 
 ## 1.3.5
 
-fix: adjustment of `donut` handlers.
+Исправление: скорректирована работа обработчиков `donut`.
 
 ## 1.3.4
 
-Refactor: correction in the name of the event
-handler `group_officers_edit`, `group_change_settings`, `group_change_photo`.
-Rename `onGroupUpdate()` -> `onGroupChange()`
+Рефакторинг: исправлены названия обработчиков событий
+`group_officers_edit`, `group_change_settings`, `group_change_photo`.
+`onGroupUpdate()` переименован в `onGroupChange()`.
 
 ## 1.3.3
 
-Refactor: correction in the name of the event handler `wall_post_new`, `wall_repost`.
-Rename `onWallPost()` -> `onWall()`
+Рефакторинг: исправлены названия обработчиков событий `wall_post_new`, `wall_repost`.
+`onWallPost()` переименован в `onWall()`.
 
 ## 1.3.2
 
-Add: Added a handler for the `message_reaction_event` event.
+Добавлено: обработчик события `message_reaction_event`.
 
 ## 1.3.1
 
-Fix: `Longpoll Fetcher`: only one event was read at startup.
+Исправление: `Longpoll Fetcher` считывал только одно событие при запуске.
 
 ## 1.3.0
 
-Change:
+Изменения:
 
-- Documentation on using.
-- File structure package.
-- Structure of using the package.
-- Example file.
+- Документация по использованию.
+- Структура файлов пакета.
+- Структура использования пакета.
+- Файл примера.
 
-New:
+Новое:
 
-- **Event class**. Interface containing event streams.
-- Functions to listen for specific events.
+- **Класс Event**. Интерфейс с потоками событий.
+- Функции для прослушивания отдельных событий.
 
 ## 1.2.0
 
-- Removed attachment interfaces to make the package lighter.
-- Removed support for Longpoll API, now only Callback API.
-- The structure of the Callback API interface has been changed.
-- Added lists of `update types`.
+- Удалены интерфейсы вложений, чтобы уменьшить пакет.
+- Удалена поддержка Longpoll API, теперь поддерживается только Callback API.
+- Изменена структура интерфейса Callback API.
+- Добавлены списки `update types`.
 
 ## 1.1.2
 
-- Added `getAttachmentFromJson()` function.
-- Correction in the interface name `AudioAttachment`.
-- Added error handler to using `CallbackAPI`
+- Добавлена функция `getAttachmentFromJson()`.
+- Исправлено название интерфейса `AudioAttachment`.
+- Добавлен обработчик ошибок при использовании `CallbackAPI`.
 
 ## 1.1.1
 
-- Fixed incorrect operation of the `api.request()` function.
-- Amendments have been made to the documentation.
+- Исправлена работа функции `api.request()`.
+- В документацию внесены исправления.
 
 ## 1.1.0
 
-- Documentation completely rewritten
-- Added error handler when reading LongPoll events
-- Structures for attachments written
-- Tests have been written.
+- Документация полностью переписана.
+- Добавлен обработчик ошибок при чтении событий LongPoll.
+- Добавлены структуры вложений.
+- Добавлены тесты.
 
 ## 1.0.4
 
-- Documented methods that had no documentation
-- The structure for receiving updates Longpoll API, Callback API has been changed
-- Added missing methods
-- Method interfaces, Longpoll API, Callback API classes have been moved to separate libraries.
+- Добавлена документация для методов, которые ранее не были описаны.
+- Изменена структура получения обновлений Longpoll API и Callback API.
+- Добавлены недостающие методы.
+- Интерфейсы методов и классы Longpoll API и Callback API перенесены в отдельные библиотеки.
 
 ## 1.0.3
 
-- Added Callback API support
+- Добавлена поддержка Callback API.
 
 ## 1.0.2
 
-- Added Longpoll API support
+- Добавлена поддержка Longpoll API.
 
 ## 1.0.1
 
-- Added API methods interfaces
+- Добавлены интерфейсы методов API.
 
 ## 1.0.0
 
-- Initial version.
+- Начальная версия.
 

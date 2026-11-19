@@ -1,9 +1,9 @@
 import 'package:vkdart/model.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// The model `market order` update.
+/// Модель обновления `market order`.
 ///
-/// See:
+/// См.:
 /// - https://dev.vk.com/ru/api/community-events/json-schema#market_order_new
 /// - https://dev.vk.com/ru/api/community-events/json-schema#market_order_edit
 class VkDartMarketOrderUpdate extends MarketOrderModel {
@@ -13,9 +13,9 @@ class VkDartMarketOrderUpdate extends MarketOrderModel {
   // ignore: public_member_api_docs
   VkDartMarketOrderUpdate(this.update) : super(update.object);
 
-  /// Check is market order new.
+  /// Проверяет, создан ли заказ.
   bool get isNew => update.type == UpdateType.market_order_new;
 
-  /// Check is market order edit.
+  /// Проверяет, изменён ли заказ.
   bool get isEdit => update.type == UpdateType.market_order_edit;
 }

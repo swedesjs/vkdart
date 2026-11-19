@@ -1,41 +1,41 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Audio.
+/// Модель аудиозаписи.
 ///
-/// See https://dev.vk.com/ru/reference/objects/audio
+/// См. https://dev.vk.com/ru/reference/objects/audio
 class AudioAttachmentModel extends CustomAttachmentModel {
   // ignore: public_member_api_docs
   AudioAttachmentModel(super.payload) : super(attachType: 'audio');
 
-  /// A singer.
+  /// Исполнитель.
   String? get artist => payload['artist'];
 
-  /// Title of the composition.
+  /// Название композиции.
   String? get title => payload['title'];
 
-  /// Duration of the audio recording in seconds.
+  /// Продолжительность аудиозаписи в секундах.
   int? get duration => payload['duration'];
 
-  /// Link to mp3.
+  /// Ссылка на MP3-файл.
   String? get url => payload['url'];
 
-  /// Audio text ID (if available).
+  /// ID текстового представления аудиозаписи (если доступно).
   int? get lyricsId => payload['lyrics_id'];
 
-  /// Identifier of the album in which the audio recording is located (if assigned).
+  /// ID альбома, в котором находится аудиозапись (если задан).
   int? get albumId => payload['album_id'];
 
-  /// Genre identifier from the list of
+  /// Идентификатор жанра из списка
   /// [audio genres](https://dev.vk.com/ru/reference/objects/audio-genres).
   int? get genreId => payload['genre_id'];
 
-  /// Date added.
+  /// Дата добавления.
   int? get createdAt => payload['date'];
 
-  /// `true` if the “Do not display during search” option is enabled.
-  /// If the option is disabled, the field is not returned.
+  /// `true`, если включена настройка «Не показывать при поиске».
+  /// Если настройка отключена, поле не возвращается.
   bool? get isNoSearch => checkBoolInProperty('no_search');
 
-  /// `true` if the audio is high quality.
+  /// `true`, если аудиозапись высокого качества.
   bool? get isHq => checkBoolInProperty('is_hq');
 }

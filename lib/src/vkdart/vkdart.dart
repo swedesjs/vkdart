@@ -13,63 +13,63 @@ const _$chatUserEvents = [
 const _$chatCreateEvent = ['chat_create'];
 const _$chatTitleUpdateEvent = ['chat_title_update'];
 
-/// The base class of the package.
-/// Allows to create requests to VK API methods using [request] function,
-/// listen to [Longpoll] API and Callback API ([Webhook]) events.
+/// Базовый класс пакета.
+/// Позволяет отправлять запросы к методам VK API с помощью функции [request],
+/// а также прослушивать события Longpoll API и Callback API ([Webhook]).
 ///
-/// Sample Example:
+/// Пример:
 /// ```dart
-/// // message_new, message_edit, message_reply events.
+/// // События message_new, message_edit, message_reply.
 /// vkdart.onMessage().listen((event) {
-///   print('message event!');
+///   print('Событие сообщения!');
 ///   print('SenderId: ${event.senderId}');
 ///
 ///   vkdart.request('messages.send', {
 ///      'peer_id': event.peerId,
-///      'message': 'Hello, World!',
+///      'message': 'Привет, мир!',
 ///      'random_id': 0
-///   }); // using API.
+///   }); // Использование API.
 /// });
 ///
-/// vkdart.start().then((_) => print('Longpoll/Callback API started'));
+/// vkdart.start().then((_) => print('Longpoll/Callback API запущен'));
 /// ```
 ///
-/// `vkdart` - instance of [VkDart].
+/// `vkdart` — экземпляр [VkDart].
 class VkDart extends Vkontakte {
   final Event _event;
 
-  /// Update fetcher.
+  /// Получатель обновлений.
   final AbstractUpdateFetcher fetcher;
 
-  /// Basic constructor.
+  /// Основной конструктор.
   ///
-  /// In [token] is required for requests to VK API methods.
+  /// Параметр [token] необходим для запросов к методам VK API.
   ///
-  /// In [fetcher] we specify how we want to receive events, for this purpose two classes [Longpoll] and [Webhook] (Callback API) are implemented.
-  /// - `Longpoll API`: event queue is stored on VK side and each time it is necessary to access VK server.
+  /// В [fetcher] указывается способ получения событий. Для этого предусмотрены классы [Longpoll] и [Webhook] (Callback API).
+  /// - `Longpoll API`: очередь событий хранится на стороне VK, и для её получения необходимо обращаться к серверу VK.
   /// ```dart
   /// final GROUP_ID = 123456;
   /// final fetcher = Longpoll(GROUP_ID);
   /// ```
-  /// - `Callback API`: event queue comes to your server.
+  /// - `Callback API`: очередь событий отправляется на ваш сервер.
   /// ```dart
   /// final fetcher = await Webhook.createHttpServer(
   ///   confirmationToken: 'token',
   ///   secretKey: 'key',
-  /// ); // or createHttpsServer.
+  /// ); // или createHttpsServer.
   /// ```
-  /// In [event] we specify a class with methods to listen for events.
-  /// Is optional.
+  /// В [event] указывается класс с методами для прослушивания событий.
+  /// Необязательный параметр.
   ///
-  /// In [language] specify the language in which data will be sent when requesting the VK method.
-  /// By default is [LangApi.ru].
+  /// В [language] указывается язык данных, возвращаемых при вызове метода VK.
+  /// По умолчанию используется [LangApi.ru].
   ///
-  /// In [version] specify the version of VK API.
-  /// By default is 5.131.
+  /// В [version] указывается версия VK API.
+  /// По умолчанию используется версия 5.131.
   ///
-  /// Sample Example:
+  /// Пример:
   /// ```dart
-  /// final vkdart = VkDart('accessToken', fetcher: fetcher, event: Event(sync: false /* optional */));
+  /// final vkdart = VkDart('accessToken', fetcher: fetcher, event: Event(sync: false /* необязательный параметр */));
   /// ```
   VkDart(
     String token, {
@@ -84,95 +84,95 @@ class VkDart extends Vkontakte {
     }
   }
 
-  /// Start fetcher
+  /// Запускает получатель обновлений
   Future<void> start() async {
     onUpdate().listen(_event.emitUpdate);
     return fetcher.start();
   }
 
-  /// Stop fetcher
+  /// Останавливает получатель обновлений
   Future<void> stop() => fetcher.stop();
 
-  /// Listen for events.
+  /// Прослушивает события.
   Stream<VkDartUpdate> onUpdate() => fetcher.onUpdate();
 
-  /// Listen for `message_new`, `message_edit`, `message_reply` events.
+  /// Прослушивает события `message_new`, `message_edit`, `message_reply`.
   Stream<VkDartMessageUpdate> onMessage() =>
       _event.onMessage().map((event) => VkDartMessageUpdate(this, event));
 
   Stream<VkDartMessageUpdate> _onChat(List<String> subTypes) =>
       onMessage().where((event) => subTypes.contains(event.actionType));
 
-  /// Listens to chat action messages `chat_create`.
-  /// Returns [Stream] with an instance of [VkDartChatCreateUpdate] (inherited from [VkDartMessageUpdate]).
-  /// With additional properties:
+  /// Прослушивает сообщения о действии в чате `chat_create`.
+  /// Возвращает [Stream] с экземпляром [VkDartChatCreateUpdate] (наследуется от [VkDartMessageUpdate]).
+  /// Дополнительные свойства:
   /// - [VkDartChatCreateUpdate.title].
   ///
-  /// Sample Example:
+  /// Пример:
   /// ```dart
   /// vkdart.onChatCreate().listen((event) =>
-  ///       event.sendMessage(message: 'Hello ${event.title} chat members!'));
+  ///       event.sendMessage(message: 'Привет участникам беседы «${event.title}»!'));
   /// ```
   Stream<VkDartChatCreateUpdate> onChatCreate() => _onChat(_$chatCreateEvent)
       .map((event) => VkDartChatCreateUpdate(this, event.update));
 
-  /// Listens to chat action messages `chat_title_update`.
-  /// Returns [Stream] with an instance of [VkDartChatTitleUpdate] (inherited from [VkDartMessageUpdate]).
-  /// With additional properties:
+  /// Прослушивает сообщения о действии в чате `chat_title_update`.
+  /// Возвращает [Stream] с экземпляром [VkDartChatTitleUpdate] (наследуется от [VkDartMessageUpdate]).
+  /// Дополнительные свойства:
   /// - [VkDartChatTitleUpdate.newTitle]
   /// - [VkDartChatTitleUpdate.oldTitle]
   ///
-  /// Sample example:
+  /// Пример:
   /// ```dart
   /// vkdart.onChatTitle().listen((event) => event.sendMessage(
-  ///       message: 'User @id${event.senderId} updated the chat title from "${event.oldTitle}" to "${event.newTitle}"!'));
+  ///       message: 'Пользователь @id${event.senderId} изменил название беседы с «${event.oldTitle}» на «${event.newTitle}»!'));
   /// ```
   Stream<VkDartChatTitleUpdate> onChatTitle() => _onChat(_$chatTitleUpdateEvent)
       .map((event) => VkDartChatTitleUpdate(this, event.update));
 
-  /// Listens to chat action messages `chat_photo_update`, `chat_photo_remove`.
-  /// Returns a [Stream] with an instance of [VkDartChatPhotoUpdate] (inherited from [VkDartMessageUpdate]).
-  /// With additional properties:
+  /// Прослушивает сообщения о действиях в чате `chat_photo_update`, `chat_photo_remove`.
+  /// Возвращает [Stream] с экземпляром [VkDartChatPhotoUpdate] (наследуется от [VkDartMessageUpdate]).
+  /// Дополнительные свойства:
   /// - [VkDartChatPhotoUpdate.isUpdate]
   /// - [VkDartChatPhotoUpdate.isRemove]
   ///
-  /// Sample example:
+  /// Пример:
   /// ```dart
   /// vkdart.onChatPhoto().listen((event) {
-  ///   final textRemoveOrUpdated = event.isRemove ? 'removed' : 'updated';
+  ///   final textRemoveOrUpdated = event.isRemove ? 'удалил' : 'обновил';
   ///
   ///   event.sendMessage(
   ///       message:
-  ///           'User @id${event.senderId} $textRemoveOrUpdated photo in chat!');
+  ///           'Пользователь @id${event.senderId} $textRemoveOrUpdated фотографию беседы!');
   /// });
   /// ```
   Stream<VkDartChatPhotoUpdate> onChatPhoto() => _onChat(_$chatPhotoEvents)
       .map((event) => VkDartChatPhotoUpdate(this, event.update));
 
-  /// Listens to chat action messages `chat_pin_message`, `chat_unpin_message`.
-  /// Returns a [Stream] with an instance of [VkDartChatPinUpdate] (inherited from [VkDartMessageUpdate]).
-  /// With additional properties:
+  /// Прослушивает сообщения о действиях в чате `chat_pin_message`, `chat_unpin_message`.
+  /// Возвращает [Stream] с экземпляром [VkDartChatPinUpdate] (наследуется от [VkDartMessageUpdate]).
+  /// Дополнительные свойства:
   /// - [VkDartChatPinUpdate.isPin]
   /// - [VkDartChatPinUpdate.isUnpin]
   /// - [VkDartChatPinUpdate.memberId]
   /// - [VkDartChatPinUpdate.pinConversationMessageId]
   ///
-  /// Sample example:
+  /// Пример:
   /// ```dart
   /// vkdart.onChatPin().listen((event) {
-  ///   final textUnpinOrPin = event.isUnpin ? 'unpinned' : 'pinned';
+  ///   final textUnpinOrPin = event.isUnpin ? 'открепил' : 'закрепил';
   ///
   ///   event.sendMessage(
   ///       message:
-  ///           'User @id${event.memberId} $textUnpinOrPin message with ID "${event.pinConversationMessageId}" in chat');
+  ///           'Пользователь @id${event.memberId} $textUnpinOrPin сообщение с ID "${event.pinConversationMessageId}" в беседе');
   /// });
   /// ```
   Stream<VkDartChatPinUpdate> onChatPin() => _onChat(_$chatPinEvents)
       .map((event) => VkDartChatPinUpdate(this, event.update));
 
-  /// Listens to chat action messages `chat_invite_user`, `chat_kick_user`, `chat_invite_user_by_link`.
-  /// Returns a [Stream] with an instance of [VkDartChatUserUpdate] (inherited from [VkDartMessageUpdate]).
-  /// With additional properties:
+  /// Прослушивает сообщения о действиях в чате `chat_invite_user`, `chat_kick_user`, `chat_invite_user_by_link`.
+  /// Возвращает [Stream] с экземпляром [VkDartChatUserUpdate] (наследуется от [VkDartMessageUpdate]).
+  /// Дополнительные свойства:
   /// - [VkDartChatUserUpdate.isInviteByLink]
   /// - [VkDartChatUserUpdate.isInviteNoLink]
   /// - [VkDartChatUserUpdate.isKick]
@@ -180,10 +180,10 @@ class VkDart extends Vkontakte {
   /// - [VkDartChatUserUpdate.memberId]
   /// - [VkDartChatUserUpdate.email]
   ///
-  /// Sample example:
+  /// Пример:
   /// ```dart
   /// vkdart.onChatUser().listen((event) {
-  ///   final sayHelloOrGoodbye = event.isKick ? 'Bye' : 'Hello';
+  ///   final sayHelloOrGoodbye = event.isKick ? 'До свидания' : 'Привет';
   ///
   ///   event.sendMessage(message: '$sayHelloOrGoodbye,  @id${event.memberId}!');
   /// });
@@ -191,88 +191,88 @@ class VkDart extends Vkontakte {
   Stream<VkDartChatUserUpdate> onChatUser() => _onChat(_$chatUserEvents)
       .map((event) => VkDartChatUserUpdate(this, event.update));
 
-  /// Listen for `message_allow` event.
+  /// Прослушивает событие `message_allow`.
   Stream<VkDartMessageAllowUpdate> onMessageAllow() =>
       _event.onMessageAllow().map(VkDartMessageAllowUpdate.new);
 
-  /// Listen for `message_deny` event.
+  /// Прослушивает событие `message_deny`.
   Stream<VkDartMessageDenyUpdate> onMessageDeny() =>
       _event.onMessageDeny().map(VkDartMessageDenyUpdate.new);
 
-  /// Listen for `message_typing_state` event.
+  /// Прослушивает событие `message_typing_state`.
   Stream<VkDartMessageTypingStateUpdate> onMessageTypingState() =>
       _event.onMessageTypingState().map(VkDartMessageTypingStateUpdate.new);
 
-  /// Listen for `message_event` event.
+  /// Прослушивает событие `message_event`.
   Stream<VkDartMessageEventUpdate> onMessageEvent() => _event
       .onMessageEvent()
       .map((event) => VkDartMessageEventUpdate(this, event));
 
-  /// Listen for `message_reaction_event` event.
+  /// Прослушивает событие `message_reaction_event`.
   Stream<VkDartMessageReactionEventUpdate> onMessageReactionEvent() =>
       _event.onMessageReactionEvent().map(VkDartMessageReactionEventUpdate.new);
 
-  /// Listen for `photo_new`, `video_new`, `audio_new` events.
+  /// Прослушивает события `photo_new`, `video_new`, `audio_new`.
   Stream<VkDartNewAttachmentUpdate> onAttachmentNew() =>
       _event.onAttachmentNew().map(VkDartNewAttachmentUpdate.new);
 
-  /// Listen for `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
+  /// Прослушивает события `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
   /// `video_comment_new`, `video_comment_edit`, `video_comment_restore`, `video_comment_delete`,
   /// `market_comment_new`, `market_comment_edit`, `market_comment_restore`, `market_comment_delete`
   /// `wall_reply_new`, `wall_reply_edit`, `wall_reply_restore`, `wall_reply_delete`
-  /// `board_post_new`, `board_post_edit`, `board_post_restore`, `board_post_delete` events.
+  /// события `board_post_new`, `board_post_edit`, `board_post_restore`, `board_post_delete`.
   Stream<VkDartCommentUpdate> onComment() =>
       _event.onComment().map(VkDartCommentUpdate.new);
 
-  /// Listen for `wall_post_new`, `wall_repost` events.
+  /// Прослушивает события `wall_post_new`, `wall_repost`.
   Stream<VkDartWallUpdate> onWall() =>
       _event.onWall().map(VkDartWallUpdate.new);
 
-  /// Listen for `like_add`, `like_remove` events.
+  /// Прослушивает события `like_add`, `like_remove`.
   Stream<VkDartLikeUpdate> onLike() =>
       _event.onLike().map(VkDartLikeUpdate.new);
 
-  /// Listen for `market_order_new`, `market_order_edit` events.
+  /// Прослушивает события `market_order_new`, `market_order_edit`.
   Stream<VkDartMarketOrderUpdate> onMarketOrder() =>
       _event.onMarketOrder().map(VkDartMarketOrderUpdate.new);
 
-  /// Listen for `group_join`, `group_leave` events.
+  /// Прослушивает события `group_join`, `group_leave`.
   Stream<VkDartGroupUpdate> onGroup() =>
       _event.onGroup().map(VkDartGroupUpdate.new);
 
-  /// Listen for `user_block`, `user_unblock` events.
+  /// Прослушивает события `user_block`, `user_unblock`.
   Stream<VkDartUserUpdate> onUser() =>
       _event.onUser().map(VkDartUserUpdate.new);
 
-  /// Listen for `poll_vote_new` event.
+  /// Прослушивает событие `poll_vote_new`.
   Stream<VkDartPollVoteNewUpdate> onPollVoteNew() =>
       _event.onPollVoteNew().map(VkDartPollVoteNewUpdate.new);
 
-  /// Listen for `group_officers_edit`, `group_change_settings`, `group_change_photo` events.
+  /// Прослушивает события `group_officers_edit`, `group_change_settings`, `group_change_photo`.
   Stream<VkDartGroupChangeUpdate> onGroupChange() =>
       _event.onGroupChange().map(VkDartGroupChangeUpdate.new);
 
-  /// Listen for `vk_pay_transaction` event.
+  /// Прослушивает событие `vk_pay_transaction`.
   Stream<VkDartPayTransactionUpdate> onVkpayTransaction() =>
       _event.onVkpayTransaction().map(VkDartPayTransactionUpdate.new);
 
-  /// Listen for `app_payload` event.
+  /// Прослушивает событие `app_payload`.
   Stream<VkDartAppPayloadUpdate> onAppPayload() =>
       _event.onAppPayload().map(VkDartAppPayloadUpdate.new);
 
-  /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`,
-  /// `donut_subscription_cancelled`, `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error` events.
+  /// Прослушивает события `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`,
+  /// события `donut_subscription_cancelled`, `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error`.
   Stream<VkDartDonutUpdate> onDonut() =>
       _event.onDonut().map(VkDartDonutUpdate.new);
 
-  /// Listen of unknown events.
+  /// Прослушивает неизвестные события.
   Stream<VkDartUnsupportedEventUpdate> onUnsupportedEvent() =>
       _event.onUnsupportedEvent().map(VkDartUnsupportedEventUpdate.new);
 }
 
 // ignore: public_member_api_docs
 class VkDartException implements Exception {
-  /// Message of the exception.
+  /// Сообщение исключения.
   final String message;
 
   // ignore: public_member_api_docs

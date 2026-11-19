@@ -2,9 +2,9 @@ import 'package:vkdart/model.dart';
 import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart' show Vkontakte;
 
-/// The message event model.
+/// Модель события сообщения.
 ///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#message_event
+/// См. https://dev.vk.com/ru/api/community-events/json-schema#message_event
 class VkDartMessageEventUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -13,37 +13,37 @@ class VkDartMessageEventUpdate {
   // ignore: public_member_api_docs
   VkDartMessageEventUpdate(this._vkontakte, this.update);
 
-  /// The user ID.
+  /// ID пользователя.
   int get userId => update.object['user_id'];
 
-  /// The ID of the dialog on the bot's side.
+  /// ID диалога со стороны бота.
   int get peerId => update.object['peer_id'];
 
-  /// A random string.
-  /// Active for a minute, becomes invalid after a minute.
+  /// Случайная строка.
+  /// Действует одну минуту, после чего становится недействительным.
   String get eventId => update.object['event_id'];
 
-  /// Additional information specified in the key.
+  /// Дополнительная информация, указанная в ключе.
   Object? get eventPayload => update.object['payload'];
 
-  /// The ID of the message in the conversation.
-  /// It is not transmitted for conversation keyboards.
+  /// ID сообщения в беседе.
+  /// Не передаётся для клавиатур беседы.
   int? get conversationMessageId => update.object['conversation_message_id'];
 
-  /// Sends an event with the action that will occur when the callback button is clicked.
-  /// Calls the `messages.send` method, with the properties [eventId], [peerId], [userId].
-  /// The [type] property accepts only one of these values: `show_snackbar`, `open_link`, `open_app`.
-  /// If the type is unknown or the required properties are unknown, an [ArgumentError] will be thrown.
+  /// Отправляет событие с действием, которое будет выполнено при нажатии кнопки Callback.
+  /// Вызывает метод `messages.send` со свойствами [eventId], [peerId], [userId].
+  /// Свойство [type] принимает только одно из значений: `show_snackbar`, `open_link`, `open_app`.
+  /// Если тип неизвестен или не указаны обязательные свойства, будет выброшено исключение [ArgumentError].
   ///
-  /// Will return `true` upon successful execution.
+  /// При успешном выполнении возвращает `true`.
   ///
-  /// See: https://dev.vk.com/ru/api/bots/development/keyboard#Типы%20действий
+  /// См.: https://dev.vk.com/ru/api/bots/development/keyboard#Типы%20действий
   ///
-  /// Sample Example:
+  /// Пример:
   /// ```dart
   /// vkdart
   ///     .onMessageEvent()
-  ///     .listen((event) => event.answer(type: 'show_snackbar', text: 'Hello world!'));
+  ///     .listen((event) => event.answer(type: 'show_snackbar', text: 'Привет, мир!'));
   /// ```
   Future<bool> answer(
       {required String type,

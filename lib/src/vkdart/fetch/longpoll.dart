@@ -7,7 +7,7 @@ import 'package:vkdart/util.dart';
 import 'package:vkdart/vkdart.dart';
 import 'package:vkdart/vkontakte.dart';
 
-/// Longpoll fetcher.
+/// Получатель обновлений Longpoll.
 class Longpoll extends AbstractUpdateFetcher {
   late final Vkontakte _vkontakte;
 
@@ -15,16 +15,16 @@ class Longpoll extends AbstractUpdateFetcher {
     _vkontakte = value;
   }
 
-  /// Group id
+  /// ID сообщества.
   final int groupId;
 
-  /// Last event number.
+  /// Номер последнего события.
   int lastEventNumber = 0;
 
   bool _isStart = false;
   String? _serverUrl, _secretKey;
 
-  /// Create a new longpoll fetcher.
+  /// Создаёт новый получатель обновлений Longpoll.
   Longpoll(this.groupId);
 
   @override
@@ -91,7 +91,7 @@ class Longpoll extends AbstractUpdateFetcher {
     return Future.value();
   }
 
-  /// Started or not longpoll
+  /// Запущен ли Longpoll.
   bool get isStart => _isStart;
 
   int _eventNumberParse(dynamic ts) => ts is int ? ts : int.parse(ts);
@@ -117,7 +117,7 @@ class Longpoll extends AbstractUpdateFetcher {
 
 // ignore: public_member_api_docs
 class LongpollException implements Exception {
-  /// Message of the exception.
+  /// Сообщение исключения.
   final String message;
 
   // ignore: public_member_api_docs

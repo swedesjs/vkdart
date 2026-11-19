@@ -1,8 +1,8 @@
 import 'package:vkdart/model.dart';
 
-/// The model `vk pay transaction` update.
+/// Модель обновления `vk pay transaction`.
 ///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#vkpay_transaction
+/// См. https://dev.vk.com/ru/api/community-events/json-schema#vkpay_transaction
 class VkDartPayTransactionUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -10,15 +10,15 @@ class VkDartPayTransactionUpdate {
   // ignore: public_member_api_docs
   VkDartPayTransactionUpdate(this.update);
 
-  /// the ID of the user who sent the transfer.
+  /// ID пользователя, отправившего перевод.
   int get fromId => update.object['from_id'];
 
-  /// the amount of the transfer in thousandths of a ruble.
+  /// Сумма перевода в тысячных долях рубля.
   int get amount => update.object['amount'];
 
-  /// comment on the translation.
+  /// Комментарий к переводу.
   String? get description => update.object['description'];
 
-  /// the time when the transfer was sent to Unixtime.
+  /// Время отправки перевода в формате Unix.
   int get transferAt => update.object['date'];
 }

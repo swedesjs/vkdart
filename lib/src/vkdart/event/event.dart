@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:vkdart/model.dart';
 import 'package:vkdart/vkdart.dart';
 
-/// This class provides methods to subscribe to events.
-/// It's used in [VkDart] class.
+/// Этот класс предоставляет методы для подписки на события.
+/// Используется в классе [VkDart].
 class Event {
   // message_new, message_edit, message_reply,
   final StreamController<VkDartUpdate> _messageController;
@@ -88,7 +88,7 @@ class Event {
         _donutController = StreamController.broadcast(sync: sync),
         _unsupportedEventController = StreamController.broadcast(sync: sync);
 
-  /// Emitter update.
+  /// Отправляет обновление.
   void emitUpdate(VkDartUpdate update) {
     switch (update.type) {
       case UpdateType.message_new:
@@ -168,69 +168,69 @@ class Event {
     }
   }
 
-  /// Listen for `message_new`, `message_edit`, `message_reply` events.
+  /// Прослушивает события `message_new`, `message_edit`, `message_reply`.
   Stream<VkDartUpdate> onMessage() => _messageController.stream;
 
-  /// Listen for `message_allow` event.
+  /// Прослушивает событие `message_allow`.
   Stream<VkDartUpdate> onMessageAllow() => _messageAllowController.stream;
 
-  /// Listen for `message_deny` event.
+  /// Прослушивает событие `message_deny`.
   Stream<VkDartUpdate> onMessageDeny() => _messageDenyController.stream;
 
-  /// Listen for `message_typing_state` event.
+  /// Прослушивает событие `message_typing_state`.
   Stream<VkDartUpdate> onMessageTypingState() =>
       _messageTypingStateController.stream;
 
-  /// Listen for `message_event` event.
+  /// Прослушивает событие `message_event`.
   Stream<VkDartUpdate> onMessageEvent() => _messageEventController.stream;
 
-  /// Listen for `message_reaction_event` event.
+  /// Прослушивает событие `message_reaction_event`.
   Stream<VkDartUpdate> onMessageReactionEvent() =>
       _messageReactionController.stream;
 
-  /// Listen for `photo_new`, `video_new`, `audio_new` events.
+  /// Прослушивает события `photo_new`, `video_new`, `audio_new`.
   Stream<VkDartUpdate> onAttachmentNew() => _attachmentNewController.stream;
 
-  /// Listen for `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
+  /// Прослушивает события `photo_comment_new`, `photo_comment_edit`, `photo_comment_restore`, `photo_comment_delete`,
   /// `video_comment_new`, `video_comment_edit`, `video_comment_restore`, `video_comment_delete`,
   /// `market_comment_new`, `market_comment_edit`, `market_comment_restore`, `market_comment_delete`
   /// `wall_reply_new`, `wall_reply_edit`, `wall_reply_restore`, `wall_reply_delete`
-  /// `board_post_new`, `board_post_edit`, `board_post_restore`, `board_post_delete` events.
+  /// события `board_post_new`, `board_post_edit`, `board_post_restore`, `board_post_delete`.
   Stream<VkDartUpdate> onComment() => _commentController.stream;
 
-  /// Listen for `wall_post_new`, `wall_repost` events.
+  /// Прослушивает события `wall_post_new`, `wall_repost`.
   Stream<VkDartUpdate> onWall() => _wallController.stream;
 
-  /// Listen for `like_add`, `like_remove` events.
+  /// Прослушивает события `like_add`, `like_remove`.
   Stream<VkDartUpdate> onLike() => _likeController.stream;
 
-  /// Listen for `market_order_new`, `market_order_edit` events.
+  /// Прослушивает события `market_order_new`, `market_order_edit`.
   Stream<VkDartUpdate> onMarketOrder() => _marketOrderController.stream;
 
-  /// Listen for `group_join`, `group_leave` events.
+  /// Прослушивает события `group_join`, `group_leave`.
   Stream<VkDartUpdate> onGroup() => _groupController.stream;
 
-  /// Listen for `user_block`, `user_unblock` events.
+  /// Прослушивает события `user_block`, `user_unblock`.
   Stream<VkDartUpdate> onUser() => _userController.stream;
 
-  /// Listen for `poll_vote_new` event.
+  /// Прослушивает событие `poll_vote_new`.
   Stream<VkDartUpdate> onPollVoteNew() => _pollVoteNewController.stream;
 
-  /// Listen for `group_officers_edit`, `group_change_settings`, `group_change_photo` events.
+  /// Прослушивает события `group_officers_edit`, `group_change_settings`, `group_change_photo`.
   Stream<VkDartUpdate> onGroupChange() => _groupChangeController.stream;
 
-  /// Listen for `vk_pay_transaction` event.
+  /// Прослушивает событие `vk_pay_transaction`.
   Stream<VkDartUpdate> onVkpayTransaction() =>
       _vkpayTransactionController.stream;
 
-  /// Listen for `app_payload` event.
+  /// Прослушивает событие `app_payload`.
   Stream<VkDartUpdate> onAppPayload() => _appPayloadController.stream;
 
-  /// Listen for `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`,
-  /// `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error`s events.
+  /// Прослушивает события `donut_subscription_create`, `donut_subscription_prolonged`, `donut_subscription_expired`, `donut_subscription_cancelled`,
+  /// события `donut_subscription_price_changed`, `donut_money_withdraw`, `donut_money_withdraw_error`.
   Stream<VkDartUpdate> onDonut() => _donutController.stream;
 
-  /// Listen of unknown events.
+  /// Прослушивает неизвестные события.
   Stream<VkDartUpdate> onUnsupportedEvent() =>
       _unsupportedEventController.stream;
 }

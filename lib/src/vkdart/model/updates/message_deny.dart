@@ -1,8 +1,8 @@
 import 'package:vkdart/model.dart';
 
-/// The message deny model.
+/// Модель запрета на сообщения.
 ///
-/// See https://dev.vk.com/ru/api/community-events/json-schema#message_deny
+/// См. https://dev.vk.com/ru/api/community-events/json-schema#message_deny
 class VkDartMessageDenyUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
@@ -10,6 +10,6 @@ class VkDartMessageDenyUpdate {
   // ignore: public_member_api_docs
   VkDartMessageDenyUpdate(this.update);
 
-  /// The user ID.
+  /// ID пользователя.
   int get userId => update.object['user_id'];
 }

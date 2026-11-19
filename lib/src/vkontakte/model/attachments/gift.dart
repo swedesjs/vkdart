@@ -1,21 +1,21 @@
 import 'package:vkdart/vkontakte.dart';
 
-/// Model Gift.
+/// Модель подарка.
 ///
-/// See https://dev.vk.com/ru/reference/objects/gift
+/// См. https://dev.vk.com/ru/reference/objects/gift
 class GiftAttachmentModel extends AttachmentModel {
   // ignore: public_member_api_docs
   GiftAttachmentModel(super.payload) : super(attachType: 'gift');
 
-  /// The ID of the gift.
+  /// ID подарка.
   int get id => payload['id'];
 
-  /// Thumbnail image URL with size 256.
+  /// URL миниатюры размером 256 пикселей.
   String? get thumb256 => payload['thumb_256'];
 
-  /// Thumbnail image URL with size 96.
+  /// URL миниатюры размером 96 пикселей.
   String? get thumb96 => payload['thumb_96'];
 
-  /// Thumbnail image URL with size 48.
+  /// URL миниатюры размером 48 пикселей.
   String? get thumb48 => payload['thumb_48'];
 }

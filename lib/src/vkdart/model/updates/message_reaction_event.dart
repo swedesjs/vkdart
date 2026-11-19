@@ -1,6 +1,6 @@
 import 'package:vkdart/model.dart';
 
-/// The message reaction event model.
+/// Модель события реакции на сообщение.
 class VkDartMessageReactionEventUpdate {
   // ignore: public_member_api_docs
   final VkDartUpdate update;
