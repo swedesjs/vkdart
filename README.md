@@ -2,19 +2,19 @@
 
 <div align="center">
 
-# VkDart
+# VkDart 🚀
 
 [![Pub Version](https://img.shields.io/pub/v/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 [![Pub Popularity](https://img.shields.io/pub/popularity/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 [![Pub Points](https://img.shields.io/pub/points/vkdart?style=flat-square)](https://pub.dev/packages/vkdart)
 
-Удобный Dart-клиент для VK API: запросы к методам, события Long Poll и Callback API, клавиатуры и модели вложений.
+Удобный Dart-клиент для VK API: запросы к методам, события Long Poll и Callback API, клавиатуры и модели вложений. Чтобы вы писали бота, а не вели переговоры с JSON.
 
 </div>
 
 ---
 
-## Возможности
+## Возможности ✨
 
 - **Два способа получения событий** — Long Poll для сообществ и Callback API для собственного сервера.
 - **Типизированные потоки событий** — сообщения, реакции, комментарии, записи, оплаты и другие обновления.
@@ -23,7 +23,7 @@
 - **Конструктор клавиатур** — обычные и встроенные клавиатуры с разными типами кнопок.
 - **Обработка новых типов событий** — поток `onUnsupportedEvent` для неизвестных обновлений.
 
-## Установка
+## Установка 📦
 
 ```shell
 dart pub add vkdart
@@ -40,7 +40,7 @@ dependencies:
 dart pub get
 ```
 
-## Быстрый старт
+## Быстрый старт ⚡
 
 ```dart
 import 'package:vkdart/vkdart.dart';
@@ -66,6 +66,8 @@ Future<void> main() async {
 }
 ```
 
+> Не храните настоящий токен в исходниках и не отправляйте его в Git. Git помнит секреты дольше, чем автор — где оставил чай.
+
 Действуйте в разных местах программы через один экземпляр `VkDart`:
 
 ```dart
@@ -77,11 +79,11 @@ await vkdart.request(
 
 Метод `request` возвращает поле `response` ответа VK API. Формат ответа зависит от вызываемого метода.
 
-## Получение событий
+## Получение событий 🔔
 
 Пакет поддерживает оба варианта получения обновлений сообщества.
 
-### Long Poll
+### Long Poll 📡
 
 `Longpoll` запрашивает события через сервер событий VK. Для запуска нужен только `groupId`.
 
@@ -103,13 +105,14 @@ await vkdart.stop();
 Long Poll повторяет сетевые ошибки до 5 раз с интервалом в 1 секунду. Если
 повторы исчерпаны, ошибка передаётся в `onUpdate()` и типизированные потоки;
 обрабатывайте её через `listen(..., onError: ...)`. `stop()` останавливает цикл
-и игнорирует результат уже выполняющегося запроса.
+и игнорирует результат уже выполняющегося запроса. Даже у Long Poll есть предел
+терпения — бесконечные повторы только мешали бы заметить настоящую проблему.
 
 Когда экземпляр больше не нужен, вызовите `dispose()` — он остановит получатель
 обновлений и закроет внутренние потоки. После этого повторно запустить экземпляр
 нельзя.
 
-### Callback API
+### Callback API 🌐
 
 `Webhook` запускает HTTP или HTTPS-сервер и принимает POST-запросы от VK:
 
@@ -136,11 +139,12 @@ final webhook = await Webhook.createHttpsServer(
 );
 ```
 
-> Callback-сервер должен быть доступен из сети и отвечать на запросы VK.
+> Callback-сервер должен быть доступен из сети и отвечать на запросы VK. VK пока
+> не умеет телепатию и не достучится до сервера за закрытым NAT.
 > `stop()` закрывает сервер, поэтому повторно запустить этот экземпляр нельзя.
 > Вызов `dispose()` также закрывает поток обновлений.
 
-## События
+## События 📨
 
 Все обработчики в `VkDart` возвращают `Stream`. Подписаться на несколько обработчиков можно одновременно.
 
@@ -158,6 +162,9 @@ vkdart.onUnsupportedEvent().listen((event) {
   print(event.object);
 });
 ```
+
+`onUnsupportedEvent()` пригодится, если VK внезапно придумает новый тип события,
+а документация ещё не успеет выпить кофе.
 
 Поток сообщений объединяет `message_new`, `message_edit` и `message_reply`. Конкретный тип проверяется свойствами модели:
 
@@ -213,7 +220,7 @@ vkdart
 
 Полный список доступен в документации [`VkDart`](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html).
 
-## Ответы на сообщения
+## Ответы на сообщения 💬
 
 Модель `VkDartMessageUpdate` умеет отправлять сообщение в исходный диалог:
 
@@ -255,9 +262,10 @@ vkdart.onMessageEvent().listen((event) async {
 
 Поддерживаемые действия: `show_snackbar`, `open_link` и `open_app`.
 
-## Клавиатуры
+## Клавиатуры ⌨️
 
-Создайте клавиатуру и добавьте нужные кнопки:
+Создайте клавиатуру и добавьте нужные кнопки — пусть пользователь выбирает
+действие, а не гадает, какую команду бот ждёт:
 
 ```dart
 import 'package:vkdart/util.dart';
@@ -322,7 +330,7 @@ keyboard.addButtonCallback(
 | `VkDartKeyboardColor.negative` | Отказ или опасное действие | Красный |
 | `VkDartKeyboardColor.positive` | Подтверждение | Зелёный |
 
-## Вложения
+## Вложения 📎
 
 Вложение можно преобразовать из строки формата VK:
 
@@ -357,9 +365,10 @@ await event.sendMessage(
 );
 ```
 
-## Обработка ошибок
+## Обработка ошибок 🧯
 
-Ошибки VK API выбрасываются в виде `ApiException`:
+Ошибки VK API выбрасываются в виде `ApiException`. Перехватывайте их: у API и без
+вашей помощи достаточно поводов для сюрпризов.
 
 ```dart
 import 'package:vkdart/vkontakte.dart';
@@ -373,19 +382,33 @@ try {
 
 Для неподдерживаемых вложений и некорректных настроек доступны `VkDartException`, `VkDartKeyboardException`, `LongpollException` и `WebhookException`.
 
-## Документация API
+## Документация API 📚
 
 - [`VkDart`](https://pub.dev/documentation/vkdart/latest/vkdart/VkDart-class.html) — получение событий и запросы к API.
 - [`Модели событий`](https://pub.dev/documentation/vkdart/latest/vkdart.model/vkdart.model-library.html) — типы обновлений и их свойства.
 - [`Модели VK`](https://pub.dev/documentation/vkdart/latest/vkdart.vkontakte/vkdart.vkontakte-library.html) — сообщения, вложения и объекты API.
 - [`Клавиатуры`](https://pub.dev/documentation/vkdart/latest/vkdart.util/VkDartKeyboard-class.html) — конструктор интерактивных кнопок.
 
-## Сообщество и обратная связь
+## Сообщество и обратная связь 🤝
 
 - Telegram: https://t.me/vk_dart
 - Репозиторий: https://github.com/swedests/vkdart
 - Сообщить о проблеме: https://github.com/swedests/vkdart/issues
 
-## Лицензия
+## Поддержать автора 🍲
+
+Если `vkdart` оказался полезен, автора можно поддержать донатом. Он сейчас в
+армии — пусть в меню иногда встречается что-нибудь менее загадочное, чем
+армейская котлета.
+
+<div align="center">
+  <a href="https://tips.tips/000492924">
+    <img src="assets/donation-qr.png" alt="QR-код для поддержки автора" width="240">
+  </a>
+  <p><sub>🍲 Отсканируйте QR-код камерой телефона. Токен VK не нужен — только доброе намерение.</sub></p>
+  <p><a href="https://tips.tips/000492924">Открыть страницу доната</a>, если читать README и сканировать QR с одного телефона неудобно.</p>
+</div>
+
+## Лицензия ⚖️
 
 Проект распространяется по лицензии [MIT](LICENSE).
