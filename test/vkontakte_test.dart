@@ -46,7 +46,7 @@ void main() {
         'user_id': 'durov',
         'filter': 'test & value',
         'v': '5.131',
-        'lang': '0',
+        'lang': 'ru',
       });
     });
 

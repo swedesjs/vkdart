@@ -59,7 +59,7 @@ class Vkontakte {
     final requestBody = {
       ...body,
       'v': _version,
-      'lang': _language.index,
+      'lang': _language.name,
     };
 
     final headers = {'Authorization': 'Bearer $_token'};
