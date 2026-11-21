@@ -49,10 +49,12 @@ Future<void> main() async {
         );
       }
     } on Exception catch (error) {
+      // ignore: avoid_print
       print('Не удалось обработать сообщение: $error');
     }
   });
 
   await vk.start();
+  // ignore: avoid_print
   print('Бот запущен! Напишите ему в сообщения сообщества.');
 }
