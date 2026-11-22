@@ -482,8 +482,15 @@ import 'package:vkdart/vkontakte.dart';
 try {
   await vkdart.request('users.get', {'user_ids': 'durov'});
 } on ApiException catch (error) {
-  print('VK API ${error.code}: ${error.message}');
+  // Code 5 - Авторизация пользователя не удалась.
+  // Убедитесь, что Вы используете верную схему авторизации (https://dev.vk.com/en/api/access-token/getting-started).
+  if(error.code == APIErrorCode.authorizationFailed) {
+    print('Проблемы с авторизацией VK API!');
+  } else { // Обработка других кодов.
+    print('VK API ${error.code}: ${error.message}');
+  }
 }
+
 ```
 
 Ошибки первичного подключения Long Poll нужно ловить вокруг `start()`. Если

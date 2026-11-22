@@ -39,8 +39,8 @@ void main() {
         {'id': 1}
       ]);
       expect(capturedRequest.method, 'POST');
-      expect(capturedRequest.url,
-          Uri.parse('https://api.vk.com/method/users.get'));
+      expect(
+          capturedRequest.url, Uri.parse('https://api.vk.ru/method/users.get'));
       expect(capturedRequest.headers['Authorization'], 'Bearer test-token');
       expect(capturedRequest.bodyFields, {
         'user_id': 'durov',
@@ -77,7 +77,8 @@ void main() {
         vkontakte.request('users.report'),
         throwsA(
           isA<ApiException>()
-              .having((error) => error.code, 'code', 5)
+              .having((error) => error.code, 'code',
+                  ApiErrorCode.authorizationFailed)
               .having((error) => error.message, 'message', 'Access denied'),
         ),
       );

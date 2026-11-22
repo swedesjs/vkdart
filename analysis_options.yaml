@@ -77,7 +77,6 @@ linter:
     - prefer_asserts_in_initializer_lists
     - prefer_asserts_with_message
     - prefer_const_declarations
-    - prefer_constructors_over_static_methods
     - prefer_expression_function_bodies
     - prefer_final_fields
     - prefer_function_declarations_over_variables
