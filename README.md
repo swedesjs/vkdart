@@ -473,25 +473,40 @@ await event.sendMessage(
 
 ## Обработка ошибок 🧯
 
-Ошибки ответа VK API выбрасываются в виде `ApiException`. Перехватывайте их:
-у API и без вашей помощи достаточно поводов для сюрпризов.
+Ошибки ответа VK API выбрасываются в виде `ApiException`. Код ответа доступен
+как типизированное значение `ApiErrorCode`, поэтому известные коды можно
+обрабатывать без сравнения с числами:
 
 ```dart
 import 'package:vkdart/vkontakte.dart';
+import 'package:vkdart/util.dart';
 
 try {
   await vkdart.request('users.get', {'user_ids': 'durov'});
 } on ApiException catch (error) {
-  // Code 5 - Авторизация пользователя не удалась.
-  // Убедитесь, что Вы используете верную схему авторизации (https://dev.vk.com/en/api/access-token/getting-started).
-  if(error.code == APIErrorCode.authorizationFailed) {
-    print('Проблемы с авторизацией VK API!');
-  } else { // Обработка других кодов.
+  if (error.code == ApiErrorCode.authorizationFailed) {
+    // Проверьте схему авторизации и ключ доступа.
+    print('Проблемы с авторизацией VK API');
+  } else if (error.code == ApiErrorCode.tooManyRequests ||
+      error.code == ApiErrorCode.internalServerError) {
+    // Повторите запрос позже с паузой или экспоненциальной задержкой.
+    print('Временная ошибка VK API');
+  } else {
     print('VK API ${error.code}: ${error.message}');
   }
+} on HttpClientException catch (error) {
+  // Ошибка соединения, некорректный HTTP-ответ или сбой HTTP-клиента.
+  print(error.message);
+  if (error.cause != null) {
+    print('Причина: ${error.cause}');
+  }
 }
-
 ```
+
+В `ApiException.payload` сохранён полный ответ с полями `error_code`,
+`error_msg` и `request_params`. Типизированный код можно получить через
+`error.code`, текст ошибки — через `error.message`, а исходные параметры —
+через `error.requestParams`.
 
 Ошибки первичного подключения Long Poll нужно ловить вокруг `start()`. Если
 сбой произойдёт уже при получении обновлений, обработайте ошибку потока:

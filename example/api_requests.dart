@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:vkdart/util.dart';
 import 'package:vkdart/vkontakte.dart';
 
 Future<void> main() async {
@@ -19,6 +20,9 @@ Future<void> main() async {
     stdout.writeln(response);
   } on ApiException catch (error) {
     stderr.writeln('VK API ${error.code}: ${error.message}');
+    exitCode = 1;
+  } on HttpClientException catch (error) {
+    stderr.writeln(error);
     exitCode = 1;
   }
 }
