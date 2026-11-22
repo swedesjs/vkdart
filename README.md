@@ -43,6 +43,7 @@ dart pub add vkdart
 dependencies:
   vkdart: ^2.3.3
 ```
+> Актуальная документация для версии 2.3.3 - [тут](https://github.com/swedesjs/vkdart/tree/v2.3.3).
 
 ```shell
 dart pub get
