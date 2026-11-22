@@ -79,7 +79,8 @@ void main() {
           isA<ApiException>()
               .having((error) => error.code, 'code',
                   ApiErrorCode.authorizationFailed)
-              .having((error) => error.message, 'message', 'Access denied'),
+              .having((error) => error.message, 'message', 'Access denied')
+              .having((error) => error.requestParams, 'requestParams', isEmpty),
         ),
       );
     });
