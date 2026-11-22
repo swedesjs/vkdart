@@ -28,7 +28,7 @@ enum LangApi {
 
 /// Класс для взаимодействия с VK API.
 class Vkontakte {
-  static const _baseUrl = 'https://api.vk.com/method/';
+  static const _baseUrl = 'https://api.vk.ru/method/';
 
   final String _token;
   final LangApi _language;
