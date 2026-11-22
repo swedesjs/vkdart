@@ -15,7 +15,7 @@ class Webhook extends AbstractUpdateFetcher {
   // Обе операции ожидают одно закрытие: HttpServer нельзя запустить снова.
   Future<void>? _stopFuture;
 
-  // ignore: public_member_api_docs
+  /// Создаёт экземпляр Webhook с указанным сервером, секретным ключом и токеном подтверждения.
   Webhook(this._server, [this._confirmationToken, this._secretKey]);
 
   /// Создаёт HTTPS-сервер.
@@ -114,12 +114,12 @@ class Webhook extends AbstractUpdateFetcher {
   bool get isStart => _isStart;
 }
 
-// ignore: public_member_api_docs
+/// Исключение, возникающее при ошибках Webhook.
 class WebhookException implements Exception {
   /// Сообщение исключения.
   final String message;
 
-  // ignore: public_member_api_docs
+  /// Создаёт исключение WebhookException с указанным сообщением.
   WebhookException(this.message);
 
   @override

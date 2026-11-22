@@ -5,7 +5,8 @@ class ApiErrorModel {
   /// Данные.
   final Map<String, dynamic> payload;
 
-  // ignore: public_member_api_docs
+  /// Создаёт экземпляр ApiErrorModel с указанными данными (внутри payload: [code], [message], [requestParams]).
+  /// [code] - код ошибки, [message] - текст ошибки, [requestParams] - параметры запроса.
   ApiErrorModel(this.payload);
 
   /// Код ошибки.

@@ -10,19 +10,19 @@ Dart умеет ждать ответ от VK API, не останавливая
 
 VKDart получает события сообщества и помогает отправлять запросы к VK API. А что именно делать с сообщением — поздороваться, показать меню или ответить «не знаю такую команду» — решаем мы сами.
 
-Статья написана для версии пакета VKDart **2.3.3**. Все ссылки на исходники библиотеки и официальные примеры закреплены на теге `v2.3.3`. Полный код бота из этой статьи можно [скопировать из отдельного файла](https://github.com/swedests/vkdart/blob/master/articles/habr/source/bin/vk_bot.dart); [шаблон `config.dart`](https://github.com/swedests/vkdart/blob/master/articles/habr/source/config.dart) поможет подготовить настройки.
+Статья написана для версии пакета VKDart **2.3.3**. Все ссылки на исходники библиотеки и официальные примеры закреплены на теге `v2.3.3`. Полный код бота из этой статьи можно [скопировать из отдельного файла](https://github.com/swedesjs/vkdart/blob/master/articles/habr/source/bin/vk_bot.dart); [шаблон `config.dart`](https://github.com/swedesjs/vkdart/blob/master/articles/habr/source/config.dart) поможет подготовить настройки.
 
 Полезные ссылки, чтобы не потерялись:
 
 - [VKDart 2.3.3 на pub.dev](https://pub.dev/packages/vkdart/versions/2.3.3) — страница этой версии пакета;
 - [документация VKDart 2.3.3](https://pub.dev/documentation/vkdart/2.3.3/) — описание классов и методов;
-- [исходный код VKDart 2.3.3](https://github.com/swedests/vkdart/tree/v2.3.3) — файлы проекта в соответствующем теге;
-- [примеры VKDart 2.3.3](https://github.com/swedests/vkdart/tree/v2.3.3/example) — примеры из этого релиза;
+- [исходный код VKDart 2.3.3](https://github.com/swedesjs/vkdart/tree/v2.3.3) — файлы проекта в соответствующем теге;
+- [примеры VKDart 2.3.3](https://github.com/swedesjs/vkdart/tree/v2.3.3/example) — примеры из этого релиза;
 - [документация VK API](https://dev.vk.com/ru/) — официальные сведения о методах и событиях ВКонтакте;
 - [установка Dart](https://dart.dev/get-dart) — официальные инструкции для разных операционных систем;
 - [асинхронность в Dart](https://dart.dev/language/async) — если захочется узнать, что делают `async` и `await`.
 
-![Обложка статьи — Dart](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/cover-dart.jpg)
+![Обложка статьи — Dart](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/cover-dart.jpg)
 
 ## Устанавливаем Dart и создаём проект 🛠️
 
@@ -109,7 +109,7 @@ dart pub add vkdart:2.3.3
 
 Команда добавит VKDart с ограничением версии `^2.3.3`, которое допускает совместимые выпуски в ветке 2.x, и запишет его в `pubspec.yaml` — файл со списком зависимостей проекта. Pub зафиксирует выбранную версию в `pubspec.lock`.
 
-![Зависимость VKDart в файле pubspec.yaml](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/21-pubspec-dependencies.png)
+![Зависимость VKDart в файле pubspec.yaml](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/21-pubspec-dependencies.png)
 
 Если команда завершилась успешно, в терминале появится сообщение о добавлении пакета. Отлично, наш проект теперь умеет обращаться к VK API.
 
@@ -122,11 +122,11 @@ dart pub add vkdart:2.3.3
 3. Если VS Code спросит, доверяете ли вы авторам файлов в папке, подтвердите, что это ваш проект.
 4. Слева появится список файлов. Пока нам важны два: `bin/vk_bot.dart` — сюда мы поместим код бота, а `pubspec.yaml` — список библиотек проекта.
 
-![Структура проекта: файл бота в папке bin, конфигурация и pubspec.yaml в корне](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/20-project-structure.png)
+![Структура проекта: файл бота в папке bin, конфигурация и pubspec.yaml в корне](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/20-project-structure.png)
 
-![Скриншот 1: проверка версии Dart](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/01-dart-version.png)
+![Скриншот 1: проверка версии Dart](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/01-dart-version.png)
 
-![Скриншот 2: создание консольного проекта vk_bot](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/02-project-created.png)
+![Скриншот 2: создание консольного проекта vk_bot](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/02-project-created.png)
 
 ## Настраиваем сообщество и токен 🔑
 
@@ -137,51 +137,51 @@ dart pub add vkdart:2.3.3
 1. Откройте страницу сообщества, для которого хотите сделать бота. У вас должны быть права администратора этого сообщества.
 2. На главной странице сообщества нажмите **Управление**.
 
-![Главная страница сообщества: кнопка «Управление»](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/03-community-page.png)
+![Главная страница сообщества: кнопка «Управление»](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/03-community-page.png)
 
 3. В меню настроек сообщества выберите **Дополнительно**, затем — **Работа с API**.
 
-![Настройки сообщества: пункт «Дополнительно»](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/04-community-management.png)
+![Настройки сообщества: пункт «Дополнительно»](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/04-community-management.png)
 
-![Раздел «Работа с API»](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/05-work-with-api.png)
+![Раздел «Работа с API»](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/05-work-with-api.png)
 
 4. Откройте вкладку **Ключи доступа** и нажмите **Создать ключ**.
 
-![Создание ключа доступа](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/06-create-access-key.png)
+![Создание ключа доступа](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/06-create-access-key.png)
 
 5. Для этого примера достаточно разрешения **Сообщения сообщества**. Если вашему боту нужны другие методы VK API, выдавайте только необходимые им права — не включайте лишнее.
 
-![Выбор прав для ключа доступа](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/07-key-permissions.png)
+![Выбор прав для ключа доступа](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/07-key-permissions.png)
 
 6. Нажмите **Создать**. VK может запросить подтверждение: откройте push-уведомление на телефоне и подтвердите создание ключа. После этого ключ появится в списке. Нажмите **Показать**, скопируйте его и храните как пароль.
 
-![Ключ доступа создан](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/08-access-key-created.png)
+![Ключ доступа создан](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/08-access-key-created.png)
 
 7. В разделе **Работа с API** откройте вкладку **Long Poll API**.
 
-![Вкладка «Long Poll API»](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/09-long-poll-tab.png)
+![Вкладка «Long Poll API»](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/09-long-poll-tab.png)
 
 8. На вкладке **Настройки** включите Long Poll API и выберите версию API `5.131`.
 
-![Long Poll API включён, версия 5.131](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/10-long-poll-settings.png)
+![Long Poll API включён, версия 5.131](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/10-long-poll-settings.png)
 
 9. Перейдите в **Типы событий** и включите событие **Входящее сообщение** (`message_new`).
 
-![Вкладка «Типы событий»](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/11-event-types-tab.png)
+![Вкладка «Типы событий»](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/11-event-types-tab.png)
 
-![Включено событие «Входящее сообщение»](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/12-incoming-message-event.png)
+![Включено событие «Входящее сообщение»](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/12-incoming-message-event.png)
 
 Не нужно отмечать все события подряд: включайте только те, которые программа действительно собирается обрабатывать. Так боту не придётся получать ненужные обновления.
 
 10. В настройках сообщества откройте раздел **Сообщения** и разрешите пользователям писать сообществу. Затем в разделе **Настройки для бота** установите для **Возможностей ботов** значение **Включены**.
 
-![Возможности ботов включены](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/13-bot-capabilities.png)
+![Возможности ботов включены](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/13-bot-capabilities.png)
 
 Для справки: [как получать события сообщества через VK API](https://dev.vk.com/ru/api/community-events/getting-started).
 
 Теперь сохраним ключ и числовой ID сообщества в отдельном файле. Это избавит нас от необходимости каждый раз вставлять длинный токен в основной код.
 
-В VS Code найдите слева папку проекта `vk_bot`. Нажмите на неё правой кнопкой мыши и выберите **Создать файл** (или значок нового файла). Введите имя `config.dart` и нажмите `Enter`. Важно создать его в корне проекта — на одном уровне с `pubspec.yaml`, а не внутри `bin`. Можно скопировать [шаблон `config.dart` из исходников статьи](https://github.com/swedests/vkdart/blob/master/articles/habr/source/config.dart) и заменить значения своими.
+В VS Code найдите слева папку проекта `vk_bot`. Нажмите на неё правой кнопкой мыши и выберите **Создать файл** (или значок нового файла). Введите имя `config.dart` и нажмите `Enter`. Важно создать его в корне проекта — на одном уровне с `pubspec.yaml`, а не внутри `bin`. Можно скопировать [шаблон `config.dart` из исходников статьи](https://github.com/swedesjs/vkdart/blob/master/articles/habr/source/config.dart) и заменить значения своими.
 
 Откройте новый файл и вставьте:
 
@@ -194,13 +194,13 @@ const int groupId = 123456789;
 
 Числовой ID сообщества можно взять из адресной строки браузера на странице сообщества или его настроек. Например, в адресе вида `vk.ru/club123456/settings/bots` ID — это цифры после `club`; у некоторых сообществ вместо него используется префикс `public`. В `groupId` укажите только цифры, без префикса и остальной части адреса. На скриншоте несколько цифр закрыты для конфиденциальности.
 
-![Числовой ID сообщества в адресной строке браузера; часть цифр скрыта](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/14-group-id-url.png)
+![Числовой ID сообщества в адресной строке браузера; часть цифр скрыта](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/14-group-id-url.png)
 
 Файл с ключом не отправляйте другим людям и не прикладывайте к статье. Для учебы на своём компьютере такой вариант понятен и удобен. Если позже будете размещать бота на сервере, храните ключ в закрытых настройках сервера, а не в исходном коде.
 
 ## Пишем код бота ✍️
 
-В проекте уже есть файл `bin/vk_bot.dart`. Найдите его слева в VS Code: нажмите на маленькую стрелку рядом с папкой `bin`, затем дважды щёлкните по `vk_bot.dart`. Вместо пошаговой сборки можно скопировать [полный исходный файл бота](https://github.com/swedests/vkdart/blob/master/articles/habr/source/bin/vk_bot.dart) в `bin/vk_bot.dart`.
+В проекте уже есть файл `bin/vk_bot.dart`. Найдите его слева в VS Code: нажмите на маленькую стрелку рядом с папкой `bin`, затем дважды щёлкните по `vk_bot.dart`. Вместо пошаговой сборки можно скопировать [полный исходный файл бота](https://github.com/swedesjs/vkdart/blob/master/articles/habr/source/bin/vk_bot.dart) в `bin/vk_bot.dart`.
 
 В файле уже может находиться стартовый пример Dart. Выделите его содержимое и замените код частями. Так будет проще понять, за что отвечает каждый блок. После каждого шага сохраняйте файл сочетанием `Ctrl+S`. Пока не запускайте программу: сначала добавим все части. Если VS Code временно подчеркнёт незаконченный код, не пугайтесь — мы ещё не вставили все блоки.
 
@@ -339,13 +339,13 @@ dart run bin/vk_bot.dart
 
 На «привет» и «помощь» бот отвечает обычным сообщением, `/menu` показывает клавиатуру, а нажатие «О боте» приводит к ответу о библиотеке. Кнопка «Помощь» тоже работает: VK отправляет её текст как обычное сообщение, поэтому срабатывает та же команда, что и при ручном вводе.
 
-![Проверяем приветствие бота](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/15-chat-hello.png)
+![Проверяем приветствие бота](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/15-chat-hello.png)
 
-![Проверяем команду «помощь»](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/16-chat-help.png)
+![Проверяем команду «помощь»](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/16-chat-help.png)
 
-![Команда /menu показывает клавиатуру](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/17-chat-menu.png)
+![Команда /menu показывает клавиатуру](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/17-chat-menu.png)
 
-![Ответ бота на кнопку «О боте»](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/18-chat-about.png)
+![Ответ бота на кнопку «О боте»](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/18-chat-about.png)
 
 Если бот не отвечает, спокойно проверьте настройки по списку:
 
@@ -358,11 +358,11 @@ dart run bin/vk_bot.dart
 
 Иногда причина — всего одна забытая галочка. Зато теперь у нас есть список, по которому её искать 🔎
 
-![Терминал с работающим ботом](https://raw.githubusercontent.com/swedests/vkdart/master/articles/habr/images/19-bot-run-terminal.png)
+![Терминал с работающим ботом](https://raw.githubusercontent.com/swedesjs/vkdart/master/articles/habr/images/19-bot-run-terminal.png)
 
 ## Что дальше
 
-В примере мы использовали Long Poll, но VKDart поддерживает и Callback API через `Webhook`. Дальше можно добавить работу с вложениями, хранение состояния в базе данных, дополнительные команды или развернуть приложение на сервере. Примеры Long Poll и Callback API для VKDart 2.3.3 есть в [каталоге `example/` соответствующего тега](https://github.com/swedests/vkdart/tree/v2.3.3/example).
+В примере мы использовали Long Poll, но VKDart поддерживает и Callback API через `Webhook`. Дальше можно добавить работу с вложениями, хранение состояния в базе данных, дополнительные команды или развернуть приложение на сервере. Примеры Long Poll и Callback API для VKDart 2.3.3 есть в [каталоге `example/` соответствующего тега](https://github.com/swedesjs/vkdart/tree/v2.3.3/example).
 
 Когда базовый бот заработает, можно попробовать собрать его в исполняемый файл. Это необязательный шаг для первого запуска — обычной команды `dart run` достаточно. При сборке Dart создаст отдельный файл программы:
 
@@ -377,7 +377,7 @@ dart compile exe bin/vk_bot.dart -o bot
 ### Где задать вопрос или найти ответ
 
 - Если вопрос касается именно VKDart, откройте [страницу пакета](https://pub.dev/packages/vkdart), посмотрите документацию или примеры.
-- Если нашли ошибку в библиотеке или хотите предложить улучшение, напишите в [раздел вопросов и ошибок VKDart](https://github.com/swedests/vkdart/issues).
+- Если нашли ошибку в библиотеке или хотите предложить улучшение, напишите в [раздел вопросов и ошибок VKDart](https://github.com/swedesjs/vkdart/issues).
 - Если вопрос относится к статье или вашему примеру, оставьте комментарий здесь — обсудим вместе.
 
 Чтобы помочь разобраться быстрее, приложите текст ошибки и расскажите, на каком шаге она появилась. Токен сообщества и другие личные данные в сообщение не вставляйте — боту тоже нужна личная жизнь 🙂

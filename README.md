@@ -290,7 +290,7 @@ vkdart
 | `onDonut()` | События VK Donut |
 | `onUnsupportedEvent()` | События без специальной модели |
 
-Полный список методов `VkDart` см. в [исходном коде класса](https://github.com/swedests/vkdart/blob/master/lib/src/vkdart/vkdart.dart).
+Полный список методов `VkDart` см. в [исходном коде класса](https://github.com/swedesjs/vkdart/blob/master/lib/src/vkdart/vkdart.dart).
 
 ### Что можно построить
 
@@ -461,7 +461,7 @@ final attachment = AttachmentModel.fromSpecificModel(
 );
 ```
 
-Поддерживаемые вложения представлены в [моделях библиотеки `vkdart.vkontakte`](https://github.com/swedests/vkdart/tree/master/lib/src/vkontakte/model): фотографии, видео, аудио, документы, опросы, товары, записи и другие объекты.
+Поддерживаемые вложения представлены в [моделях библиотеки `vkdart.vkontakte`](https://github.com/swedesjs/vkdart/tree/master/lib/src/vkontakte/model): фотографии, видео, аудио, документы, опросы, товары, записи и другие объекты.
 
 Для отправки вложений передайте их строковое представление:
 
@@ -528,10 +528,10 @@ vkdart.onMessage().listen(
 
 ## Исходный код и API 📚
 
-- [`VkDart`](https://github.com/swedests/vkdart/blob/master/lib/src/vkdart/vkdart.dart) — получение событий и запросы к API.
-- [Модели событий](https://github.com/swedests/vkdart/tree/master/lib/src/vkdart/model/updates) — типы обновлений и их свойства.
-- [Модели VK и вложений](https://github.com/swedests/vkdart/tree/master/lib/src/vkontakte/model) — сообщения, вложения и объекты API.
-- [Конструктор клавиатур](https://github.com/swedests/vkdart/blob/master/lib/src/util/keyboard.dart) — кнопки и их параметры.
+- [`VkDart`](https://github.com/swedesjs/vkdart/blob/master/lib/src/vkdart/vkdart.dart) — получение событий и запросы к API.
+- [Модели событий](https://github.com/swedesjs/vkdart/tree/master/lib/src/vkdart/model/updates) — типы обновлений и их свойства.
+- [Модели VK и вложений](https://github.com/swedesjs/vkdart/tree/master/lib/src/vkontakte/model) — сообщения, вложения и объекты API.
+- [Конструктор клавиатур](https://github.com/swedesjs/vkdart/blob/master/lib/src/util/keyboard.dart) — кнопки и их параметры.
 
 ## Возможные направления развития 🧭
 
@@ -546,13 +546,13 @@ vkdart.onMessage().listen(
 
 Это идеи для возможного развития, а не обещание сроков или уже реализованные
 возможности. Новое предложение можно отправить через
-[форму для идей и нововведений](https://github.com/swedests/vkdart/issues/new?template=feature_request.yml).
+[форму для идей и нововведений](https://github.com/swedesjs/vkdart/issues/new?template=feature_request.yml).
 
 ## Обратная связь 🤝
 
-- Репозиторий: https://github.com/swedests/vkdart
-- Сообщить о проблеме: https://github.com/swedests/vkdart/issues
-- Предложить нововведение: https://github.com/swedests/vkdart/issues/new?template=feature_request.yml
+- Репозиторий: https://github.com/swedesjs/vkdart
+- Сообщить о проблеме: https://github.com/swedesjs/vkdart/issues
+- Предложить нововведение: https://github.com/swedesjs/vkdart/issues/new?template=feature_request.yml
 - Пакет на pub.dev: https://pub.dev/packages/vkdart
 
 ## Поддержать автора 🍲
