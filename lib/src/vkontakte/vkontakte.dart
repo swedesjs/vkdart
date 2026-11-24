@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:vkdart/src/util/http_client.dart';
+import 'package:vkdart/src/vkontakte/api/api.dart';
 import 'package:vkdart/src/vkontakte/model/api_error.dart';
 
 /// Список языков, поддерживаемых VK API.
@@ -43,7 +44,7 @@ class Vkontakte {
   /// [version] — используемая версия API.
   /// [client] — необязательный HTTP-клиент, закрытие которого остаётся
   /// ответственностью вызывающего кода.
-  Vkontakte({
+  const Vkontakte({
     required String token,
     required LangApi language,
     required String version,
@@ -77,6 +78,21 @@ class Vkontakte {
 
     return data['response'] as Object;
   }
+
+  /// Раздел API для работы с аккаунтом пользователя ВКонтакте.
+  /// https://dev.vk.com/ru/method/account
+  ///
+  /// Примеры использования:
+  /// ```dart
+  /// final vk = Vkontakte(
+  ///   token: 'your_token',
+  ///   language: LangApi.ru,
+  ///   version: '5.131',
+  /// );
+  ///
+  /// final response = vk.account.getAppPermissions(userId: 123456); // response = 404040 - битая маска прав доступа
+  /// ```
+  AccountApi get account => AccountApi(this);
 }
 
 // ignore: public_member_api_docs
