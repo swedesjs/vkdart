@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:vkdart/src/util/http_client.dart';
-import 'package:vkdart/src/vkontakte/api/api.dart';
-import 'package:vkdart/src/vkontakte/model/api_error.dart';
+import 'package:vkdart/src/vkdart/vkontakte/api/api.dart';
+import 'package:vkdart/src/vkdart/vkontakte/model/api_error.dart';
 
 /// Список языков, поддерживаемых VK API.
 enum LangApi {
@@ -93,6 +93,33 @@ class Vkontakte {
   /// final response = vk.account.getAppPermissions(userId: 123456); // response = 404040 - битая маска прав доступа
   /// ```
   AccountApi get account => AccountApi(this);
+
+  /// Раздел API для работы с рекламой.
+  /// https://dev.vk.com/ru/method/ads
+  ///
+  /// > Данный раздел API доступен только для рекламных агентств через ключ доступа пользователя.
+  /// >
+  /// > **Ads** — выдаётся в исключительных случаях через запрос в поддержку по электронной почте devsupport@corp.vk.com
+  ///
+  /// ```dart
+  /// final vk = Vkontakte(
+  ///   token: 'your_token',
+  ///   language: LangApi.ru,
+  ///   version: '5.131',
+  /// );
+  /// final response = vk.ads.addOfficeUsers(
+  ///   accountId: 123456,
+  ///   data: [
+  ///     AdsApiUserSpecification(
+  ///       userId: 123456,
+  ///       role: AdsApiUserSpecificationRole.manager,
+  ///       clientId: 123456,
+  ///       viewBudget: true,
+  ///     ),
+  ///   ],
+  /// );
+  /// ```
+  AdsApi get ads => AdsApi(this);
 }
 
 // ignore: public_member_api_docs
